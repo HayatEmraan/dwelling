@@ -9,7 +9,7 @@ const Toggle = () => {
     setIsToggled((prevState) => !prevState);
   };
   return (
-    <div className="flex justify-between items-center px-5 border border-gray-400 rounded-lg h-20 lg:w-1/3">
+    <div className="flex justify-between items-center px-2 lg:px-5  border border-gray-400 rounded-lg h-20 lg:w-1/3">
       <div className="lg:flex">
         <h2 className="font-bold">Display total price</h2>
         <h2 className="hidden lg:block text-gray-500 mx-5">|</h2>
