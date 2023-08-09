@@ -7,7 +7,7 @@ import { TbMountain } from "react-icons/tb";
 import { MdOutlineAddHomeWork } from "react-icons/md";
 import { Libre_Bodoni } from "next/font/google";
 import Image from "next/image";
-import searchIcon from "../../assets/icons/search.svg";
+import searchIcon from "../../../public/icons/search.svg";
 
 const navlinks = [
   {
