@@ -36,8 +36,8 @@ const navlinks = [
   },
   {
     id: 5,
-    name: "testimonils",
-    path: "/testimonils",
+    name: "testimonials",
+    path: "/testimonials",
     icon: <TbMountain />,
   },
   {
@@ -66,9 +66,12 @@ const HeaderComponent = () => {
     <div className="relative">
       <div className="bg-[#003B95]">
         <nav className="flex justify-between items-center px-4 py-4">
-          <div className={`text-2xl text-white ${bodoni.className}`}>
+          <Link
+            href={"/"}
+            className={`text-2xl text-white ${bodoni.className}`}
+          >
             Dwelling
-          </div>
+          </Link>
 
           <div className="flex items-center space-x-6">
             <Image
@@ -101,7 +104,7 @@ const HeaderComponent = () => {
       </div>
 
       <div
-        className={`flex flex-col space-y-4 px-4 py-4 ${
+        className={`flex flex-col space-y-4 py-4 ${
           isOpen
             ? "block w-full h-screen absolute bg-white top-0 transition"
             : "hidden"
@@ -110,10 +113,13 @@ const HeaderComponent = () => {
         <ul className="pt-8">
           {navlinks.map(({ id, name, path, icon }) => {
             return (
-              <li key={id} className="flex items-center space-x-4 mt-6">
-                <span className="text-3xl">{icon}</span>
-                <Link href={path} className="capitalize">
-                  {name}
+              <li key={id} className="p-3 transition hover:bg-gray-100">
+                <Link
+                  href={path}
+                  className="flex items-center space-x-4 capitalize"
+                >
+                  <span className="text-3xl">{icon}</span>
+                  <span className="capitalize">{name}</span>
                 </Link>
               </li>
             );
