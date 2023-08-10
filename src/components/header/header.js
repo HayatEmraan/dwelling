@@ -6,8 +6,8 @@ import Link from "next/link";
 import { TbMountain } from "react-icons/tb";
 import { MdOutlineAddHomeWork } from "react-icons/md";
 import { Libre_Bodoni } from "next/font/google";
-import Image from "next/image";
 import searchIcon from "../../../public/icons/search.svg";
+import Image from "next/image";
 
 const navlinks = [
   {
@@ -63,9 +63,9 @@ const HeaderComponent = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="sticky top-0 z-50 w-full">
       <div className="bg-[#003B95]">
-        <nav className="flex justify-between items-center px-4 py-4">
+        <nav className="flex justify-between items-center px-5 md:px-4 lg:px-3 xl:px-2 py-4 max-w-[1560px] mx-auto">
           <Link
             href={"/"}
             className={`text-2xl text-white ${bodoni.className}`}
@@ -73,7 +73,7 @@ const HeaderComponent = () => {
             Dwelling
           </Link>
 
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-6 relative">
             <Image
               src={searchIcon}
               alt="Search Icon"
@@ -90,7 +90,7 @@ const HeaderComponent = () => {
               {isOpen ? (
                 <RxCross2
                   size={"20"}
-                  className="cursor-pointer text-gray-800 relative z-20"
+                  className="cursor-pointer text-gray-800 fixed z-50"
                 />
               ) : (
                 <AiOutlineMenu
@@ -101,30 +101,29 @@ const HeaderComponent = () => {
             </button>
           </div>
         </nav>
-      </div>
-
-      <div
-        className={`flex flex-col space-y-4 py-4 ${
-          isOpen
-            ? "block w-full h-screen absolute bg-white top-0 transition"
-            : "hidden"
-        }`}
-      >
-        <ul className="pt-8">
-          {navlinks.map(({ id, name, path, icon }) => {
-            return (
-              <li key={id} className="p-3 transition hover:bg-gray-100">
-                <Link
-                  href={path}
-                  className="flex items-center space-x-4 capitalize"
-                >
-                  <span className="text-3xl">{icon}</span>
-                  <span className="capitalize">{name}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <div
+          className={`flex flex-col space-y-4 py-4 ${
+            isOpen
+              ? "block w-full min-h-screen fixed z-40 bg-white top-0 transition"
+              : "hidden"
+          }`}
+        >
+          <ul className="pt-8">
+            {navlinks.map(({ id, name, path, icon }) => {
+              return (
+                <li key={id} className="p-3 transition hover:bg-gray-100">
+                  <Link
+                    href={path}
+                    className="flex items-center space-x-4 capitalize"
+                  >
+                    <span className="text-3xl">{icon}</span>
+                    <span className="capitalize">{name}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </div>
   );
