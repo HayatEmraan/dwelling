@@ -48,7 +48,7 @@ const Footer = () => {
         <footer className="footer px-10 py-4 border-t flex justify-between items-center text-base-content border-base-300">
           <div className="items-center grid-flow-col">
             <p>
-              © 2023 Airbnb, Inc. ·Terms . Sitemap .
+              © dwelling, Inc ·Terms . Sitemap .
               Privacy . Your Privacy Choices
             </p>
           </div>
