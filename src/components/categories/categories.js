@@ -1,61 +1,30 @@
-"use client"
-import Image from 'next/image';
-import React, { useRef, useEffect, useState } from 'react';
-
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-
-// import './styles.css';
-import { Navigation } from 'swiper/modules';
-
-const CategoriesComponent = () => {
-    const [categories, setCategories] = useState([])
-
-    useEffect(() => {
-        fetch('./header/categories.json')
-            .then(res => res.json())
-            .then(data => setCategories(data))
-    }, [])
-
-    return (
-        <div>
-            <Swiper
-                breakpoints={{
-                    0: {
-                        slidesPerView: 4
-                    },
-                    640: {
-                        slidesPerView: 8
-                    },
-                    768: {
-                        slidesPerView: 12
-                    }
-                }}
-                loop={true}
-                spaceBetween={30}
-                centeredSlides={false}
-                navigation={true}
-                modules={[Navigation]}
-                className="mySwiper"
-
+import React from "react";
+const CategoriesComponent = async () => {
+  const res = await fetch(
+    "https://raw.githubusercontent.com/HayatEmraan/dwelling/main/public/header/categories.json"
+  );
+  const categories = await res.json();
+  return (
+    <div className="sticky top-4 z-30 shadow-md bg-white">
+      <div className="max-w-[1560px] mx-auto space-y-">
+        <div className="flex justify-between mt-4 overflow-x-auto px-5 md:px-4 lg:px-3 xl:px-2 no-scrollbar">
+          {categories.map((category, index) => (
+            <div
+              key={index}
+              className={`flex flex-col items-center justify-center gap-2 p-3 hover:text-neutral-800 transition cursor-pointer`}
             >
-                {
-                    categories.map(category => <SwiperSlide
-                        key={category._id}
-                        className='flex justify-center items-center flex-col'
-                    >
-                        <img className='w-8' src={category.icon} alt="" />
-                        <p>{category.label}</p>
-                    </SwiperSlide>)
-                }
-            </Swiper>
-
+              <img
+                className="w-8"
+                src="https://i.ibb.co/hLmtc8m/icons8-cabin-64.pnghttps://i.ibb.co/XzHRM3H/icons8-cabin-32.png"
+                alt=""
+              />
+              <div className="text-sm font-medium">{category.label}</div>
+            </div>
+          ))}
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default CategoriesComponent;

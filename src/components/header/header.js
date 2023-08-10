@@ -6,8 +6,8 @@ import Link from "next/link";
 import { TbMountain } from "react-icons/tb";
 import { MdOutlineAddHomeWork } from "react-icons/md";
 import { Libre_Bodoni } from "next/font/google";
-import Image from "next/image";
 import searchIcon from "../../../public/icons/search.svg";
+import Image from "next/image";
 
 const navlinks = [
   {
@@ -65,7 +65,7 @@ const HeaderComponent = () => {
   return (
     <div className="relative">
       <div className="bg-[#003B95]">
-        <nav className="flex justify-between items-center px-4 py-4">
+        <nav className="flex justify-between items-center px-5 md:px-4 lg:px-3 xl:px-2 py-4 max-w-[1560px] mx-auto">
           <Link
             href={"/"}
             className={`text-2xl text-white ${bodoni.className}`}
@@ -90,7 +90,7 @@ const HeaderComponent = () => {
               {isOpen ? (
                 <RxCross2
                   size={"20"}
-                  className="cursor-pointer text-gray-800 relative z-20"
+                  className="cursor-pointer text-gray-800 relative z-50"
                 />
               ) : (
                 <AiOutlineMenu
@@ -106,7 +106,7 @@ const HeaderComponent = () => {
       <div
         className={`flex flex-col space-y-4 py-4 ${
           isOpen
-            ? "block w-full h-screen absolute bg-white top-0 transition"
+            ? "block w-full min-h-screen fixed z-40 bg-white top-0 transition"
             : "hidden"
         }`}
       >
