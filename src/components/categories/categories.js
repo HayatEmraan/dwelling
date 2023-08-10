@@ -5,7 +5,7 @@ const CategoriesComponent = async () => {
   );
   const categories = await res.json();
   return (
-    <div className="sticky top-4 z-30 shadow-md bg-white">
+    <div className="sticky top-16 z-30 shadow-md bg-white">
       <div className="max-w-[1560px] mx-auto space-y-">
         <div className="flex justify-between mt-4 overflow-x-auto px-5 md:px-4 lg:px-3 xl:px-2 no-scrollbar">
           {categories.map((category, index) => (
