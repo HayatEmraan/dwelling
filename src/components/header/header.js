@@ -63,8 +63,8 @@ const HeaderComponent = () => {
   };
 
   return (
-    <div className="relative">
-      <div className="bg-[#003B95]">
+    <>
+      <div className="bg-[#003B95] fixed w-full z-20">
         <nav className="flex justify-between items-center px-4 py-4">
           <Link
             href={"/"}
@@ -73,7 +73,7 @@ const HeaderComponent = () => {
             Dwelling
           </Link>
 
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-6 relative">
             <Image
               src={searchIcon}
               alt="Search Icon"
@@ -90,7 +90,7 @@ const HeaderComponent = () => {
               {isOpen ? (
                 <RxCross2
                   size={"20"}
-                  className="cursor-pointer text-gray-800 relative z-20"
+                  className="cursor-pointer text-gray-800 relative z-50"
                 />
               ) : (
                 <AiOutlineMenu
@@ -101,32 +101,29 @@ const HeaderComponent = () => {
             </button>
           </div>
         </nav>
+        <div
+          className={`flex flex-col space-y-4 py-4 ${
+            isOpen ? "absolute top-0 w-full h-screen bg-white z-30" : "hidden"
+          }`}
+        >
+          <ul className="pt-8">
+            {navlinks.map(({ id, name, path, icon }) => {
+              return (
+                <li key={id} className="p-3 transition hover:bg-gray-100">
+                  <Link
+                    href={path}
+                    className="flex items-center space-x-4 capitalize"
+                  >
+                    <span className="text-3xl">{icon}</span>
+                    <span className="capitalize">{name}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
-
-      <div
-        className={`flex flex-col space-y-4 py-4 ${
-          isOpen
-            ? "block w-full h-screen absolute bg-white top-0 transition"
-            : "hidden"
-        }`}
-      >
-        <ul className="pt-8">
-          {navlinks.map(({ id, name, path, icon }) => {
-            return (
-              <li key={id} className="p-3 transition hover:bg-gray-100">
-                <Link
-                  href={path}
-                  className="flex items-center space-x-4 capitalize"
-                >
-                  <span className="text-3xl">{icon}</span>
-                  <span className="capitalize">{name}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </div>
+    </>
   );
 };
 
