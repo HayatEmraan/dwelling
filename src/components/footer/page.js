@@ -2,14 +2,13 @@ import React from "react";
 import { FaGlobe } from "react-icons/fa";
 // import Image from 'next/image';
 
-
 const Footer = () => {
   return (
     <div>
       <div className="max-w-[1560px] mx-auto">
         <footer className="footer p-10 text-base-content">
           <div>
-            <img src="/logo.png" alt="" className="w-[50%]"/>
+            <img src="/logo.png" alt="" className="w-[50%]"  />
           </div>
           <div className="mt-16">
             <span className="footer-title">Support</span>
@@ -45,14 +44,16 @@ const Footer = () => {
             <button className=" btn  btn-warning">Lets Talk With Us</button>
           </div>
         </footer>
-        <footer className="footer px-10 py-4 border-t flex justify-between items-center text-base-content border-base-300">
-          <div className="items-center grid-flow-col">
-            <p>
-              © dwelling, Inc ·Terms . Sitemap .
-              Privacy . Your Privacy Choices
-            </p>
+        <footer className="px-4 py-4 space-y-1 border-t md:flex justify-between items-center text-base-content border-base-300">
+          <div className="md:flex items-center gap-4">
+            <p>© dwelling, Inc</p>
+            <div className="flex">
+              <p>. Terms</p>
+              <p> . Sitemap</p>
+              <p>. Privacy</p>
+            </div>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center gap-1">
             <p>
               <FaGlobe></FaGlobe>
             </p>
@@ -61,7 +62,7 @@ const Footer = () => {
           </div>
 
           <div className="md:place-self-center md:justify-self-end">
-            <div className="grid grid-flow-col gap-4">
+            <div className="flex gap-2">
               <a>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

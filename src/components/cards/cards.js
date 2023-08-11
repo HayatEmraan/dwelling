@@ -1,16 +1,22 @@
+import { AiFillStar } from "react-icons/ai";
+
+// import required modules
+
 import Link from "next/link";
 import React from "react";
 import HeartButton from "../heartbutton/heartbutton";
+import SliderComponent from "./slider";
 
 const Cards = async () => {
   const res = await fetch(
-    "https://raw.githubusercontent.com/HayatEmraan/AirCNC/main/public/rooms.json"
+    "https://raw.githubusercontent.com/HayatEmraan/dwelling/ruhulamin1/public/fake.json"
   );
   const jsonData = await res.json();
   return (
     <div className="max-w-[1560px] mx-auto space-y-4">
       <div className="px-5 md:px-4 lg:px-3 xl:px-2">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 mb-4">
+          {/* this is main one */}
           {jsonData.map((room, index) => {
             return (
               <Link
@@ -20,25 +26,14 @@ const Cards = async () => {
               >
                 <div className="flex flex-col gap-2 w-full">
                   <div
-                    className="
-            aspect-square 
+                    className=" 
             w-full 
             relative 
             overflow-hidden 
             rounded-xl
           "
                   >
-                    <img
-                      className="
-              object-cover 
-              h-full 
-              w-full 
-              group-hover:scale-110 
-              transition
-            "
-                      src={room.image}
-                      alt="Room"
-                    />
+                    <SliderComponent images={room.images} />
                     <div
                       className="
             absolute
@@ -49,9 +44,195 @@ const Cards = async () => {
                       <HeartButton />
                     </div>
                   </div>
-                  <div className="font-semibold text-lg">{room.location}</div>
-                  <div className="font-light text-neutral-500">
-                    5 nights . {room.dateRange}
+                  <div className="flex justify-between items-center">
+                    <div className="font-semibold text-lg">{room.name}</div>
+                    <div className="text-md flex items-center">
+                      <AiFillStar />
+                      {room.rating}
+                    </div>
+                  </div>
+                  <div className="font-light text-neutral-500 -my-2">
+                    {room.dateRange}
+                  </div>
+                  <div className="flex flex-row items-center gap-1">
+                    <div className="font-semibold">$ {room.price}</div>
+                    <div className="font-light">night</div>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+          {jsonData.map((room, index) => {
+            return (
+              <Link
+                key={index}
+                href={`/room/details/${1}`}
+                className="col-span-1 cursor-pointer group"
+              >
+                <div className="flex flex-col gap-2 w-full">
+                  <div
+                    className=" 
+            w-full 
+            relative 
+            overflow-hidden 
+            rounded-xl
+          "
+                  >
+                    <SliderComponent images={room.images} />
+                    <div
+                      className="
+            absolute
+            top-3
+            right-3
+          "
+                    >
+                      <HeartButton />
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <div className="font-semibold text-lg">{room.name}</div>
+                    <div className="text-md flex items-center">
+                      <AiFillStar />
+                      {room.rating}
+                    </div>
+                  </div>
+                  <div className="font-light text-neutral-500 -my-2">
+                    {room.dateRange}
+                  </div>
+                  <div className="flex flex-row items-center gap-1">
+                    <div className="font-semibold">$ {room.price}</div>
+                    <div className="font-light">night</div>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+          {jsonData.map((room, index) => {
+            return (
+              <Link
+                key={index}
+                href={`/room/details/${1}`}
+                className="col-span-1 cursor-pointer group"
+              >
+                <div className="flex flex-col gap-2 w-full">
+                  <div
+                    className=" 
+            w-full 
+            relative 
+            overflow-hidden 
+            rounded-xl
+          "
+                  >
+                    <SliderComponent images={room.images} />
+                    <div
+                      className="
+            absolute
+            top-3
+            right-3
+          "
+                    >
+                      <HeartButton />
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <div className="font-semibold text-lg">{room.name}</div>
+                    <div className="text-md flex items-center">
+                      <AiFillStar />
+                      {room.rating}
+                    </div>
+                  </div>
+                  <div className="font-light text-neutral-500 -my-2">
+                    {room.dateRange}
+                  </div>
+                  <div className="flex flex-row items-center gap-1">
+                    <div className="font-semibold">$ {room.price}</div>
+                    <div className="font-light">night</div>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+          {jsonData.map((room, index) => {
+            return (
+              <Link
+                key={index}
+                href={`/room/details/${1}`}
+                className="col-span-1 cursor-pointer group"
+              >
+                <div className="flex flex-col gap-2 w-full">
+                  <div
+                    className=" 
+            w-full 
+            relative 
+            overflow-hidden 
+            rounded-xl
+          "
+                  >
+                    <SliderComponent images={room.images} />
+                    <div
+                      className="
+            absolute
+            top-3
+            right-3
+          "
+                    >
+                      <HeartButton />
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <div className="font-semibold text-lg">{room.name}</div>
+                    <div className="text-md flex items-center">
+                      <AiFillStar />
+                      {room.rating}
+                    </div>
+                  </div>
+                  <div className="font-light text-neutral-500 -my-2">
+                    {room.dateRange}
+                  </div>
+                  <div className="flex flex-row items-center gap-1">
+                    <div className="font-semibold">$ {room.price}</div>
+                    <div className="font-light">night</div>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+          {jsonData.map((room, index) => {
+            return (
+              <Link
+                key={index}
+                href={`/room/details/${1}`}
+                className="col-span-1 cursor-pointer group"
+              >
+                <div className="flex flex-col gap-2 w-full">
+                  <div
+                    className=" 
+            w-full 
+            relative 
+            overflow-hidden 
+            rounded-xl
+          "
+                  >
+                    <SliderComponent images={room.images} />
+                    <div
+                      className="
+            absolute
+            top-3
+            right-3
+          "
+                    >
+                      <HeartButton />
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <div className="font-semibold text-lg">{room.name}</div>
+                    <div className="text-md flex items-center">
+                      <AiFillStar />
+                      {room.rating}
+                    </div>
+                  </div>
+                  <div className="font-light text-neutral-500 -my-2">
+                    {room.dateRange}
                   </div>
                   <div className="flex flex-row items-center gap-1">
                     <div className="font-semibold">$ {room.price}</div>
