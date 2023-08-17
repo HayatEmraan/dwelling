@@ -14,3 +14,7 @@
       scrollbar-width: none; /* Firefox */
     }
 }
+
+.ReactCollapse--collapse {
+  transition: height 500ms;
+}

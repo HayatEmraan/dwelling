@@ -1,29 +1,86 @@
-import React from 'react';
-import {CiHome} from 'react-icons/ci'
+'use client'
+import React, { useState } from 'react';
+import { CiHome } from 'react-icons/ci'
+import { LiaFileInvoiceSolid } from 'react-icons/lia'
+import { LuEdit } from 'react-icons/lu'
 import AccordionItem from './AccordionItem';
 const accordionData = [
     {
-        title: "title 1",
-        desc: "desc 1"
+        title: "Dashboard",
+        icon:  <CiHome />,
+        children: [
+            {
+                title: 'Analytics'
+            },
+            {
+                title: 'Project'
+            },
+            {
+                title: 'Ecommerce'
+            },
+            {
+                title: 'CRM'
+            },
+            {
+                title: 'Finance'
+            },
+        ]
     },
     {
-        title: "title 2",
-        desc: "desc 2"
+        title: "Invoice",
+        icon:  <LiaFileInvoiceSolid />,
+        children: [
+            {
+                title: 'List'
+            },
+            {
+                title: 'Detail'
+            },
+            {
+                title: 'Invoice Generator'
+            }
+        ]
     },
     {
-        title: "title 3",
-        desc: "desc 3"
+        title: "Blog",
+        icon:  <LuEdit />,
+        children: [
+            {
+                title: 'Author'
+            },
+            {
+                title: 'Detail'
+            },
+            {
+                title: 'Create Post'
+            }
+        ]
     },
 ]
 
 const Sidebar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = (index) => {
+        if (isOpen === index) {
+            return setIsOpen(null);
+        }
+        setIsOpen(index)
+    }
+
     return (
-        <div className='px-6'>
-            <div className='text-2xl font-semibold pt-3 text-center'>Admin Panel</div>
+        <div className=''>
+            <div className='text-2xl font-semibold pt-3 pb-4 text-center'>Admin Panel</div>
             <div>
                 {
                     accordionData.map((data, index) => {
-                        return <AccordionItem />
+                        return <AccordionItem
+                            toggle={()=>toggle(index)}
+                            isOpen={isOpen === index}
+                            key={index}
+                            title={data.title}
+                            desc={data.children}
+                            icon={data.icon}
+                        />
                     })
                 }
             </div>
