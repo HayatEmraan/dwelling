@@ -20,7 +20,7 @@ const projectsData = [
                 image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-3.jpg'
             }
         ],
-        progress: '35%'
+        progress: 35
     },
     {
         id: 2,
@@ -42,7 +42,7 @@ const projectsData = [
                 image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-3.jpg'
             }
         ],
-        progress: '75%'
+        progress: 74
     },
     {
         id: 3,
@@ -55,19 +55,10 @@ const projectsData = [
                 image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-5.jpg'
             },
             {
-                image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-11.jpg'
-            },
-            {
-                image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-6.jpg'
-            },
-            {
-                image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg'
-            },
-            {
                 image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-3.jpg'
             }
         ],
-        progress: '25%'
+        progress: 26
     },
     {
         id: 4,
@@ -86,7 +77,7 @@ const projectsData = [
                 image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-3.jpg'
             }
         ],
-        progress: '67%'
+        progress: 67
     },
     {
         id: 5,
@@ -111,7 +102,7 @@ const projectsData = [
                 image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-3.jpg'
             }
         ],
-        progress: '44%'
+        progress: 44
     },
     {
         id: 6,
@@ -130,18 +121,18 @@ const projectsData = [
                 image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-3.jpg'
             }
         ],
-        progress: '54%'
+        progress: 38
     }
 ]
 
 const ActiveProjectTable = () => {
     return (
-        <div className="overflow-x-auto">
-            <h3 className="text-xl mt-5 font-semibold bg-white p-3 rounded-md">Active Projects</h3>
+        <div className="overflow-x-auto  mt-5 pb-6 mb-6 bg-white rounded-lg">
+            <h3 className="text-lg font-semibol p-3">Active Projects</h3>
             <table className="table">
                 {/* head */}
                 <thead>
-                    <tr className="border border-slate-200 text-[14px] text-gray-700">
+                    <tr className="border border-slate-200 bg-slate-100 text-[14px] text-gray-700">
                         <th>Project name</th>
                         <th>Hours</th>
                         <th>Priority</th>
@@ -158,6 +149,9 @@ const ActiveProjectTable = () => {
                 </tbody>
 
             </table>
+            <div className="text-center">
+                <button className="btn text-white mt-5 py-3 bg-primary hover:bg-blue-600 hover:bg-opacity-90">View All Projects</button>
+            </div>
         </div>
     );
 };

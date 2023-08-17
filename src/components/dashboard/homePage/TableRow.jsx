@@ -1,12 +1,11 @@
 import Image from "next/image";
+import AvatarGroup from "./AvatarGroup";
 
-const TableRow = ({item}) => {
-    const { id, name, logo, hours, priority, members, progress } = item;
+const TableRow = ({ item }) => {
+    const { name, logo, hours, priority, members, progress } = item;
 
-    console.log(id, logo, name, hours, members, progress, priority)
-    console.log(item)
     return (
-        <tr className="bg-white">
+        <tr className="bg-white hover:bg-slate-100">
             <td>
                 <div className="flex items-center space-x-4">
                     <Image src={logo} width={30} height={30} alt="Project Logo" />
@@ -14,14 +13,25 @@ const TableRow = ({item}) => {
                 </div>
             </td>
             <td>
-                Zemlak, Daniel and Leannon
-                <br />
-                <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                <p>{hours}</p>
             </td>
-            <td>Purple</td>
-            <th>
-                <button className="btn btn-ghost btn-xs">details</button>
-            </th>
+            <td>
+                <div className={`badge font-bold ${priority === 'High' ? 'bg-secondary bg-opacity-10 text-secondary ' : priority === 'Medium' ? 'bg-warning bg-opacity-10 text-warning' : priority === 'Low' ? 'bg-primary bg-opacity-10 text-primary' : priority === 'Track' ? 'bg-green-600 bg-opacity-10 text-green-600 ' : ''}`}>{priority}</div>
+            </td>
+            <td className="avatar-group -space-x-6">
+                {
+                    members.map((member, index) => <AvatarGroup member={member} key={index} />)
+                }
+                <div className="avatar placeholder">
+                    <div className="w-[34px] bg-primary-focus text-neutral-content">
+                        <span>+{members.length}</span>
+                    </div>
+                </div>
+            </td>
+            <td className="space-x-2">
+                <span>{progress}%</span>
+                <progress className="progress progress-primary w-8" value={progress} max="100"></progress>
+            </td>
         </tr>
     );
 };
