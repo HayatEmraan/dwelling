@@ -53,7 +53,7 @@ const teamData = [
 
 const MyTeam = () => {
     return (
-        <div className="overflow-x-auto bg-white rounded-lg mb-8">
+        <div className="overflow-x-auto w-full bg-white rounded-lg mb-8">
             <div className="p-4">
                 <h3 className="text-md font-semibold">Team</h3>
             </div>

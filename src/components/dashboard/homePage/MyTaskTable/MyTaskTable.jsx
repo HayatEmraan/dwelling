@@ -40,7 +40,7 @@ const myTasks = [
 
 const MyTaskTable = () => {
     return (
-        <div className="overflow-x-auto bg-white rounded-lg mb-8">
+        <div className="overflow-x-auto w-full bg-white rounded-lg mb-8">
             <div className="flex justify-between items-center p-4">
                 <h3 className="text-md font-semibold">My Tasks</h3>
                 <button className="p-3 btn bg-white">Create New Project</button>
