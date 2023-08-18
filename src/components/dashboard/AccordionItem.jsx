@@ -17,7 +17,7 @@ const AccordionItem = ({ isOpen, toggle, title, desc, icon }) => {
                 </div>
             </div>
             <Collapse isOpened={isOpen}>
-                <div className='px-[30px] pb-[20px]'> { desc.map((item, index)=> <li key={index}>{item.title}</li>)}</div>
+                <div className='px-[30px] pb-[20px]'> { desc.map((item, index)=> <li key={index} className='ml-2 py-[4px]'>{item.title}</li>)}</div>
             </Collapse>
         </div>
     );

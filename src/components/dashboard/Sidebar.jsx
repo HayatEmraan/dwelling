@@ -68,7 +68,7 @@ const Sidebar = () => {
     }
 
     return (
-        <div className=''>
+        <div className='fixed top-0'>
             <div className='text-2xl font-semibold pt-3 pb-4 text-center'>Admin Panel</div>
             <div>
                 {
