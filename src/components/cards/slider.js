@@ -12,6 +12,8 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
 const SliderComponent = ({ images }) => {
   return (
+    
+    
     <Swiper
       slidesPerView={1}
       spaceBetween={10}
