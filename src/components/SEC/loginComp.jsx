@@ -15,7 +15,7 @@ const LogInComp = () => {
           </h1>
         </div>
         <hr className="my-4" />
-        <h3 className="font-bold text-lg">Welcome to Dwelling!</h3>
+        <h3 className="font-bold text-lg mt-7">Welcome to Dwelling!</h3>
         <div className="py-4">
           <div class="relative z-0 mb-4">
             <input
@@ -73,3 +73,4 @@ const LogInComp = () => {
 };
 
 export default LogInComp;
+ 
