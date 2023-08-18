@@ -8,6 +8,7 @@ import { MdOutlineAddHomeWork } from "react-icons/md";
 import { Libre_Bodoni } from "next/font/google";
 import searchIcon from "../../../public/icons/search.svg";
 import Image from "next/image";
+import LogInComp from "../SEC/loginComp";
 
 const navlinks = [
   {
@@ -81,7 +82,9 @@ const HeaderComponent = () => {
               height={20}
               className="cursor-pointer"
             />
-            <RxAvatar size="24" className="text-white" />
+            <button onClick={() => window.my_modal_3.showModal()}>
+              <RxAvatar size="24" className="text-white" />
+            </button>
 
             <button
               className="p-2 text-white rounded-md outline-none"
@@ -125,6 +128,7 @@ const HeaderComponent = () => {
           </ul>
         </div>
       </div>
+      {<LogInComp />}
     </div>
   );
 };
