@@ -128,7 +128,7 @@ const projectsData = [
 const ActiveProjectTable = () => {
     return (
         <div className="overflow-x-auto  mt-5 pb-6 mb-6 bg-white rounded-lg">
-            <h3 className="text-lg font-semibol p-3">Active Projects</h3>
+            <h3 className="text-md font-semibold p-3">Active Projects</h3>
             <table className="table">
                 {/* head */}
                 <thead>

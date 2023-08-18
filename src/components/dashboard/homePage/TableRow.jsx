@@ -7,7 +7,7 @@ const TableRow = ({ item }) => {
     return (
         <tr className="bg-white hover:bg-slate-100">
             <td>
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-4 whitespace-nowrap">
                     <Image src={logo} width={30} height={30} alt="Project Logo" />
                     <h4 className="text-md font-semibold">{name}</h4>
                 </div>
@@ -16,7 +16,7 @@ const TableRow = ({ item }) => {
                 <p>{hours}</p>
             </td>
             <td>
-                <div className={`badge font-bold ${priority === 'High' ? 'bg-secondary bg-opacity-10 text-secondary ' : priority === 'Medium' ? 'bg-warning bg-opacity-10 text-warning' : priority === 'Low' ? 'bg-primary bg-opacity-10 text-primary' : priority === 'Track' ? 'bg-green-600 bg-opacity-10 text-green-600 ' : ''}`}>{priority}</div>
+                <div className={`badge font-semibold ${priority === 'High' ? 'bg-secondary bg-opacity-10 text-secondary ' : priority === 'Medium' ? 'bg-warning bg-opacity-10 text-warning' : priority === 'Low' ? 'bg-primary bg-opacity-10 text-primary' : priority === 'Track' ? 'bg-green-600 bg-opacity-10 text-green-600 ' : ''}`}>{priority}</div>
             </td>
             <td className="avatar-group -space-x-6">
                 {
