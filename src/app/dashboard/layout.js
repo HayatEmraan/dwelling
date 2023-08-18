@@ -4,11 +4,11 @@ import React from 'react';
 
 const DashboardLayout = ({ children }) => {
     return (
-        <div className='grid md:grid-cols-5 grid-cols-6'>
-            <div className='h-screen bg-white border-r-slate-100 border'>
+        <div className='grid grid-cols-1 md:grid-cols-5 lg:grid-cols-6'>
+            <div className='h-screen bg-white md:block hidden'>
                 <Sidebar />
             </div>
-            <div className='w-full md:col-span-4 col-span-5 bg-[#F1F5F9]'>
+            <div className='w-full md:col-span-4 lg:col-span-5 bg-slate-100'>
                 <TopBar />
                 {children}
             </div>
