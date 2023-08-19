@@ -5,7 +5,7 @@ const TableRow = ({ item }) => {
     const { name, logo, hours, priority, members, progress } = item;
 
     return (
-        <tr className="bg-white hover:bg-slate-100">
+        <tr className="bg-white hover:bg-slate-100 dark:bg-slate-800 dark:text-white">
             <td>
                 <div className="flex items-center space-x-4 whitespace-nowrap">
                     <Image src={logo} width={30} height={30} alt="Project Logo" />

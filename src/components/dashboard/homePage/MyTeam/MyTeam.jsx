@@ -53,7 +53,7 @@ const teamData = [
 
 const MyTeam = () => {
     return (
-        <div className="overflow-x-auto w-full bg-white rounded-lg mb-8">
+        <div className="overflow-x-auto w-full bg-white rounded-lg mb-8 dark:bg-slate-800 dark:text-white">
             <div className="p-4">
                 <h3 className="text-md font-semibold">Team</h3>
             </div>
@@ -61,7 +61,7 @@ const MyTeam = () => {
 
                 {/* head */}
                 <thead>
-                    <tr className="border border-slate-200 bg-slate-100 text-[14px] text-gray-700">
+                    <tr className="border border-slate-200 bg-slate-100 text-[14px] text-gray-700 dark:bg-slate-800 dark:text-white">
                         <th></th>
                         <th>Name</th>
                         <th>Role</th>
@@ -71,7 +71,7 @@ const MyTeam = () => {
                 <tbody>
                     {/* row 1 */}
                     {
-                        teamData.map(({ id, name, avatar, role, email, last_activity }) => <tr key={id} className="hover:bg-slate-100">
+                        teamData.map(({ id, name, avatar, role, email, last_activity }) => <tr key={id} className="hover:bg-slate-100 dark:hover:text-slate-800">
                             <th>                               
                             </th>
                             <td className="flex items-center space-x-3 whitespace-nowrap mr-5">
