@@ -1,5 +1,4 @@
-import DetailsMap from "@/components/detailMap/DetailsMap";
-
+import DetailsMap from "@/components/details/detailMap/DetailsMap";
 
 const RoomDetails = async () => {
 

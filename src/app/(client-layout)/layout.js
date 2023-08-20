@@ -1,7 +1,7 @@
-import HeaderComponent from "@/components/header/header";
+import HeaderComponent from "@/components/shared/header/header";
 import React from "react";
 
-import Footer from "@/components/footer/page";
+import Footer from "@/components/shared/footer/page";
 
 const ClientLayout = ({ children }) => {
   return (

@@ -6,9 +6,9 @@ import Link from "next/link";
 import { TbMountain } from "react-icons/tb";
 import { MdOutlineAddHomeWork } from "react-icons/md";
 import { Libre_Bodoni } from "next/font/google";
-import searchIcon from "../../../public/icons/search.svg";
+import searchIcon from "/public/icons/search.svg";
 import Image from "next/image";
-import LogInComp from "../SEC/loginComp";
+import LogInComp from "../../SEC/loginComp";
 
 const navlinks = [
   {
@@ -105,10 +105,11 @@ const HeaderComponent = () => {
           </div>
         </nav>
         <div
-          className={`flex flex-col space-y-4 py-4 ${isOpen
+          className={`flex flex-col space-y-4 py-4 ${
+            isOpen
               ? "block w-full min-h-screen fixed z-40 bg-white top-0 transition"
               : "hidden"
-            }`}
+          }`}
         >
           <ul className="pt-8">
             {navlinks.map(({ id, name, path, icon }) => {

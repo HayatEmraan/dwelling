@@ -55,7 +55,7 @@ const MyTeam = () => {
     return (
         <div className="overflow-x-auto w-full bg-white rounded-lg mb-8 dark:bg-slate-800 dark:text-white">
             <div className="p-4">
-                <h3 className="text-md font-semibold">Team</h3>
+                <h3 className="text-md font-semibold py-3">Team</h3>
             </div>
             <table className="table">
 
