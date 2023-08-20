@@ -71,7 +71,7 @@ const MyTeam = () => {
                 <tbody>
                     {/* row 1 */}
                     {
-                        teamData.map(({ id, name, avatar, role, email, last_activity }) => <tr key={id} className="hover:bg-slate-100 dark:hover:text-slate-800">
+                        teamData.map(({ id, name, avatar, role, email, last_activity }) => <tr key={id} className="dark:hover:bg-slate-900">
                             <th>                               
                             </th>
                             <td className="flex items-center space-x-3 whitespace-nowrap mr-5">
