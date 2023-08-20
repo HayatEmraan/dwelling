@@ -10,11 +10,11 @@ const DashboardHomePage = () => {
     return (
         <div>
             <HomePageHeading />
-            <div className="px-6 -mt-[70px]">
+            <div className="px-6 -mt-[70px] dark:bg-slate-700 dark:text-white">
                 <CardContainer />
                 <ActiveProjectTable />
             </div>
-            <div className='px-6 md:flex justify-between md:space-x-4'>
+            <div className='px-6 md:flex justify-between md:space-x-4 dark:bg-slate-700 dark:text-white'>
                 <MyTaskTable />                
                 <MyTeam />
             </div>

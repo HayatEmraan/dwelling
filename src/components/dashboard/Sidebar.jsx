@@ -68,8 +68,8 @@ const Sidebar = () => {
     }
 
     return (
-        <div className='fixed top-0'>
-            <div className='text-2xl font-semibold pt-3 pb-4 text-center'>Admin Panel</div>
+        <div className='fixed top-0 dark:bg-slate-800 dark:text-white dark:h-full'>
+            <div className='text-2xl font-semibold pt-3 pb-4 text-center '>Admin Panel</div>
             <div>
                 {
                     accordionData.map((data, index) => {

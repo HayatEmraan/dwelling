@@ -40,7 +40,7 @@ const myTasks = [
 
 const MyTaskTable = () => {
     return (
-        <div className="overflow-x-auto bg-white rounded-lg mb-8">
+        <div className="overflow-x-auto w-full bg-white rounded-lg mb-8 dark:bg-slate-800 dark:text-white">
             <div className="flex justify-between items-center p-4">
                 <h3 className="text-md font-semibold">My Tasks</h3>
                 <button className="p-3 btn bg-white">Create New Project</button>
@@ -49,7 +49,7 @@ const MyTaskTable = () => {
 
                 {/* head */}
                 <thead>
-                    <tr className="border border-slate-200 bg-slate-100 text-[14px] text-gray-700">
+                    <tr className="border border-slate-200 bg-slate-100 text-[14px] text-gray-700 dark:bg-slate-800 dark:text-white">
                         <th></th>
                         <th>Name</th>
                         <th>Deadline</th>
@@ -59,7 +59,7 @@ const MyTaskTable = () => {
                 <tbody>
                     {/* row 1 */}
                     {
-                        myTasks.map(({ id, name, deadline, status }) => <tr key={id} className="hover:bg-slate-100">
+                        myTasks.map(({ id, name, deadline, status }) => <tr key={id} className="hover:bg-slate-100 dark:bg-slate-800 dark:text-white">
                             <th>
                                 <label>
                                     <input type="checkbox" className="checkbox" />
