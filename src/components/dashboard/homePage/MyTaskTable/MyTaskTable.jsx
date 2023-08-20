@@ -59,7 +59,7 @@ const MyTaskTable = () => {
                 <tbody>
                     {/* row 1 */}
                     {
-                        myTasks.map(({ id, name, deadline, status }) => <tr key={id} className="hover:bg-slate-100 dark:bg-slate-800 dark:text-white">
+                        myTasks.map(({ id, name, deadline, status }) => <tr key={id} className="hover:bg-slate-100 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-900">
                             <th>
                                 <label>
                                     <input type="checkbox" className="checkbox" />
