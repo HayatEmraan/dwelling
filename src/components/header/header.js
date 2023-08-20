@@ -105,11 +105,10 @@ const HeaderComponent = () => {
           </div>
         </nav>
         <div
-          className={`flex flex-col space-y-4 py-4 ${
-            isOpen
+          className={`flex flex-col space-y-4 py-4 ${isOpen
               ? "block w-full min-h-screen fixed z-40 bg-white top-0 transition"
               : "hidden"
-          }`}
+            }`}
         >
           <ul className="pt-8">
             {navlinks.map(({ id, name, path, icon }) => {

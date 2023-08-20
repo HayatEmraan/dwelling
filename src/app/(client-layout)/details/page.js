@@ -1,14 +1,15 @@
+import DetailsMap from "@/components/detailMap/DetailsMap";
 
 
-const RoomDetails =async () => {
+const RoomDetails = async () => {
 
   const res = await fetch(
     "https://raw.githubusercontent.com/HayatEmraan/dwelling/raju/public/fake.json"
   );
-  const data =await res.json();
+  const data = await res.json();
   console.log(data)
-  
-  
+
+
 
   return (
     <div className="max-w-6xl lg:mx-auto">
@@ -19,7 +20,7 @@ const RoomDetails =async () => {
           <div className="lg:flex lg:space-x-5">
             <p className="font-bold">
 
-              Ratings-{data.rating}{}
+              Ratings-{data.rating}{ }
             </p>
             <p>
               Superhost-
@@ -108,7 +109,7 @@ const RoomDetails =async () => {
                 </div>
                 <div className="border">
                   <h3>CHECK-OUT</h3>
-                  <p>{ data.dateRange}</p>
+                  <p>{data.dateRange}</p>
                 </div>
               </div>
               <div className=" p-2">
@@ -142,7 +143,13 @@ const RoomDetails =async () => {
             <h3>$358</h3>
           </div>
         </div>
+
+
+
+
       </div>
+      {/* details map  */}
+      <DetailsMap />
     </div>
   );
 };
