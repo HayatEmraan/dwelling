@@ -1,5 +1,5 @@
 import firebaseAuth from "@/fb/fb.config";
-import { OAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, sendPasswordResetEmail } from "firebase/auth";
 import {
   FacebookAuthProvider,
   GoogleAuthProvider,
@@ -10,7 +10,7 @@ import {
 
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
-const microsoftProvider = new OAuthProvider("microsoft.com");
+const githubProvider = new GithubAuthProvider();
 
 export const handleCreateUser = (email, password) => {
   return createUserWithEmailAndPassword(firebaseAuth, email, password);
@@ -27,10 +27,14 @@ export const handleFacebook = () => {
   return signInWithPopup(firebaseAuth, facebookProvider);
 };
 
-export const handleMicrosoft = () => {
-  return signInWithPopup(firebaseAuth, microsoftProvider);
+export const handleGithub = () => {
+  return signInWithPopup(firebaseAuth, githubProvider);
 };
 
 export const handleLogout = () => {
   return signOut(firebaseAuth);
+};
+
+export const resetPassword = (email) => {
+  return sendPasswordResetEmail(firebaseAuth, email);
 };

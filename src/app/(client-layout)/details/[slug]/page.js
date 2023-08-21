@@ -6,9 +6,6 @@ const RoomDetails = async () => {
     "https://raw.githubusercontent.com/HayatEmraan/dwelling/raju/public/fake.json"
   );
   const data = await res.json();
-  console.log(data)
-
-
 
   return (
     <div className="max-w-6xl lg:mx-auto">

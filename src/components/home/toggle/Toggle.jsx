@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 const Toggle = () => {
   const [isToggled, setIsToggled] = useState(false);
-  console.log(isToggled);
 
   const handleToggle = () => {
     setIsToggled((prevState) => !prevState);

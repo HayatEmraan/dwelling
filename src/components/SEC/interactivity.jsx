@@ -1,35 +1,31 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
-import { FaFacebook, FaMicrosoft } from "react-icons/fa";
-import {
-  handleGoogle,
-  handleFacebook,
-  handleMicrosoft,
-} from "@/libs/security/AuthStore";
+import { FaFacebook, FaGithub } from "react-icons/fa";
+import { googleLogin, facebookLogin, githubLogin } from "./operations";
 
 const Interactivity = () => {
   return (
     <div className="flex flex-col gap-4">
       <button
-        onClick={handleGoogle}
+        onClick={githubLogin}
+        className="flex items-center gap-2 border border-black p-2 rounded-md justify-center"
+      >
+        <FaGithub size={22} />
+        <h1>Continue with Github</h1>
+      </button>
+      <button
+        onClick={googleLogin}
         className="flex items-center gap-2 border border-black p-2 rounded-md justify-center"
       >
         <FcGoogle size={22} />
         <h1>Continue with Google</h1>
       </button>
       <button
-        onClick={handleFacebook}
+        onClick={facebookLogin}
         className="flex items-center gap-2 border border-black p-2 rounded-md justify-center"
       >
         <FaFacebook size={22} />
         <h1>Continue with Facebook</h1>
-      </button>
-      <button
-        onClick={handleMicrosoft}
-        className="flex items-center gap-2 border border-black p-2 rounded-md justify-center"
-      >
-        <FaMicrosoft size={22} />
-        <h1>Continue with Microsoft</h1>
       </button>
     </div>
   );

@@ -1,4 +1,3 @@
-
 import InvoiceListPage from '@/components/dashboard/invoicePage/InvoiceListPage';
 import Pagination from '@/components/dashboard/invoicePage/Pagination';
 import SearchInvoice from '@/components/dashboard/invoicePage/SearchInvoice';
