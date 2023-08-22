@@ -25,6 +25,38 @@ const Cards = async () => {
                 className="col-span-1 cursor-pointer group"
               >
                 <div className="flex flex-col gap-2 w-full">
+                  <div className="w-full relative overflow-hidden rounded-xl">
+                    <SliderComponent images={room.images} />
+                    <div className="absolute top-3 z-10 right-3">
+                      <HeartButton />
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <div className="font-semibold text-lg">{room.name}</div>
+                    <div className="text-md flex items-center">
+                      <AiFillStar />
+                      {room.rating}
+                    </div>
+                  </div>
+                  <div className="font-light text-neutral-500 -my-2">
+                    {room.dateRange}
+                  </div>
+                  <div className="flex flex-row items-center gap-1">
+                    <div className="font-semibold">$ {room.price}</div>
+                    <div className="font-light">night</div>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+          {jsonData.map((room, index) => {
+            return (
+              <Link
+                key={index}
+                href={`/details/${1}`}
+                className="col-span-1 cursor-pointer group"
+              >
+                <div className="flex flex-col gap-2 w-full">
                   <div
                     className=" 
             w-full 
@@ -38,6 +70,7 @@ const Cards = async () => {
                       className="
             absolute
             top-3
+            z-10
             right-3
           "
                     >
@@ -83,6 +116,7 @@ const Cards = async () => {
                       className="
             absolute
             top-3
+            z-10
             right-3
           "
                     >
@@ -128,6 +162,7 @@ const Cards = async () => {
                       className="
             absolute
             top-3
+            z-10
             right-3
           "
                     >
@@ -173,51 +208,7 @@ const Cards = async () => {
                       className="
             absolute
             top-3
-            right-3
-          "
-                    >
-                      <HeartButton />
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="font-semibold text-lg">{room.name}</div>
-                    <div className="text-md flex items-center">
-                      <AiFillStar />
-                      {room.rating}
-                    </div>
-                  </div>
-                  <div className="font-light text-neutral-500 -my-2">
-                    {room.dateRange}
-                  </div>
-                  <div className="flex flex-row items-center gap-1">
-                    <div className="font-semibold">$ {room.price}</div>
-                    <div className="font-light">night</div>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-          {jsonData.map((room, index) => {
-            return (
-              <Link
-                key={index}
-                href={`/details/${1}`}
-                className="col-span-1 cursor-pointer group"
-              >
-                <div className="flex flex-col gap-2 w-full">
-                  <div
-                    className=" 
-            w-full 
-            relative 
-            overflow-hidden 
-            rounded-xl
-          "
-                  >
-                    <SliderComponent images={room.images} />
-                    <div
-                      className="
-            absolute
-            top-3
+            z-10
             right-3
           "
                     >
