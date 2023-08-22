@@ -8,7 +8,6 @@ const Footer = () => {
   return (
     <div className="max-w-[1560px] mx-auto">
       <footer className="footer p-10 text-base-content">
-        <div></div>
         <div className="mt-16">
           <span className="footer-title">Support</span>
           <a className="link link-hover">Help Center</a>
