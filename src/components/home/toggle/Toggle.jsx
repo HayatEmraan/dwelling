@@ -13,7 +13,7 @@ const Toggle = () => {
         <div className="lg:flex">
           <h2 className="font-bold">Display total price</h2>
           <h2 className="hidden lg:block text-gray-500 mx-5">|</h2>
-          <p className="text-gray-500">Includes all fees,before taxes</p>
+          <p className="text-gray-500">Includes all fees, before taxes</p>
         </div>
         <div>
           <button className={`${isToggled ? "" : ""}`} onClick={handleToggle}>
