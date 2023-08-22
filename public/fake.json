@@ -189,14 +189,14 @@
     {
       "reviewer_name": "John Doe",
       "date": "2023-07-15",
-      "photo": "reviewer_photo1.jpg",
+      "photo": "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "rating": 4,
       "comment": "Had an amazing time at the resort. The staff was friendly and the views were breathtaking."
     },
     {
       "reviewer_name": "Jane Smith",
       "date": "2023-06-28",
-      "photo": "reviewer_photo2.jpg",
+      "photo": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
       "rating": 5,
       "comment": "This was the best vacation ever! Everything was perfect, from the room to the service."
     }
