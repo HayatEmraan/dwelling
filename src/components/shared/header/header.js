@@ -1,14 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import { RxAvatar, RxCross2 } from "react-icons/rx";
+import { RxCross2 } from "react-icons/rx";
 import { AiOutlineMenu } from "react-icons/ai";
 import Link from "next/link";
 import { TbMountain } from "react-icons/tb";
 import { MdOutlineAddHomeWork } from "react-icons/md";
 import { Libre_Bodoni } from "next/font/google";
-import searchIcon from "../../../public/icons/search.svg";
+import searchIcon from "/public/icons/search.svg";
 import Image from "next/image";
-import LogInComp from "../SEC/loginComp";
+import LogInComp from "../../SEC/loginComp";
+import AvatarComp from "./avatar";
 
 const navlinks = [
   {
@@ -82,9 +83,7 @@ const HeaderComponent = () => {
               height={20}
               className="cursor-pointer"
             />
-            <button onClick={() => window.my_modal_3.showModal()}>
-              <RxAvatar size="24" className="text-white" />
-            </button>
+            <AvatarComp />
 
             <button
               className="p-2 text-white rounded-md outline-none"
@@ -105,10 +104,11 @@ const HeaderComponent = () => {
           </div>
         </nav>
         <div
-          className={`flex flex-col space-y-4 py-4 ${isOpen
+          className={`flex flex-col space-y-4 py-4 ${
+            isOpen
               ? "block w-full min-h-screen fixed z-40 bg-white top-0 transition"
               : "hidden"
-            }`}
+          }`}
         >
           <ul className="pt-8">
             {navlinks.map(({ id, name, path, icon }) => {

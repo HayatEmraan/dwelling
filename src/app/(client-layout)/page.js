@@ -1,6 +1,6 @@
-import Cards from "@/components/cards/cards";
-import CategoriesComponent from "@/components/categories/categories";
-import Toggle from "@/components/toggle/Toggle";
+import Cards from "@/components/home/cards/cards";
+import CategoriesComponent from "@/components/home/categories/categories";
+import Toggle from "@/components/home/toggle/Toggle";
 
 export default function Home() {
   return (
@@ -8,7 +8,6 @@ export default function Home() {
       <CategoriesComponent />
       <Toggle />
       <Cards />
-
     </main>
   );
 }

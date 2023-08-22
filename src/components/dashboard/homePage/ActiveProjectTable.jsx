@@ -127,12 +127,12 @@ const projectsData = [
 
 const ActiveProjectTable = () => {
     return (
-        <div className="overflow-x-auto  mt-5 pb-6 mb-6 bg-white rounded-lg">
+        <div className="overflow-x-auto  mt-5 pb-6 mb-6 bg-white rounded-lg dark:bg-slate-800 dark:text-white">
             <h3 className="text-md font-semibold p-3">Active Projects</h3>
             <table className="table">
                 {/* head */}
                 <thead>
-                    <tr className="border border-slate-200 bg-slate-100 text-[14px] text-gray-700">
+                    <tr className="border border-slate-200 bg-slate-100 text-[14px] text-gray-700 dark:bg-slate-800 dark:text-white">
                         <th>Project name</th>
                         <th>Hours</th>
                         <th>Priority</th>
