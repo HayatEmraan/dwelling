@@ -118,32 +118,27 @@
   ],
   "house_rules": [
     {
-      "image": "check_in.jpg",
+      "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/zeiqcd82orjubexz6wgg.svg",
       "name": "Check in",
       "time": "12:00 PM"
     },
     {
-      "image": "check_out.jpg",
+      "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/wfbjzyil59ubwec0nias.svg",
       "name": "Check out",
       "time": "12:00 PM"
     },
     {
-      "image": "cancellation.jpg",
+      "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/n8c3nwnxeyiwdjop8gt4.svg",
       "name": "Cancellation",
       "des": "Free cancellation up to 7 days before arrival."
     },
     {
-      "image": "prepayment.jpg",
-      "name": "Prepayment",
-      "des": "50% prepayment required."
-    },
-    {
-      "image": "children_beds.jpg",
-      "name": "Children beds",
+      "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/ywdokjfsev4rkhik9d1s.svg",
+      "name": "Children & Beds",
       "des": "Children are welcome. Extra beds available."
     },
     {
-      "image": "age_restriction.jpg",
+      "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/pbapmple7pyfok2jbklg.svg",
       "name": "Age restriction",
       "des": "No age restrictions."
     }
