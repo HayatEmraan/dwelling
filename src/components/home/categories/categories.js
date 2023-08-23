@@ -1,34 +1,3 @@
-// import React from "react";
-// const CategoriesComponent = async () => {
-//   const res = await fetch(
-//     "https://raw.githubusercontent.com/HayatEmraan/dwelling/main/public/header/categories.json"
-//   );
-//   const categories = await res.json();
-//   return (
-//     <div className="sticky top-16 z-30 shadow-md bg-white">
-//       <div className="max-w-[1560px] mx-auto space-y-">
-//         <div className="flex justify-between mt-4 overflow-x-auto px-5 md:px-4 lg:px-3 xl:px-2 no-scrollbar">
-//           {categories.map((category, index) => (
-//             <div
-//               key={index}
-//               className={`flex flex-col items-center justify-center gap-2 p-3 hover:text-neutral-800 transition cursor-pointer`}
-//             >
-//               <img
-//                 className="w-8"
-//                 src="https://i.ibb.co/hLmtc8m/icons8-cabin-64.pnghttps://i.ibb.co/XzHRM3H/icons8-cabin-32.png"
-//                 alt=""
-//               />
-//               <div className="text-sm font-medium">{category.label}</div>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CategoriesComponent;
-
 "use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
@@ -48,6 +17,7 @@ import { BsSnow } from "react-icons/bs";
 import { IoDiamond } from "react-icons/io5";
 import { MdOutlineVilla } from "react-icons/md";
 import CategoryBox from "./category";
+import { useEffect, useState } from "react";
 
 export const categories = [
   {
@@ -137,27 +107,65 @@ const CategoriesComponent = () => {
     return null;
   }
 
+  const [isFloating, setIsFloating] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsFloating(true);
+      } else {
+        setIsFloating(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <div className="shadow-md bg-white sticky top-16 z-30">
+    <div
+      id="navBar"
+      className={`bg-white sticky top-14 z-30 ${isFloating ? "shadow-sm" : ""}`}
+    >
       <div className="max-w-[1560px] mx-auto">
-        <div
-          className="
-          flex 
+        <div className="flex items-center justify-between pb-1">
+          <div
+            className="
+          flex
           flex-row 
           items-center 
           justify-between
           overflow-x-auto
           no-scrollbar
+          flex-grow
+          gap-4
         "
-        >
-          {categories.map((item) => (
-            <CategoryBox
-              key={item.label}
-              label={item.label}
-              icon={item.icon}
-              selected={category === item.label}
-            />
-          ))}
+          >
+            {categories.map((item) => (
+              <CategoryBox
+                key={item.label}
+                label={item.label}
+                icon={item.icon}
+                selected={category === item.label}
+              />
+            ))}
+          </div>
+          <div className="mx-4 border p-3 rounded-xl flex items-center gap-1 mt-6">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              className="h-6 w-6"
+              fill="currentColor"
+              aria-hidden="true"
+              role="presentation"
+              focusable="false"
+            >
+              <path d="M5 8a3 3 0 0 1 2.83 2H14v2H7.83A3 3 0 1 1 5 8zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm6-8a3 3 0 1 1-2.83 4H2V4h6.17A3 3 0 0 1 11 2zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+            </svg>
+
+            <button>Filter</button>
+          </div>
         </div>
       </div>
     </div>
