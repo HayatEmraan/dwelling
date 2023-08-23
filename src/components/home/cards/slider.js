@@ -30,7 +30,7 @@ const SliderComponent = ({ images }) => {
               <Image
                 src={image}
                 alt="room"
-                layout="fill"
+                fill
                 style={{ objectFit: "cover" }}
               />
             </div>
