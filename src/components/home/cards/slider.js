@@ -12,8 +12,6 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
 const SliderComponent = ({ images }) => {
   return (
-    
-    
     <Swiper
       slidesPerView={1}
       spaceBetween={10}
@@ -23,13 +21,18 @@ const SliderComponent = ({ images }) => {
       }}
       navigation={true}
       modules={[Pagination, Navigation]}
-      className="mySwiper"
+      className="mySwiper swiper-slide"
     >
       {images.map((image, index) => {
         return (
           <SwiperSlide key={index}>
-            <div className="relative overflow-hidden h-[400px] md:h-[350px] lg:h-[300px] xl:h-[250px] w-full group-hover:scale-110 transition">
-              <Image src={image} alt="room" layout="fill" style={{ objectFit: "cover" }} />
+            <div className="relative overflow-hidden h-[400px] md:h-[350px] lg:h-[300px] xl:h-[256px] w-full group-hover:scale-105 transition">
+              <Image
+                src={image}
+                alt="room"
+                layout="fill"
+                style={{ objectFit: "cover" }}
+              />
             </div>
           </SwiperSlide>
         );

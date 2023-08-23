@@ -16,7 +16,7 @@ const AvatarComp = () => {
         />
       ) : (
         <RxAvatar
-          onClick={() => window.my_modal_3.showModal()}
+          onClick={() => my_modal_3.showModal()}
           size="24"
           className="text-white"
         />
