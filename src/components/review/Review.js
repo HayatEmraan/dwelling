@@ -1,6 +1,15 @@
+"use client"
+import moment from "moment/moment";
+// import ReviewModal from "../details/ReviewModal/ReviewModal";
+import { useState } from "react";
+import ReviewModal from "../details/ReviewModal/ReviewModal";
+
 
 
 const Review = () => {
+    // let [isOpen, setIsOpen] = useState(false)
+    let isMore = true
+
     const reviews = [
         {
             "_id": 101,
@@ -49,15 +58,28 @@ const Review = () => {
         }
     ]
     return (
-        <div>
+        <div className=" md:grid grid-cols-2  gap-x-20 gap-y-10 my-10 border-t pt-10">
             {
-                reviews.map(review => <div key={review._id}>
-                    <div>
-                        <img src={review?.profile_image} alt="" />
-                        <h3>{review?.name}</h3>
+                reviews.map(review => <div key={review._id}
+                    className="mb-10 border p-3 rounded-lg"
+                >
+                    <div className=" flex gap-x-3">
+                        <img className="w-14 h-14 border  rounded-full" src={review?.profile_image} alt="" />
+                        <div className="flex flex-col">
+                            <h2 className="">{review?.name}</h2>
+                            <p className="text-sm">{moment(review?.date).format("MMM YYYY")}</p>
+                        </div>
+                    </div>
+                    <div className="mt-5 text-md">
+                        <p onClick={() => setIsOpen(true)}>{review?.comment?.slice(0, 200)}</p>
+                        {
+                            review?.comment.length > 200 && <p className="underline mt-2 cursor-pointer">Show More</p>
+                        }
+
                     </div>
                 </div>)
             }
+            <ReviewModal />
         </div>
     );
 };
