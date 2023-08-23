@@ -76,30 +76,27 @@ const LogInComp = () => {
                     setErrorEmail("Invalid email");
                   }
                 }}
-                className={`peer block w-full appearance-none border rounded-md ${
-                  errorEmail === "Invalid email"
-                    ? "border-[#C13515] bg-[#FFF8F6]"
-                    : "border-gray-500 focus:border-black"
-                } focus:border-2 bg-transparent py-3 px-2 text-md text-gray-900  focus:outline-none focus:ring-0`}
+                className={`peer block w-full appearance-none border rounded-md ${errorEmail === "Invalid email"
+                  ? "border-[#C13515] bg-[#FFF8F6]"
+                  : "border-gray-500 focus:border-black"
+                  } focus:border-2 bg-transparent py-3 px-2 text-md text-gray-900  focus:outline-none focus:ring-0`}
                 placeholder=" "
               />
               <label
                 htmlFor="email"
-                className={`absolute top-3 left-2 z-10 origin-[0] -translate-y-4 scale-75 transform text-md ${
-                  errorEmail === "Invalid email"
-                    ? "text-[#C13515]"
-                    : "text-gray-500"
-                } duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-2 peer-focus:-translate-y-4 peer-focus:scale-75`}
+                className={`absolute top-3 left-2 z-10 origin-[0] -translate-y-4 scale-75 transform text-md ${errorEmail === "Invalid email"
+                  ? "text-[#C13515]"
+                  : "text-gray-500"
+                  } duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-2 peer-focus:-translate-y-4 peer-focus:scale-75`}
               >
                 Email
               </label>
             </div>
             <div
-              className={`${
-                errorEmail === "Invalid email" && errorEmail.length > 0
-                  ? "invisible"
-                  : "visible"
-              } flex items-center my-1 gap-2 text-red-700`}
+              className={`${errorEmail === "Invalid email" && errorEmail.length > 0
+                ? "invisible"
+                : "visible"
+                } flex items-center my-1 gap-2 text-red-700`}
             >
               {errorEmail !== "Invalid email" && errorEmail.length > 0 && (
                 <>
@@ -136,30 +133,27 @@ const LogInComp = () => {
                     setErrorPassword("Invalid password");
                   }
                 }}
-                className={`peer block w-full appearance-none border rounded-md ${
-                  errorPassword === "Invalid password"
-                    ? "border-[#C13515] bg-[#FFF8F6]"
-                    : "border-gray-500 focus:border-black"
-                } focus:border-2 bg-transparent py-3 px-2 text-md text-gray-900  focus:outline-none focus:ring-0`}
+                className={`peer block w-full appearance-none border rounded-md ${errorPassword === "Invalid password"
+                  ? "border-[#C13515] bg-[#FFF8F6]"
+                  : "border-gray-500 focus:border-black"
+                  } focus:border-2 bg-transparent py-3 px-2 text-md text-gray-900  focus:outline-none focus:ring-0`}
                 placeholder=" "
               />
               <label
                 htmlFor="password"
-                className={`absolute top-3 left-2 z-10 origin-[0] -translate-y-4 scale-75 transform text-md ${
-                  errorPassword === "Invalid password"
-                    ? "text-[#C13515]"
-                    : "text-gray-500"
-                } duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-2 peer-focus:-translate-y-4 peer-focus:scale-75`}
+                className={`absolute top-3 left-2 z-10 origin-[0] -translate-y-4 scale-75 transform text-md ${errorPassword === "Invalid password"
+                  ? "text-[#C13515]"
+                  : "text-gray-500"
+                  } duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-2 peer-focus:-translate-y-4 peer-focus:scale-75`}
               >
                 Password
               </label>
             </div>
             <div
-              className={`${
-                errorPassword === "Invalid password" && errorPassword.length > 0
-                  ? "invisible"
-                  : "visible"
-              } flex my-1 items-center gap-2 text-red-700`}
+              className={`${errorPassword === "Invalid password" && errorPassword.length > 0
+                ? "invisible"
+                : "visible"
+                } flex my-1 items-center gap-2 text-red-700`}
             >
               {errorPassword !== "Invalid password" &&
                 errorPassword.length > 0 && (
@@ -216,7 +210,7 @@ const LogInComp = () => {
               <input
                 type="text"
                 name="email"
-                id="email"
+                id="forget_email"
                 onChange={(e) => {
                   if (emailRegex.test(e.target.value)) {
                     setLogEmail(e.target.value);
@@ -226,30 +220,27 @@ const LogInComp = () => {
                     setErrorEmail("Invalid email");
                   }
                 }}
-                className={`peer block w-full appearance-none border rounded-md ${
-                  errorEmail === "Invalid email"
-                    ? "border-[#C13515] bg-[#FFF8F6]"
-                    : "border-gray-500 focus:border-black"
-                } focus:border-2 bg-transparent py-3 px-2 text-md text-gray-900  focus:outline-none focus:ring-0`}
+                className={`peer block w-full appearance-none border rounded-md ${errorEmail === "Invalid email"
+                  ? "border-[#C13515] bg-[#FFF8F6]"
+                  : "border-gray-500 focus:border-black"
+                  } focus:border-2 bg-transparent py-3 px-2 text-md text-gray-900  focus:outline-none focus:ring-0`}
                 placeholder=" "
               />
               <label
-                htmlFor="email"
-                className={`absolute top-3 left-2 z-10 origin-[0] -translate-y-4 scale-75 transform text-md ${
-                  errorEmail === "Invalid email"
-                    ? "text-[#C13515]"
-                    : "text-gray-500"
-                } duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-2 peer-focus:-translate-y-4 peer-focus:scale-75`}
+                htmlFor="forget_email"
+                className={`absolute top-3 left-2 z-10 origin-[0] -translate-y-4 scale-75 transform text-md ${errorEmail === "Invalid email"
+                  ? "text-[#C13515]"
+                  : "text-gray-500"
+                  } duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-2 peer-focus:-translate-y-4 peer-focus:scale-75`}
               >
                 Email
               </label>
             </div>
             <div
-              className={`${
-                errorEmail === "Invalid email" && errorEmail.length > 0
-                  ? "invisible"
-                  : "visible"
-              } flex items-center my-1 gap-2 text-red-700`}
+              className={`${errorEmail === "Invalid email" && errorEmail.length > 0
+                ? "invisible"
+                : "visible"
+                } flex items-center my-1 gap-2 text-red-700`}
             >
               {errorEmail !== "Invalid email" && errorEmail.length > 0 && (
                 <>
