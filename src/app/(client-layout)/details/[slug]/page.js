@@ -1,9 +1,15 @@
 import DetailsMap from "@/components/details/detailMap/DetailsMap";
+import Image from "next/image";
+import {
+  AiFillStar,
+  AiFillEnvironment,
+  AiOutlineShareAlt,
+  AiOutlineHeart,
+} from "react-icons/ai";
 
 const RoomDetails = async () => {
-
   const res = await fetch(
-    "https://raw.githubusercontent.com/HayatEmraan/dwelling/raju/public/fake.json"
+    "https://raw.githubusercontent.com/HayatEmraan/dwelling/hayat/public/fake.json"
   );
   const data = await res.json();
 
@@ -14,18 +20,26 @@ const RoomDetails = async () => {
         <h2 className="font-bold text-xl">{data.name}</h2>
         <div className="lg:flex justify-between">
           <div className="lg:flex lg:space-x-5">
-            <p className="font-bold">
-
-              Ratings-{data.rating}{ }
+            <p className="font-bold flex items-center">
+              <AiFillStar className="text-orange-300 mr-2" />
+              {data.rating}
+              {}
             </p>
-            <p>
+            <p className="flex items-center">
+              <AiFillEnvironment className="mr-2" />
               Superhost-
-              <span className="font-bold">{data.location}</span>
+              <span className="font-bold underline">{data.location}</span>
             </p>
           </div>
           <div className="flex space-x-5">
-            <p>Share</p>
-            <p>Save</p>
+            <p className="flex items-center">
+              <AiOutlineShareAlt className="mr-2" />
+              Share
+            </p>
+            <p className="flex items-center">
+              <AiOutlineHeart className="mr-2" />
+              Save
+            </p>
           </div>
         </div>
       </header>
@@ -81,14 +95,22 @@ const RoomDetails = async () => {
             <h2 className="font-bold text-xl">Category-{data.category}</h2>
           </div>
           <div>
-            <h2 className="font-bold">Most Popular Facilities: </h2>
-            <li>Free Wifi</li>
-            <li>Fitness Center</li>
-            <li>Spa</li>
-            <li>Room Service</li>
-            <li>Free Parking</li>
-            <li>Family rooms</li>
-            <li>Bar</li>
+            <h2 className="font-bold">Most Popular Facilites</h2>
+            {/* {data.popular_facilities.map((singleFacilities, index) => {console.log(singleFacilities?.wifi?.offer)
+              <li key={index}>
+                <p>{singleFacilities.wifi.offer}</p>
+                <p>{singleFacilities.bar}</p>
+                <p>{singleFacilities.pool}</p>
+              </li>;
+            })} */}
+            <div className="flex space-x-5">
+              <li className="list-none">Free Wifi</li>
+              <li className="list-none">Free Wifi</li>
+              <li className="list-none">Free Wifi</li>
+              <li className="list-none">Free Wifi</li>
+              <li className="list-none">Free Wifi</li>
+              <li className="list-none">Free Wifi</li>
+            </div>
           </div>
         </div>
         {/* prie and Date */}
@@ -139,10 +161,117 @@ const RoomDetails = async () => {
             <h3>$358</h3>
           </div>
         </div>
+      </div>
+      {/* Facilities */}
+      <div className="my-5">
+        <div className="flex justify-between items-center my-5">
+          <h2 className="font-bold text-xl">Facilities of Saint Martin Ltd.</h2>
+          <button className="btn btn-primary">See availability</button>
+        </div>
+        {/* Most Popular */}
+        <div className="my-3">
+          <h2 className="font-bold">Most Popular Facilites</h2>
 
+          <div className="flex space-x-5">
+            {data.popular_facilities.map((facilities, index) => (
+              <div key={index}>
+                <img src={facilities.image} alt="" />
+                {/* <Image src={facilities.image}></Image> */}
+                <p>{facilities.name}</p>
+              </div>
+            ))}
 
+            <li className="list-none">Free Wifi</li>
+            <li className="list-none">Free Wifi</li>
+            <li className="list-none">Free Wifi</li>
+            <li className="list-none">Free Wifi</li>
+            <li className="list-none">Free Wifi</li>
+          </div>
+        </div>
+        {/* details Facilites */}
+        <div className="grid grid-cols-3 gap-5">
+          <div className="">
+            <h2 className="font-bold">Bathroom</h2>
+            <li>Toilet paper</li>
+          </div>
+          <div className="">
+            <h2 className="font-bold">Bathroom</h2>
+            <li>Toilet paper</li>
+          </div>
+          <div className="">
+            <h2 className="font-bold">Bathroom</h2>
+            <li>Toilet paper</li>
+          </div>
+          <div className="">
+            <h2 className="font-bold">Bathroom</h2>
+            <li>Toilet paper</li>
+          </div>
+          <div className="">
+            <h2 className="font-bold">Bathroom</h2>
+            <li>Toilet paper</li>
+          </div>
+          <div className="">
+            <h2 className="font-bold">Bathroom</h2>
+            <li>Toilet paper</li>
+          </div>
+          <div className="">
+            <h2 className="font-bold">Bathroom</h2>
+            <li>Toilet paper</li>
+          </div>
+          <div className="">
+            <h2 className="font-bold">Bathroom</h2>
+            <li>Toilet paper</li>
+          </div>
+          <div className="">
+            <h2 className="font-bold">Bathroom</h2>
+            <li>Toilet paper</li>
+          </div>
+          <div className="">
+            <h2 className="font-bold">Bathroom</h2>
+            <li>Toilet paper</li>
+          </div>
+          <div className="">
+            <h2 className="font-bold">Bathroom</h2>
+            <li>Toilet paper</li>
+          </div>
+          <div className="">
+            <h2 className="font-bold">Bathroom</h2>
+            <li>Toilet paper</li>
+          </div>
+          <div className="">
+            <h2 className="font-bold">Bathroom</h2>
+            <li>Toilet paper</li>
+          </div>
+        </div>
+        {/* House Rules */}
+        <div className="my-5">
+          {/* House Rules part */}
+          <div className="flex justify-between items-center my-5">
+            <div>
+              <h2 className="font-bold text-xl">House Rules</h2>
+              <p>Modern Resort takes special request-add in the next step!</p>
+            </div>
+            <div>
+              <button className="btn btn-primary">See availability</button>
+            </div>
+          </div>
+          {/* House Rules Bottom part */}
+          <div className="border p-5">
+            <div className="grid grid-cols-2 border-b-4">
+              <p className="w-1/3">Check-in</p>
+              <p className="">From-12pm to 4pm</p>
+            </div>
+            <div className="grid grid-cols-2 border-b-4">
+              <p>Check-out</p>
+              <p>From 8am to 11am</p>
+            </div>
 
-
+            <div className="flex border-bottom">
+              <p></p>
+              <p></p>
+            </div>
+          </div>
+        </div>
       </div>
       {/* details map  */}
       <DetailsMap />
