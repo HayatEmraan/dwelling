@@ -143,8 +143,8 @@ const UsersList = () => {
 
                 </table>
             </div>
-            <div className="flex justify-between items-center bg-white pr-4 py-4 mb-6 rounded-b-lg">
-                <div className="pl-4">
+            <div className="flex justify-center flex-col md:flex-row md:justify-between items-center bg-white pr-4 py-4 mb-6 rounded-b-lg">
+                <div className="pl-4 mb-4 md:mb-0">
                     <p>Showing 1 to 8 of 12 entries</p>
                 </div>
                 <div className="">
