@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { Collapse } from 'react-collapse';
 import { GoChevronDown, GoChevronUp } from 'react-icons/go'
@@ -17,7 +18,13 @@ const AccordionItem = ({ isOpen, toggle, title, desc, icon }) => {
                 </div>
             </div>
             <Collapse isOpened={isOpen}>
-                <div className='px-[30px] pb-[20px]'> { desc.map((item, index)=> <li key={index} className='ml-2 py-[4px]'>{item.title}</li>)}</div>
+                <div className='px-[30px] pb-[20px]'> { desc.map((item, index)=> {
+                    return(
+                        <li key={index} className='ml-2 py-[4px]'>
+                            <Link href={item.path}>{item.title}</Link>
+                        </li>
+                    )
+                })}</div>
             </Collapse>
         </div>
     );
