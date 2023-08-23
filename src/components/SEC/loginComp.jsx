@@ -48,7 +48,7 @@ const LogInComp = () => {
       <div method="dialog" className="modal-box">
         <div className="flex justify-center items-center">
           <button
-            onClick={() => window.my_modal_3.close()}
+            onClick={() => my_modal_3.close()}
             className="btn btn-sm btn-circle btn-ghost absolute left-2 top-2 text-xl"
           >
             ✕

@@ -12,7 +12,7 @@ export const googleLogin = () => {
   return handleGoogle()
     .then((res) => {
       toast.success("Authenticated Successfully");
-      window.my_modal_3.close();
+      my_modal_3.close();
     })
     .catch((err) => {
       toast.error("Login Failed. Please Try Again!");
@@ -23,7 +23,7 @@ export const facebookLogin = () => {
   return handleFacebook()
     .then((res) => {
       toast.success("Authenticated Successfully");
-      window.my_modal_3.close();
+      my_modal_3.close();
     })
     .catch((err) => {
       toast.error("Login Failed. Please Try Again!");
@@ -34,7 +34,7 @@ export const githubLogin = () => {
   return handleGithub()
     .then((res) => {
       toast.success("Authenticated Successfully");
-      window.my_modal_3.close();
+      my_modal_3.close();
     })
     .catch((err) => {
       toast.error("Login Failed. Please Try Again!");
@@ -45,13 +45,13 @@ export const loginAndSignup = (email, password) => {
   return handleCreateUser(email, password)
     .then((res) => {
       toast.success("Account Created Successfully");
-      window.my_modal_3.close();
+      my_modal_3.close();
     })
     .catch((err) => {
       if (err.message === "Firebase: Error (auth/email-already-in-use).") {
         return handleLogin(email, password).then((res) => {
           toast.success("Authenticated Successfully");
-          window.my_modal_3.close();
+          my_modal_3.close();
         });
       }
       toast.error("Login Failed. Please Try Again!");
