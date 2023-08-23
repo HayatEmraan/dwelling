@@ -1,5 +1,6 @@
-import DetailsMap from "@/components/details/detailMap/DetailsMap";
-import Review from "@/components/review/Review";
+
+import DetailsMap from "@/components/details/detailMap";
+
 
 const RoomDetails = async () => {
 
@@ -147,7 +148,7 @@ const RoomDetails = async () => {
       </div>
       {/* details map  */}
       <DetailsMap />
-      <Review />
+
 
       {/* reviews section  */}
       <section>
