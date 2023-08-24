@@ -1,49 +1,10 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { Libre_Bodoni } from "next/font/google";
 import LogInComp from "@/components/SEC/loginComp";
 import AvatarComp from "./avatar";
 import SearchComp from "./search/search";
-import("preline");
-
-//   {
-//     id: 1,
-//     name: "home",
-//     path: "/",
-//     icon: <MdOutlineAddHomeWork />,
-//   },
-//   {
-//     id: 2,
-//     name: "about",
-//     path: "/about",
-//     icon: <TbMountain />,
-//   },
-//   {
-//     id: 3,
-//     name: "service",
-//     path: "/service",
-//     icon: <TbMountain />,
-//   },
-//   {
-//     id: 4,
-//     name: "blog",
-//     path: "/blog",
-//     icon: <TbMountain />,
-//   },
-//   {
-//     id: 5,
-//     name: "testimonials",
-//     path: "/testimonials",
-//     icon: <TbMountain />,
-//   },
-//   {
-//     id: 6,
-//     name: "contact",
-//     path: "/contact",
-//     icon: <TbMountain />,
-//   },
-// ];
 
 // google fonts
 const bodoni = Libre_Bodoni({
@@ -52,6 +13,9 @@ const bodoni = Libre_Bodoni({
 });
 
 const HeaderComponent = () => {
+  useEffect(() => {
+    import("preline");
+  }, []);
   return (
     <div className="sticky top-0 z-50 w-full shadow-sm">
       <header className="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full bg-white text-sm py-3 md:py-0 dark:bg-gray-800">
@@ -204,12 +168,6 @@ const HeaderComponent = () => {
                       </a>
                     </div>
                   </div>
-                  <a
-                    className="font-medium text-gray-800 hover:text-gray-600 py-3 md:py-6 dark:text-gray-200 dark:hover:text-gray-500"
-                    href="#"
-                  >
-                    Resources
-                  </a>
                   <a
                     className="font-medium text-gray-800 hover:text-gray-600 py-3 md:py-6 dark:text-gray-200 dark:hover:text-gray-500"
                     href="#"

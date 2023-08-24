@@ -1,5 +1,4 @@
 "use client";
-
 import { usePathname, useSearchParams } from "next/navigation";
 import { TbBeach, TbMountain, TbPool } from "react-icons/tb";
 import {
@@ -107,26 +106,29 @@ const CategoriesComponent = () => {
     return null;
   }
 
-  const [isFloating, setIsFloating] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsFloating(true);
-      } else {
-        setIsFloating(false);
-      }
+      const currentScrollPos = window.scrollY;
+      setVisible(prevScrollPos > currentScrollPos);
+      setPrevScrollPos(currentScrollPos);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [prevScrollPos, visible]);
+
   return (
     <div
       id="navBar"
-      className={`bg-white sticky top-14 z-30 ${isFloating ? "shadow-sm" : ""}`}
+      className={`bg-white sticky top-28 md:top-14 z-30 transition-transform ${
+        visible
+          ? "translate-y-0 opacity-100 shadow-sm"
+          : "-translate-y-full md:-translate-y-0 opacity-0 shadow-sm md:opacity-100"
+      }`}
     >
       <div className="max-w-[1560px] mx-auto">
         <div className="flex items-center justify-between pb-1">
