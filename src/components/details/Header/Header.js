@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  
   AiFillEnvironment,
   AiOutlineHeart,
   AiOutlineShareAlt,
@@ -14,8 +13,7 @@ const Header = ({ data }) => {
       <div className="lg:flex justify-between">
         <div className="lg:flex lg:space-x-5">
           <p className="font-bold flex items-center">
-                      <AiOutlineStar
-                          className="text-orange-300 mr-2" />
+            <AiOutlineStar className="text-orange-300 mr-2" />
             {data.rating}
             {}
           </p>

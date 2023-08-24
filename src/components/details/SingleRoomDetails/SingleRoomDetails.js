@@ -1,6 +1,8 @@
+import Image from "next/image";
 import React from "react";
+import { AiFillFlag } from "react-icons/ai";
 
-const RoomDetails = ({data}) => {
+const SingleRoomDetails = ({data}) => {
   return (
     <div className="grid gap-5 lg:grid-cols-3">
       <div className="lg:col-span-2">
@@ -36,17 +38,31 @@ const RoomDetails = ({data}) => {
           <div>
             <div className="border rounded-xl">
               <div className="grid grid-cols-2 text-center">
-                <div className="border-r border-b">
+                <div className="border-r border-b p-2">
                   <p>CHECK-IN</p>
-                  <p>{data.dateRange}</p>
+                  <p>
+                    <small>{data.dateRange}</small>
+                  </p>
                 </div>
-                <div className="border-b">
-                  <h5>CHECK-OUT</h5>
-                  <p>{data.dateRange}</p>
+                <div className="border-b p-2">
+                  <p>CHECK-OUT</p>
+                  <p>
+                    <small>{data.dateRange}</small>
+                  </p>
                 </div>
               </div>
-              <div className=" p-2">
+              <div className="flex justify-between p-2">
                 <h2>Guest</h2>
+                <div>
+                  <select>
+                    <option value=""></option>
+                    <option value="person1">Person-1</option>
+                    <option value="person2">Person-2</option>
+                    <option value="person3">Person-3</option>
+                    <option value="person4">Person-4</option>
+                    <option value="morethenFour">More Than Four</option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
@@ -85,4 +101,4 @@ const RoomDetails = ({data}) => {
   );
 };
 
-export default RoomDetails;
+export default SingleRoomDetails;

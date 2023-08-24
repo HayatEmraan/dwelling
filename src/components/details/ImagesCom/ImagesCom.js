@@ -2,7 +2,7 @@ import React from "react";
 
 const ImagesCom = () => {
   return (
-    <div className="my-10">
+    <div className="my-5">
       <div className="lg:grid gap-2 lg:grid-cols-2">
         <div className="grid-cols-6">
           <img

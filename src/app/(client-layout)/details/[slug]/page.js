@@ -5,6 +5,7 @@ import Header from "@/components/details/Header/Header";
 import HouseRules from "@/components/details/HouseRules/HouseRules";
 import ImagesCom from "@/components/details/ImagesCom/ImagesCom";
 import MostPopularFacilities from "@/components/details/MostPopularFacilities/MostPopularFacilities";
+import SingleRoomDetails from "@/components/details/SingleRoomDetails/SingleRoomDetails";
 
 
 
@@ -20,7 +21,7 @@ const RoomDetails = async () => {
       {/* Grid  Images */}
       <ImagesCom></ImagesCom>
       {/* Details Sections */}
-      <RoomDetails data={data}></RoomDetails>
+      <SingleRoomDetails data={data}></SingleRoomDetails>
       {/* Facilities */}
       <div className="my-5">
         <div className=" my-5">
