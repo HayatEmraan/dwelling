@@ -14,8 +14,8 @@ const HouseRules = ({data}) => {
       </div>
       {/* House Rules Bottom part */}
       <div className="border p-5">
-        {data.house_rules.map((rules) => (
-          <div className="grid grid-cols-3 border-b py-5">
+        {data.house_rules.map((rules, index) => (
+          <div className="grid grid-cols-3 border-b py-5" key={index}>
             <div className="flex col-span-1 items-center">
               <Image
                 src={rules.image}
