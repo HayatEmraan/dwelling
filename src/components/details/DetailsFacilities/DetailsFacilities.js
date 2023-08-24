@@ -6,8 +6,8 @@ const DetailsFacilities = ({data}) => {
     return (
       <div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-          {data.facilities.map((singlefacilities) => (
-            <div className="">
+          {data.facilities.map((singlefacilities, index) => (
+            <div className="" key={index}>
               <h2 className="font-bold flex items-center">
                 <Image
                   src={singlefacilities?.image}
