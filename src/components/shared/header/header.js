@@ -1,54 +1,49 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { RxCross2 } from "react-icons/rx";
-import { AiOutlineMenu } from "react-icons/ai";
+import React from "react";
 import Link from "next/link";
-import { TbMountain } from "react-icons/tb";
-import { MdOutlineAddHomeWork } from "react-icons/md";
 import { Libre_Bodoni } from "next/font/google";
-import searchIcon from "/public/icons/search.svg";
-import Image from "next/image";
-import LogInComp from "../../SEC/loginComp";
+import LogInComp from "@/components/SEC/loginComp";
 import AvatarComp from "./avatar";
+import SearchComp from "./search/search";
+import("preline");
 
-const navlinks = [
-  {
-    id: 1,
-    name: "home",
-    path: "/",
-    icon: <MdOutlineAddHomeWork />,
-  },
-  {
-    id: 2,
-    name: "about",
-    path: "/about",
-    icon: <TbMountain />,
-  },
-  {
-    id: 3,
-    name: "service",
-    path: "/service",
-    icon: <TbMountain />,
-  },
-  {
-    id: 4,
-    name: "blog",
-    path: "/blog",
-    icon: <TbMountain />,
-  },
-  {
-    id: 5,
-    name: "testimonials",
-    path: "/testimonials",
-    icon: <TbMountain />,
-  },
-  {
-    id: 6,
-    name: "contact",
-    path: "/contact",
-    icon: <TbMountain />,
-  },
-];
+//   {
+//     id: 1,
+//     name: "home",
+//     path: "/",
+//     icon: <MdOutlineAddHomeWork />,
+//   },
+//   {
+//     id: 2,
+//     name: "about",
+//     path: "/about",
+//     icon: <TbMountain />,
+//   },
+//   {
+//     id: 3,
+//     name: "service",
+//     path: "/service",
+//     icon: <TbMountain />,
+//   },
+//   {
+//     id: 4,
+//     name: "blog",
+//     path: "/blog",
+//     icon: <TbMountain />,
+//   },
+//   {
+//     id: 5,
+//     name: "testimonials",
+//     path: "/testimonials",
+//     icon: <TbMountain />,
+//   },
+//   {
+//     id: 6,
+//     name: "contact",
+//     path: "/contact",
+//     icon: <TbMountain />,
+//   },
+// ];
 
 // google fonts
 const bodoni = Libre_Bodoni({
@@ -57,82 +52,8 @@ const bodoni = Libre_Bodoni({
 });
 
 const HeaderComponent = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  // Toggle the menu
-  const toggleOpen = () => {
-    setIsOpen((isOpen) => !isOpen);
-  };
-  useEffect(() => {
-    import("preline");
-  }, []);
-
   return (
-    // <div className="sticky top-0 z-50 w-full">
-    //   <div className="bg-[#003B95]">
-    //     <nav className="flex justify-between items-center px-5 md:px-4 lg:px-3 xl:px-2 py-4 max-w-[1560px] mx-auto">
-    //       <Link
-    //         href={"/"}
-    //         className={`text-2xl text-white ${bodoni.className}`}
-    //       >
-    //         Dwelling
-    //       </Link>
-
-    //       <div className="flex items-center space-x-6 relative">
-    //         <Image
-    //           src={searchIcon}
-    //           alt="Search Icon"
-    //           width={20}
-    //           height={20}
-    //           className="cursor-pointer"
-    //         />
-    //         <AvatarComp />
-
-    //         <button
-    //           className="p-2 text-white rounded-md outline-none"
-    //           onClick={toggleOpen}
-    //         >
-    //           {isOpen ? (
-    //             <RxCross2
-    //               size={"20"}
-    //               className="cursor-pointer text-gray-800 fixed z-50"
-    //             />
-    //           ) : (
-    //             <AiOutlineMenu
-    //               size={"20"}
-    //               className="text-white cursor-pointer"
-    //             />
-    //           )}
-    //         </button>
-    //       </div>
-    //     </nav>
-    //     <div
-    //       className={`flex flex-col space-y-4 py-4 ${
-    //         isOpen
-    //           ? "block w-full min-h-screen fixed z-40 bg-white top-0 transition"
-    //           : "hidden"
-    //       }`}
-    //     >
-    //       <ul className="pt-8">
-    //         {navlinks.map(({ id, name, path, icon }) => {
-    //           return (
-    //             <li key={id} className="p-3 transition hover:bg-gray-100">
-    //               <Link
-    //                 href={path}
-    //                 className="flex items-center space-x-4 capitalize"
-    //               >
-    //                 <span className="text-3xl">{icon}</span>
-    //                 <span className="capitalize">{name}</span>
-    //               </Link>
-    //             </li>
-    //           );
-    //         })}
-    //       </ul>
-    //     </div>
-    //   </div>
-    //   {<LogInComp />}
-    // </div>
-    <div className="sticky top-0 z-50 w-full">
+    <div className="sticky top-0 z-50 w-full shadow-sm">
       <header className="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full bg-white text-sm py-3 md:py-0 dark:bg-gray-800">
         <div
           className="max-w-[1560px] w-full mx-auto px-5 md:px-4 lg:px-3 xl:px-2"
@@ -179,19 +100,13 @@ const HeaderComponent = () => {
                 </button>
               </div>
             </div>
+            <SearchComp />
             <div
               id="navbar-collapse-with-animation"
-              className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block"
+              className="hs-collapse hidden overflow-hidden transition-all duration-300 md:block"
             >
               <div className="overflow-hidden overflow-y-auto max-h-[75vh] scrollbar-y">
                 <div className="flex flex-col gap-x-0 mt-5 divide-y divide-dashed divide-gray-200 md:flex-row md:items-center md:justify-end md:gap-x-7 md:mt-0 md:pl-7 md:divide-y-0 md:divide-solid dark:divide-gray-700">
-                  <a
-                    className="font-medium text-blue-600 py-3 md:py-6 dark:text-blue-500"
-                    href="#"
-                    aria-current="page"
-                  >
-                    Landing
-                  </a>
                   <div className="hs-dropdown [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover] py-3 md:py-6">
                     <button
                       type="button"
@@ -299,15 +214,16 @@ const HeaderComponent = () => {
                     className="font-medium text-gray-800 hover:text-gray-600 py-3 md:py-6 dark:text-gray-200 dark:hover:text-gray-500"
                     href="#"
                   >
-                    Work
+                    Work with us
                   </a>
                   <div className="pt-3 md:pt-0">
-                    <a
+                    {/* <a
                       className="inline-flex justify-center items-center gap-x-2 text-center bg-blue-600 hover:bg-blue-700 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-2.5 px-3 dark:focus:ring-offset-gray-800"
                       href="#"
                     >
                       Request demo
-                    </a>
+                    </a> */}
+                    <AvatarComp />
                   </div>
                 </div>
               </div>
@@ -315,6 +231,7 @@ const HeaderComponent = () => {
           </div>
         </div>
       </header>
+      {<LogInComp />}
     </div>
   );
 };
