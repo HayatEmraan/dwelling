@@ -126,8 +126,8 @@ const CategoriesComponent = () => {
       id="navBar"
       className={`bg-white sticky top-28 md:top-14 z-30 transition-transform ${
         visible
-          ? "translate-y-0 opacity-100 shadow-sm"
-          : "-translate-y-full md:-translate-y-0 opacity-0 shadow-sm md:opacity-100"
+          ? "translate-y-0 opacity-100 shadow-sm md:shadow-none"
+          : "-translate-y-full md:-translate-y-0 shadow-sm opacity-0 md:opacity-100"
       }`}
     >
       <div className="max-w-[1560px] mx-auto">

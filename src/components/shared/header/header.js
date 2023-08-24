@@ -8,7 +8,7 @@ import SearchComp from "./search/search";
 
 // google fonts
 const bodoni = Libre_Bodoni({
-  weight: "400",
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -27,7 +27,7 @@ const HeaderComponent = () => {
             <div className="flex items-center justify-between">
               <Link
                 href="/"
-                className={`flex-none text-2xl font-semibold dark:text-white ${bodoni.className}`}
+                className={`flex-none text-2xl font-bold dark:text-white ${bodoni.className} bg-gradient-to-r from-fuchsia-500 to-cyan-500 bg-clip-text text-transparent`}
                 aria-label="Brand"
               >
                 Dwelling
@@ -175,12 +175,6 @@ const HeaderComponent = () => {
                     Work with us
                   </a>
                   <div className="pt-3 md:pt-0">
-                    {/* <a
-                      className="inline-flex justify-center items-center gap-x-2 text-center bg-blue-600 hover:bg-blue-700 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-2.5 px-3 dark:focus:ring-offset-gray-800"
-                      href="#"
-                    >
-                      Request demo
-                    </a> */}
                     <AvatarComp />
                   </div>
                 </div>
