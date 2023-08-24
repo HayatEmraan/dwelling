@@ -83,7 +83,7 @@ const UsersList = () => {
     return (
         <div className="mx-6">
             <h3 className="text-2xl font-semibold p-3 mt-3">Users</h3>
-            <div className="overflow-x-auto  mt-2 pb-6 mb-6 bg-white rounded-lg dark:bg-slate-800 dark:text-white">
+            <div className="overflow-x-auto  mt-2 pb-6  bg-white rounded-lg dark:bg-slate-800 dark:text-white">
                 <div className="p-4">
                     <div className="flex justify-between items-center mt-3">
                         <Search />
@@ -142,7 +142,12 @@ const UsersList = () => {
                     </tbody>
 
                 </table>
-                <div className="text-right bg-white pr-4 mt-4">
+            </div>
+            <div className="flex justify-center flex-col md:flex-row md:justify-between items-center bg-white pr-4 py-4 mb-6 rounded-b-lg">
+                <div className="pl-4 mb-4 md:mb-0">
+                    <p>Showing 1 to 8 of 12 entries</p>
+                </div>
+                <div className="">
                     <div className="join">
                         <button className="join-item btn capitalize">Previous</button>
                         <button className="join-item btn capitalize">1</button>
