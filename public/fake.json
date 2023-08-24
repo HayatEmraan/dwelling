@@ -59,7 +59,11 @@
       "offer": true
     },
     {
+<<<<<<< HEAD
       "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1692691057/isql8s6hlfcjvirt0cgb.svg",
+=======
+      "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1692691057/lqsf7fnqirhdmckv4o8e.svg",
+>>>>>>> 0e030b130f47b2803367de43f2a19bf4c66332e3
       "name": "Family rooms",
       "offer": true
     },

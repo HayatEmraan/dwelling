@@ -36,6 +36,12 @@ const RoomDetails = async () => {
       </div>
       {/* details map  */}
       <DetailsMap />
+
+
+      {/* reviews section  */}
+      <section>
+
+      </section>
     </div>
   );
 };

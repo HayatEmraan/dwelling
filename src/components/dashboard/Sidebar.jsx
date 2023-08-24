@@ -4,25 +4,35 @@ import { CiHome } from 'react-icons/ci'
 import { LiaFileInvoiceSolid } from 'react-icons/lia'
 import { LuEdit } from 'react-icons/lu'
 import AccordionItem from './AccordionItem';
+import Link from 'next/link';
 const accordionData = [
     {
         title: "Dashboard",
         icon:  <CiHome />,
         children: [
             {
-                title: 'Analytics'
+                title: 'Analytics',
+                path: '/dashboard/Analytics'
             },
             {
-                title: 'Project'
+                title: 'Project',
+                path: '/dashboard/project'
             },
             {
-                title: 'Ecommerce'
+                title: 'Ecommerce',
+                path: '/dashboard/ecommerce'
             },
             {
-                title: 'CRM'
+                title: 'CRM',
+                path: '/dashboard/crm'
             },
             {
-                title: 'Finance'
+                title: 'Finance',
+                path: '/dashboard/finance'
+            },
+            {
+                title: 'Users',
+                path: '/dashboard/users'
             },
         ]
     },
@@ -31,13 +41,16 @@ const accordionData = [
         icon:  <LiaFileInvoiceSolid />,
         children: [
             {
-                title: 'List'
+                title: 'List',
+                path: '/dashboard/list'
             },
             {
-                title: 'Detail'
+                title: 'Detail',
+                path: '/dashboard/detail'
             },
             {
-                title: 'Invoice Generator'
+                title: 'Invoice Generator',
+                path: '/dashboard/generator'
             }
         ]
     },
@@ -46,13 +59,16 @@ const accordionData = [
         icon:  <LuEdit />,
         children: [
             {
-                title: 'Author'
+                title: 'Author',
+                path: '/dashboard/author'
             },
             {
-                title: 'Detail'
+                title: 'Detail',
+                path: '/dashboard/detail'
             },
             {
-                title: 'Create Post'
+                title: 'Create Post',
+                path: '/dashboard/users'
             }
         ]
     },
@@ -69,7 +85,7 @@ const Sidebar = () => {
 
     return (
         <div className='fixed top-0 dark:lg:w-1/6 dark:w-3/4 dark:bg-slate-800 dark:text-white dark:h-full'>
-            <div className='text-2xl font-semibold pt-3 pb-4 text-center '>Admin Panel</div>
+            <div className='text-2xl font-semibold pt-3 pb-4 text-center '><Link href={'/dashboard'}>Admin Panel</Link></div>
             <div>
                 {
                     accordionData.map((data, index) => {
