@@ -6,7 +6,7 @@ const AvatarComp = () => {
   const { user } = Context();
   return (
     <button>
-      {user?.photoURL ? (
+      {user ? (
         <div className="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none] sm:[--trigger:hover sm:py-4">
           <button
             type="button"
@@ -14,7 +14,7 @@ const AvatarComp = () => {
           >
             <img
               className="rounded-full"
-              src={user?.photoURL}
+              src={user?.photoURL ? user?.photoURL : "/avatar.png"}
               alt=""
               width={24}
               height={24}
