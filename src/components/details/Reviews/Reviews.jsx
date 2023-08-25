@@ -11,7 +11,7 @@ import ReviewModal from "../ReviewModal/ReviewModal";
 
 const Reviews = () => {
     const [allReviews, setAllReviews] = useState([])
-    const [showModal, setShowModal] = useState(true)
+    const [showModal, setShowModal] = useState(false)
 
 
     useEffect(() => {
