@@ -5,81 +5,90 @@ import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 const users = [
-    {
-        userId: 1,
-        name: 'Harold Gonzaled',
-        image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg',
-        phone: '+97524621',
-        email: 'harold@gon.com',
-        location: 'Florida, United State',
-        status: 'active'
-    },
-    {
-        userId: 2,
-        name: 'Harold Gonzaled',
-        image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg',
-        phone: '+97524621',
-        email: 'harold@gon.com',
-        location: 'Florida, United State',
-        status: 'active'
-    },
-    {
-        userId: 3,
-        name: 'Harold Gonzaled',
-        image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg',
-        phone: '+97524621',
-        email: 'harold@gon.com',
-        location: 'Florida, United State',
-        status: 'active'
-    },
-    {
-        userId: 4,
-        name: 'Harold Gonzaled',
-        image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg',
-        phone: '+97524621',
-        email: 'harold@gon.com',
-        location: 'Florida, United State',
-        status: 'active'
-    },
-    {
-        userId: 5,
-        name: 'Harold Gonzaled',
-        image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg',
-        phone: '+97524621',
-        email: 'harold@gon.com',
-        location: 'Florida, United State',
-        status: 'active'
-    },
-    {
-        userId: 6,
-        name: 'Harold Gonzaled',
-        image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg',
-        phone: '+97524621',
-        email: 'harold@gon.com',
-        location: 'Florida, United State',
-        status: 'active'
-    },
-    {
-        userId: 7,
-        name: 'Harold Gonzaled',
-        image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg',
-        phone: '+97524621',
-        email: 'harold@gon.com',
-        location: 'Florida, United State',
-        status: 'active'
-    },
-    {
-        userId: 8,
-        name: 'Harold Gonzaled',
-        image: 'https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg',
-        phone: '+97524621',
-        email: 'harold@gon.com',
-        location: 'Florida, United State',
-        status: 'active'
-    },
-]
+  {
+    userId: 1,
+    name: "Harold Gonzaled",
+    image:
+      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
+    phone: "+97524621",
+    email: "harold@gon.com",
+    location: "Florida, United State",
+    status: "active",
+  },
+  {
+    userId: 2,
+    name: "Harold Gonzaled",
+    image:
+      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
+    phone: "+97524621",
+    email: "harold@gon.com",
+    location: "Florida, United State",
+    status: "active",
+  },
+  {
+    userId: 3,
+    name: "Harold Gonzaled",
+    image:
+      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
+    phone: "+97524621",
+    email: "harold@gon.com",
+    location: "Florida, United State",
+    status: "active",
+  },
+  {
+    userId: 4,
+    name: "Harold Gonzaled",
+    image:
+      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
+    phone: "+97524621",
+    email: "harold@gon.com",
+    location: "Florida, United State",
+    status: "active",
+  },
+  {
+    userId: 5,
+    name: "Harold Gonzaled",
+    image:
+      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
+    phone: "+97524621",
+    email: "harold@gon.com",
+    location: "Florida, United State",
+    status: "active",
+  },
+  {
+    userId: 6,
+    name: "Harold Gonzaled",
+    image:
+      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
+    phone: "+97524621",
+    email: "harold@gon.com",
+    location: "Florida, United State",
+    status: "active",
+  },
+  {
+    userId: 7,
+    name: "Harold Gonzaled",
+    image:
+      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
+    phone: "+97524621",
+    email: "harold@gon.com",
+    location: "Florida, United State",
+    status: "active",
+  },
+  {
+    userId: 8,
+    name: "Harold Gonzaled",
+    image:
+      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
+    phone: "+97524621",
+    email: "harold@gon.com",
+    location: "Florida, United State",
+    status: "active",
+  },
+];
 
 const UsersList = () => {
+  
     return (
         <div className="mx-6">
             <h3 className="text-2xl font-semibold p-3 mt-3">Users</h3>
@@ -159,7 +168,9 @@ const UsersList = () => {
                 </div>
             </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default UsersList;

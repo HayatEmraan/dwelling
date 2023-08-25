@@ -1,16 +1,15 @@
-
-import DetailsMap from "@/components/details/detailMap/DetailsMap";
 import DetailsFacilities from "@/components/details/DetailsFacilities/DetailsFacilities";
 import Header from "@/components/details/Header/Header";
 import HouseRules from "@/components/details/HouseRules/HouseRules";
 import ImagesCom from "@/components/details/ImagesCom/ImagesCom";
 import MostPopularFacilities from "@/components/details/MostPopularFacilities/MostPopularFacilities";
+import Reviews from "@/components/details/Reviews/Reviews";
 import SingleRoomDetails from "@/components/details/SingleRoomDetails/SingleRoomDetails";
-
-
+import DetailsMapIndex from "@/components/details/detailMap";
 
 const RoomDetails = async () => {
-  const res = await fetch("https://raw.githubusercontent.com/HayatEmraan/dwelling/hayat/public/fake.json"
+  const res = await fetch(
+    "https://raw.githubusercontent.com/HayatEmraan/dwelling/hayat/public/fake.json"
   );
   const data = await res.json();
 
@@ -34,14 +33,15 @@ const RoomDetails = async () => {
         {/* House Rules */}
         <HouseRules data={data}></HouseRules>
       </div>
+
+
+      {/* reviews */}
+      <Reviews />
+
       {/* details map  */}
-      <DetailsMap />
+      <DetailsMapIndex />
 
-
-      {/* reviews section  */}
-      <section>
-
-      </section>
+      <section></section>
     </div>
   );
 };

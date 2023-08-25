@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const HouseRules = ({data}) => {
+const HouseRules = ({ data }) => {
   return (
     <div className="my-5">
       {/* House Rules part */}
@@ -14,8 +14,8 @@ const HouseRules = ({data}) => {
       </div>
       {/* House Rules Bottom part */}
       <div className="border p-5">
-        {data.house_rules.map((rules) => (
-          <div className="grid grid-cols-3 border-b py-5">
+        {data.house_rules.map((rules, index) => (
+          <div className="grid grid-cols-3 border-b py-5" key={index}>
             <div className="flex col-span-1 items-center">
               <Image
                 src={rules.image}
@@ -36,8 +36,8 @@ const HouseRules = ({data}) => {
             <p>Payment Methods</p>
           </div>
           <div className="flex col-span-2">
-            {data.payment_methods.map((pay) => (
-              <div>
+            {data.payment_methods.map((pay, index) => (
+              <div key={index}>
                 <p>{pay.providerName}</p>
               </div>
             ))}
