@@ -111,9 +111,9 @@ const HeaderComponent = () => {
                         </svg>
                         <div className="grow">
                           <span className="block font-semibold mb-1 text-gray-800 dark:text-gray-200">
-                            Data
+                            About
                           </span>
-                          How you get the most accurate and up-to-date data
+                          How we started and what we do
                         </div>
                       </a>
                       <div className="my-2 border-t border-gray-100 dark:border-gray-800" />
