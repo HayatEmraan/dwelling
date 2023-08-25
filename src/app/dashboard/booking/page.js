@@ -40,7 +40,7 @@ const Booking = () => {
                       </span>
                     </button>
                     <div
-                      class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mt-2 divide-y divide-gray-200 min-w-[12rem] z-10 bg-white shadow-md rounded-lg mt-2 dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700"
+                      class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mt-2 divide-y divide-gray-200 min-w-[12rem] z-10 bg-white shadow-md rounded-lg dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700"
                       aria-labelledby="hs-as-table-table-filter-dropdown"
                     >
                       <div class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -90,11 +90,11 @@ const Booking = () => {
                 </div>
 
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                  <thead className="bg-[#003B95] dark:bg-slate-800">
+                  <thead className="bg-[#003B95] dark:bg-slate-500">
                     <tr>
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
-                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-300 dark:text-[#003B95]">
+                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-300 dark:text-slate-900">
                             Product Name
                           </span>
                         </div>
@@ -102,7 +102,7 @@ const Booking = () => {
 
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
-                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-300 dark:text-[#003B95]">
+                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-300 dark:text-slate-900">
                             Name
                           </span>
                         </div>
@@ -110,7 +110,7 @@ const Booking = () => {
 
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
-                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-300 dark:text-[#003B95]">
+                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-300 dark:text-slate-900">
                             E-mail
                           </span>
                         </div>
@@ -118,7 +118,7 @@ const Booking = () => {
 
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
-                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-300 dark:text-[#003B95]">
+                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-300 dark:text-slate-900">
                             Amount
                           </span>
                         </div>
@@ -126,7 +126,7 @@ const Booking = () => {
 
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
-                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-300 dark:text-[#003B95]">
+                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-300 dark:text-slate-900">
                             Status
                           </span>
                         </div>
