@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const HouseRules = ({data}) => {
+const HouseRules = ({ data }) => {
   return (
     <div className="my-5">
       {/* House Rules part */}
@@ -36,8 +36,8 @@ const HouseRules = ({data}) => {
             <p>Payment Methods</p>
           </div>
           <div className="flex col-span-2">
-            {data.payment_methods.map((pay) => (
-              <div>
+            {data.payment_methods.map((pay, index) => (
+              <div key={index}>
                 <p>{pay.providerName}</p>
               </div>
             ))}

@@ -1,4 +1,4 @@
-
+import DetailsMapMain from "@/components/details/detailMap";
 import DetailsMap from "@/components/details/detailMap/DetailsMap";
 import DetailsFacilities from "@/components/details/DetailsFacilities/DetailsFacilities";
 import Header from "@/components/details/Header/Header";
@@ -7,10 +7,9 @@ import ImagesCom from "@/components/details/ImagesCom/ImagesCom";
 import MostPopularFacilities from "@/components/details/MostPopularFacilities/MostPopularFacilities";
 import SingleRoomDetails from "@/components/details/SingleRoomDetails/SingleRoomDetails";
 
-
-
 const RoomDetails = async () => {
-  const res = await fetch("https://raw.githubusercontent.com/HayatEmraan/dwelling/hayat/public/fake.json"
+  const res = await fetch(
+    "https://raw.githubusercontent.com/HayatEmraan/dwelling/hayat/public/fake.json"
   );
   const data = await res.json();
 
@@ -35,13 +34,11 @@ const RoomDetails = async () => {
         <HouseRules data={data}></HouseRules>
       </div>
       {/* details map  */}
-      <DetailsMap />
-
+      {/* <DetailsMap /> */}
+      <DetailsMapMain></DetailsMapMain>
 
       {/* reviews section  */}
-      <section>
-
-      </section>
+      <section></section>
     </div>
   );
 };
