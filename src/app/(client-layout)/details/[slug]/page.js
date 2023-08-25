@@ -3,6 +3,7 @@ import Header from "@/components/details/Header/Header";
 import HouseRules from "@/components/details/HouseRules/HouseRules";
 import ImagesCom from "@/components/details/ImagesCom/ImagesCom";
 import MostPopularFacilities from "@/components/details/MostPopularFacilities/MostPopularFacilities";
+import Reviews from "@/components/details/Reviews/Reviews";
 import SingleRoomDetails from "@/components/details/SingleRoomDetails/SingleRoomDetails";
 import DetailsMapIndex from "@/components/details/detailMap";
 
@@ -36,6 +37,8 @@ const RoomDetails = async () => {
       <DetailsMapIndex />
 
       {/* reviews section  */}
+      <Reviews />
+
       <section></section>
     </div>
   );
