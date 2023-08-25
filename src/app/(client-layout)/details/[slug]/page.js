@@ -33,11 +33,13 @@ const RoomDetails = async () => {
         {/* House Rules */}
         <HouseRules data={data}></HouseRules>
       </div>
-      {/* details map  */}
-      <DetailsMapIndex />
+
 
       {/* reviews section  */}
       <Reviews />
+
+      {/* details map  */}
+      <DetailsMapIndex />
 
       <section></section>
     </div>
