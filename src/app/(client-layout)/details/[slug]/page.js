@@ -35,7 +35,7 @@ const RoomDetails = async () => {
       </div>
 
 
-      {/* reviews section  */}
+      {/* reviews */}
       <Reviews />
 
       {/* details map  */}
