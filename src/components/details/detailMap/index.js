@@ -1,6 +1,5 @@
-const { default: dynamic } = require("next/dynamic");
-
-const DetailsMapMain = dynamic(() => import('./DetailsMap'), {
-    ssr: false
-})
-export default DetailsMapMain;
+import dynamic from "next/dynamic";
+const DetailsMapIndex = dynamic(() => import("./DetailsMap"), {
+  ssr: false,
+});
+export default DetailsMapIndex;

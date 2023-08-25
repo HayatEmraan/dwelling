@@ -1,11 +1,10 @@
-import DetailsMapMain from "@/components/details/detailMap";
-import DetailsMap from "@/components/details/detailMap/DetailsMap";
 import DetailsFacilities from "@/components/details/DetailsFacilities/DetailsFacilities";
 import Header from "@/components/details/Header/Header";
 import HouseRules from "@/components/details/HouseRules/HouseRules";
 import ImagesCom from "@/components/details/ImagesCom/ImagesCom";
 import MostPopularFacilities from "@/components/details/MostPopularFacilities/MostPopularFacilities";
 import SingleRoomDetails from "@/components/details/SingleRoomDetails/SingleRoomDetails";
+import DetailsMapIndex from "@/components/details/detailMap";
 
 const RoomDetails = async () => {
   const res = await fetch(
@@ -34,8 +33,7 @@ const RoomDetails = async () => {
         <HouseRules data={data}></HouseRules>
       </div>
       {/* details map  */}
-      {/* <DetailsMap /> */}
-      <DetailsMapMain></DetailsMapMain>
+      <DetailsMapIndex />
 
       {/* reviews section  */}
       <section></section>
