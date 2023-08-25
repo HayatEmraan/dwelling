@@ -153,7 +153,6 @@ const UsersList = () => {
                         <button className="join-item btn capitalize">1</button>
                         <button className="join-item btn capitalize btn-active bg-blue-400">2</button>
                         <button className="join-item btn capitalize">3</button>
-                        <button className="join-item btn capitalize">4</button>
                         <button className="join-item btn capitalize">Next</button>
                     </div>
                 </div>
