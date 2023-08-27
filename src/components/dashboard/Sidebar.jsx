@@ -6,6 +6,7 @@ import { ImUsers } from "react-icons/im";
 // import AccordionItem from "./AccordionItem";
 import Link from "next/link";
 import { TbBrandBooking } from "react-icons/tb";
+import ActiveLink from "./ActiveLink/ActiveLink";
 
 const navLinks = [
   {
@@ -46,25 +47,7 @@ const Sidebar = () => {
         <Link href={"/dashboard"}>Admin Panel</Link>
       </div>
       <div className="px-4">
-        {navLinks.map((data, index) => {
-          return (
-            <li className="list-none mt-4" key={index}>
-              <Link href={data.path} className="flex items-center space-x-1">
-                <span className="text-sm md:text-md">{data.icon}</span>{" "}
-                <span className="text-sm md:text-md">{data.title}</span>
-              </Link>
-            </li>
-
-            // <AccordionItem
-            //   toggle={() => toggle(index)}
-            //   isOpen={isOpen === index}
-            //   key={index}
-            //   title={data.title}
-            //   desc={data.children}
-            //   icon={data.icon}
-            // />
-          );
-        })}
+        <ActiveLink navLinks={navLinks} />
       </div>
     </div>
   );
