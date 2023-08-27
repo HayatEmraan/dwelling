@@ -1,4 +1,4 @@
-"use client"
+
 import React from 'react';
 import { useEffect } from "react";
 import { FiUsers } from "react-icons/fi";
@@ -59,9 +59,7 @@ const dashboardCards = [
 ];
 
 const BookingInformationCard = () => {
-    useEffect(() => {
-        import("preline");
-    }, []);
+
     return (
         <div className='max-w-[150rem] mx-auto px-4 py-10 sm:px-6 lg:px-8 lg:py-4'>
             {/* Card  */}
