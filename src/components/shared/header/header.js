@@ -1,5 +1,3 @@
-"use client";
-import React, { useEffect } from "react";
 import Link from "next/link";
 import { Libre_Bodoni } from "next/font/google";
 import LogInComp from "@/components/SEC/loginComp";
@@ -13,9 +11,6 @@ const bodoni = Libre_Bodoni({
 });
 
 const HeaderComponent = () => {
-  useEffect(() => {
-    import("preline");
-  }, []);
   return (
     <div className="sticky top-0 z-50 w-full shadow-sm">
       <header className="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full bg-white text-sm py-3 md:py-0 dark:bg-gray-800">

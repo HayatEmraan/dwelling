@@ -1,3 +1,4 @@
+"use client";
 import { Context } from "@/context/AuthContext";
 import React from "react";
 import { RxAvatar } from "react-icons/rx";
