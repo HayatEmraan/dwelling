@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import Interactivity from "./interactivity";
 import { handlePassword, loginAndSignup } from "./operations";
