@@ -4,8 +4,6 @@ import { usePathname } from "next/navigation";
 const ActiveLink = ({ navLinks }) => {
   const pathname = usePathname();
 
-  console.log(pathname);
-
   return (
     <>
       {navLinks.map((data, index) => {
@@ -14,7 +12,7 @@ const ActiveLink = ({ navLinks }) => {
         return (
           <li
             className={`list-none mt-4 ${
-              isActive ? "bg-blue-400 text-white p-2 rounded-md" : ""
+              isActive ? "bg-[#003B95] text-white p-2 rounded-md" : ""
             }`}
             key={index}
           >
