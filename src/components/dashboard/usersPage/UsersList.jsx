@@ -1,8 +1,5 @@
-import Search from "@/components/Search/Search";
-import SelectOption from "@/components/SelectOption/SelectOption";
 import Image from "next/image";
-import { FiEdit } from "react-icons/fi";
-import { RiDeleteBinLine } from "react-icons/ri";
+import UsersCard from "./UsersCard";
 
 const users = [
   {
@@ -90,6 +87,10 @@ const users = [
 const UsersList = () => {
   return (
     <div className="mx-6">
+      <div className="mt-4 lg:mt-6 -mb-4">
+        <h2 className="text-2xl font-semibold mb-4 pl-6">Users</h2>
+        <UsersCard />
+      </div>
       {/* Table Section */}
       <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         {/* Card */}

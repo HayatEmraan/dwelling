@@ -7,7 +7,8 @@ import { ImUsers } from "react-icons/im";
 import Link from "next/link";
 import { TbBrandBooking } from "react-icons/tb";
 import ActiveLink from "./ActiveLink/ActiveLink";
-import { AiFillHome } from "react-icons/ai";
+import { AiFillHome, AiOutlinePropertySafety } from "react-icons/ai";
+import { BsGear } from "react-icons/bs";
 
 const navLinks = [
   {
@@ -26,9 +27,19 @@ const navLinks = [
     path: "/dashboard/booking",
   },
   {
-    title: "Invoice",
+    title: "Invoice Management",
     icon: <LiaFileInvoiceSolid />,
     path: "/dashboard/invoice",
+  },
+  {
+    title: "Property Management",
+    icon: <AiOutlinePropertySafety />,
+    path: "/dashboard/property",
+  },
+  {
+    title: "Setting",
+    icon: <BsGear />,
+    path: "/dashboard/setting",
   },
   {
     title: "Home",
