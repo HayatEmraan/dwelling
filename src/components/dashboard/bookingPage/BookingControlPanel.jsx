@@ -4,7 +4,7 @@ const BookingControlPanel = () => {
         <div className="max-w-[150rem] mx-auto px-4 sm:px-6 lg:px-8 ">
             <>
                 {/* Table Section */}
-                <div className="px-4 py-10 sm:px-6 lg:px-6 lg:py-14">
+                <div className="py-10 sm:px-6 lg:px-6 lg:py-14">
                     {/* Card */}
                     <div className="flex flex-col">
                         <div className="-m-1.5 overflow-x-auto">
@@ -1526,10 +1526,19 @@ const BookingControlPanel = () => {
                                     </table>
                                     {/* End Table */}
                                     {/* Footer */}
-                                    <div className="px-6 py-4 grid gap-3 md:flex md:justify-center md:items-center border-t border-gray-200 dark:border-gray-700">
-
+                                    <div className="px-6 flex justify-between items-center border-t border-gray-200 dark:border-gray-700">
                                         <div>
+                                            <p className="text-sm text-gray-600 dark:text-gray-400">
+                                                <span className="font-semibold text-gray-800 dark:text-gray-200">
+                                                    9
+                                                </span>{" "}
+                                                results of 12 entries
+                                            </p>
+                                        </div>
+                                        <div className="px-0 py-4 grid gap-3 md:flex md:justify-center md:items-center border-t border-gray-200 dark:border-gray-700">
+
                                             <div className="inline-flex gap-x-2">
+
                                                 <button
                                                     type="button"
                                                     className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
