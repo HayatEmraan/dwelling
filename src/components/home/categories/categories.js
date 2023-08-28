@@ -1,5 +1,4 @@
 "use client";
-import { usePathname, useSearchParams } from "next/navigation";
 import { TbBeach, TbMountain, TbPool } from "react-icons/tb";
 import {
   GiBarn,
@@ -17,6 +16,7 @@ import { IoDiamond } from "react-icons/io5";
 import { MdOutlineVilla } from "react-icons/md";
 import CategoryBox from "./category";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 export const categories = [
   {
@@ -97,17 +97,10 @@ export const categories = [
 ];
 
 const CategoriesComponent = () => {
-  const params = useSearchParams();
-  const category = params?.get("category");
-  const pathname = usePathname();
-  const isMainPage = pathname === "/";
-
-  if (!isMainPage) {
-    return null;
-  }
-
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
+  const searchParams = useSearchParams();
+  const category = searchParams.get("filter");
 
   useEffect(() => {
     const handleScroll = () => {
