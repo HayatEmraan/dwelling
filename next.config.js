@@ -8,8 +8,12 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "images.c.tadst.com",
+      },
+      {
+        protocol: "https",
         hostname: "dashui.codescandy.com",
-      }
+      },
     ],
   },
 };
