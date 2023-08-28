@@ -18,7 +18,7 @@ const RoomDetails = async () => {
       {/* Header Section */}
       <Header data={data}></Header>
       {/* Grid  Images */}
-      <ImagesCom></ImagesCom>
+      <ImagesCom data={data}></ImagesCom> 
       {/* Details Sections */}
       <SingleRoomDetails data={data}></SingleRoomDetails>
       {/* Facilities */}
