@@ -1,9 +1,13 @@
+
+import PropertyManagement from '@/components/dashboard/propertyPage/PropertyManagement';
+import PropertyTotal from '@/components/dashboard/propertyPage/PropertyTotal';
 import React from 'react';
 
 const PropertyPage = () => {
     return (
         <div>
-            <h2>Property Page</h2>            
+            <PropertyTotal></PropertyTotal>
+           <PropertyManagement></PropertyManagement>           
         </div>
     );
 };
