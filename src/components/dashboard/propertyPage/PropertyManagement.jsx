@@ -260,7 +260,7 @@ const PropertyManagement = () => {
                                 {/* End Header */}
                                 {/* Table */}
                                 <table className="p-2 min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                                    <thead className="bg-gray-50 dark:bg-slate-800">
+                                    <thead className="bg-gray-50 dark:bg-slate-800 ms-5">
                                         <tr>
                                             {/* <th scope="col" className="pl-6 py-3 text-left">
                                                 <label
@@ -289,13 +289,13 @@ const PropertyManagement = () => {
                                                     </span>
                                                 </div>
                                             </th>
-                                            <th scope="col" className="px-6 py-3 text-left">
+                                            {/* <th scope="col" className="px-6 py-3 text-left">
                                                 <div className="flex items-center gap-x-2">
                                                     <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
                                                         Amount
                                                     </span>
                                                 </div>
-                                            </th>
+                                            </th> */}
                                             <th scope="col" className="px-6 py-3 text-left">
                                                 <div className="flex items-center gap-x-2">
                                                     <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
@@ -332,13 +332,13 @@ const PropertyManagement = () => {
                                                     </span>
                                                 </div>
                                             </td>
-                                            <td className="h-px w-px whitespace-nowrap">
+                                            {/* <td className="h-px w-px whitespace-nowrap">
                                                 <div className="px-6 py-2">
                                                     <span className="text-sm text-gray-600 dark:text-gray-400">
                                                         Jase Marley
                                                     </span>
                                                 </div>
-                                            </td>
+                                            </td> */}
                                             <td className="h-px w-px whitespace-nowrap">
                                                 <div className="px-6 py-2">
                                                     <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
