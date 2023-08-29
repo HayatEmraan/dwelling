@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+
 import ReviewCard from "../ReviewCard/ReviewCard";
 import { RxCross2 } from "react-icons/rx";
 

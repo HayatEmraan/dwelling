@@ -6,20 +6,22 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
 import Modal from "react-modal";
+import ImagesModal from "./ImagesModal";
 const customStyles = {
   content: {
-    top: "50%",
+    top: "0%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
   },
-};  
+};
 
-const ImagesCom = ({ data }) => {
+const ImagesCom = ({ data}) => {
   const [isMobile, setIsMobile] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 767);
@@ -43,35 +45,67 @@ const ImagesCom = ({ data }) => {
           ))}
         </Swiper>
       ) : (
-        <div className="lg:grid gap-2 lg:grid-cols-2">
-          {data.images.map((singleImg, index) => (
-            <div key={index}>
-              <Image src={singleImg} width={500} height={300}></Image>
+        <>
+          <div className="grid grid-cols-2 gap-2">
+            {/* Column 1 */}
+            <div className="overflow-hidden rounded-lg">
+              <img
+                src={data.images[0]}
+                alt="Image 0"
+                className="w-full h-full object-cover"
+              />
             </div>
-          ))}
+
+            {/* Column 2 */}
+            <div className="grid grid-cols-2 gap-2">
+              {data.images.slice(1, 5).map((image, index) => (
+                <div key={index} className="overflow-hidden rounded-lg">
+                  <img
+                    src={image}
+                    alt={`Image ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
           {data.images.length > 5 && (
-            <button
-              className="show-all-button"
-              onClick={() => setModalIsOpen(true)}
-            >
-              Show All
-            </button>
+            <div className="flex justify-center">
+              <button
+                className="my-3 align-middle btn show-all-button"
+                onClick={() => setShowModal(true)}
+              >
+                Show All
+              </button>
+            </div>
           )}
-        </div>
+        </>
       )}
-      <Modal
+      <ImagesModal
+        data={data}
+        visible={showModal}
+        setShowModal={setShowModal}
+      ></ImagesModal>
+      {/* <Modal
         isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
+        
+        onRequestClose={modalIsClose}
         style={customStyles}
       >
         <div className="modal-image-grid">
           {data.images.map((image, index) => (
-            <div key={index} className="modal-image-grid-item">
-              <img src={image} alt={`Image ${index}`} />
+            <div key={index} className="modal-image-grid-item p-5">
+              <Image
+                src={image}
+                alt={`Image ${index}`}
+                width={500}
+                height={400}
+              />
             </div>
           ))}
+          <button onClick={() => setModalIsClose(true)}>close</button>
         </div>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };
