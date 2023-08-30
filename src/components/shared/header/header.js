@@ -20,9 +20,9 @@ const HeaderComponent = () => {
   } = userAppStore();
 
   return (
-    <div className="sticky top-0 z-50 w-full shadow-sm">
+    <div className="sticky top-0 z-30 w-full shadow-sm">
       <header className={`w-full bg-white dark:bg-gray-900 flex flex-col justify-center transition-all duration-300
-    ${!showScheduleBar ? "h-20  border-b border-b-gray-200" : "shadow-2xl h-40"}
+    ${!showScheduleBar ? "border-b border-b-gray-200" : "shadow-sm"}
     `}>
         <div
           className="max-w-[1560px] w-full mx-auto px-5 md:px-4 lg:px-3 xl:px-2"
@@ -191,7 +191,7 @@ const HeaderComponent = () => {
       </header>
       {<LogInComp />}
       {showScheduleBar && (
-        <div className="flex justify-center">
+        <div className="flex justify-center bg-white">
           <Schedule />
         </div>
       )}

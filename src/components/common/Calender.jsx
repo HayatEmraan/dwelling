@@ -13,6 +13,8 @@ export default function Calender({ state, setState }) {
         months={2}
         ranges={state}
         direction="horizontal"
+        
+
       />
     </div>
   );

@@ -45,7 +45,7 @@ export default function Schedule() {
 
   return (
     <div
-      className="flex rounded-full border border-gray-300 text-airbnb-light-black relative"
+      className="flex rounded-full border border-gray-300 text-airbnb-light-black relative scale-50 md:scale-75 lg:scale-100"
       ref={containerRef}
     >
       <div
@@ -63,7 +63,7 @@ export default function Schedule() {
         </label>
         <span>{formatDate(state[0]?.startDate)}</span>
         {selectionType === "check-in" && (
-          <div className="absolute top-28 left-0 shadow-xl z-[400]">
+          <div className="absolute top-16 left-0 shadow-xl z-[400]">
             <Calender state={state} setState={setState} />
           </div>
         )}
@@ -77,7 +77,7 @@ export default function Schedule() {
         </label>
         <span>{formatDate(state[0]?.endDate)}</span>
         {selectionType === "check-out" && (
-          <div className="absolute top-28 left-0 shadow-xl z-[400]">
+          <div className="absolute top-16 left-0 shadow-xl z-[400]">
             <Calender state={state} setState={setState} />
           </div>
         )}
@@ -88,7 +88,7 @@ export default function Schedule() {
       >
         <SearchBeds />
         <button
-          className="bg-airbnb-theme-color p-3 rounded-full flex items-center justify-center text-white text-lg"
+          className="bg-airbnb-theme-color p-3 rounded-full flex items-center justify-center text-lg"
           onClick={handleSearch}
         >
           <BiSearch />

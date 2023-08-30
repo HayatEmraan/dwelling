@@ -22,7 +22,7 @@ export default function SearchDates() {
       </label>
       <span>{formatDate(state[0]?.startDate)}</span>
       {selected === "check-in" && (
-        <div className="absolute top-28 left-0 shadow-xl">
+        <div className="absolute top-16 left-0 shadow-xl ">
           <Calender state={state} setState={setState} />
         </div>
       )}
