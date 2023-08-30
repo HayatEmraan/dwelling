@@ -1,8 +1,11 @@
+"use client"
 import Link from "next/link";
 import { Libre_Bodoni } from "next/font/google";
 import LogInComp from "@/components/SEC/loginComp";
 import AvatarComp from "./avatar";
 import SearchComp from "./search/search";
+import { userAppStore } from "@/store/store";
+import Schedule from "@/components/common/Schedule";
 
 // google fonts
 const bodoni = Libre_Bodoni({
@@ -11,9 +14,16 @@ const bodoni = Libre_Bodoni({
 });
 
 const HeaderComponent = () => {
+
+  const {
+    showScheduleBar,
+  } = userAppStore();
+
   return (
     <div className="sticky top-0 z-50 w-full shadow-sm">
-      <header className="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full bg-white text-sm py-3 md:py-0 dark:bg-gray-800">
+      <header className={`w-full bg-white dark:bg-gray-900 flex flex-col justify-center transition-all duration-300
+    ${!showScheduleBar ? "h-20  border-b border-b-gray-200" : "shadow-2xl h-40"}
+    `}>
         <div
           className="max-w-[1560px] w-full mx-auto px-5 md:px-4 lg:px-3 xl:px-2"
           aria-label="Global"
@@ -59,7 +69,8 @@ const HeaderComponent = () => {
                 </button>
               </div>
             </div>
-            <SearchComp />
+            <div>{!showScheduleBar && <SearchComp />}</div>
+            
             <div
               id="navbar-collapse-with-animation"
               className="hs-collapse hidden overflow-hidden transition-all duration-300 md:block"
@@ -179,6 +190,11 @@ const HeaderComponent = () => {
         </div>
       </header>
       {<LogInComp />}
+      {showScheduleBar && (
+        <div className="flex justify-center">
+          <Schedule />
+        </div>
+      )}
     </div>
   );
 };
