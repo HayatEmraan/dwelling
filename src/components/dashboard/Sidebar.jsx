@@ -9,6 +9,7 @@ import { TbBrandBooking } from "react-icons/tb";
 import ActiveLink from "./ActiveLink/ActiveLink";
 import { AiFillHome, AiOutlinePropertySafety } from "react-icons/ai";
 import { BsGear } from "react-icons/bs";
+import { GrHostMaintenance } from "react-icons/gr";
 
 const navLinks = [
   {
@@ -35,6 +36,11 @@ const navLinks = [
     title: "Property Management",
     icon: <AiOutlinePropertySafety />,
     path: "/dashboard/property",
+  },
+  {
+    title: "Host Management",
+    icon: <GrHostMaintenance />,
+    path: "/dashboard/host",
   },
   {
     title: "Setting",
