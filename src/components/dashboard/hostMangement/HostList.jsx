@@ -1,6 +1,6 @@
 import React from 'react';
 import HostModal from './HostModal';
-import { FcApproval, FcCancel, FcViewDetails } from 'react-icons/fc';
+import { FcApproval, FcCancel, FcViewDetails,FcManager } from 'react-icons/fc';
 
 
 const HostList = () => {
@@ -285,7 +285,7 @@ const HostList = () => {
                                     <th scope="col" className="px-6 py-3 text-left">
                                         <div className="flex items-center gap-x-2">
                                             <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                                                Date
+                                                Assign By
                                             </span>
                                         </div>
                                     </th>
@@ -320,10 +320,11 @@ const HostList = () => {
                                             </a>
                                         </div>
                                     </td>
-                                    <td className="h-px w-px whitespace-nowrap">
+                                    <td className="h-px w-px whitespace-nowrap ">
                                         <div className="px-6 py-2">
-                                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                                                Aug 17, 2020, 5:48 (ET)
+                                            <span className="rounded-full bg-green-50 inline-flex items-center gap-1.5 py-0.5 px-2  text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-200 mx-auto justify-center text-center">
+                                             <FcManager className='text-sm'/>
+                                                <b>Mr. Emraan</b>
                                             </span>
                                         </div>
                                     </td>
