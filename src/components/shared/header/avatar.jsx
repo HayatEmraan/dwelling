@@ -1,12 +1,13 @@
 "use client";
 import { Context } from "@/context/AuthContext";
+import { handleLogout } from "@/libs/security/AuthStore";
 import React from "react";
 import { RxAvatar } from "react-icons/rx";
 
 const AvatarComp = () => {
   const { user } = Context();
   return (
-    <button>
+    <div className="cursor-pointer">
       {user ? (
         <div className="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none] sm:[--trigger:hover sm:py-4">
           <button
@@ -40,12 +41,13 @@ const AvatarComp = () => {
             >
               Settings
             </a>
-            <a
+            <div
+              onClick={handleLogout}
               className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
               href="#"
             >
               Logout
-            </a>
+            </div>
           </div>
         </div>
       ) : (
@@ -55,7 +57,7 @@ const AvatarComp = () => {
           className=""
         />
       )}
-    </button>
+    </div>
   );
 };
 
