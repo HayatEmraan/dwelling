@@ -1,8 +1,32 @@
+"use client";
 import Image from "next/image";
-import React from "react";
-import { AiFillFlag } from "react-icons/ai";
 
-const SingleRoomDetails = ({data}) => {
+import { AiFillFlag } from "react-icons/ai";
+import { DateRange } from "react-date-range";
+import React, { useState } from "react";
+
+import "react-date-range/dist/styles.css"; // Main style file
+import "react-date-range/dist/theme/default.css";
+
+const SingleRoomDetails = ({ data }) => {
+  const [dateRange, setDateRange] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  ]);
+  const [activePicker, setActivePicker] = useState(null);
+
+  const handleDateRangeChange = (ranges) => {
+    setDateRange([ranges.selection]);
+    setActivePicker(null);
+  };
+
+  const handlePickerOpen = (picker) => {
+    setActivePicker(picker);
+  };
+
   return (
     <div className="grid gap-5 lg:grid-cols-3">
       <div className="lg:col-span-2">
@@ -39,18 +63,48 @@ const SingleRoomDetails = ({data}) => {
             <div className="border rounded-xl">
               <div className="grid grid-cols-2 text-center">
                 <div className="border-r border-b p-2">
-                  <p>CHECK-IN</p>
                   <p>
-                    <small>{data.dateRange}</small>
+                    <button onClick={() => handlePickerOpen("checkin")}>
+                      Check-in
+                    </button>
+                  </p>
+                  <p>
+                    <small>
+                      {" "}
+                      {dateRange[0].startDate.toDateString()}
+                    </small>
                   </p>
                 </div>
                 <div className="border-b p-2">
-                  <p>CHECK-OUT</p>
                   <p>
-                    <small>{data.dateRange}</small>
+                    <button onClick={() => handlePickerOpen("checkout")}>
+                      Check-out
+                    </button>
+                  </p>
+                  <p>
+                    <small>
+                      {" "}
+                      {dateRange[0].endDate.toDateString()}
+                    </small>
                   </p>
                 </div>
+                {activePicker && (
+                  <DateRange
+                    ranges={dateRange}
+                    onChange={handleDateRangeChange}
+                    months={2}
+                    direction="horizontal"
+                    showDateDisplay={false}
+                    shownDate={
+                      activePicker === "checkin"
+                        ? dateRange[0].startDate
+                        : dateRange[0].endDate
+                    }
+                    onClose={() => setActivePicker(null)}
+                  />
+                )}
               </div>
+
               <div className="flex justify-between p-2">
                 <h2>Guest</h2>
                 <div>
@@ -72,9 +126,11 @@ const SingleRoomDetails = ({data}) => {
             </button>
             <p>You won't be changed yet</p>
           </div>
+
           <div className="my-5 space-y-3">
             <div className="flex justify-between">
               <h3>Price * Night</h3>
+
               <h3>$305</h3>
             </div>
             <div className="flex justify-between">
@@ -95,6 +151,8 @@ const SingleRoomDetails = ({data}) => {
         <div className="my-3 justify-center flex items-center">
           <AiFillFlag className="mr-2" />
           <small className="underline">Report this listing</small>
+
+          {/* <DateRangePicker ranges={selectedRange} onChange={handleSelect} /> */}
         </div>
       </div>
     </div>

@@ -1,6 +1,8 @@
 "use client";
+
 import React from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
+const getRandomSize = () => (Math.random() > 0.5 ? "small" : "large");
 
 const ImagesModal = ({ data, visible, setShowModal }) => {
   if (!visible) return null;
@@ -22,11 +24,11 @@ const ImagesModal = ({ data, visible, setShowModal }) => {
             onClick={() => setShowModal(false)}
             className="p-2 rounded-full  fixed"
           >
-            <AiFillCloseCircle className="text-red-500 text-5xl" />
+            <AiFillCloseCircle className="text-gray-950 text-3xl" />
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-2 p-5">
           {data.images.map((image, index) => (
             <div key={index} className="overflow-hidden rounded-lg">
               <img

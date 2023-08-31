@@ -7,6 +7,7 @@ import { Navigation } from "swiper/modules";
 import Image from "next/image";
 import Modal from "react-modal";
 import ImagesModal from "./ImagesModal";
+import { BsGrid3X3Gap } from "react-icons/bs";
 const customStyles = {
   content: {
     top: "0%",
@@ -45,7 +46,7 @@ const ImagesCom = ({ data}) => {
           ))}
         </Swiper>
       ) : (
-        <>
+        <div className="relative">
           <div className="grid grid-cols-2 gap-2">
             {/* Column 1 */}
             <div className="overflow-hidden rounded-lg">
@@ -70,16 +71,17 @@ const ImagesCom = ({ data}) => {
             </div>
           </div>
           {data.images.length > 5 && (
-            <div className="flex justify-center">
+            <div className="flex justify-center absolute bottom-2 right-5">
               <button
-                className="my-3 align-middle btn show-all-button"
+                className="flex items-center bg-white border border-gray-950 rounded px-5 py-1 show-all-button"
                 onClick={() => setShowModal(true)}
               >
-                Show All
+                <BsGrid3X3Gap  className="mr-2"/>
+                Show all photos
               </button>
             </div>
           )}
-        </>
+        </div>
       )}
       <ImagesModal
         data={data}
