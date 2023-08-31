@@ -1,6 +1,6 @@
 import React from 'react';
-// import image from '../../../../public/profile/images.jpg'
-// import Image from 'next/image';
+import image from '../../../../public/profile/images.jpg'
+import Image from 'next/image';
 
 const Setting = () => {
     return (
@@ -64,7 +64,7 @@ const Setting = () => {
             <div className="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4">
               <img
                 className="mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0"
-                src="../../../../public/profile/images.jpg"
+                src="https://i.ibb.co/VMk1CZQ/images.jpg"
                 alt="Jese picture"
               />
               <div>
