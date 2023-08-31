@@ -30,7 +30,7 @@ const dashboardCards = [
   },
   {
     id: 3,
-    title: "Supervisor",
+    title: "Manager",
     icon: <MdOutlineSupervisedUserCircle />,
     project_detail: 12,
     clientPercentage: "+183",
