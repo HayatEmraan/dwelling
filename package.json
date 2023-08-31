@@ -11,7 +11,11 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@preline/dropdown": "^1.3.0",
+<<<<<<< HEAD
+    "aos": "^3.0.0-beta.6",
+=======
     "@types/mapbox-gl": "^2.7.13",
+>>>>>>> 86e4f913f78b426a878ad7653d3a4bb1193713b8
     "autoprefixer": "10.4.14",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
