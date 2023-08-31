@@ -14,6 +14,14 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        "dwelling-theme-color": "#FF385C",
+        "dwelling-light-black": "#222222",
+        "dwelling-light-gray": "#717171",
+      },
+      gridTemplateRows: {
+        "new-listing": "10vh 80vh 10vh",
+      },
     },
   },
   plugins: [require("daisyui"), require("preline/plugin")],
