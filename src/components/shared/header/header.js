@@ -25,7 +25,7 @@ const HeaderComponent = () => {
     ${!showScheduleBar ? "border-b border-b-gray-200" : "shadow-sm"}
     `}>
         <div
-          className="max-w-[1560px] w-full mx-auto px-5 md:px-4 lg:px-3 xl:px-2"
+          className="max-w-[150rem] w-full mx-auto px-5 md:px-4 lg:px-3 xl:px-2"
           aria-label="Global"
         >
           <div className="relative md:flex md:items-center md:justify-between">

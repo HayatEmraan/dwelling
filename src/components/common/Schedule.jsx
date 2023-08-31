@@ -51,8 +51,8 @@ export default function Schedule() {
 
   return (
     <div
-      className="flex rounded-2xl lg:rounded-full border border-gray-300 text-airbnb-light-black relative "
-      // scale-50 md:scale-75 lg:scale-100
+      className="flex justify-center  rounded-2xl lg:rounded-full border border-gray-300 text-airbnb-light-black relative my-4 "
+
       ref={containerRef}
     >
       <div
@@ -71,21 +71,15 @@ export default function Schedule() {
         <span>{sliceStart + " " + sliceDateStart[1]}</span>
         {selectionType === "check-in" && (
 
-          <div className="block lg:hidden">
-            <div className="absolute top-[4.7rem] left-0 shadow-xl z-[400]">
+          <>
+            <div className="lg:hidden block absolute top-[4.7rem] left-0 shadow-xl z-[400]">
               <Calender2 state={state} setState={setState} />
             </div>
-          </div> 
+            <div className="hidden lg:block absolute top-[4.7rem] -left-16 shadow-xl 0]">
+              <Calender state={state} setState={setState} />
+            </div>
+          </> 
 
-          //   <div className={`
-          //   ${"lg:"?(<div className="absolute top-[4.7rem] left-0 shadow-xl z-[400]">
-          //   <Calender state={state} setState={setState} />
-          // </div>): (<div className="absolute top-[4.7rem] left-0 shadow-xl z-[400]">
-          //     <Calender2 state={state} setState={setState} />
-          //   </div>)}
-          //   `}>
-
-          //   </div>
         )}
       </div>
       <div
@@ -97,13 +91,18 @@ export default function Schedule() {
         </label>
         <span>{sliceEnd + " " + sliceDateEnd[1]}</span>
         {selectionType === "check-out" && (
-          <div className="absolute top-[4.7rem] -left-16 shadow-xl 0]">
+          <>
+          <div className="lg:hidden block absolute top-[4.7rem] left-0 shadow-xl z-[400]">
+            <Calender2 state={state} setState={setState} />
+          </div>
+          <div className="hidden lg:block absolute top-[4.7rem] -left-16 shadow-xl 0]">
             <Calender state={state} setState={setState} />
           </div>
+        </> 
         )}
       </div>
       <div
-        className="flex hover:bg-gray-100 justify-between px-4 py-4 pl-7 rounded-2xl lg:rounded-full cursor-pointer gap-7"
+        className="flex hover:bg-gray-100 justify-between text-xs lg:text-base lg:px-4 py-4 pl-7 rounded-2xl lg:rounded-full cursor-pointer lg:gap-7"
         onClick={() => setSelectionType("who")}
       >
         <SearchBeds />
