@@ -5,7 +5,7 @@ import React from "react";
 import { FiUsers } from "react-icons/fi";
 import { FiArrowUpRight } from "react-icons/fi";
 import { FiArrowDownRight } from "react-icons/fi";
-import { MdOutlineFolderDelete,MdPendingActions ,MdDoneAll} from "react-icons/md";
+import { MdLocalActivity,MdOutlineSupervisedUserCircle ,MdOutlineAdminPanelSettings} from "react-icons/md";
 
 
 const dashboardCards = [
@@ -15,14 +15,14 @@ const dashboardCards = [
     icon: <FiUsers />,
     project_detail: 18,
     clientPercentage: "+9.18",
-    amount: "3156",
+    amount: "289",
     arrow: <FiArrowUpRight />,
     bgColor: "#e1c38f",
   },
   {
     id: 2,
-    title: "Declined",
-    icon: <MdOutlineFolderDelete />,
+    title: "Local",
+    icon: <MdLocalActivity />,
     project_detail: 132,
     clientPercentage: "-3.18",
     amount: "167",
@@ -30,20 +30,20 @@ const dashboardCards = [
   },
   {
     id: 3,
-    title: "Pending",
-    icon: <MdPendingActions />,
+    title: "Supervisor",
+    icon: <MdOutlineSupervisedUserCircle />,
     project_detail: 12,
     clientPercentage: "+183",
-    amount: "$41.56k",
+    amount: "89",
     arrow: <FiArrowUpRight />,
   },
   {
     id: 4,
-    title: "Apporoved",
-    icon: <MdDoneAll />,
+    title: "Admin",
+    icon: <MdOutlineAdminPanelSettings />,
     project_detail: "75%",
     clientPercentage: "+6.18",
-    amount: "$33.16k",
+    amount: "33",
     arrow: <FiArrowUpRight />,
   },
 ];
