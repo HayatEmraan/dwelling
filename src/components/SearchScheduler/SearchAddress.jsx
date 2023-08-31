@@ -46,7 +46,7 @@ export default function SearchAddress() {
       <input
         type="text"
         placeholder="Search Destinations"
-        className="bg-transparent focus:outline-none"
+        className="bg-transparent focus:outline-none w-16 lg:text-base lg:w-max"
         value={searchText}
         onChange={(e) => {
           setSearchText(e.target.value);

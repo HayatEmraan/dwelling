@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { userAppStore } from "@/store/store";
 import useClickOutside from "@/hooks/useClickOutside";
 import Calender from "./Calender";
+import Calender2 from "./Calender2";
 
 export default function Schedule() {
   const router = useRouter();
@@ -43,47 +44,66 @@ export default function Schedule() {
   };
   const [containerRef] = useClickOutside(true);
 
+  const sliceDateStart = formatDate(state[0]?.startDate).split(" ");
+  const sliceStart = sliceDateStart[0].slice(0, 3);
+  const sliceDateEnd = formatDate(state[0]?.endDate).split(" ");
+  const sliceEnd = sliceDateEnd[0].slice(0, 3);
+
   return (
     <div
-      className="flex rounded-full border border-gray-300 text-airbnb-light-black relative scale-50 md:scale-75 lg:scale-100"
+      className="flex rounded-2xl lg:rounded-full border border-gray-300 text-airbnb-light-black relative "
+      // scale-50 md:scale-75 lg:scale-100
       ref={containerRef}
     >
       <div
-        className="flex flex-col hover:bg-gray-100 px-10 py-4 rounded-full cursor-pointer relative"
+        className="flex flex-col hover:bg-gray-100 px-4 lg:px-10 py-4 rounded-2xl lg:rounded-full cursor-pointer relative"
         onClick={() => setSelectionType("where")}
       >
         <SearchAddress />
       </div>
       <div
         onClick={() => setSelectionType("check-in")}
-        className="flex flex-col hover:bg-gray-100 px-10 py-4 rounded-full cursor-pointer items-center justify-center"
+        className="flex flex-col hover:bg-gray-100 px-4 lg:px-10 py-4 rounded-2xl lg:rounded-full cursor-pointer items-center justify-center"
       >
         <label htmlFor="" className="text-xs font-semibold flex flex-col    ">
           Check in
         </label>
-        <span>{formatDate(state[0]?.startDate)}</span>
+        <span>{sliceStart + " " + sliceDateStart[1]}</span>
         {selectionType === "check-in" && (
-          <div className="absolute top-16 left-0 shadow-xl z-[400]">
-            <Calender state={state} setState={setState} />
-          </div>
+
+          <div className="block lg:hidden">
+            <div className="absolute top-[4.7rem] left-0 shadow-xl z-[400]">
+              <Calender2 state={state} setState={setState} />
+            </div>
+          </div> 
+
+          //   <div className={`
+          //   ${"lg:"?(<div className="absolute top-[4.7rem] left-0 shadow-xl z-[400]">
+          //   <Calender state={state} setState={setState} />
+          // </div>): (<div className="absolute top-[4.7rem] left-0 shadow-xl z-[400]">
+          //     <Calender2 state={state} setState={setState} />
+          //   </div>)}
+          //   `}>
+
+          //   </div>
         )}
       </div>
       <div
-        className="flex flex-col hover:bg-gray-100 px-10 py-4 rounded-full cursor-pointer items-center justify-center"
+        className="flex flex-col hover:bg-gray-100 px-4 lg:px-10 py-4 rounded-2xl lg:rounded-full cursor-pointer items-center justify-center"
         onClick={() => setSelectionType("check-out")}
       >
         <label htmlFor="" className="text-xs font-semibold">
           Check out
         </label>
-        <span>{formatDate(state[0]?.endDate)}</span>
+        <span>{sliceEnd + " " + sliceDateEnd[1]}</span>
         {selectionType === "check-out" && (
-          <div className="absolute top-16 left-0 shadow-xl z-[400]">
+          <div className="absolute top-[4.7rem] -left-16 shadow-xl 0]">
             <Calender state={state} setState={setState} />
           </div>
         )}
       </div>
       <div
-        className="flex hover:bg-gray-100 justify-between px-4 py-4 pl-7 rounded-full cursor-pointer gap-7"
+        className="flex hover:bg-gray-100 justify-between px-4 py-4 pl-7 rounded-2xl lg:rounded-full cursor-pointer gap-7"
         onClick={() => setSelectionType("who")}
       >
         <SearchBeds />
