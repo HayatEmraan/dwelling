@@ -11,7 +11,7 @@ import DetailsMapIndex from "@/components/details/detailMap";
 
 const RoomDetails = async () => {
   const res = await fetch(
-    "https://raw.githubusercontent.com/HayatEmraan/dwelling/hayat/public/fake.json"
+    "https://raw.githubusercontent.com/HayatEmraan/dwelling/raju/public/fake.json"
   );
   const data = await res.json();
 
@@ -39,6 +39,7 @@ const RoomDetails = async () => {
         {/* House Rules */}
         <HouseRules data={data}></HouseRules>
       </div>
+
       {/* reviews */}
       <Reviews
         reviews={<ReviewsComp />}
