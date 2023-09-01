@@ -15,7 +15,7 @@ export const createProcessSlice = (set, get) => ({
   locationType: undefined,
   setLocationType: (locationType) => set({ locationType }),
   placetype: undefined,
-  setPlaceType: (placeType) => set({ placeType }),
+  setPlaceType: (placetype) => set({ placetype }),
   mapData: undefined,
   setMapData: (mapData) => set({ mapData }),
   locationData: undefined,
