@@ -1,7 +1,23 @@
 {
   "name": "Luxury Villa Resort",
-  "location": "Tropical Paradise Island",
+  "location": {
+    "city": "Tropical Paradise Island",
+    "country": "Thailand",
+    "region": "Asian"
+  },
   "category": "Luxury",
+  "capacity": {
+    "adults": 4,
+    "children": 2,
+    "pets": 3,
+    "infants": 1
+  },
+  "availability": {
+    "guests": 4,
+    "bedrooms": 3,
+    "beds": 4,
+    "baths": 2
+  },
   "images": [
     "https://images.unsplash.com/photo-1691231862377-7e55d4e6a2c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
     "https://images.unsplash.com/photo-1670517007659-0f32403f236c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
@@ -14,7 +30,10 @@
   "price": 30,
   "taxes": 10,
   "rating": 4.5,
-  "dateRange": "Jan 9 - Jan 14",
+  "dateRange": {
+    "startDate": "2023-01-01T00:00:00.000Z",
+    "endDate": "2023-01-31T00:00:00.000Z"
+  },
   "author": {
     "name": "Jessica Anderson",
     "photo": "author_photo1.jpg",
@@ -150,58 +169,93 @@
     {
       "providerName": "Master Card",
       "accepted": true,
-      "image": "credit_card_logo.jpg"
+      "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/gdvhlkdaefjdliwrl8vy.svg"
     },
     {
       "providerName": "VISA Card",
       "accepted": true,
-      "image": "credit_card_logo.jpg"
+      "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/bcmtypdecdugr6bipzgx.svg"
     },
     {
       "providerName": "Discover Card",
       "accepted": false,
-      "image": "credit_card_logo.jpg"
+      "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/hz989hhvwy2dj8hlpcsc.png"
     },
     {
       "providerName": "American Express",
       "accepted": true,
-      "image": "credit_card_logo.jpg"
+      "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/s4qzhx00abdlxf30rfem.svg"
     },
     {
       "providerName": "Diners Club",
       "accepted": false,
-      "image": "credit_card_logo.jpg"
+      "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/tbnaqxc337ghnagqcwgz.svg"
     },
     {
       "providerName": "UnionPay",
       "accepted": true,
-      "image": "credit_card_logo.jpg"
+      "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244280/ehqq4ylkzwjpdtqdtw2j.png"
     },
     {
       "providerName": "PayPal",
       "accepted": false,
-      "image": "paypal_logo.jpg"
+      "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244099/n2y2ibcoiydtsq8wd6xs.svg"
     },
     {
       "providerName": "Cash on Arrival",
       "accepted": false,
-      "image": "credit_card_logo.jpg"
+      "image": "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244099/s1jytaczagoti5ql5ftj.svg"
     }
   ],
   "reviews": [
     {
-      "reviewer_name": "John Doe",
-      "date": "2023-07-15",
-      "photo": "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      "rating": 4,
-      "comment": "Had an amazing time at the resort. The staff was friendly and the views were breathtaking."
+      "name": "Raju Ahmmed",
+      "image": "https://i.ibb.co/g7pkkcz/sketch-art.png",
+      "date": "08/11/2023",
+      "comment": "Superb view, hassle-free, helpful, friendly host. Easily accessible to centre of Rishikesh, an eye-opener. This flat in Rishikesh offers an experience that even the finest local hotels struggle to match. Not only is it immaculately",
+      "rating": 4.95
     },
     {
-      "reviewer_name": "Jane Smith",
-      "date": "2023-06-28",
-      "photo": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-      "rating": 5,
-      "comment": "This was the best vacation ever! Everything was perfect, from the room to the service."
+      "name": "Emraan Hasan",
+      "image": "https://i.ibb.co/g7pkkcz/sketch-art.png",
+      "date": "08/11/2023",
+      "comment": "Superb view, hassle-free, helpful, friendly host. Easily accessible to centre of Rishikesh, an eye-opener. This flat in Rishikesh offers an experience that even the finest local hotels struggle to match. Not only is it immaculately",
+      "rating": 4.95
+    },
+    {
+      "name": "Nimai Roy",
+      "image": "https://i.ibb.co/g7pkkcz/sketch-art.png",
+      "date": "08/11/2023",
+      "comment": "Superb view, hassle-free, helpful, friendly host. Easily accessible to centre of Rishikesh, an eye-opener. This flat in Rishikesh offers an experience that even the finest local hotels struggle to match. Not only is it immaculately",
+      "rating": 4.95
+    },
+    {
+      "name": "Joyanti Choudhori",
+      "image": "https://i.ibb.co/g7pkkcz/sketch-art.png",
+      "date": "08/11/2023",
+      "comment": "Superb view, hassle-free, helpful, friendly host. Easily accessible to centre of Rishikesh, an eye-opener. This flat in Rishikesh offers an experience that even the finest local hotels struggle to match. Not only is it immaculately",
+      "rating": 4.95
+    },
+    {
+      "name": "Mehedi Hasan",
+      "image": "https://i.ibb.co/g7pkkcz/sketch-art.png",
+      "date": "08/11/2023",
+      "comment": "Superb view, hassle-free, helpful, friendly host. Easily accessible to centre of Rishikesh, an eye-opener. This flat in Rishikesh offers an experience that even the finest local hotels struggle to match. Not only is it immaculately",
+      "rating": 4.95
+    },
+    {
+      "name": "Arman Sikder",
+      "image": "https://i.ibb.co/g7pkkcz/sketch-art.png",
+      "date": "08/11/2023",
+      "comment": "Superb view, hassle-free, helpful, friendly host. Easily accessible to centre of Rishikesh, an eye-opener. This flat in Rishikesh offers an experience that even the finest local hotels struggle to match. Not only is it immaculately",
+      "rating": 4.95
+    },
+    {
+      "name": "Habibur Rahman",
+      "image": "https://i.ibb.co/g7pkkcz/sketch-art.png",
+      "date": "08/11/2023",
+      "comment": "Superb view, hassle-free, helpful, friendly host. Easily accessible to centre of Rishikesh, an eye-opener. This flat in Rishikesh offers an experience that even the finest local hotels struggle to match. Not only is it immaculately",
+      "rating": 4.95
     }
   ]
 }
