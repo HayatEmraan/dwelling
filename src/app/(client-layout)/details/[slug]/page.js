@@ -19,6 +19,8 @@ const RoomDetails = async () => {
     "https://dwelling-bright-server.vercel.app/api/v1/getdetails/64f1d62a42ce44beb216c160"
   );
   const data1 = await res1.json();
+
+  
   return (
     <div className="max-w-6xl lg:mx-auto px-5">
       {/* Header Section */}

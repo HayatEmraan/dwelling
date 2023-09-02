@@ -11,8 +11,7 @@ const Cards = async () => {
   const res = await fetch(
     "https://dwelling-bright-server.vercel.app/api/v1/getrooms",
     {
-      credentials: "include",
-      cache: "no-cache",
+      cache: "no-store",
     }
   );
   const jsonData = await res.json();

@@ -80,7 +80,7 @@ export const loginAndSignup = (email, password) => {
     .catch((err) => {
       if (err.message === "Firebase: Error (auth/email-already-in-use).") {
         return handleLogin(email, password).then((res) => {
-          fetch("https://dwelling-bright-server.vercel.app/api/v2/signature", {
+          fetch("http://localhost:5000/api/v2/signature", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
