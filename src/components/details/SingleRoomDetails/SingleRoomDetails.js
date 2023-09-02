@@ -7,6 +7,7 @@ import React, { useState } from "react";
 
 import "react-date-range/dist/styles.css"; // Main style file
 import "react-date-range/dist/theme/default.css";
+import ReserveButton from "../ReserveButton/ReserveButton";
 
 const SingleRoomDetails = ({ data }) => {
   const [dateRange, setDateRange] = useState([
@@ -27,11 +28,6 @@ const SingleRoomDetails = ({ data }) => {
     setActivePicker(picker);
   };
 
-import React from "react";
-import { AiFillFlag } from "react-icons/ai";
-import ReserveButton from "../ReserveButton/ReserveButton";
-
-const SingleRoomDetails = ({ data }) => {
   return (
     <div className="grid gap-5 lg:grid-cols-3">
       <div className="lg:col-span-2">
@@ -44,7 +40,7 @@ const SingleRoomDetails = ({ data }) => {
         <div>
           <h2 className="font-bold">Most Popular Facilites</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
-            {data.popular_facilities.map((facilities, index) => (
+            {data?.popular_facilities?.map((facilities, index) => (
               <div key={index} className="flex items-center">
                 <Image
                   className="mr-2"
@@ -155,7 +151,7 @@ const SingleRoomDetails = ({ data }) => {
           <AiFillFlag className="mr-2" />
           <small className="underline">Report this listing</small>
 
-          {/* <DateRangePicker ranges={selectedRange} onChange={handleSelect} /> */}
+          
         </div>
       </div>
     </div>

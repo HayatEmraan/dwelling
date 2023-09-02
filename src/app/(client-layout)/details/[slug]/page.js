@@ -10,15 +10,16 @@ import SingleRoomDetails from "@/components/details/SingleRoomDetails/SingleRoom
 import DetailsMapIndex from "@/components/details/detailMap";
 
 const RoomDetails = async () => {
-  const res1 = await fetch(
+  const res = await fetch(
     "https://raw.githubusercontent.com/HayatEmraan/dwelling/raju/public/fake.json"
   );
-  const data1 = await res.json();
+  const data = await res.json();
 
-  const res = await fetch(
+  const res1 = await fetch(
     "https://dwelling-bright-server.vercel.app/api/v1/getdetails/64f1d62a42ce44beb216c160"
   );
-  const data = await res1.json();
+  const data1 = await res1.json();
+  console.log(data)
   return (
     <div className="max-w-6xl lg:mx-auto px-5">
       {/* Header Section */}

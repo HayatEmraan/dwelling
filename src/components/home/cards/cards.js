@@ -9,7 +9,7 @@ import SliderComponent from "./slider";
 
 const Cards = async () => {
   const res = await fetch(
-    "https://dwelling-bright-server.vercel.app/api/v1/getrooms",
+    "https://dwelling-bright-server.vercel.app/api/v1/getdetails/64f1d62a42ce44beb216c160",
     {
       credentials: "include",
       cache: "no-cache",
