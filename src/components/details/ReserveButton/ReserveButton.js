@@ -5,14 +5,10 @@ import stripeCheckout from '@/utils/async/stripeCheckout';
 import React from 'react';
 
 const ReserveButton = ({ room }) => {
-
-
-
     const handleStripeCheckout = () => {
         stripeCheckout(room)
 
     }
-
     return (
         <button
             onClick={handleStripeCheckout}
