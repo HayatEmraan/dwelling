@@ -328,7 +328,7 @@ const PropertyManagement = () => {
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                                        <tr>
+                                        {/* <tr>
                                             <td className="h-px w-px whitespace-nowrap">
                                                 <div className="px-6 py-2 text-left">
                                                     <a
@@ -417,8 +417,8 @@ const PropertyManagement = () => {
                                                     </div>
                                                 </a>
                                             </td>
-                                        </tr>
-                                        <tr>
+                                        </tr> */}
+                                        {/* <tr>
                                             <td className="h-px w-px whitespace-nowrap">
                                                 <div className="px-6 py-2 text-left">
                                                     <a
@@ -488,25 +488,7 @@ const PropertyManagement = () => {
                                                                 </span>
                                                             </a>
                                                         </div>
-                                                        {/* <div className="hs-dropdown relative inline-flex [--placement:bottom-right]">
-                                                         
-                                                            <a
-                                                                id="hs-table-dropdown-1"
-                                                                type="button"
-                                                                className="hs-dropdown-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-r-md text-gray-700 align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                                                                href='#'
-                                                            >
-                                                                
-                                                                <FcApproval className='text-xl'/>
-                                                                <span
-                                                                    className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-md shadow-sm dark:bg-slate-700"
-                                                                    role="tooltip"
-                                                                >
-                                                                    Decline Property
-                                                                </span>
-                                                            </a>
-                                                           
-                                                        </div> */}
+                                                      
                                                     </div>
                                                 </div>
                                             </td>
@@ -525,7 +507,7 @@ const PropertyManagement = () => {
                                                     </div>
                                                 </a>
                                             </td>
-                                        </tr>
+                                        </tr> */}
                                         <tr>
                                             <td className="h-px w-px whitespace-nowrap">
                                                 <div className="px-6 py-2 text-left">
@@ -592,46 +574,28 @@ const PropertyManagement = () => {
                                                                     className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-md shadow-sm dark:bg-slate-700"
                                                                     role="tooltip"
                                                                 >
-                                                                    Approved Property
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        {/* <div className="hs-dropdown relative inline-flex [--placement:bottom-right]">
-                                                         
-                                                            <a
-                                                                id="hs-table-dropdown-1"
-                                                                type="button"
-                                                                className="hs-dropdown-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-r-md text-gray-700 align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                                                                href='#'
-                                                            >
-                                                                
-                                                                <FcApproval className='text-xl'/>
-                                                                <span
-                                                                    className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-md shadow-sm dark:bg-slate-700"
-                                                                    role="tooltip"
-                                                                >
                                                                     Decline Property
                                                                 </span>
                                                             </a>
-                                                           
-                                                        </div> */}
+                                                        </div>
+                                                       
                                                     </div>
                                                 </div>
                                             </td>
                                             <td className="h-px w-px whitespace-nowrap">
-                                                <a
+                                                <div
                                                     className="block"
                                                     data-hs-overlay="#hs-ai-invoice-modal"
                                                 >
-                                                    <div className="px-6 py-1.5">
-                                                        <button className="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
+                                                    <div className=" px-6 py-1.5">
+                                                        <div className="cursor-pointer py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
                                                             <FcViewDetails />
                                                             View
                                                             <PropertyModal></PropertyModal>
 
-                                                        </button>
+                                                        </div>
                                                     </div>
-                                                </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>

@@ -27,6 +27,11 @@ const SingleRoomDetails = ({ data }) => {
     setActivePicker(picker);
   };
 
+import React from "react";
+import { AiFillFlag } from "react-icons/ai";
+import ReserveButton from "../ReserveButton/ReserveButton";
+
+const SingleRoomDetails = ({ data }) => {
   return (
     <div className="grid gap-5 lg:grid-cols-3">
       <div className="lg:col-span-2">
@@ -121,9 +126,7 @@ const SingleRoomDetails = ({ data }) => {
             </div>
           </div>
           <div className="text-center">
-            <button className="btn bg-pink-500 text-white w-full my-5">
-              Reserve
-            </button>
+            <ReserveButton room={data} />
             <p>You won't be changed yet</p>
           </div>
 
