@@ -3,6 +3,8 @@ import Header from "@/components/details/Header/Header";
 import HouseRules from "@/components/details/HouseRules/HouseRules";
 import ImagesCom from "@/components/details/ImagesCom/ImagesCom";
 import MostPopularFacilities from "@/components/details/MostPopularFacilities/MostPopularFacilities";
+import ReviewsComp from "@/components/details/Review/review";
+import ReviewsModal from "@/components/details/Review/reviewmodal";
 import Reviews from "@/components/details/Reviews/Reviews";
 import SingleRoomDetails from "@/components/details/SingleRoomDetails/SingleRoomDetails";
 import DetailsMapIndex from "@/components/details/detailMap";
@@ -13,6 +15,11 @@ const RoomDetails = async () => {
   );
   const data = await res.json();
 
+  const res1 = await fetch(
+    "https://dwelling-bright-server.vercel.app/api/v1/getdetails/64f1d62a42ce44beb216c160"
+  );
+  const data1 = await res1.json();
+  console.log(data)
   return (
     <div className="max-w-6xl lg:mx-auto px-5">
       {/* Header Section */}
@@ -35,11 +42,14 @@ const RoomDetails = async () => {
       </div>
 
       {/* reviews */}
-      <Reviews />
+      <Reviews
+        reviews={<ReviewsComp />}
+        reviewsModal={<ReviewsModal />}
+        reviewsLength={data1?.data?.reviews?.length}
+      />
 
       {/* details map  */}
       <DetailsMapIndex />
-
       <section></section>
     </div>
   );
