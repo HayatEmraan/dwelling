@@ -32,6 +32,7 @@ export default function Schedule() {
   function formatDate(dateString) {
     const options = { month: "long", day: "numeric" };
     const date = new Date(dateString);
+    // console.log(date. toISOString())
     return date.toLocaleDateString("en-US", options);
   }
 

@@ -1,33 +1,38 @@
+
 import useClickOutside from "@/hooks/useClickOutside";
 import { userAppStore } from "@/store/store";
-import axios from "axios";
 import React, { useState } from "react";
 import { MdLocationPin } from "react-icons/md";
 
 export default function SearchAddress() {
   const { selectionType, setSelectionType, searchLocation, setSearchLocation } =
     userAppStore();
-  const TOKEN =
-    "pk.eyJ1Ijoia29vbGtpc2hhbiIsImEiOiJjazV3Zm41cG8wa3I1M2tydnVkcW53b2ZpIn0.mYrXogbdTrWSoJECNR1epg";
   const searchAddresses = async (query) => {
     try {
-      const response = await axios.get(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json`,
+      const response = await fetch(
+        `https://dwelling-bright-server.vercel.app/api/v1/getlocations?query=${searchText}`,
+        
         {
-          params: {
-            access_token: TOKEN,
-
-            limit: 5,
-            language: "en-US", // Specify the language for the results
-          },
+          method: 'GET',
+          limit: 5,
+          language: "en-US",
         }
       );
 
-      const addresses = response.data.features.map((feature) => ({
-        address: feature.text,
-        latitude: feature.center[1],
-        longitude: feature.center[0],
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const data = await response.json();
+
+
+
+      const addresses = data?.data?.map((feature) => ({
+        address: feature,
+       
       }));
+
       setSearchedAddresss(addresses);
     } catch (error) {
       console.error("Error searching addresses:", error);
@@ -37,6 +42,8 @@ export default function SearchAddress() {
   const [searchedAddresss, setSearchedAddresss] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [containerRef] = useClickOutside();
+  
+
 
   return (
     <>
@@ -44,6 +51,7 @@ export default function SearchAddress() {
         Where
       </label>
       <input
+        name="destinations"
         type="text"
         placeholder="Search Destinations"
         className="bg-transparent focus:outline-none w-16 lg:text-base lg:w-max"
@@ -79,12 +87,13 @@ export default function SearchAddress() {
                     <MdLocationPin />
                   </span>
                   <span className="truncate">{address.address}</span>
+                  
                 </div>
               </li>
             ))}
           </ul>
         </div>
-      )}
+      ) }
     </>
   );
 }
