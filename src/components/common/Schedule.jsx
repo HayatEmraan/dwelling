@@ -66,8 +66,11 @@ export default function Schedule() {
         onClick={() => setSelectionType("check-in")}
         className="flex flex-col hover:bg-gray-100 px-4 lg:px-10 py-4 rounded-2xl lg:rounded-full cursor-pointer items-center justify-center"
       >
-        <label htmlFor="" className="text-xs font-semibold flex flex-col    ">
+        <label htmlFor="" className="text-xs font-semibold lg:flex flex-col hidden lg:block    ">
           Check in
+        </label>
+        <label htmlFor="" className="text-xs font-semibold lg:hidden flex flex-col    ">
+          In
         </label>
         <span>{sliceStart + " " + sliceDateStart[1]}</span>
         {selectionType === "check-in" && (
@@ -87,8 +90,11 @@ export default function Schedule() {
         className="flex flex-col hover:bg-gray-100 px-4 lg:px-10 py-4 rounded-2xl lg:rounded-full cursor-pointer items-center justify-center"
         onClick={() => setSelectionType("check-out")}
       >
-        <label htmlFor="" className="text-xs font-semibold">
+        <label htmlFor="" className="text-xs hidden lg:block font-semibold">
           Check out
+        </label>
+        <label htmlFor="" className="text-xs lg:hidden font-semibold">
+          Out
         </label>
         <span>{sliceEnd + " " + sliceDateEnd[1]}</span>
         {selectionType === "check-out" && (
