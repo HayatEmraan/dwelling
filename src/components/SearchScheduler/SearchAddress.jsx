@@ -18,15 +18,8 @@ export default function SearchAddress() {
           language: "en-US",
         }
       );
-
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
   
       const data = await response.json();
-
-
 
       const addresses = data?.data?.map((feature) => ({
         address: feature,
@@ -63,7 +56,7 @@ export default function SearchAddress() {
       />
       {selectionType === "where" && searchedAddresss.length > 0 && (
         <div
-          className="absolute w-96 left-0 h-96 top-24 shadow-lg rounded-3xl bg-white py-10 z-50"
+          className={'absolute w-96 left-0 top-24 shadow-lg rounded-3xl bg-white py-10 z-50'}
           ref={containerRef}
         >
           <ul className="flex gap-0 flex-col">
