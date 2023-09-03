@@ -1,43 +1,20 @@
-
 import useClickOutside from "@/hooks/useClickOutside";
 import { userAppStore } from "@/store/store";
 import React, { useState } from "react";
 import { MdLocationPin } from "react-icons/md";
+import SearchCookie from "./searchcookie";
 
 export default function SearchAddress() {
   const { selectionType, setSelectionType, searchLocation, setSearchLocation } =
     userAppStore();
-  const searchAddresses = async (query) => {
-    try {
-      const response = await fetch(
-        `https://dwelling-bright-server.vercel.app/api/v1/getlocations?query=${searchText}`,
-        
-        {
-          method: 'GET',
-          limit: 5,
-          language: "en-US",
-        }
-      );
-  
-      const data = await response.json();
-
-      const addresses = data?.data?.map((feature) => ({
-        address: feature,
-       
-      }));
-
-      setSearchedAddresss(addresses);
-    } catch (error) {
-      console.error("Error searching addresses:", error);
-    }
-  };
   const [searchText, setSearchText] = useState("");
+  const searchAddresses = async (query) => {
+    const result = await SearchCookie(query);
+    setSearchedAddresss(result);
+  };
   const [searchedAddresss, setSearchedAddresss] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [containerRef] = useClickOutside();
-  
-
-
   return (
     <>
       <label htmlFor="" className="text-xs font-semibold">
@@ -67,7 +44,7 @@ export default function SearchAddress() {
       />
       {selectionType === "where" && searchedAddresss.length > 0 && (
         <div
-          className={'absolute w-96 left-0 top-24 shadow-lg rounded-3xl bg-white py-10 z-50'}
+          className="absolute w-96 left-0 top-24 shadow-lg rounded-3xl bg-white py-10 z-50"
           ref={containerRef}
         >
           <ul className="flex gap-0 flex-col">
@@ -91,13 +68,12 @@ export default function SearchAddress() {
                     <MdLocationPin />
                   </span>
                   <span className="truncate">{address.address}</span>
-                  
                 </div>
               </li>
             ))}
           </ul>
         </div>
-      ) }
+      )}
     </>
   );
 }
