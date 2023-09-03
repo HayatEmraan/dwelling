@@ -44,7 +44,7 @@ export default function SearchAddress() {
       />
       {selectionType === "where" && searchedAddresss.length > 0 && (
         <div
-          className="absolute w-96 left-0 top-24 shadow-lg rounded-3xl bg-white py-10 z-50"
+          className="absolute w-96 left-0 top-[4.7rem] shadow-lg rounded-3xl bg-white py-10 z-50"
           ref={containerRef}
         >
           <ul className="flex gap-0 flex-col">

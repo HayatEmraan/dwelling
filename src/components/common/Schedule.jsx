@@ -15,6 +15,7 @@ import Calender2 from "./Calender2";
 
 export default function Schedule() {
   const router = useRouter();
+   
   const {
     selectionType,
     setSelectionType,
@@ -44,7 +45,6 @@ export default function Schedule() {
     router.push("/search");
   };
   const [containerRef] = useClickOutside(true);
-
   const sliceDateStart = formatDate(state[0]?.startDate).split(" ");
   const sliceStart = sliceDateStart[0].slice(0, 3);
   const sliceDateEnd = formatDate(state[0]?.endDate).split(" ");
