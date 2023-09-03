@@ -1,4 +1,4 @@
-import { useAppStore } from "@/store/store";
+import { userAppStore } from "@/store/store";
 import House from "@/svg/listingTypes/house";
 import Room from "@/svg/listingTypes/room";
 import SharedRoom from "@/svg/listingTypes/shared-room";
@@ -25,7 +25,7 @@ const data = [
 ];
 
 const ListingPlaceType = () => {
-  const { placeType, setPlaceType } = useAppStore();
+  const { placeType, setPlaceType } = userAppStore();
 
   return (
     <div className="flex items-center justify-center flex-col h-full gap-10">

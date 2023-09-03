@@ -1,5 +1,9 @@
 import firebaseAuth from "@/fb/fb.config";
-import { GithubAuthProvider, sendPasswordResetEmail } from "firebase/auth";
+import {
+  GithubAuthProvider,
+  sendPasswordResetEmail,
+  signOut,
+} from "firebase/auth";
 import {
   FacebookAuthProvider,
   GoogleAuthProvider,
@@ -7,6 +11,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
+import { toast } from "react-hot-toast";
 
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
@@ -32,6 +37,7 @@ export const handleGithub = () => {
 };
 
 export const handleLogout = () => {
+  toast.success("Logout Successfully");
   return signOut(firebaseAuth);
 };
 
