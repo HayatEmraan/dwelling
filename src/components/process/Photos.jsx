@@ -1,11 +1,8 @@
 "use client";
-import React, { useState } from "react";
-
-
+import React from "react";
 import { CldUploadButton } from "next-cloudinary";
 import Image from "next/image";
 import { userAppStore } from "@/store/store";
-
 
 export default function Photos() {
   const { photos, setPhotos } = userAppStore();
@@ -22,9 +19,9 @@ export default function Photos() {
       <CldUploadButton
         options={{ multiple: true }}
         onUpload={handleUpload}
-        uploadPreset="drwigxno0"
+        uploadPreset="dkozp31ij"
       >
-        <span className="bg-airbnb-gradient py-3 mt-5  px-5 text-white text-base font-medium rounded-md cursor-pointer">
+        <span className="bg-red-500 py-3 mt-5  px-5 text-white text-base font-medium rounded-md cursor-pointer">
           Upload
         </span>
       </CldUploadButton>
