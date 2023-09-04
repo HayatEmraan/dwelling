@@ -1,11 +1,11 @@
-
 import useClickOutside from "@/hooks/useClickOutside";
 import { userAppStore } from "@/store/store";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
-export default function SearchBeds() {
+export default function SearchBeds({ setGuests }) {
   const { selectionType, searchPlaceSpace, setSearchPlaceSpace } =
     userAppStore();
+
   const handleIncrement = (type) => {
     setSearchPlaceSpace({
       ...searchPlaceSpace,
@@ -13,6 +13,7 @@ export default function SearchBeds() {
     });
   };
 
+  setGuests(searchPlaceSpace);
   const handleDecrement = (type) => {
     if (searchPlaceSpace[type] > 1) {
       setSearchPlaceSpace({
