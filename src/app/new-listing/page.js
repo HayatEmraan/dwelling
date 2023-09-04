@@ -1,9 +1,12 @@
 "use client";
+import FloorPlan from "@/components/process/FloorPlane";
 import ListingPlaceType from "@/components/process/ListingPlaceType";
 import ListingTypeSelector from "@/components/process/ListingTypeSelector";
 import Overview from "@/components/process/Overview";
+import Photos from "@/components/process/Photos";
 import PlaceDetails from "@/components/process/PlaceDetails";
 import PlaceLocation from "@/components/process/PlaceLocation";
+import ProcessAmeneties from "@/components/process/ProcessAmeneties";
 import StepOneStarter from "@/components/process/StepOneStarter";
 import { Libre_Bodoni } from "next/font/google";
 import Link from "next/link";
@@ -32,6 +35,12 @@ const NewListingPage = () => {
         return <PlaceLocation />;
       case 5:
         return <PlaceDetails />;
+      case 6:
+        return <FloorPlan />;
+      case 7:
+        return <ProcessAmeneties />;
+      case 8:
+        return <Photos />;
     }
   };
 
