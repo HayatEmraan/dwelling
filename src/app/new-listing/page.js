@@ -8,6 +8,7 @@ import PlaceDetails from "@/components/process/PlaceDetails";
 import PlaceLocation from "@/components/process/PlaceLocation";
 import ProcessAmeneties from "@/components/process/ProcessAmeneties";
 import StepOneStarter from "@/components/process/StepOneStarter";
+import ListingCreated from "@/components/process/listingCreated";
 import { Libre_Bodoni } from "next/font/google";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -41,6 +42,8 @@ const NewListingPage = () => {
         return <ProcessAmeneties />;
       case 8:
         return <Photos />;
+      case 9:
+        return <ListingCreated />;
     }
   };
 
