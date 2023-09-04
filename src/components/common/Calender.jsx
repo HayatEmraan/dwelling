@@ -5,7 +5,7 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 export default function Calender({ state, setState }) {
   return (
-    <div className="">
+    <div>
       <DateRangePicker
         onChange={(item) => setState([item.selection])}
         showSelectionPreview={true}
@@ -13,6 +13,7 @@ export default function Calender({ state, setState }) {
         months={2}
         ranges={state}
         direction="horizontal"
+        className="rounded-3xl"
       />
     </div>
   );
