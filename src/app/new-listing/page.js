@@ -2,6 +2,7 @@
 import ListingPlaceType from "@/components/process/ListingPlaceType";
 import ListingTypeSelector from "@/components/process/ListingTypeSelector";
 import Overview from "@/components/process/Overview";
+import PlaceDetails from "@/components/process/PlaceDetails";
 import PlaceLocation from "@/components/process/PlaceLocation";
 import StepOneStarter from "@/components/process/StepOneStarter";
 import { Libre_Bodoni } from "next/font/google";
@@ -29,6 +30,8 @@ const NewListingPage = () => {
         return <ListingPlaceType />;
       case 4:
         return <PlaceLocation />;
+      case 5:
+        return <PlaceDetails />;
     }
   };
 
