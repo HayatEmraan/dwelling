@@ -53,20 +53,20 @@ export default function Schedule() {
   const sliceEnd = sliceDateEnd[0].slice(0, 3);
   return (
     <div
-      className="flex justify-center  rounded-2xl lg:rounded-full border border-gray-300 text-airbnb-light-black relative my-4 "
+      className="flex justify-center items-center rounded-full border border-gray-300 text-airbnb-light-black relative my-4 gap-1 "
       ref={containerRef}
     >
       <div
-        className="flex flex-col hover:bg-gray-100 px-4 lg:px-10 py-4 rounded-2xl lg:rounded-full cursor-pointer relative"
+        className="flex flex-col hover:bg-gray-100 px-4 lg:px-10 py-4 rounded-full cursor-pointer relative"
         onClick={() => setSelectionType("where")}
       >
         <SearchAddress setLocation={setLocation} />
       </div>
       <div
         onClick={() => setSelectionType("check-in")}
-        className="flex flex-col hover:bg-gray-100 px-4 lg:px-10 py-4 rounded-2xl lg:rounded-full cursor-pointer items-center justify-center"
+        className="flex flex-col hover:bg-gray-100 px-2 lg:px-10 py-4 rounded-full cursor-pointer items-center justify-center"
       >
-        <label htmlFor="" className="text-xs font-semibold lg:flex flex-col hidden lg:block    ">
+        <label htmlFor="" className="text-xs font-semibold lg:flex flex-col hidden     ">
           Check in
         </label>
         <label htmlFor="" className="text-xs font-semibold lg:hidden flex flex-col    ">
@@ -75,7 +75,7 @@ export default function Schedule() {
         <span>{sliceStart + " " + sliceDateStart[1]}</span>
         {selectionType === "check-in" && (
           <>
-            <div className="lg:hidden block absolute top-[4.7rem] left-0 shadow-xl z-[400]">
+            <div className="lg:hidden block absolute top-[6.5rem] scale-[115%] left-4 shadow-xl z-[400]">
               <Calender2 state={state} setState={setState} />
             </div>
             <div className="hidden lg:block absolute top-[4.7rem] -left-16 shadow-xl 0]">
@@ -85,7 +85,7 @@ export default function Schedule() {
         )}
       </div>
       <div
-        className="flex flex-col hover:bg-gray-100 px-4 lg:px-10 py-4 rounded-2xl lg:rounded-full cursor-pointer items-center justify-center"
+        className="flex flex-col hover:bg-gray-100 px-2 lg:px-10 py-4 rounded-full cursor-pointer items-center justify-center"
         onClick={() => setSelectionType("check-out")}
       >
         <label htmlFor="" className="text-xs hidden lg:block font-semibold">
@@ -97,7 +97,7 @@ export default function Schedule() {
         <span>{sliceEnd + " " + sliceDateEnd[1]}</span>
         {selectionType === "check-out" && (
           <>
-            <div className="lg:hidden block absolute top-[4.7rem] left-0 shadow-xl z-[400]">
+            <div className="lg:hidden block absolute top-[6.5rem] scale-[115%] left-4 shadow-xl z-[400]">
               <Calender2 state={state} setState={setState} />
             </div>
             <div className="hidden lg:block absolute top-[4.7rem] -left-16 shadow-xl 0]">
@@ -107,12 +107,12 @@ export default function Schedule() {
         )}
       </div>
       <div
-        className="flex hover:bg-gray-100 justify-between text-xs lg:text-base lg:px-4 py-4 pl-7 rounded-2xl lg:rounded-full cursor-pointer lg:gap-7"
+        className="flex hover:bg-gray-100 justify-between text-xs lg:text-base px-2 lg:px-4 py-4 pl-7 rounded-full cursor-pointer gap-2 lg:gap-7"
         onClick={() => setSelectionType("who")}
       >
         <SearchBeds setGuests={setGuests} />
         <Link
-          href={`/search?dwl=bright&ling=coders&${
+          href={`/search/query?dwl=bright&ling=coders&${
             location?.address !== undefined
               ? "location=" + location?.address + "&"
               : ""
@@ -121,7 +121,7 @@ export default function Schedule() {
           }${guests?.childrens !== 0 ? "&childrens=" + guests?.childrens : ""}${
             guests?.infants !== 0 ? "&infants=" + guests?.infants : ""
           }`}
-          className="bg-airbnb-theme-color p-3 rounded-full flex items-center justify-center text-lg"
+          className="bg-airbnb-theme-color bg-rose-500 text-white p-3 rounded-full flex items-center justify-center text-lg"
           onClick={handleSearch}
         >
           <BiSearch />
