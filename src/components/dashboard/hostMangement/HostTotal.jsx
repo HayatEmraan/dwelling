@@ -11,7 +11,7 @@ import { MdLocalActivity,MdOutlineSupervisedUserCircle ,MdOutlineAdminPanelSetti
 const dashboardCards = [
   {
     id: 1,
-    title: "Host State",
+    title: "Total Host",
     icon: <FiUsers />,
     project_detail: 18,
     clientPercentage: "+9.18",
