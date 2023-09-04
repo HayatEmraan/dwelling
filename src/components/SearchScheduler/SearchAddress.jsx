@@ -4,11 +4,13 @@ import React, { useState } from "react";
 import { MdLocationPin } from "react-icons/md";
 import SearchCookie from "./searchcookie";
 
-export default function SearchAddress() {
+export default function SearchAddress({ setLocation }) {
   const { selectionType, setSelectionType, searchLocation, setSearchLocation } =
     userAppStore();
 
   const [searchText, setSearchText] = useState("");
+
+  setLocation(searchLocation);
   const searchAddresses = async (query) => {
     const result = await SearchCookie(query);
     setSearchedAddresss(result);
