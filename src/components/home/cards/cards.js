@@ -15,7 +15,7 @@ const Cards = async () => {
     }
   );
   const jsonData = await res.json();
-  console.log(jsonData)
+
   return (
     <div className="max-w-[1560px] mx-auto space-y-4">
       <div className="px-5 md:px-4 lg:px-3 xl:px-2">
