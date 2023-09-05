@@ -19,6 +19,7 @@ const Calender2 = () => {
                 onChange={item => setState([item.selection])}
                 moveRangeOnFirstSelection={false}
                 ranges={state}
+                className='rounded-2xl'
             />
         </div>
     );

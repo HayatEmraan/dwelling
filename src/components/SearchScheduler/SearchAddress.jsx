@@ -7,7 +7,6 @@ import SearchCookie from "./searchcookie";
 export default function SearchAddress({ setLocation }) {
   const { selectionType, setSelectionType, searchLocation, setSearchLocation } =
     userAppStore();
-
   const [searchText, setSearchText] = useState("");
 
   setLocation(searchLocation);
@@ -27,7 +26,18 @@ export default function SearchAddress({ setLocation }) {
         name="destinations"
         type="text"
         placeholder="Search Destinations"
-        className="bg-transparent focus:outline-none w-16 lg:text-base lg:w-max"
+        className="bg-transparent focus:outline-none hidden lg:block w-16 lg:text-base lg:w-max"
+        value={searchText}
+        onChange={(e) => {
+          setSearchText(e.target.value);
+          searchAddresses(e.target.value);
+        }}
+      />
+      <input
+        name="destinations"
+        type="text"
+        placeholder="Desti.."
+        className="bg-transparent focus:outline-none lg:hidden w-16 lg:text-base lg:w-max"
         value={searchText}
         onChange={(e) => {
           setSearchText(e.target.value);
@@ -36,7 +46,7 @@ export default function SearchAddress({ setLocation }) {
       />
       {selectionType === "where" && searchedAddresss.length > 0 && (
         <div
-          className="absolute w-96 left-0 top-24 shadow-lg rounded-3xl bg-white py-10 z-50"
+          className="absolute w-96 left-0 top-[4.7rem] shadow-lg rounded-3xl bg-white py-10 z-50"
           ref={containerRef}
         >
           <ul className="flex gap-0 flex-col">
