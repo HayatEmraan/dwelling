@@ -48,7 +48,7 @@ const dashboardCards = [
 
 const InvoiceListPage = () => {
   return (
-    <div className="flex justify-between gap-4 items-center max-w-[150rem] sm:px-6">
+    <div className="md:flex space-y-5 md:space-y-0 justify-between gap-4 items-center max-w-[150rem] sm:px-6">
       {dashboardCards.map(
         ({ id, title, icon, clientPercentage, amount, arrow, bgColor }) => {
           return (
@@ -61,7 +61,7 @@ const InvoiceListPage = () => {
                   <div
                     className={`p-2 rounded ${
                       title === "Clients"
-                        ? `bg-[${bgColor}] text-[#706f6e]`
+                        ? "bg-[#e1c38f] text-[#706f6e]"
                         : title === "Invoices"
                         ? "bg-[#a5f3fc] text-[#0891b2]"
                         : title === "Sent Invoice"

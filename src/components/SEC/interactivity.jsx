@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook, FaGithub } from "react-icons/fa";
