@@ -51,7 +51,7 @@ const ImagesCom = ({ data}) => {
             {/* Column 1 */}
             <div className="overflow-hidden rounded-lg">
               <img
-                src={data?.images}
+                src={data.images}
                 alt="Image 0"
                 className="w-full h-full object-cover"
               />
@@ -59,7 +59,7 @@ const ImagesCom = ({ data}) => {
 
             {/* Column 2 */}
             <div className="grid grid-cols-2 gap-2">
-              {data.images?.slice(1, 5).map((image, index) => (
+              {data.images.slice(1, 5).map((image, index) => (
                 <div key={index} className="overflow-hidden rounded-lg">
                   <img
                     src={image}
@@ -70,7 +70,7 @@ const ImagesCom = ({ data}) => {
               ))}
             </div>
           </div>
-          {data?.images?.length > 5 && (
+          {data.images.length > 5 && (
             <div className="flex justify-center absolute bottom-2 right-5">
               <button
                 className="flex items-center bg-white border border-gray-950 rounded px-5 py-1 show-all-button"

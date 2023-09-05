@@ -4,29 +4,27 @@ import Image from "next/image";
 import { AiFillFlag } from "react-icons/ai";
 import { DateRange } from "react-date-range";
 import React, { useState } from "react";
+import { addDays } from "date-fns";
 
 import "react-date-range/dist/styles.css"; // Main style file
 import "react-date-range/dist/theme/default.css";
 import ReserveButton from "../ReserveButton/ReserveButton";
+import Calender from "@/components/common/Calender";
 
 const SingleRoomDetails = ({ data }) => {
-  const [dateRange, setDateRange] = useState([
+  const [date, setDate] = useState([
     {
       startDate: new Date(),
-      endDate: new Date(),
+      endDate: addDays(new Date(), 7),
       key: "selection",
     },
   ]);
-  const [activePicker, setActivePicker] = useState(null);
-
-  const handleDateRangeChange = (ranges) => {
-    setDateRange([ranges.selection]);
-    setActivePicker(null);
-  };
-
-  const handlePickerOpen = (picker) => {
-    setActivePicker(picker);
-  };
+  function formatDate(dateString) {
+    const options = { month: "long", day: "numeric" };
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", options);
+  }
+  
 
   return (
     <div className="grid gap-5 lg:grid-cols-3">
@@ -40,7 +38,7 @@ const SingleRoomDetails = ({ data }) => {
         <div>
           <h2 className="font-bold">Most Popular Facilites</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
-            {data?.popular_facilities?.map((facilities, index) => (
+            {data.popular_facilities?.map((facilities, index) => (
               <div key={index} className="flex items-center">
                 <Image
                   className="mr-2"
@@ -70,10 +68,12 @@ const SingleRoomDetails = ({ data }) => {
                     </button>
                   </p>
                   <p>
-                    <small>
-                      {" "}
-                      {dateRange[0].startDate.toDateString()}
-                    </small>
+                    <span>{formatDate(state[0]?.startDate)}</span>
+                    {selected === "check-in" && (
+                      <div className="absolute top-16 left-0 shadow-xl ">
+                        <Calender state={date} setState={setDate} />
+                      </div>
+                    )}
                   </p>
                 </div>
                 <div className="border-b p-2">
@@ -83,10 +83,7 @@ const SingleRoomDetails = ({ data }) => {
                     </button>
                   </p>
                   <p>
-                    <small>
-                      {" "}
-                      {dateRange[0].endDate.toDateString()}
-                    </small>
+                    <small> {dateRange[0].endDate.toDateString()}</small>
                   </p>
                 </div>
                 {activePicker && (
@@ -150,8 +147,6 @@ const SingleRoomDetails = ({ data }) => {
         <div className="my-3 justify-center flex items-center">
           <AiFillFlag className="mr-2" />
           <small className="underline">Report this listing</small>
-
-          
         </div>
       </div>
     </div>
