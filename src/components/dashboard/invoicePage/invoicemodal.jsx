@@ -164,7 +164,7 @@ const InvoiceModal = () => {
 
 
        
-            <a href={Resume} download className='btn'>DownLoad Resume</a>
+           
            
      
             <div className="mt-5 flex justify-end gap-x-2">

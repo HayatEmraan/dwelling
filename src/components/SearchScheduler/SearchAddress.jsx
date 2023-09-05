@@ -1,52 +1,43 @@
 import useClickOutside from "@/hooks/useClickOutside";
 import { userAppStore } from "@/store/store";
-import axios from "axios";
 import React, { useState } from "react";
 import { MdLocationPin } from "react-icons/md";
+import SearchCookie from "./searchcookie";
 
-export default function SearchAddress() {
+export default function SearchAddress({ setLocation }) {
   const { selectionType, setSelectionType, searchLocation, setSearchLocation } =
     userAppStore();
-  const TOKEN =
-    "pk.eyJ1Ijoia29vbGtpc2hhbiIsImEiOiJjazV3Zm41cG8wa3I1M2tydnVkcW53b2ZpIn0.mYrXogbdTrWSoJECNR1epg";
-  const searchAddresses = async (query) => {
-    try {
-      const response = await axios.get(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json`,
-        {
-          params: {
-            access_token: TOKEN,
-
-            limit: 5,
-            language: "en-US", // Specify the language for the results
-          },
-        }
-      );
-
-      const addresses = response.data.features.map((feature) => ({
-        address: feature.text,
-        latitude: feature.center[1],
-        longitude: feature.center[0],
-      }));
-      setSearchedAddresss(addresses);
-    } catch (error) {
-      console.error("Error searching addresses:", error);
-    }
-  };
   const [searchText, setSearchText] = useState("");
+
+  setLocation(searchLocation);
+  const searchAddresses = async (query) => {
+    const result = await SearchCookie(query);
+    setSearchedAddresss(result);
+  };
   const [searchedAddresss, setSearchedAddresss] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [containerRef] = useClickOutside();
-
   return (
     <>
       <label htmlFor="" className="text-xs font-semibold">
         Where
       </label>
       <input
+        name="destinations"
         type="text"
         placeholder="Search Destinations"
-        className="bg-transparent focus:outline-none w-16 lg:text-base lg:w-max"
+        className="bg-transparent focus:outline-none hidden lg:block w-16 lg:text-base lg:w-max"
+        value={searchText}
+        onChange={(e) => {
+          setSearchText(e.target.value);
+          searchAddresses(e.target.value);
+        }}
+      />
+      <input
+        name="destinations"
+        type="text"
+        placeholder="Desti.."
+        className="bg-transparent focus:outline-none lg:hidden w-16 lg:text-base lg:w-max"
         value={searchText}
         onChange={(e) => {
           setSearchText(e.target.value);
@@ -55,7 +46,7 @@ export default function SearchAddress() {
       />
       {selectionType === "where" && searchedAddresss.length > 0 && (
         <div
-          className="absolute w-96 left-0 h-96 top-24 shadow-lg rounded-3xl bg-white py-10 z-50"
+          className="absolute w-96 left-0 top-[4.7rem] shadow-lg rounded-3xl bg-white py-10 z-50"
           ref={containerRef}
         >
           <ul className="flex gap-0 flex-col">

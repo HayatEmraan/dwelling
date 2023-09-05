@@ -1,10 +1,5 @@
 import React from "react";
 
-import './page.css'
-
-
-
-
 function InvoiceDownload() {
   
   return (
@@ -32,8 +27,10 @@ function InvoiceDownload() {
       <div className="p-6 bg-white rounded-lg shadow-md">
         <div className="mt-8 grid grid-cols-2 gap-4">
           <div className="bg-white rounded-lg shadow-md">
-            <div className="p-4 border-b">
-              <h3 className="text-xl font-semibold rounded text-center bg-slate-300 ">Company Details</h3>
+            <div className="border-b">
+              <h3 className="text-xl font-semibold rounded text-center bg-slate-300 ">
+                Company Details
+              </h3>
             </div>
             <div className="p-4">
               <dl className="grid grid-cols-2 gap-2 text-sm">
@@ -52,17 +49,17 @@ function InvoiceDownload() {
           </div>
 
           <div className="bg-white rounded-lg shadow-md">
-            <div className="p-4 border-b">
-              <h3 className="text-xl font-semibold text-center rounded bg-slate-300">Customer Details</h3>
+            <div className="border-b">
+              <h3 className="text-xl font-semibold text-center rounded bg-slate-300">
+                Customer Details
+              </h3>
             </div>
             <div className="p-4">
               <dl className="grid grid-cols-2 gap-2 text-sm">
                 <div className="col-span-1 font-bold">Name:</div>
                 <div className="col-span-1">John Doe</div>
                 <div className="col-span-1 font-bold">Address:</div>
-                <div className="col-span-1">
-                12bonani, Dhaka
-                </div>
+                <div className="col-span-1">12bonani, Dhaka</div>
                 <div className="col-span-1 font-bold">Phone:</div>
                 <div className="col-span-1">(425) 882-8080</div>
                 <div className="col-span-1 font-bold">Email:</div>
@@ -78,9 +75,7 @@ function InvoiceDownload() {
           </div>
           <table className="w-full table-fixed">
             <thead className=" m-12 border bg-slate-300">
-
               <tr className="">
-              
                 <th className="w-1/6 text-center p-2"> Name</th>
                 <th className="w-1/6">Details</th>
                 <th className="w-1/6 text-center">Address</th>
@@ -90,7 +85,7 @@ function InvoiceDownload() {
                 <th className="w-1/6 text-center">Guest</th>
               </tr>
             </thead>
- 
+
             <tbody>
               <tr>
                 <td className="pl-10 pt-3 ">
@@ -134,7 +129,7 @@ function InvoiceDownload() {
           <div className=" pb-4 border-b">
             <h3 className="text-2xl font-semibold bg-slate-300 text-center rounded p-2 ">Payment</h3>
           </div>
-          <table className="">
+          <table className="w-full">
             <thead className="m-9">
               <tr className="bg-slate-300 rounded">
                 <th className="w-1/5 text-left pl-10 pt-3 ">Item</th>
@@ -184,57 +179,34 @@ function InvoiceDownload() {
             <thead className="">
               <tr className="bg-slate-300 rounded ">
                 <th className=" w-full text-left pl-10 pt-3 ">Name</th>
-
-               <th className=" w-full text-center mr-5 ">Details</th>
-              
+                <th className=" w-full text-center mr-5 ">Details</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="pl-10 pt-2">
-                Payment Method
-                 
-                </td>
+                <td className="pl-10 pt-2">Payment Method</td>
                 <td className="text-center ">
                   <span className="font-mono">Bank</span>
-              
                 </td>
-         
               </tr>
-           
               <tr>
-                <td className="pl-10  ">
-                Bank Name
-               
-                </td>
+                <td className="pl-10  ">Bank Name</td>
                 <td className="text-right">
                   <span className="font-mono whitespace-nowrap">Bangladesh Bank</span>
                  
                 </td>
-           
               </tr>
               <tr>
-                <td className="pl-10">
-               Account Number
-               
-                </td>
+                <td className="pl-10">Account Number</td>
                 <td className="text-center ">
                   <span className="font-mono">12345678986</span>
-                 
                 </td>
-            
               </tr>
-                 <tr>
-                <td className="pl-10 ">
-               Total Price 
-               
-                </td>
+              <tr>
+                <td className="pl-10 ">Total Price</td>
                 <td className="text-center ">
                   <span className="font-mono">$20,000.00</span>
-                 
                 </td>
-              
-              
               </tr>
               <tr>
                 <td className="pl-10  ">
@@ -243,14 +215,10 @@ function InvoiceDownload() {
                 </td>
                 <td className="text-center  ">
                   <span className="font-mono">$10,000.00</span>
-                 
                 </td>
               </tr>
               <tr>
-                <td className="pl-10">
-                  Paid
-               
-                </td>
+                <td className="pl-10">Paid</td>
                 <td className="text-center ">
                   <span className="font-mono">$10,000.00</span>
                 </td>
