@@ -15,11 +15,11 @@ const RoomDetails = async () => {
   );
   const data = await res.json();
 
-  // const res1 = await fetch(
-  //   "https://dwelling-bright-server.vercel.app/api/v1/getdetails/64f1d62a42ce44beb216c160"
-  // );
-  // const data1 = await res1.json();
-  
+  const res1 = await fetch(
+    "https://dwelling-bright-server.vercel.app/api/v1/getdetails/64f1d62a42ce44beb216c160"
+  );
+  const data1 = await res1.json();
+  console.log(data)
   return (
     <div className="max-w-6xl lg:mx-auto px-5">
       {/* Header Section */}

@@ -1,7 +1,4 @@
-"use client"
-
-
-import ReviewCard from "../ReviewCard/ReviewCard";
+"use client";
 import { RxCross2 } from "react-icons/rx";
 
 const ReviewModal = ({ visible, setShowModal, children }) => {

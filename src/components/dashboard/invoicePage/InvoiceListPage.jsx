@@ -61,7 +61,7 @@ const InvoiceListPage = () => {
                   <div
                     className={`p-2 rounded ${
                       title === "Clients"
-                        ? `bg-[${bgColor}] text-[#706f6e]`
+                        ? "bg-[#e1c38f] text-[#706f6e]"
                         : title === "Invoices"
                         ? "bg-[#a5f3fc] text-[#0891b2]"
                         : title === "Sent Invoice"
