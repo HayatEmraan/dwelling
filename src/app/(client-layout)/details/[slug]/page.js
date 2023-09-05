@@ -9,13 +9,7 @@ import Reviews from "@/components/details/Reviews/Reviews";
 import SingleRoomDetails from "@/components/details/SingleRoomDetails/SingleRoomDetails";
 import DetailsMapIndex from "@/components/details/detailMap";
 
-const RoomDetails = async ({params}) => {
-  const {slug} = params;
-  // const res = await fetch(
-  //   "https://raw.githubusercontent.com/HayatEmraan/dwelling/raju/public/fake.json"
-  // );
-  // const data = await res.json();
-
+const RoomDetails = async () => {
   const res = await fetch(
     `https://dwelling-bright-server.vercel.app/api/v1/getdetails/${slug}`
   );
@@ -37,16 +31,16 @@ const RoomDetails = async ({params}) => {
         {/* Most Popular */}
         <MostPopularFacilities data={data?.data}></MostPopularFacilities>
         {/* details Facilites */}
-        {/* <DetailsFacilities data={data?.data}></DetailsFacilities> */}
+        <DetailsFacilities data={data}></DetailsFacilities>
         {/* House Rules */}
-        {/* <HouseRules data={data?.data}></HouseRules> */}
-      {/* </div> */}
+        <HouseRules data={data}></HouseRules>
+      </div>
 
       {/* reviews */}
       <Reviews
         reviews={<ReviewsComp />}
         reviewsModal={<ReviewsModal />}
-        reviewsLength={data?.data?.reviews?.length}
+        reviewsLength={data1?.data?.reviews?.length}
       />
 
       {/* details map  */}

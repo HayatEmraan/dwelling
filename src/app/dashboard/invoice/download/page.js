@@ -1,12 +1,4 @@
 import React from "react";
-import { Libre_Bodoni } from "next/font/google";
-// import { Link } from 'gatsby';
-import "./page.css";
-
-const bodoni = Libre_Bodoni({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-});
 
 function InvoiceDownload() {
   return (
@@ -21,11 +13,9 @@ function InvoiceDownload() {
           </h4>
         </div>
         <div className="flex items-center ">
-          <div className="p-5 rounded">
-            <h1 className="text-2xl font-bold text-gray-500">
-              Dwelling, Inc
-            </h1>
-            <p className="text-md text-gray-500 font-bold">
+          <div className="rounded ">
+            <p className="font-bold text-lg">Dwelling, Inc.</p>
+            <p className="text-xl text-gray-500 font-bold">
               {" "}
               Flat / Roommate Finder
             </p>
@@ -51,7 +41,12 @@ function InvoiceDownload() {
                 <div className="col-span-1 font-bold">Phone:</div>
                 <div className="col-span-1">123.4456.4567</div>
                 <div className="col-span-1 font-bold">Email:</div>
-                <div className="col-span-1">brightcoders07@gmail.com</div>
+                <div className="col-span-1">
+                  {"john.doe07@gmail.com".replace(
+                    /^(.{3}).*?(?=@)/,
+                    (_, firstThreeChars) => firstThreeChars + "*".repeat(5)
+                  )}
+                </div>
               </dl>
             </div>
           </div>
@@ -71,100 +66,103 @@ function InvoiceDownload() {
                 <div className="col-span-1 font-bold">Phone:</div>
                 <div className="col-span-1">(425) 882-8080</div>
                 <div className="col-span-1 font-bold">Email:</div>
-                <div className="col-span-1">john.doe07@gmail.com</div>
+                <div className="col-span-1">
+                  {"emraanhasan.doe07@gmail.com".replace(
+                    /^(.{3}).*?(?=@)/,
+                    (_, firstThreeChars) => firstThreeChars + "*".repeat(5)
+                  )}
+                </div>
               </dl>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md mt-8 whitespace-nowrap">
+        <div className="bg-white rounded-lg shadow-md mt-8">
           <div className="pb-4 border-b">
-            <h3 className="text-2xl font-semibold bg-slate-300 text-center rounded p-2">
+            <h3 className="text-2xl font-semibold w-full bg-slate-300 text-center rounded p-2">
               Booking Details{" "}
             </h3>
           </div>
-          <table className="w-full table-fixed">
+          <table className="w-full table-fixed text-center">
             <thead className=" m-12 border bg-slate-300">
               <tr className="">
-                <th className="w-1/6 text-center p-2"> Name</th>
+                <th className="w-1/6 text-center p-2">Name</th>
                 <th className="w-1/6">Details</th>
                 <th className="w-1/6 text-center">Address</th>
                 <th className="w-1/6 text-center">Check-in</th>
                 <th className="w-1/6 text-center">Check-out</th>
-                <th className="w-1/6 text-center">Nights</th>
-                <th className="w-1/6 text-center">Guests</th>
+                <th className="w-1/6 text-center"> Nights</th>
+                <th className="w-1/6 text-center">Guest</th>
               </tr>
             </thead>
 
             <tbody>
               <tr>
-                <td className=" pl-10 pt-3">Diamond Harvar</td>
-                <td className="text-center pt-3">
-                  <span className="font-mono">First Class</span>
+                <td className="pt-3 ">{"Luxury Villa".slice(0, 6)}</td>
+                <td className="text-center m-3 pt-3 ">
+                  <span className="font-mono ">First Class</span>
                 </td>
-                <td className="text-center pt-3">
-                  <span className="font-mono">Chittagong</span>
+                <td className="text-center pt-3 ">
+                  <span className="font-mono">Dhaka</span>
                 </td>
-                <td className="text-center pt-3">
-                  <span className="font-mono">3/10/2023</span>
+                <td className="text-center pt-3 ">
+                  <span className="font-mono"> 1/5/2023</span>
                 </td>
-                <td className="text-center pt-3">
-                  <span className="font-mono">10/10/2023</span>
+                <td className="text-center pt-3 ">
+                  <span className="font-mono">5/5/2023</span>
                 </td>
-                <td className="text-center pt-3">
-                  <strong className="font-mono">8</strong>
-                  {/* <br />
-                  <small className="font-mono text-gray-500">$240.00</small> */}
+                <td className="text-center pt-3 ">
+                  <strong className="font-mono">6</strong>
                 </td>
-                <td className="text-center pt-3">
-                  <strong className="font-mono">8</strong>
+                <td className="text-center pt-3 ">
+                  <strong className="font-mono">6</strong>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md mt-8 whitespace-nowrap">
-          <div className="pb-4 border-b">
+        <div className="bg-white rounded-lg shadow-md mt-8">
+          <div className=" pb-4 border-b">
             <h3 className="text-2xl font-semibold bg-slate-300 text-center rounded p-2 ">
               Payment
             </h3>
           </div>
-          <table className="w-full">
+          <table className="w-full text-center">
             <thead className="m-9">
               <tr className="bg-slate-300 rounded">
-                <th className="w-1/6 text-left pl-10 pt-3 ">Item</th>
-                <th className="w-1/6text-center">Daily Cost</th>
-                <th className="w-1/6 text-center">Sum Cost</th>
-                <th className="w-1/6 text-center">Discount</th>
-                <th className="w-1/6 text-center">Tax</th>
-                <th className="w-1/6 text-center">Total Price</th>
+                <th className="w-1/5 text-center pt-3 ">Name</th>
+                <th className="w-1/5 text-center">Daily Cost</th>
+                <th className="w-1/5 text-center">Sum Cost</th>
+                <th className="w-1/5 text-center">Discount</th>
+                <th className="w-1/5 text-center">Tax</th>
+                {/* <th className="w-1/5 text-center">Total Price</th> */}
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="pl-10 pt-3 ">Diamond harvar</td>
+                <td className="pt-3 text-center">
+                  {"Luxury Villa".slice(0, 6)}
+                </td>
+                <td className="text-center pt-3 ">
+                  <span className="font-mono">$1,000.00</span>
+                </td>
                 <td className="text-center  pt-3 ">
-                  <span className="font-mono">$2,000.00</span>
+                  <span className="font-mono">$18,000.00</span>
                 </td>
+                <td className="text-center  pt-3 ">$2,000.00</td>
                 <td className="text-center pt-3 ">
-                  <span className="font-mono">$14,000.00</span>
+                  <span className="font-mono"> $3,000.00</span>
                 </td>
-                <td className="text-center pt-3 ">
-                  <span className="font-mono"> $1,000.00</span>
-                </td>
-                <td className="text-center pt-3 ">
-                  <span className="font-mono"> $2,000.00</span>
-                </td>
-                <td className="text-center pt-3 ">
-                  <strong className="font-mono">$17,000.00</strong>
-                </td>
+                {/* <td className="text-center  pt-3 ">
+                  <strong className="font-mono">$20,000.00</strong>
+                </td> */}
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md mt-8 whitespace-nowrap">
+        <div className="bg-white rounded-lg shadow-md mt-8">
           <div className="pb-4 border-b">
             <h3 className="text-2xl font-semibold bg-slate-300 text-center rounded p-2 ">
               Payment Information
@@ -187,7 +185,7 @@ function InvoiceDownload() {
               <tr>
                 <td className="pl-10  ">Bank Name</td>
                 <td className="text-right">
-                  <span className="font-mono">
+                  <span className="font-mono whitespace-nowrap">
                     Bangladesh Bank
                   </span>
                 </td>
@@ -205,7 +203,7 @@ function InvoiceDownload() {
                 </td>
               </tr>
               <tr>
-                <td className="pl-10  ">Deu</td>
+                <td className="pl-10  ">Dew</td>
                 <td className="text-center  ">
                   <span className="font-mono">$10,000.00</span>
                 </td>

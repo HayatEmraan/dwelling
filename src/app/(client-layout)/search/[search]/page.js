@@ -19,7 +19,6 @@ const {location, start, end, adults, childrens, infants} = searchParams;
       adults={adults}
       childrens={childrens}
       infants={infants}
-
       />
     </div>
   );

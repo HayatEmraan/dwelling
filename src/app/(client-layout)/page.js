@@ -1,4 +1,4 @@
-import Cards from "@/components/home/cards/cards";
+import FetchCards from "@/components/home/cards/fetchcards";
 import CategoriesComponent from "@/components/home/categories/categories";
 import Toggle from "@/components/home/toggle/Toggle";
 
@@ -7,7 +7,7 @@ export default function Home() {
     <main>
       <CategoriesComponent />
       <Toggle />
-      <Cards />
+      <FetchCards />
     </main>
   );
 }

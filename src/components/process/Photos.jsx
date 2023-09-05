@@ -19,7 +19,7 @@ export default function Photos() {
       <CldUploadButton
         options={{ multiple: true }}
         onUpload={handleUpload}
-        uploadPreset="dkozp31ij"
+        uploadPreset="vflnndvq"
       >
         <span className="bg-red-500 py-3 mt-5  px-5 text-white text-base font-medium rounded-md cursor-pointer">
           Upload
