@@ -20,7 +20,7 @@ const Header = ({ data }) => {
           <p className="flex items-center">
             <AiFillEnvironment className="mr-2" />
             Superhost-
-            <span className="font-bold underline">{data.location}</span>
+            <span className="font-bold underline">{data?.location?.city}</span>
           </p>
         </div>
         <div className="flex space-x-5">
