@@ -9,42 +9,39 @@ import Reviews from "@/components/details/Reviews/Reviews";
 import SingleRoomDetails from "@/components/details/SingleRoomDetails/SingleRoomDetails";
 import DetailsMapIndex from "@/components/details/detailMap";
 
-const RoomDetails = async () => {
+const RoomDetails = async ({ params }) => {
+  const { slug } = params;
   const res = await fetch(
-    "https://raw.githubusercontent.com/HayatEmraan/dwelling/raju/public/fake.json"
+    `https://dwelling-bright-server.vercel.app/api/v1/getdetails/${slug}`
   );
   const data = await res.json();
-  const res1 = await fetch(
-    "https://dwelling-bright-server.vercel.app/api/v1/getdetails/64f1d62a42ce44beb216c160"
-  );
-  const data1 = await res1.json();
 
   return (
     <div className="max-w-6xl lg:mx-auto px-5">
       {/* Header Section */}
-      <Header data={data}></Header>
+      <Header data={data?.data}></Header>
       {/* Grid  Images */}
-      <ImagesCom data={data}></ImagesCom>
+      <ImagesCom data={data?.data}></ImagesCom>
       {/* Details Sections */}
-      <SingleRoomDetails data={data}></SingleRoomDetails>
+      <SingleRoomDetails data={data?.data}></SingleRoomDetails>
       {/* Facilities */}
       <div className="my-5">
         <div className=" my-5">
           <h2 className="font-bold text-xl">Facilities of Saint Martin Ltd.</h2>
         </div>
         {/* Most Popular */}
-        <MostPopularFacilities data={data}></MostPopularFacilities>
+        <MostPopularFacilities data={data?.data}></MostPopularFacilities>
         {/* details Facilites */}
-        <DetailsFacilities data={data}></DetailsFacilities>
+        <DetailsFacilities data={data?.data}></DetailsFacilities>
         {/* House Rules */}
-        <HouseRules data={data}></HouseRules>
+        <HouseRules data={data?.data}></HouseRules>
       </div>
 
       {/* reviews */}
       <Reviews
         reviews={<ReviewsComp />}
         reviewsModal={<ReviewsModal />}
-        reviewsLength={data1?.data?.reviews?.length}
+        reviewsLength={data.data?.reviews?.length}
       />
 
       {/* details map  */}

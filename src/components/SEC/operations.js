@@ -7,6 +7,8 @@ import {
   resetPassword,
 } from "@/libs/security/AuthStore";
 import { toast } from "react-hot-toast";
+import { handleSignUp } from "./handleEP";
+import { handleSignIn } from "./handleLG";
 
 export const googleLogin = () => {
   return handleGoogle()
@@ -63,37 +65,24 @@ export const githubLogin = () => {
 export const loginAndSignup = (email, password) => {
   return handleCreateUser(email, password)
     .then((res) => {
-      fetch("https://dwelling-bright-server.vercel.app/api/v1/postuser", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          toast.success("Account Created Successfully");
+      (async () => {
+        const result = await handleSignUp(email);
+        if (result.msg === "Success") {
+          toast.success("Authenticated Successfully");
           my_modal_3.close();
-        })
-        .catch((err) => "");
+        }
+      })();
     })
     .catch((err) => {
       if (err.message === "Firebase: Error (auth/email-already-in-use).") {
         return handleLogin(email, password).then((res) => {
-          fetch("http://localhost:5000/api/v2/signature", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              authorization: `Bearer ${email}`,
-            },
-            credentials: "include",
-          })
-            .then((res) => res.json())
-            .then((data) => {
+          (async () => {
+            const result = await handleSignIn(email);
+            if (result.msg === "Cookie has been set.") {
               toast.success("Authenticated Successfully");
               my_modal_3.close();
-            })
-            .catch((err) => console.log(err));
+            }
+          })();
         });
       }
       toast.error("Login Failed. Please Try Again!");
