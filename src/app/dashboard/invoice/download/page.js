@@ -77,7 +77,7 @@ function InvoiceDownload() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md mt-8 whitespace-nowrap">
+        <div className="bg-white rounded-lg shadow-md mt-8">
           <div className="pb-4 border-b">
             <h3 className="text-2xl font-semibold bg-slate-300 text-center rounded p-2">
               Booking Details{" "}
@@ -86,7 +86,7 @@ function InvoiceDownload() {
           <table className="w-full table-fixed">
             <thead className=" m-12 border bg-slate-300">
               <tr className="">
-                <th className="w-1/6 text-center p-2"> Name</th>
+                <th className="w-1/6 text-center p-2">Name</th>
                 <th className="w-1/6">Details</th>
                 <th className="w-1/6 text-center">Address</th>
                 <th className="w-1/6 text-center">Check-in</th>
@@ -98,7 +98,7 @@ function InvoiceDownload() {
 
             <tbody>
               <tr>
-                <td className=" pl-10 pt-3">Diamond Harvar</td>
+                <td className="pl-10 pt-3">Diamond</td>
                 <td className="text-center pt-3">
                   <span className="font-mono">First Class</span>
                 </td>
