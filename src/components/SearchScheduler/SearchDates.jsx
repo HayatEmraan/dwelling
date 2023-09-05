@@ -12,7 +12,6 @@ export default function SearchDates() {
   function formatDate(dateString) {
     const options = { month: "long", day: "numeric" };
     const date = new Date(dateString);
-    console.log(date)
     return date.toLocaleDateString("en-US", options);
   }
 
