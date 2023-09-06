@@ -84,7 +84,7 @@ const users = [
   },
 ];
 
-const UsersList = () => {
+const UsersList = ({ data }) => {
   return (
     <div className="mx-6">
       <div className="mt-4 lg:mt-6 -mb-4">
