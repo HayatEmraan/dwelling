@@ -14,6 +14,7 @@ export default function SearchDates() {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", options);
   }
+  
 
   return (
     <>
