@@ -4,8 +4,6 @@ import UsersCard from "./UsersCard";
 import { useState } from "react";
 import { getusers } from "@/utils/async/admin/users/getusers";
 
-
-
 const UsersList = ({ data }) => {
   const [pageNumber, setPageNumber] = useState(1);
   const [pageData, setPageData] = useState(data);
@@ -36,9 +34,8 @@ const UsersList = ({ data }) => {
                       All users, edit and more.
                     </p>
                   </div>
-                   {/* filter and search */}
-                  <div className="grid lg:grid-cols-2 gap-3 lg:flex-end">
-                    {/* Search Bar */}
+                  {/* filter and search */}
+                  <div className="inline-flex gap-x-4 items-center">
                     <div className="grid gap-3 md:flex md:justify-between md:items-center border-gray-200 dark:border-gray-700">
                       {/* Input */}
                       <div className="sm:col-span-1">
@@ -203,7 +200,7 @@ const UsersList = ({ data }) => {
                   <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                     {/* data mapping */}
 
-                    {data?.map((user, index) => {
+                    {pageData?.data?.map((user, index) => {
                       return (
                         <tr key={index}>
                           <td className="h-px w-px whitespace-nowrap">
@@ -224,7 +221,7 @@ const UsersList = ({ data }) => {
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
                               <div className="flex items-center gap-x-3">
-                                <Image
+                                <img
                                   src={user?.image}
                                   width={"30"}
                                   height={"30"}
@@ -244,11 +241,8 @@ const UsersList = ({ data }) => {
                           </td>
                           <td className="h-px w-72 whitespace-nowrap">
                             <div className="px-6 py-3">
-                              <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
+                              <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200 uppercase">
                                 {user?.role}
-                              </span>
-                              <span className="block text-sm text-gray-500">
-                                Human resources
                               </span>
                             </div>
                           </td>
@@ -281,7 +275,7 @@ const UsersList = ({ data }) => {
                                   >
                                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                   </svg>
-                                  Unblock
+                                  Blocked
                                 </span>
                               )}
                             </div>
@@ -294,7 +288,6 @@ const UsersList = ({ data }) => {
                               </span>
                             </div>
                           </td>
-
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="px-6 py-1.5 flex justify-end">
                               <div className="group inline-flex items-center divide-x divide-gray-300 border border-gray-300 bg-white shadow-sm rounded-md transition-all dark:divide-gray-700 dark:bg-slate-700 dark:border-gray-700">
