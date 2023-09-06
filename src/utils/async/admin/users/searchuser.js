@@ -1,8 +1,8 @@
 "use server";
 import { cookies } from "next/headers";
-export async function getusers(page) {
+export const searchuser = async (query) => {
   const res = await fetch(
-    `https://dwelling-bright-server.vercel.app/api/v2/getusers?page=${page}`,
+    `https://dwelling-bright-server.vercel.app/api/v2/searchuser?query=${query}`,
     {
       method: "GET",
       headers: {
@@ -13,4 +13,4 @@ export async function getusers(page) {
   );
   if (!res.ok) throw new Error("Failed to fetch data");
   return await res.json();
-}
+};

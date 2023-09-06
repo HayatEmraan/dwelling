@@ -1,8 +1,9 @@
 "use server";
 import { cookies } from "next/headers";
-export async function getusers(page) {
+
+export async function blockuser(id) {
   const res = await fetch(
-    `https://dwelling-bright-server.vercel.app/api/v2/getusers?page=${page}`,
+    `https://dwelling-bright-server.vercel.app/api/v2/user/block?id=${id}`,
     {
       method: "GET",
       headers: {
