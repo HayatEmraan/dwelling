@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import UsersCard from "./UsersCard";
 import { useState } from "react";
 import { getusers } from "@/utils/async/admin/users/getusers";
@@ -11,6 +10,7 @@ const UsersList = ({ data }) => {
     const response = await getusers(page);
     setPageData(response);
   };
+
   return (
     <div className="mx-6">
       <div className="mt-4 lg:mt-6 -mb-4">
@@ -222,9 +222,9 @@ const UsersList = ({ data }) => {
                             <div className="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
                               <div className="flex items-center gap-x-3">
                                 <img
-                                  src={user?.image}
+                                  src={user?.photoURL}
                                   width={"30"}
-                                  height={"30"}
+                                  height={"25"}
                                   className="rounded-full"
                                   alt="users"
                                 />
