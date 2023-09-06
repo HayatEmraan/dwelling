@@ -11,9 +11,10 @@ const UsersList = ({ data }) => {
     const response = await getusers(page);
     setPageData(response);
   };
-   const handleInputChange = (event) => {
+   const handleInputChange = async (event) => {
      const value = event.target.value;
-     console.log(value)
+     const data = await searchuser(value);
+     setPageData(data)
    };
 
 
