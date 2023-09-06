@@ -1,6 +1,9 @@
 import Image from "next/image";
-import UsersCard from "./UsersCard"
-const UsersList = ({data}) => {
+import UsersCard from "./UsersCard";
+
+
+
+const UsersList = ({ data }) => {
   return (
     <div className="mx-6">
       <div className="mt-4 lg:mt-6 -mb-4">
@@ -24,8 +27,42 @@ const UsersList = ({data}) => {
                       All users, edit and more.
                     </p>
                   </div>
-                  <div>
-                    <div className="inline-flex gap-x-2">
+                   {/* filter and search */}
+                  <div className="grid lg:grid-cols-2 gap-3 lg:flex-end">
+                    {/* Search Bar */}
+                    <div className="grid gap-3 md:flex md:justify-between md:items-center border-gray-200 dark:border-gray-700">
+                      {/* Input */}
+                      <div className="sm:col-span-1">
+                        <label
+                          htmlFor="hs-as-table-product-review-search"
+                          className="sr-only"
+                        >
+                          Search
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            id="hs-as-table-product-review-search"
+                            name="hs-as-table-product-review-search"
+                            className="py-2 px-3 pl-11 block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+                            placeholder="Search"
+                          />
+                          <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none pl-4">
+                            <svg
+                              className="h-4 w-4 text-gray-400"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width={16}
+                              height={16}
+                              fill="currentColor"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="inline">
                       <div
                         className="hs-dropdown relative inline-block [--placement:bottom-right]"
                         data-hs-dropdown-auto-close="inside"
@@ -143,7 +180,7 @@ const UsersList = ({data}) => {
                           </span>
                         </div>
                       </th>
-                      
+
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
                           <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
@@ -179,18 +216,18 @@ const UsersList = ({data}) => {
                             <div className="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
                               <div className="flex items-center gap-x-3">
                                 <Image
-                                  src={user.image}
+                                  src={user?.image}
                                   width={"30"}
                                   height={"30"}
                                   className="rounded-full"
-                                  alt="Image Description"
+                                  alt="users"
                                 />
                                 <div className="grow">
                                   <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
-                                    {user.name}
+                                    {user?.name}
                                   </span>
                                   <span className="block text-sm text-gray-500">
-                                    {user.email}
+                                    {user?.email}
                                   </span>
                                 </div>
                               </div>
@@ -199,7 +236,7 @@ const UsersList = ({data}) => {
                           <td className="h-px w-72 whitespace-nowrap">
                             <div className="px-6 py-3">
                               <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
-                                Director
+                                {user?.role}
                               </span>
                               <span className="block text-sm text-gray-500">
                                 Human resources
@@ -208,37 +245,115 @@ const UsersList = ({data}) => {
                           </td>
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="px-6 py-3">
-                              <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                <svg
-                                  className="w-2.5 h-2.5"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width={16}
-                                  height={16}
-                                  fill="currentColor"
-                                  viewBox="0 0 16 16"
-                                >
-                                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                                </svg>
-                                Active
-                              </span>
+                              {user?.blocked === false && (
+                                <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                  <svg
+                                    className="w-2.5 h-2.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={16}
+                                    height={16}
+                                    fill="currentColor"
+                                    viewBox="0 0 16 16"
+                                  >
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                  </svg>
+                                  Active
+                                </span>
+                              )}
+                              {user?.blocked === true && (
+                                <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+                                  <svg
+                                    className="w-2.5 h-2.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={16}
+                                    height={16}
+                                    fill="currentColor"
+                                    viewBox="0 0 16 16"
+                                  >
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                  </svg>
+                                  Unblock
+                                </span>
+                              )}
                             </div>
                           </td>
-                          
+
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="px-6 py-3">
                               <span className="text-sm text-gray-500">
-                                28 Dec, 12:12
+                                {user?.createdAt}
                               </span>
                             </div>
                           </td>
+
                           <td className="h-px w-px whitespace-nowrap">
-                            <div className="px-6 py-1.5">
-                              <a
-                                className="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium"
-                                href="#"
-                              >
-                                Edit
-                              </a>
+                            <div className="px-6 py-1.5 flex justify-end">
+                              <div className="group inline-flex items-center divide-x divide-gray-300 border border-gray-300 bg-white shadow-sm rounded-md transition-all dark:divide-gray-700 dark:bg-slate-700 dark:border-gray-700">
+                                <div className="hs-dropdown relative inline-flex [--placement:bottom-right]">
+                                  <button
+                                    id="hs-table-dropdown-1"
+                                    type="button"
+                                    className="hs-dropdown-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-r-md text-gray-700 align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                                  >
+                                    <svg
+                                      className="w-4 h-4"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width={16}
+                                      height={16}
+                                      fill="currentColor"
+                                      viewBox="0 0 16 16"
+                                    >
+                                      <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                                    </svg>
+                                  </button>
+                                  <div
+                                    className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mt-2 divide-y divide-gray-200 min-w-[10rem] z-10 bg-white shadow-2xl rounded-lg p-2  dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700"
+                                    aria-labelledby="hs-table-dropdown-1"
+                                  >
+                                    <div className="py-2 first:pt-0 last:pb-0">
+                                      <span className="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-600">
+                                        Change Status
+                                      </span>
+                                      <a
+                                        className="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                        href="#"
+                                      >
+                                        <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                          <svg
+                                            className="w-3 h-3"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width={20}
+                                            height={20}
+                                            fill="currentColor"
+                                            viewBox="0 0 16 16"
+                                          >
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                          </svg>
+                                          Unblocked
+                                        </span>
+                                      </a>
+                                      <a
+                                        className="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                        href="#"
+                                      >
+                                        <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-green-200">
+                                          <svg
+                                            className="w-2.5 h-2.5"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width={16}
+                                            height={16}
+                                            fill="currentColor"
+                                            viewBox="0 0 16 16"
+                                          >
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                          </svg>
+                                          Blocked
+                                        </span>
+                                      </a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </td>
                         </tr>

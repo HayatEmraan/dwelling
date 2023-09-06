@@ -8,7 +8,6 @@ import Image from "next/image";
 import ImagesModal from "./ImagesModal";
 import { BsGrid3X3Gap } from "react-icons/bs";
 
-
 const ImagesCom = ({ data}) => {
   const [isMobile, setIsMobile] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -38,7 +37,6 @@ const ImagesCom = ({ data}) => {
       ) : (
         <div className="relative">
           <div className="grid grid-cols-2 gap-2">
-            {/* Column 1 */}
             <div className="overflow-hidden rounded-lg">
               <img
                 src={data?.images}
@@ -47,7 +45,6 @@ const ImagesCom = ({ data}) => {
               />
             </div>
 
-            {/* Column 2 */}
             <div className="grid grid-cols-2 gap-2">
               {data?.images.slice(1, 5).map((image, index) => (
                 <div key={index} className="overflow-hidden rounded-lg">
