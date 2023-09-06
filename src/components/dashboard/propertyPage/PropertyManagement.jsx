@@ -80,7 +80,7 @@ const PropertyManagement = () => {
                                                         Export
                                                     </button>
                                                     <div
-                                                        className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mt-2 divide-y divide-gray-200 min-w-[12rem] z-10 bg-white shadow-md rounded-lg p-2 mt-2 dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700"
+                                                        className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mt-2 divide-y divide-gray-200 min-w-[12rem] z-10 bg-white shadow-md rounded-lg p-2  dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700"
                                                         aria-labelledby="hs-as-table-table-export-dropdown"
                                                     >
                                                         <div className="py-2 first:pt-0 last:pb-0">
@@ -303,24 +303,24 @@ const PropertyManagement = () => {
                                                     </span>
                                                 </div>
                                             </th>
-                                            {/* <th scope="col" className="px-6 py-3 text-left">
-                                                <div className="flex items-center gap-x-2">
-                                                    <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                                                        Amount
-                                                    </span>
-                                                </div>
-                                            </th> */}
                                             <th scope="col" className="px-6 py-3 text-left">
                                                 <div className="flex items-center gap-x-2">
                                                     <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                                                        Property Status
+                                                    Property Status
                                                     </span>
                                                 </div>
                                             </th>
                                             <th scope="col" className="px-6 py-3 text-left">
                                                 <div className="flex items-center gap-x-2">
                                                     <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                                                        Action Property
+                                                    Action Property
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <th scope="col" className="px-6 py-3 text-left">
+                                                <div className="flex items-center gap-x-2">
+                                                    <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                                                        Check Property
                                                     </span>
                                                 </div>
                                             </th>
@@ -545,7 +545,7 @@ const PropertyManagement = () => {
                                                 </div>
                                             </td>
                                             <td className="h-px w-px whitespace-nowrap">
-                                                <div className=" py-1.5 flex justify-center">
+                                                <div className=" py-1.5  flex px-6">
                                                     <div className="group inline-flex items-center divide-x divide-gray-300 border border-gray-300 bg-white shadow-sm rounded-md transition-all dark:divide-gray-700 dark:bg-slate-700 dark:border-gray-700">
                                                         <div className="hs-tooltip inline-block">
                                                             <a

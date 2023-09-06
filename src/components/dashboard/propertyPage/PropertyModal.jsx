@@ -86,10 +86,10 @@ const PropertyModal = async () => {
               <div className='border-2 my-5 mx-10 border-gray-200 justify-between items-center'>
                 <h1 className='pl-8 p-2 font-semibold  text-gray-600 bg-gray-200'>Booking Confirmation Details</h1>
 
-                <div className='flex gap-2 transition-all lg:gap-6 justify-center mt-8'>
-                <img className='rounded-lg duration-300 hover:blur-none hover:scale-110 w-36 lg:w-56 my-4' src={img} alt="" />
-                <img className='rounded-lg duration-300 hover:scale-110 w-36 lg:w-56 my-4' src={img2} alt="" />
-                <img className='rounded-lg duration-300 hover:scale-110 w-36 lg:w-56 my-4' src={img3} alt="" />
+                <div className='flex flex-col lg:flex-row gap-2 transition-all lg:gap-6 justify-center items-center mt-8'>
+                <img className='rounded-lg duration-300 hover:blur-none hover:scale-110 w-9/12 lg:w-56 my-4' src={img} alt="" />
+                <img className='rounded-lg duration-300 hidden lg:block hover:scale-110 w-36 lg:w-56 my-4' src={img2} alt="" />
+                <img className='rounded-lg hidden lg:block duration-300 hover:scale-110 w-36 lg:w-56 my-4' src={img3} alt="" />
                 </div>
                 <h1 className='text-center text-xs italic text-gray-400'>photo: View of {resortName}</h1>
 
