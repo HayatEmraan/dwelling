@@ -1,9 +1,16 @@
-import Image from "next/image";
+"use client";
 import UsersCard from "./UsersCard";
-
-
+import { useState } from "react";
+import { getusers } from "@/utils/async/admin/users/getusers";
 
 const UsersList = ({ data }) => {
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageData, setPageData] = useState(data);
+  const handlePageNumber = async (page) => {
+    const response = await getusers(page);
+    setPageData(response);
+  };
+
   return (
     <div className="mx-6">
       <div className="mt-4 lg:mt-6 -mb-4">
@@ -27,10 +34,9 @@ const UsersList = ({ data }) => {
                       All users, edit and more.
                     </p>
                   </div>
-                   {/* filter and search */}
-                  <div className="inline-flex">
-                    {/* Search Bar */}
-                    <div className="lg:mr-3 md:flex md:justify-between md:items-center border-gray-200 dark:border-gray-700">
+                  {/* filter and search */}
+                  <div className="inline-flex gap-x-4 items-center">
+                    <div className="grid gap-3 md:flex md:justify-between md:items-center border-gray-200 dark:border-gray-700">
                       {/* Input */}
                       <div className="sm:col-span-1">
                         <label
@@ -194,7 +200,7 @@ const UsersList = ({ data }) => {
                   <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                     {/* data mapping */}
 
-                    {data?.map((user, index) => {
+                    {pageData?.data?.map((user, index) => {
                       return (
                         <tr key={index}>
                           <td className="h-px w-px whitespace-nowrap">
@@ -215,10 +221,10 @@ const UsersList = ({ data }) => {
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
                               <div className="flex items-center gap-x-3">
-                                <Image
-                                  src={user?.image}
+                                <img
+                                  src={user?.photoURL}
                                   width={"30"}
-                                  height={"30"}
+                                  height={"25"}
                                   className="rounded-full"
                                   alt="users"
                                 />
@@ -235,11 +241,8 @@ const UsersList = ({ data }) => {
                           </td>
                           <td className="h-px w-72 whitespace-nowrap">
                             <div className="px-6 py-3">
-                              <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
+                              <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200 uppercase">
                                 {user?.role}
-                              </span>
-                              <span className="block text-sm text-gray-500">
-                                Human resources
                               </span>
                             </div>
                           </td>
@@ -272,7 +275,7 @@ const UsersList = ({ data }) => {
                                   >
                                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                   </svg>
-                                  blocked
+                                  Blocked
                                 </span>
                               )}
                             </div>
@@ -285,7 +288,6 @@ const UsersList = ({ data }) => {
                               </span>
                             </div>
                           </td>
-
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="px-6 py-1.5 flex justify-end">
                               <div className="group inline-flex items-center divide-x divide-gray-300 border border-gray-300 bg-white shadow-sm rounded-md transition-all dark:divide-gray-700 dark:bg-slate-700 dark:border-gray-700">
@@ -367,15 +369,21 @@ const UsersList = ({ data }) => {
                   <div>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                       <span className="font-semibold text-gray-800 dark:text-gray-200">
-                        6
+                        {pageData?.startView}
                       </span>{" "}
-                      results
+                      results of {pageData?.totalView} entries
                     </p>
                   </div>
                   <div>
                     <div className="inline-flex gap-x-2">
                       <button
                         type="button"
+                        onClick={() => {
+                          if (pageNumber > 1) {
+                            setPageNumber(pageNumber - 1);
+                            handlePageNumber(pageNumber - 1);
+                          }
+                        }}
                         className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                       >
                         <svg
@@ -395,7 +403,13 @@ const UsersList = ({ data }) => {
                       </button>
                       <button
                         type="button"
-                        className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                        onClick={() => {
+                          if (pageNumber < pageData?.totalPages) {
+                            setPageNumber(pageNumber + 1);
+                            handlePageNumber(pageNumber + 1);
+                          }
+                        }}
+                        className="py-2 px-3  inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                       >
                         Next
                         <svg
