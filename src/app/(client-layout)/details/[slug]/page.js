@@ -1,3 +1,5 @@
+
+import SearchBeds from "@/components/SearchScheduler/SearchBeds";
 import DetailsFacilities from "@/components/details/DetailsFacilities/DetailsFacilities";
 import Header from "@/components/details/Header/Header";
 import HouseRules from "@/components/details/HouseRules/HouseRules";
@@ -9,7 +11,8 @@ import Reviews from "@/components/details/Reviews/Reviews";
 import SingleRoomDetails from "@/components/details/SingleRoomDetails/SingleRoomDetails";
 import DetailsMapIndex from "@/components/details/detailMap";
 
-const RoomDetails = async () => {
+const RoomDetails = async ({ params}) => {
+  const { slug } = params;
   const res = await fetch(
     `https://dwelling-bright-server.vercel.app/api/v1/getdetails/${slug}`
   );
@@ -26,21 +29,22 @@ const RoomDetails = async () => {
       {/* Facilities */}
       <div className="my-5">
         <div className=" my-5">
-          <h2 className="font-bold text-xl">Facilities of Saint Martin Ltd.</h2>
+          <h2 className="font-bold text-xl">Facilities of {data?.data.name}</h2>
+          
         </div>
         {/* Most Popular */}
         <MostPopularFacilities data={data?.data}></MostPopularFacilities>
         {/* details Facilites */}
-        <DetailsFacilities data={data}></DetailsFacilities>
+        <DetailsFacilities data={data?.data}></DetailsFacilities>
         {/* House Rules */}
-        <HouseRules data={data}></HouseRules>
+        <HouseRules data={data?.data}></HouseRules>
       </div>
 
       {/* reviews */}
       <Reviews
         reviews={<ReviewsComp />}
         reviewsModal={<ReviewsModal />}
-        reviewsLength={data1?.data?.reviews?.length}
+        reviewsLength={data?.data?.reviews?.length}
       />
 
       {/* details map  */}

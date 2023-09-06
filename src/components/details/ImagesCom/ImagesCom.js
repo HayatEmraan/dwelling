@@ -5,19 +5,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
-import Modal from "react-modal";
 import ImagesModal from "./ImagesModal";
 import { BsGrid3X3Gap } from "react-icons/bs";
-const customStyles = {
-  content: {
-    top: "0%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
+
 
 const ImagesCom = ({ data}) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -51,7 +41,7 @@ const ImagesCom = ({ data}) => {
             {/* Column 1 */}
             <div className="overflow-hidden rounded-lg">
               <img
-                src={data?.data.images}
+                src={data?.images}
                 alt="Image 0"
                 className="w-full h-full object-cover"
               />
@@ -59,7 +49,7 @@ const ImagesCom = ({ data}) => {
 
             {/* Column 2 */}
             <div className="grid grid-cols-2 gap-2">
-              {data?.data.images.slice(1, 5).map((image, index) => (
+              {data?.images.slice(1, 5).map((image, index) => (
                 <div key={index} className="overflow-hidden rounded-lg">
                   <img
                     src={image}
@@ -70,7 +60,7 @@ const ImagesCom = ({ data}) => {
               ))}
             </div>
           </div>
-          {data?.data.images.length > 5 && (
+          {data?.images.length > 5 && (
             <div className="flex justify-center absolute bottom-2 right-5">
               <button
                 className="flex items-center bg-white border border-gray-950 rounded px-5 py-1 show-all-button"
@@ -88,26 +78,6 @@ const ImagesCom = ({ data}) => {
         visible={showModal}
         setShowModal={setShowModal}
       ></ImagesModal>
-      {/* <Modal
-        isOpen={modalIsOpen}
-        
-        onRequestClose={modalIsClose}
-        style={customStyles}
-      >
-        <div className="modal-image-grid">
-          {data.images.map((image, index) => (
-            <div key={index} className="modal-image-grid-item p-5">
-              <Image
-                src={image}
-                alt={`Image ${index}`}
-                width={500}
-                height={400}
-              />
-            </div>
-          ))}
-          <button onClick={() => setModalIsClose(true)}>close</button>
-        </div>
-      </Modal> */}
     </div>
   );
 };

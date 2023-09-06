@@ -33,6 +33,31 @@ const SingleRoomDetails = ({ data }) => {
   return (
     <div className="grid gap-5 lg:grid-cols-3">
       <div className="lg:col-span-2">
+        <div className="mb-2 lg:flex items-center justify-between">
+          <div>
+            <h2 className="font-bold text-xl mb-2">
+              {data?.name} hosted by {data.author.name}
+            </h2>
+            <div>
+              <span>
+                {data.capacity.adults} Adults, {data.capacity.children} Children , 
+                {data.capacity.pets} Pets, {data.capacity.infants} Infants
+              </span>
+            </div>
+            {/* {data.capacity.map((item, index) => (
+            <p key={index}>{item}</p>
+          ))} */}
+          </div>
+          <div className="lg:mr-10">
+            <Image
+              className="rounded-full"
+              src={data?.author.photo}
+              width={50}
+              height={50}
+            ></Image>
+          </div>
+        </div>
+        <hr className="mb-3"/>
         <div>
           <p>{data.description}</p>
         </div>
@@ -70,7 +95,7 @@ const SingleRoomDetails = ({ data }) => {
                   <h2>
                     <button onClick={togglePicker}>CheckIn</button>
                   </h2>
-                  <div className="absolute"> 
+                  <div className="absolute">
                     {showPicker && (
                       <DatePicker handleSelect={handleDateSelect} />
                     )}

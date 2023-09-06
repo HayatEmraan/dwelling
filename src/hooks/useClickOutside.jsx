@@ -1,3 +1,4 @@
+"use client"
 import { userAppStore } from "@/store/store";
 import { useEffect, RefObject, useRef } from "react";
 

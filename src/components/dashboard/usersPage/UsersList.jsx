@@ -1,90 +1,6 @@
 import Image from "next/image";
-import UsersCard from "./UsersCard";
-
-const users = [
-  {
-    userId: 1,
-    name: "Harold Gonzaled",
-    image:
-      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
-    phone: "+97524621",
-    email: "harold@gon.com",
-    location: "Florida, United State",
-    status: "active",
-  },
-  {
-    userId: 2,
-    name: "Harold Gonzaled",
-    image:
-      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
-    phone: "+97524621",
-    email: "harold@gon.com",
-    location: "Florida, United State",
-    status: "active",
-  },
-  {
-    userId: 3,
-    name: "Harold Gonzaled",
-    image:
-      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
-    phone: "+97524621",
-    email: "harold@gon.com",
-    location: "Florida, United State",
-    status: "active",
-  },
-  {
-    userId: 4,
-    name: "Harold Gonzaled",
-    image:
-      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
-    phone: "+97524621",
-    email: "harold@gon.com",
-    location: "Florida, United State",
-    status: "active",
-  },
-  {
-    userId: 5,
-    name: "Harold Gonzaled",
-    image:
-      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
-    phone: "+97524621",
-    email: "harold@gon.com",
-    location: "Florida, United State",
-    status: "active",
-  },
-  {
-    userId: 6,
-    name: "Harold Gonzaled",
-    image:
-      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
-    phone: "+97524621",
-    email: "harold@gon.com",
-    location: "Florida, United State",
-    status: "active",
-  },
-  {
-    userId: 7,
-    name: "Harold Gonzaled",
-    image:
-      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
-    phone: "+97524621",
-    email: "harold@gon.com",
-    location: "Florida, United State",
-    status: "active",
-  },
-  {
-    userId: 8,
-    name: "Harold Gonzaled",
-    image:
-      "https://dashui.codescandy.com/dashuipro/assets/images/avatar/avatar-2.jpg",
-    phone: "+97524621",
-    email: "harold@gon.com",
-    location: "Florida, United State",
-    status: "active",
-  },
-];
-
-const UsersList = () => {
+import UsersCard from "./UsersCard"
+const UsersList = ({data}) => {
   return (
     <div className="mx-6">
       <div className="mt-4 lg:mt-6 -mb-4">
@@ -227,13 +143,7 @@ const UsersList = () => {
                           </span>
                         </div>
                       </th>
-                      <th scope="col" className="px-6 py-3 text-left">
-                        <div className="flex items-center gap-x-2">
-                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                            Portfolio
-                          </span>
-                        </div>
-                      </th>
+                      
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
                           <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
@@ -247,7 +157,7 @@ const UsersList = () => {
                   <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                     {/* data mapping */}
 
-                    {users.map((user, index) => {
+                    {data?.map((user, index) => {
                       return (
                         <tr key={index}>
                           <td className="h-px w-px whitespace-nowrap">
@@ -313,25 +223,7 @@ const UsersList = () => {
                               </span>
                             </div>
                           </td>
-                          <td className="h-px w-px whitespace-nowrap">
-                            <div className="px-6 py-3">
-                              <div className="flex items-center gap-x-3">
-                                <span className="text-xs text-gray-500">
-                                  1/5
-                                </span>
-                                <div className="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700">
-                                  <div
-                                    className="flex flex-col justify-center overflow-hidden bg-gray-800 dark:bg-gray-200"
-                                    role="progressbar"
-                                    style={{ width: "25%" }}
-                                    aria-valuenow={25}
-                                    aria-valuemin={0}
-                                    aria-valuemax={100}
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </td>
+                          
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="px-6 py-3">
                               <span className="text-sm text-gray-500">
