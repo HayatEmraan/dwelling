@@ -46,7 +46,7 @@ const ImagesCom = ({ data}) => {
             </div>
 
             <div className="grid grid-cols-2 gap-2">
-              {data.images?.slice(1, 5).map((image, index) => (
+              {data?.images.slice(1, 5).map((image, index) => (
                 <div key={index} className="overflow-hidden rounded-lg">
                   <img
                     src={image}
@@ -57,13 +57,13 @@ const ImagesCom = ({ data}) => {
               ))}
             </div>
           </div>
-          {data?.images?.length > 5 && (
+          {data?.images.length > 5 && (
             <div className="flex justify-center absolute bottom-2 right-5">
               <button
                 className="flex items-center bg-white border border-gray-950 rounded px-5 py-1 show-all-button"
                 onClick={() => setShowModal(true)}
               >
-                <BsGrid3X3Gap  className="mr-2"/>
+                <BsGrid3X3Gap className="mr-2" />
                 Show all photos
               </button>
             </div>

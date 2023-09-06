@@ -37,8 +37,13 @@ const HouseRules = ({ data }) => {
           </div>
           <div className="flex col-span-2">
             {data.payment_methods.map((pay, index) => (
-              <div key={index}>
-                <p>{pay.providerName}</p>
+              <div key={index} className="lg:flex lg:pr-3">
+                <Image
+                  src={pay.image}
+                  width={30}
+                  height={30}
+                  alt={pay.providerName}
+                />
               </div>
             ))}
           </div>

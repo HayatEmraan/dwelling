@@ -1,36 +1,63 @@
 "use client";
 import Image from "next/image";
-
 import { AiFillFlag } from "react-icons/ai";
-import { DateRange } from "react-date-range";
 import React, { useState } from "react";
-
-import "react-date-range/dist/styles.css"; // Main style file
-import "react-date-range/dist/theme/default.css";
 import ReserveButton from "../ReserveButton/ReserveButton";
+import DatePicker from "./DatePicker";
+
 
 const SingleRoomDetails = ({ data }) => {
-  const [dateRange, setDateRange] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: "selection",
-    },
-  ]);
-  const [activePicker, setActivePicker] = useState(null);
+  
+  const [checkInDate, setCheckInDate] = useState(null);
+  const [checkOutDate, setCheckOutDate] = useState(null);
+  const [showPicker, setShowPicker] = useState(false);
+  
 
-  const handleDateRangeChange = (ranges) => {
-    setDateRange([ranges.selection]);
-    setActivePicker(null);
+  const handleDateSelect = (dateRange) => {
+    if (!checkInDate) {
+      setCheckInDate(dateRange.startDate);
+      setShowPicker(true); 
+    } else if (!checkOutDate) {
+      setCheckOutDate(dateRange.endDate);
+      setShowPicker(false); 
+    } else {
+      setCheckInDate(null);
+      setCheckOutDate(null);
+    }
   };
 
-  const handlePickerOpen = (picker) => {
-    setActivePicker(picker);
+  const togglePicker = () => {
+    setShowPicker(!showPicker);
   };
 
   return (
     <div className="grid gap-5 lg:grid-cols-3">
       <div className="lg:col-span-2">
+        <div className="mb-2 lg:flex items-center justify-between">
+          <div>
+            <h2 className="font-bold text-xl mb-2">
+              {data?.name} hosted by {data.author.name}
+            </h2>
+            <div>
+              <span>
+                {data.capacity.adults} Adults, {data.capacity.children} Children , 
+                {data.capacity.pets} Pets, {data.capacity.infants} Infants
+              </span>
+            </div>
+            {/* {data.capacity.map((item, index) => (
+            <p key={index}>{item}</p>
+          ))} */}
+          </div>
+          <div className="lg:mr-10">
+            <Image
+              className="rounded-full"
+              src={data?.author.photo}
+              width={50}
+              height={50}
+            ></Image>
+          </div>
+        </div>
+        <hr className="mb-3"/>
         <div>
           <p>{data.description}</p>
         </div>
@@ -40,7 +67,7 @@ const SingleRoomDetails = ({ data }) => {
         <div>
           <h2 className="font-bold">Most Popular Facilites</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
-            {data?.popular_facilities?.map((facilities, index) => (
+            {data.popular_facilities?.map((facilities, index) => (
               <div key={index} className="flex items-center">
                 <Image
                   className="mr-2"
@@ -60,50 +87,27 @@ const SingleRoomDetails = ({ data }) => {
           <h5 className="flex items-center my-3">
             <span className="font-bold mr-2">${data.price}</span>night
           </h5>
+
           <div>
             <div className="border rounded-xl">
               <div className="grid grid-cols-2 text-center">
-                <div className="border-r border-b p-2">
-                  <p>
-                    <button onClick={() => handlePickerOpen("checkin")}>
-                      Check-in
-                    </button>
-                  </p>
-                  <p>
-                    <small>
-                      {" "}
-                      {dateRange[0].startDate.toDateString()}
-                    </small>
-                  </p>
+                <div className="border-r border-b p-2 relative">
+                  <h2>
+                    <button onClick={togglePicker}>CheckIn</button>
+                  </h2>
+                  <div className="absolute">
+                    {showPicker && (
+                      <DatePicker handleSelect={handleDateSelect} />
+                    )}
+                  </div>
+                  {checkInDate && <small>{checkInDate.toDateString()}</small>}
                 </div>
                 <div className="border-b p-2">
-                  <p>
-                    <button onClick={() => handlePickerOpen("checkout")}>
-                      Check-out
-                    </button>
-                  </p>
-                  <p>
-                    <small>
-                      {" "}
-                      {dateRange[0].endDate.toDateString()}
-                    </small>
-                  </p>
+                  <h2>
+                    <button onClick={togglePicker}>CheckOut</button>
+                  </h2>
+                  {checkOutDate && <small>{checkOutDate.toDateString()}</small>}
                 </div>
-                {activePicker && (
-                  <DateRange
-                    ranges={dateRange}
-                    onChange={handleDateRangeChange}
-                    months={2}
-                    direction="horizontal"
-                    showDateDisplay={false}
-                    shownDate={
-                      activePicker === "checkin"
-                        ? dateRange[0].startDate
-                        : dateRange[0].endDate
-                    }
-                    onClose={() => setActivePicker(null)}
-                  />
-                )}
               </div>
 
               <div className="flex justify-between p-2">
@@ -150,8 +154,6 @@ const SingleRoomDetails = ({ data }) => {
         <div className="my-3 justify-center flex items-center">
           <AiFillFlag className="mr-2" />
           <small className="underline">Report this listing</small>
-
-          
         </div>
       </div>
     </div>
