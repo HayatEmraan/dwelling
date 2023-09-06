@@ -1,5 +1,8 @@
+"use client";
 import Image from "next/image";
 import UsersCard from "./UsersCard";
+import { useState } from "react";
+import { getusers } from "@/utils/async/admin/users/getusers";
 
 const users = [
   {
@@ -85,6 +88,12 @@ const users = [
 ];
 
 const UsersList = ({ data }) => {
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageData, setPageData] = useState(data);
+  const handlePageNumber = async (page) => {
+    const response = await getusers(page);
+    setPageData(response);
+  };
   return (
     <div className="mx-6">
       <div className="mt-4 lg:mt-6 -mb-4">
@@ -360,15 +369,21 @@ const UsersList = ({ data }) => {
                   <div>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                       <span className="font-semibold text-gray-800 dark:text-gray-200">
-                        6
+                        {pageData?.startView}
                       </span>{" "}
-                      results
+                      results of {pageData?.totalView} entries
                     </p>
                   </div>
                   <div>
                     <div className="inline-flex gap-x-2">
                       <button
                         type="button"
+                        onClick={() => {
+                          if (pageNumber > 1) {
+                            setPageNumber(pageNumber - 1);
+                            handlePageNumber(pageNumber - 1);
+                          }
+                        }}
                         className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                       >
                         <svg
@@ -388,7 +403,13 @@ const UsersList = ({ data }) => {
                       </button>
                       <button
                         type="button"
-                        className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                        onClick={() => {
+                          if (pageNumber < pageData?.totalPages) {
+                            setPageNumber(pageNumber + 1);
+                            handlePageNumber(pageNumber + 1);
+                          }
+                        }}
+                        className="py-2 px-3  inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                       >
                         Next
                         <svg
