@@ -10,6 +10,11 @@ const UsersList = ({ data }) => {
     const response = await getusers(page);
     setPageData(response);
   };
+   const handleInputChange = (event) => {
+     const value = event.target.value;
+     console.log(value)
+   };
+
 
   return (
     <div className="mx-6">
@@ -52,6 +57,7 @@ const UsersList = ({ data }) => {
                             name="hs-as-table-product-review-search"
                             className="py-2 px-3 pl-11 block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                             placeholder="Search"
+                            onChange={handleInputChange}
                           />
                           <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none pl-4">
                             <svg
