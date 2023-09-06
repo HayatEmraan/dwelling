@@ -2,6 +2,7 @@
 import UsersCard from "./UsersCard";
 import { useState } from "react";
 import { getusers } from "@/utils/async/admin/users/getusers";
+import { searchuser } from "@/utils/async/admin/users/searchuser";
 
 const UsersList = ({ data }) => {
   const [pageNumber, setPageNumber] = useState(1);
