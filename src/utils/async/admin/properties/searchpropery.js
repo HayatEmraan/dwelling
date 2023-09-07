@@ -1,12 +1,11 @@
 "use server";
 import { cookies } from "next/headers";
 
-// id - dicision (approved or declined)
-export async function propertyupdate(id, decision) {
+export async function searchpropery(query) {
   const res = await fetch(
-    `https://dwelling-bright-server.vercel.app/api/v2/property/update?id=${id}&decision=${decision}`,
+    `https://dwelling-bright-server.vercel.app/api/v2/searchproperty?query=${query}`,
     {
-      method: "GET",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${cookies().get("accessToken")?.value}`,
