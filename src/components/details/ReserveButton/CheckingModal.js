@@ -34,6 +34,9 @@ const CheckingModal = async () => {
   const endD = new Date(endDate)
   const paymentDetails = data?.data.payment_methods[0].providerName
   const paymentIMG = data?.data.payment_methods[0].image
+  const authorName = data?.data.author.name
+  const authorPhoto = data?.data.author.photo
+
 
   const options = {
     year: 'numeric',
@@ -112,7 +115,7 @@ const CheckingModal = async () => {
                 </div>
 
                 {/* Location card  */}
-                <div className='flex flex-between'>
+                <div className='flex justify-between '>
                 <div className='mt-8 mx-8'>
                   <h1 className='font-bold'>Location Info:</h1>
                   <div>
@@ -122,13 +125,15 @@ const CheckingModal = async () => {
                     <h1 className='mt-1'>Region: <span className='font-semibold'>{region}</span></h1>
                   </div>
                 </div>
-                <div className='mt-8 mx-8'>
-                  <h1 className='font-bold'>Location Info:</h1>
-                  <div>
-                    <h1>Resort Name: <span className='font-semibold'>{resortName}</span></h1>
-                    <h1 className='mt-1'>City: Hello<span className=' font-semibold'>{city}</span></h1>
-                    <h1 className='mt-1'>Country: <span className=' font-semibold'>{country}</span></h1>
-                    <h1 className='mt-1'>Region: <span className='font-semibold'>{region}</span></h1>
+                <div className='mt-8 mx-8 flex flex-col justify-center items-center'>
+                  <h1 className='font-bold'>Author Info:</h1>
+                  <div className='flex flex-col gap-2 justify-center items-center'>
+                    <img className='rounded-full w-2/5 my-2' src={authorPhoto} alt="" />
+                    <div className='flex flex-col justify-center items-center'>
+                    <h1>Name: </h1>
+                    <span className='font-semibold'>{authorName}</span>
+                    </div>
+                    
                   </div>
                 </div>
                 </div>
