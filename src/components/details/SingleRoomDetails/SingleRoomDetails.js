@@ -1,17 +1,10 @@
 "use client";
 import Image from "next/image";
 import { AiFillFlag } from "react-icons/ai";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReserveButton from "../ReserveButton/ReserveButton";
 import DatePicker from "./DatePicker";
 
-
-
-
-
-export let checkIn ;
-export let checkOut ;
-console.log(checkIn)
 const SingleRoomDetails = ({ data, reviewAndReservation }) => {
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
@@ -20,20 +13,15 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
   const handleDateSelect = (dateRange) => {
     if (!checkInDate) {
       setCheckInDate(dateRange.startDate);
-      checkIn = dateRange.startDate;
       setShowPicker(true);
     } else if (!checkOutDate) {
       setCheckOutDate(dateRange.endDate);
-      checkOut= dateRange.endDate;
       setShowPicker(false);
     } else {
       setCheckInDate(null);
       setCheckOutDate(null);
     }
   };
-
-
-
 
   const togglePicker = () => {
     setShowPicker(!showPicker);
@@ -111,12 +99,12 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
                   </div>
                   {checkInDate && <small>{checkInDate.toDateString()}</small>}
                 </div>
-                <div className="border-b p-2">
+                {/* <div className="border-b p-2">
                   <h2>
                     <button onClick={togglePicker}>CheckOut</button>
                   </h2>
                   {checkOutDate && <small>{checkOutDate.toDateString()}</small>}
-                </div>
+                </div> */}
               </div>
 
               <div className="flex justify-between p-2">
@@ -135,7 +123,13 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
             </div>
           </div>
           <div>
-            <ReserveButton room={data} checkInDate={checkInDate} checkOutDate={checkOutDate}>{reviewAndReservation}</ReserveButton>
+            <ReserveButton
+              room={data}
+              checkInDate={checkInDate}
+              checkOutDate={checkOutDate}
+            >
+              {reviewAndReservation}
+            </ReserveButton>
             <p>You won't be changed yet</p>
           </div>
 
