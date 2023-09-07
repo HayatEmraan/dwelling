@@ -125,7 +125,7 @@ const SingleRoomDetails = ({ data }) => {
               </div>
             </div>
           </div>
-          <div className="text-center">
+          <div>
             <ReserveButton room={data} />
             <p>You won't be changed yet</p>
           </div>
