@@ -4,7 +4,7 @@ import React from 'react';
 const GuestPage = () => {
     return (
         <div>
-            <h4 className='text-4xl  font-bold'>GuestPage</h4>
+            <h4 className='text-3xl pb-4 font-bold sm:px-6 mt-5'>Invoice GuestPage</h4>
             <InvoiceGuest></InvoiceGuest>
         </div>
     );

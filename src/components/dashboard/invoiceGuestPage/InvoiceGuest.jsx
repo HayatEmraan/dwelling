@@ -1,7 +1,8 @@
 import React from 'react';
 import InvoiceLatestPage from '../invoicePage/InvoiceLatestPage';
 // import Barchart from './Barchart';
-import Chart from './Chart';
+// import Chart from './Chart';
+import ChartGuest from './ChartGuest';
 
 
 
@@ -10,7 +11,8 @@ import Chart from './Chart';
 const InvoiceGuest = () => {
     return (
         <div>
-         <Chart></Chart>
+            <ChartGuest></ChartGuest>
+         {/* <Chart></Chart> */}
             <InvoiceLatestPage></InvoiceLatestPage>
         </div>
     );

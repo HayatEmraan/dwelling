@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 // import React, { PureComponent } from 'react';
 import { PieChart, Pie, Tooltip, ResponsiveContainer } from "recharts";
