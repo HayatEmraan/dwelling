@@ -1,7 +1,7 @@
 "use client";
+
 import stripeCheckout from "@/utils/async/stripeCheckout";
 import React from "react";
-import CheckingModal from "./CheckingModal";
 
 
 const ReserveButton = ({ room, children, checkInDate, checkOutDate }) => {

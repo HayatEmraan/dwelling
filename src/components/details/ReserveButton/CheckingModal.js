@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import { checkIn } from "../SingleRoomDetails/SingleRoomDetails";
+import ReviewDates from "./startdate";
 
-const CheckingModal = async ({checkInDate, checkOutDate}) => {
+const CheckingModal = async ({ checkInDate, checkOutDate }) => {
   const res = await fetch(
     "https://dwelling-bright-server.vercel.app/api/v1/getdetails/64f1d62a42ce44beb216c160",
     {
@@ -10,7 +10,6 @@ const CheckingModal = async ({checkInDate, checkOutDate}) => {
     }
   );
   const data = await res.json();
-
 
   const resortName = data?.data?.name;
   const city = data?.data?.location?.city;
@@ -107,16 +106,7 @@ const CheckingModal = async ({checkInDate, checkOutDate}) => {
 
                 <hr className="my-8 mx-8" />
 
-                <div className=" flex justify-between mx-8">
-                  <h1 className="font-bold">
-                    Check In Date: <br />{" "}
-                    <span className="font-light">{start}</span>{" "}
-                  </h1>
-                  <h1 className="font-bold">
-                    Check Out Date: <br />{" "}
-                    <span className="font-light">{end}</span>{" "}
-                  </h1>
-                </div>
+                <ReviewDates />
 
                 {/* People Info  */}
 
@@ -160,7 +150,6 @@ const CheckingModal = async ({checkInDate, checkOutDate}) => {
                         <h1 className="text-xs italic">Name: </h1>
                         <span className='font-semibold text-xs'>{authorName}</span>
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -180,7 +169,6 @@ const CheckingModal = async ({checkInDate, checkOutDate}) => {
                           />
                         </div>
                       ))}
-
                     </div>
                   </div>
                 </div>
