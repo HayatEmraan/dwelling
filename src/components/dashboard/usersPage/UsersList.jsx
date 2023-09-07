@@ -3,6 +3,9 @@ import UsersCard from "./UsersCard";
 import { useState } from "react";
 import { getusers } from "@/utils/async/admin/users/getusers";
 import { searchuser } from "@/utils/async/admin/users/searchuser";
+import { usersfilter } from "@/utils/async/admin/users/userfilter";
+import { updateuser } from "@/utils/async/admin/users/updateuser";
+import { blockuser } from "@/utils/async/admin/users/blockuser";
 
 const UsersList = ({ data }) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -15,7 +18,31 @@ const UsersList = ({ data }) => {
      const value = event.target.value;
      const data = await searchuser(value);
      setPageData(data)
-   };
+  };
+  const handleFilterAdmin =async () => {
+    const filteredData =await usersfilter("admin");
+    setPageData(filteredData);
+  };
+  const handleFilterHost =async () => {
+    const filteredData =await usersfilter("host");
+    setPageData(filteredData);
+  };
+  const handleFilterGuest =async () => {
+    const filteredData =await usersfilter("user");
+    setPageData(filteredData);
+  };
+  const handleMakeAdmin =async () => {
+    const filteredData =await updateuser("id","admin");
+    console.log(filteredData);
+  };
+  const handleMakeHost =async () => {
+    const filteredData =await updateuser("id","host");
+    setPageData(filteredData);
+  };
+  const handleBlockUser =async () => {
+    const filteredData =await blockuser("id");
+    console.log(filteredData);
+  };
 
 
   return (
@@ -129,9 +156,28 @@ const UsersList = ({ data }) => {
                                 className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                                 id="hs-as-filters-dropdown-published"
                               />
-                              <span className="ml-3 text-sm text-gray-800 dark:text-gray-200">
-                                Hosts
-                              </span>
+                              <button
+                                className="ml-3 text-sm text-gray-800 dark:text-gray-200"
+                                onClick={handleFilterAdmin}
+                              >
+                                Admin
+                              </button>
+                            </label>
+                            <label
+                              htmlFor="hs-as-filters-dropdown-published"
+                              className="flex py-2.5 px-3"
+                            >
+                              <input
+                                type="checkbox"
+                                className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                                id="hs-as-filters-dropdown-published"
+                              />
+                              <button
+                                className="ml-3 text-sm text-gray-800 dark:text-gray-200"
+                                onClick={handleFilterGuest}
+                              >
+                                Guest
+                              </button>
                             </label>
                             <label
                               htmlFor="hs-as-filters-dropdown-pending"
@@ -142,9 +188,12 @@ const UsersList = ({ data }) => {
                                 className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                                 id="hs-as-filters-dropdown-pending"
                               />
-                              <span className="ml-3 text-sm text-gray-800 dark:text-gray-200">
-                                Guests
-                              </span>
+                              <button
+                                onClick={handleFilterHost}
+                                className="ml-3 text-sm text-gray-800 dark:text-gray-200"
+                              >
+                                Host
+                              </button>
                             </label>
                           </div>
                         </div>
@@ -324,11 +373,57 @@ const UsersList = ({ data }) => {
                                       <span className="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-600">
                                         Change Status
                                       </span>
+                                      {user?.blocked === true && (
+                                        <a
+                                          className="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                          href="#"
+                                        >
+                                          <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                            <svg
+                                              className="w-3 h-3"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                              width={20}
+                                              height={20}
+                                              fill="currentColor"
+                                              viewBox="0 0 16 16"
+                                            >
+                                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                            </svg>
+                                            Unblocked
+                                          </span>
+                                        </a>
+                                      )}
+                                      {user?.blocked === false && (
+                                        <a
+                                          className="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                          href="#"
+                                        >
+                                          <button
+                                            onClick={handleBlockUser}
+                                            className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-green-200"
+                                          >
+                                            <svg
+                                              className="w-2.5 h-2.5"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                              width={16}
+                                              height={16}
+                                              fill="currentColor"
+                                              viewBox="0 0 16 16"
+                                            >
+                                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                            </svg>
+                                            Blocked
+                                          </button>
+                                        </a>
+                                      )}
                                       <a
                                         className="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                                         href="#"
                                       >
-                                        <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                        <button
+                                          onClick={handleMakeAdmin}
+                                          className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-green-200"
+                                        >
                                           <svg
                                             className="w-3 h-3"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -339,26 +434,29 @@ const UsersList = ({ data }) => {
                                           >
                                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                           </svg>
-                                          Unblocked
-                                        </span>
+                                          Make Admin
+                                        </button>
                                       </a>
                                       <a
                                         className="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                                         href="#"
                                       >
-                                        <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-green-200">
+                                        <button
+                                          onClick={handleMakeHost}
+                                          className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-green-200"
+                                        >
                                           <svg
-                                            className="w-2.5 h-2.5"
+                                            className="w-3 h-3"
                                             xmlns="http://www.w3.org/2000/svg"
-                                            width={16}
-                                            height={16}
+                                            width={20}
+                                            height={20}
                                             fill="currentColor"
                                             viewBox="0 0 16 16"
                                           >
-                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                           </svg>
-                                          Blocked
-                                        </span>
+                                          Make Host
+                                        </button>
                                       </a>
                                     </div>
                                   </div>
