@@ -31,9 +31,10 @@ export default class Example extends PureComponent {
     render() {
         return (
            <div>
-            <h2 className='text-center'>Chart </h2>
+        
             <div>
-                <PieChart width={400} height={400}>
+             
+                <PieChart width={200} height={400}>
                     <Pie
                         data={data}
                         cx="50%"
@@ -49,7 +50,6 @@ export default class Example extends PureComponent {
                         ))}
                     </Pie>
                 </PieChart>
-            
             </div>
            </div>
         );
