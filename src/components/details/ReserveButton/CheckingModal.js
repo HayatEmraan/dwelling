@@ -1,55 +1,42 @@
-
-import React from 'react';
-
+import React from "react";
 const CheckingModal = async () => {
-
-
   const res = await fetch(
     "https://dwelling-bright-server.vercel.app/api/v1/getdetails/64f1d62a42ce44beb216c160",
     {
       cache: "no-store",
     }
   );
-
-
   const data = await res.json();
 
-
-
-
-  const resortName = data?.data.name
-  const city = data?.data.location?.city
-  const country = data?.data.location?.country
-  const region = data?.data.location?.region
-  const adults = data?.data.capacity?.adults
-  const children = data?.data.capacity?.children
-  const pets = data?.data.capacity?.pets
-  const infants = data?.data.capacity?.infants
-  const img = data?.data.images[0]
-  const img2 = data?.data.images[1]
-  const img3 = data?.data.images[2]
-  const startDate = data?.data.dateRange.startDate
-  const startD = new Date(startDate)
-  const endDate = data?.data.dateRange.endDate
-  const endD = new Date(endDate)
-  const paymentDetails = data?.data.payment_methods[0].providerName
-  const paymentIMG = data?.data.payment_methods[0].image
+  const resortName = data?.data?.name;
+  const city = data?.data?.location?.city;
+  const country = data?.data?.location?.country;
+  const region = data?.data?.location?.region;
+  const adults = data?.data?.capacity?.adults;
+  const children = data?.data?.capacity?.children;
+  const pets = data?.data?.capacity?.pets;
+  const infants = data?.data?.capacity?.infants;
+  const img = data?.data?.images[0];
+  const img2 = data?.data?.images[1];
+  const img3 = data?.data?.images[2];
+  const startDate = data?.data?.dateRange?.startDate;
+  const startD = new Date(startDate);
+  const endDate = data?.data?.dateRange?.endDate;
+  const endD = new Date(endDate);
+  const paymentDetails = data?.data?.payment_methods[0]?.providerName;
+  const paymentIMG = data?.data?.payment_methods[0]?.image;
 
   const options = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   };
 
-  const start = startD.toLocaleDateString(undefined, options)
-  const end = endD.toLocaleDateString(undefined, options)
+  const start = startD.toLocaleDateString(undefined, options);
+  const end = endD.toLocaleDateString(undefined, options);
 
   return (
     <>
-
-    
-
-
       <div
         id="checkingModal"
         className="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto"
@@ -83,74 +70,116 @@ const CheckingModal = async () => {
             </div>
             {/* Main part  */}
 
-            <div
-              className="p-4 overflow-y-auto">
-
+            <div className="p-4 overflow-y-auto">
               {/* location & people info */}
-              <div className='border-2 my-5 mx-10 border-gray-200 justify-between items-center'>
-                <h1 className='pl-8 p-2 font-semibold  text-gray-600 bg-gray-200'>Check Your Booking Details</h1>
+              <div className="border-2 my-5 mx-10 border-gray-200 justify-between items-center">
+                <h1 className="pl-8 p-2 font-semibold  text-gray-600 bg-gray-200">
+                  Check Your Booking Details
+                </h1>
 
-                <div className='flex flex-col lg:flex-row gap-2 transition-all lg:gap-6 justify-center items-center mt-8'>
-                  <img className='rounded-lg duration-300 hover:blur-none hover:scale-110 w-9/12 lg:w-56 my-4' src={img} alt="" />
-                  <img className='rounded-lg duration-300 hidden lg:block hover:scale-110 w-36 lg:w-56 my-4' src={img2} alt="" />
-                  <img className='rounded-lg hidden lg:block duration-300 hover:scale-110 w-36 lg:w-56 my-4' src={img3} alt="" />
+                <div className="flex flex-col lg:flex-row gap-2 transition-all lg:gap-6 justify-center items-center mt-8">
+                  <img
+                    className="rounded-lg duration-300 hover:blur-none hover:scale-110 w-9/12 lg:w-56 my-4"
+                    src={img}
+                    alt=""
+                  />
+                  <img
+                    className="rounded-lg duration-300 hidden lg:block hover:scale-110 w-36 lg:w-56 my-4"
+                    src={img2}
+                    alt=""
+                  />
+                  <img
+                    className="rounded-lg hidden lg:block duration-300 hover:scale-110 w-36 lg:w-56 my-4"
+                    src={img3}
+                    alt=""
+                  />
                 </div>
-                <h1 className='text-center text-xs italic text-gray-400'>photo: View of {resortName}</h1>
+                <h1 className="text-center text-xs italic text-gray-400">
+                  photo: View of {resortName}
+                </h1>
 
-                <hr className='my-8 mx-8' />
+                <hr className="my-8 mx-8" />
 
-                <div className=' flex justify-between mx-8'>
-                  <h1 className='font-bold'>Check In Date: <br /> <span className='font-light'>{start}</span> </h1>
-                  <h1 className='font-bold'>Check Out Date: <br /> <span className='font-light'>{end}</span> </h1>
+                <div className=" flex justify-between mx-8">
+                  <h1 className="font-bold">
+                    Check In Date: <br />{" "}
+                    <span className="font-light">{start}</span>{" "}
+                  </h1>
+                  <h1 className="font-bold">
+                    Check Out Date: <br />{" "}
+                    <span className="font-light">{end}</span>{" "}
+                  </h1>
                 </div>
 
                 {/* People Info  */}
 
-                <div className='mt-8 mx-8'>
-                  <h1 className='font-bold'>Adults & Childrens:</h1>
-                  <h1> {`${adults ? `${adults}` : "0"}`} Adults & {`${children ? `${children}` : "0"}`} Children & {`${infants ? `${infants}` : "0"}`} Infants & {`${pets ? `${pets}` : "0"}`} Pets</h1>
+                <div className="mt-8 mx-8">
+                  <h1 className="font-bold">Adults & Childrens:</h1>
+                  <h1>
+                    {" "}
+                    {`${adults ? `${adults}` : "0"}`} Adults &{" "}
+                    {`${children ? `${children}` : "0"}`} Children &{" "}
+                    {`${infants ? `${infants}` : "0"}`} Infants &{" "}
+                    {`${pets ? `${pets}` : "0"}`} Pets
+                  </h1>
                 </div>
 
                 {/* Location card  */}
-                <div className='flex flex-between'>
-                <div className='mt-8 mx-8'>
-                  <h1 className='font-bold'>Location Info:</h1>
-                  <div>
-                    <h1>Resort Name: <span className='font-semibold'>{resortName}</span></h1>
-                    <h1 className='mt-1'>City: <span className=' font-semibold'>{city}</span></h1>
-                    <h1 className='mt-1'>Country: <span className=' font-semibold'>{country}</span></h1>
-                    <h1 className='mt-1'>Region: <span className='font-semibold'>{region}</span></h1>
+                <div className="flex flex-between">
+                  <div className="mt-8 mx-8">
+                    <h1 className="font-bold">Location Info:</h1>
+                    <div>
+                      <h1>
+                        Resort Name:{" "}
+                        <span className="font-semibold">{resortName}</span>
+                      </h1>
+                      <h1 className="mt-1">
+                        City: <span className=" font-semibold">{city}</span>
+                      </h1>
+                      <h1 className="mt-1">
+                        Country:{" "}
+                        <span className=" font-semibold">{country}</span>
+                      </h1>
+                      <h1 className="mt-1">
+                        Region: <span className="font-semibold">{region}</span>
+                      </h1>
+                    </div>
                   </div>
-                </div>
-                <div className='mt-8 mx-8'>
-                  <h1 className='font-bold'>Location Info:</h1>
-                  <div>
-                    <h1>Resort Name: <span className='font-semibold'>{resortName}</span></h1>
-                    <h1 className='mt-1'>City: Hello<span className=' font-semibold'>{city}</span></h1>
-                    <h1 className='mt-1'>Country: <span className=' font-semibold'>{country}</span></h1>
-                    <h1 className='mt-1'>Region: <span className='font-semibold'>{region}</span></h1>
+                  <div className="mt-8 mx-8">
+                    <h1 className="font-bold">Location Info:</h1>
+                    <div>
+                      <h1>
+                        Resort Name:{" "}
+                        <span className="font-semibold">{resortName}</span>
+                      </h1>
+                      <h1 className="mt-1">
+                        City: Hello
+                        <span className=" font-semibold">{city}</span>
+                      </h1>
+                      <h1 className="mt-1">
+                        Country:{" "}
+                        <span className=" font-semibold">{country}</span>
+                      </h1>
+                      <h1 className="mt-1">
+                        Region: <span className="font-semibold">{region}</span>
+                      </h1>
+                    </div>
                   </div>
-                </div>
                 </div>
 
                 {/* payment info  */}
-                <div className='my-12 mx-8'>
-                  <h1 className='font-bold'>Payment Info:</h1>
+                <div className="my-12 mx-8">
+                  <h1 className="font-bold">Payment Info:</h1>
                   <div>
-                    <img className='w-16' src={paymentIMG} alt="" />
-                    <h1>Payment via <span className='font-bold'>{paymentDetails}</span></h1>
+                    <img className="w-16" src={paymentIMG} alt="" />
+                    <h1>
+                      Payment via{" "}
+                      <span className="font-bold">{paymentDetails}</span>
+                    </h1>
                   </div>
                 </div>
-
-
               </div>
-
-
-
             </div>
-
-
-
 
             <div className="flex justify-end items-center gap-x-2 py-3 px-4 border-t dark:border-gray-700">
               <button
@@ -166,13 +195,11 @@ const CheckingModal = async () => {
               >
                 Save changes
               </a>
-
             </div>
           </div>
         </div>
       </div>
     </>
-
   );
 };
 
