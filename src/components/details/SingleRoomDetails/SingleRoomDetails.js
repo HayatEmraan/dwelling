@@ -5,21 +5,18 @@ import React, { useState } from "react";
 import ReserveButton from "../ReserveButton/ReserveButton";
 import DatePicker from "./DatePicker";
 
-
-const SingleRoomDetails = ({ data }) => {
-  
+const SingleRoomDetails = ({ data, reviewAndReservation }) => {
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
   const [showPicker, setShowPicker] = useState(false);
-  
 
   const handleDateSelect = (dateRange) => {
     if (!checkInDate) {
       setCheckInDate(dateRange.startDate);
-      setShowPicker(true); 
+      setShowPicker(true);
     } else if (!checkOutDate) {
       setCheckOutDate(dateRange.endDate);
-      setShowPicker(false); 
+      setShowPicker(false);
     } else {
       setCheckInDate(null);
       setCheckOutDate(null);
@@ -40,8 +37,8 @@ const SingleRoomDetails = ({ data }) => {
             </h2>
             <div>
               <span>
-                {data.capacity.adults} Adults, {data.capacity.children} Children , 
-                {data.capacity.pets} Pets, {data.capacity.infants} Infants
+                {data.capacity.adults} Adults, {data.capacity.children} Children
+                ,{data.capacity.pets} Pets, {data.capacity.infants} Infants
               </span>
             </div>
             {/* {data.capacity.map((item, index) => (
@@ -57,7 +54,7 @@ const SingleRoomDetails = ({ data }) => {
             ></Image>
           </div>
         </div>
-        <hr className="mb-3"/>
+        <hr className="mb-3" />
         <div>
           <p>{data.description}</p>
         </div>
@@ -125,8 +122,8 @@ const SingleRoomDetails = ({ data }) => {
               </div>
             </div>
           </div>
-          <div className="text-center">
-            <ReserveButton room={data} />
+          <div>
+            <ReserveButton room={data}>{reviewAndReservation}</ReserveButton>
             <p>You won't be changed yet</p>
           </div>
 

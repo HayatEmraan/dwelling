@@ -7,7 +7,6 @@ import {
 } from "react-icons/ai";
 
 const Header = ({ data }) => {
-  console.log(data)
   
   return (
     <header className="my-5">
