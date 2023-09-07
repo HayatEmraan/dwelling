@@ -11,9 +11,6 @@ const CheckingModal = async ({checkInDate, checkOutDate}) => {
   );
   const data = await res.json();
 
-  console.log(checkIn, 'no 14')
-
-
 
   const resortName = data?.data?.name;
   const city = data?.data?.location?.city;
@@ -26,9 +23,9 @@ const CheckingModal = async ({checkInDate, checkOutDate}) => {
   const img = data?.data?.images[0];
   const img2 = data?.data?.images[1];
   const img3 = data?.data?.images[2];
-  const startDate = checkInDate;
+  const startDate = data?.data?.dateRange?.startDate;
   const startD = new Date(startDate);
-  const endDate = checkOutDate;
+  const endDate = data?.data?.dateRange?.endDate;
   const endD = new Date(endDate);
 
   const paymentDetails = data?.data?.payment_methods[0]?.providerName;
@@ -135,7 +132,7 @@ const CheckingModal = async ({checkInDate, checkOutDate}) => {
                 </div>
 
                 {/* Location card  */}
-                <div className="flex justify-between">
+                <div className="flex justify-between items-baseline">
                   <div className="mt-8 mx-8">
                     <h1 className="font-bold">Location Info:</h1>
                     <div>
@@ -155,13 +152,13 @@ const CheckingModal = async ({checkInDate, checkOutDate}) => {
                       </h1>
                     </div>
                   </div>
-                  <div className='mt-8 flex flex-col justify-center items-center'>
-                    <h1 className='font-bold'>Author Info:</h1>
+                  <div className='flex flex-col scale-75 justify-center items-center'>
+                    <h1 className='font-bold text-xs'>Author Info:</h1>
                     <div className='flex flex-col gap-2 justify-center items-center'>
-                      <img className='rounded-full w-2/5 my-2' src={authorPhoto} alt="" />
+                      <img className='rounded-full w-2/5 my-1' src={authorPhoto} alt="" />
                       <div className='flex flex-col justify-center items-center'>
-                        <h1>Name: </h1>
-                        <span className='font-semibold'>{authorName}</span>
+                        <h1 className="text-xs italic">Name: </h1>
+                        <span className='font-semibold text-xs'>{authorName}</span>
                       </div>
 
                     </div>
@@ -169,26 +166,22 @@ const CheckingModal = async ({checkInDate, checkOutDate}) => {
                 </div>
 
                 {/* payment info  */}
-                <div className="my-12 mx-8">
-                  <h1 className="font-bold">Payment Info:</h1>
+                <div className=" my-12 mx-8">
+                  <h1 className="font-bold">Payment Support</h1>
                   <div>
-                    <div>
+                    <div className="lg:flex gap-4 items-center lg:pr-3">
                       {paymentAllIMG.map((pay, index) => (
-                        <div key={index} className="flex flex-col lg:flex-row  lg:pr-3">
+                        <div key={index} >
                           <Image
                             src={pay?.image}
-                            width={30}
-                            height={30}
+                            width={40}
+                            height={40}
                             alt={pay.providerName}
                           />
                         </div>
                       ))}
 
                     </div>
-                    <h1>
-                      Payment via{" "}
-                      <span className="font-bold">{paymentDetails}</span>
-                    </h1>
                   </div>
                 </div>
               </div>
@@ -206,7 +199,7 @@ const CheckingModal = async ({checkInDate, checkOutDate}) => {
                 className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
                 href="#"
               >
-                Save changes
+               Agree & Confirm
               </a>
             </div>
           </div>

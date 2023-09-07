@@ -1,6 +1,7 @@
 "use client";
 import stripeCheckout from "@/utils/async/stripeCheckout";
 import React from "react";
+import CheckingModal from "./CheckingModal";
 
 
 const ReserveButton = ({ room, children, checkInDate, checkOutDate }) => {
@@ -22,9 +23,11 @@ const ReserveButton = ({ room, children, checkInDate, checkOutDate }) => {
           <div 
 
           className="cursor-pointer btn py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border   shadow-sm align-middle text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 bg-green-700 text-white w-full dark:hover:text-white">
-            Review & Confirm
+            Review & Reserve
           </div>
+          
           {children}
+          
         </div>
       </div>
     </div>

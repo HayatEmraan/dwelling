@@ -4,6 +4,7 @@ import { AiFillFlag } from "react-icons/ai";
 import React, { useState } from "react";
 import ReserveButton from "../ReserveButton/ReserveButton";
 import DatePicker from "./DatePicker";
+import useDateStore from "@/store/dateStore";
 
 
 
@@ -32,6 +33,7 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
     }
   };
 
+  const {setDate} = useDateStore();
 
 
 
