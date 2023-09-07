@@ -1,4 +1,5 @@
 
+import MyTeam from "./MyTeam/MyTeam";
 import TableRow from "./TableRow";
 
 
@@ -127,8 +128,9 @@ const projectsData = [
 
 const ActiveProjectTable = () => {
     return (
-        <div className="overflow-x-auto  mt-5 pb-6 mb-6 bg-white rounded-lg dark:bg-slate-800 dark:text-white">
-            <h3 className="text-md font-semibold p-3">Active Projects</h3>
+       <div className="flex gap-2">
+         <div className="overflow-x-auto  mt-5 pb-6 mb-6 bg-white rounded-lg dark:bg-slate-800 dark:text-white">
+            
             <table className="table">
                 {/* head */}
                 <thead>
@@ -153,6 +155,10 @@ const ActiveProjectTable = () => {
                 <button className="btn text-white mt-5 py-3 bg-primary hover:bg-blue-600 hover:bg-opacity-90">View All Projects</button>
             </div>
         </div>
+        <div className=" mt-5 pb-6 mb-6">
+            <MyTeam></MyTeam>
+        </div>
+       </div>
     );
 };
 
