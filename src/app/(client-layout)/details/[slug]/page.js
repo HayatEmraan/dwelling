@@ -13,8 +13,7 @@ import DetailsMapIndex from "@/components/details/detailMap";
 const RoomDetails = async ({ params }) => {
   const { slug } = params;
   const res = await fetch(
-    `https://dwelling-bright-server.vercel.app/api/v1/getdetails/${slug}`,
-    {
+    `https://dwelling-bright-server.vercel.app/api/v1/getdetails/${slug}`, {
       cache: "no-store",
     }
   );
