@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React from 'react';
 
 import {
   BarChart,
@@ -11,11 +11,23 @@ import {
   ResponsiveContainer,
 } from "recharts";
 const data = [
-  { name: "A", value: 10 },
-  { name: "B", value: 20 },
-  { name: "C", value: 30 },
-  { name: "D", value: 15 },
-];
+    {
+        name: "Paid",
+        value: 10000,
+      },
+      {
+        name: "Refund",
+        value: 5000,
+      },
+      {
+        name: "Declined",
+        value: 12000,
+      },
+      {
+        name: "Total",
+        value: 12000,
+      }
+  ];
 const Chart = () => {
   return (
     <div>

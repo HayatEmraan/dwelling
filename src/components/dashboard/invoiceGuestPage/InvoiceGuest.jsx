@@ -1,16 +1,17 @@
-import React from "react";
-import InvoiceLatestPage from "../invoicePage/InvoiceLatestPage";
-// import Barchart from "./Barchart";
-import BarChart01 from "./Barchart";
+import React from 'react';
+import InvoiceLatestPage from '../invoicePage/InvoiceLatestPage';
+// import Barchart from './Barchart';
+// import Chart from './Chart';
+import ChartGuest from './ChartGuest';
 
 const InvoiceGuest = () => {
-  return (
-    <div>
-      <BarChart01></BarChart01>
-      {/* <Barchart></Barchart> */}
-      <InvoiceLatestPage></InvoiceLatestPage>
-    </div>
-  );
+    return (
+        <div>
+            <ChartGuest></ChartGuest>
+         {/* <Chart></Chart> */}
+            <InvoiceLatestPage></InvoiceLatestPage>
+        </div>
+    );
 };
 
 export default InvoiceGuest;
