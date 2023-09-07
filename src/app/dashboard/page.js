@@ -18,31 +18,35 @@ const DashboardHomePage = () => {
       <div className=" lg:px-16 -mt-[70px] dark:bg-slate-700 dark:text-white">
         <CardContainer />
         {/*Dashboard user list with chart */}
-        <div className="flex gap-2">
+        <div  className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
           <DashUsers></DashUsers>
           <Example></Example>
         </div>
         {/* Dashboard Booking list with chart */}
-        <div>
+        <div  className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
+          <Example></Example>
           <DashBooking></DashBooking>
         </div>
         {/*Dashboard Invoice list with chart */}
-        <div>
+        <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
           <DashInvoice></DashInvoice>
+          <Example></Example>
         </div>
         {/*Dashboard Property list with chart */}
-        <div>
+        <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
+        <Example></Example>
           <DashProperty></DashProperty>
         </div>
         {/*Dashboard Host list with chart */}
-        <div>
+        <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
           <DashHost></DashHost>
+          <Example></Example>
         </div>
       </div>
-      <div className="px-6 md:px-10 lg:px-16 md:flex justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
-        {/* <MyTaskTable />
-        <MyTeam /> */}
-      </div>
+      {/* <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
+        <Example></Example>
+        <DashBooking></DashBooking>
+      </div> */}
     </>
   );
 };

@@ -2,7 +2,7 @@ import { BsViewList } from "react-icons/bs";
 
 const DashBooking = () => {
     return (
-      <div className="max-w-[150rem] mx-auto px-4 sm:px-6 lg:px-8 ">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8 ">
         <>
           {/* Table Section */}
           <div className="py-10 sm:px-6 lg:px-6 lg:py-14">
@@ -10,7 +10,7 @@ const DashBooking = () => {
             <div className="flex flex-col">
               <div className="-m-1.5 overflow-x-auto">
                 <div className="p-1.5 min-w-full inline-block align-middle">
-                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700">
+                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-slate-900 dark:border-gray-700">
                     {/* Header */}
                     <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
                       {/* Input */}
