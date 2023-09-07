@@ -1,11 +1,14 @@
 "use client";
+import useDateStore from "@/store/datestore";
+import { userAppStore } from "@/store/store";
 import stripeCheckout from "@/utils/async/stripeCheckout";
 import React from "react";
 
-const ReserveButton = ({ room, children }) => {
+const ReserveButton = ({ room, children, checkInDate, checkOutDate }) => {
   const handleStripeCheckout = () => {
     stripeCheckout(room);
   };
+
   return (
     <div>
       <button

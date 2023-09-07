@@ -1,22 +1,8 @@
-"use client";
-import { getusers } from "@/utils/async/admin/users/getusers";
-import Image from "next/image";
-
-import { useState } from "react";
-import Link from "next/link";
 import { BsViewList } from "react-icons/bs";
 
-
 const DashUsers = ({ data }) => {
-  const [pageNumber, setPageNumber] = useState(1);
-  const [pageData, setPageData] = useState(data);
-  const handlePageNumber = async (page) => {
-    const response = await getusers(page);
-    setPageData(response);
-  };
   return (
-    <div className="mx-6">
-  
+    <div className="flex-1">
       {/* Table Section */}
       <div className="max-w-[150rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         {/* Card */}
@@ -200,7 +186,7 @@ const DashUsers = ({ data }) => {
                   <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                     {/* data mapping */}
 
-                    {pageData?.data?.map((user, index) => {
+                    {data?.data?.slice(0, 5).map((user, index) => {
                       return (
                         <tr key={index}>
                           <td className="h-px w-px whitespace-nowrap">
@@ -369,9 +355,9 @@ const DashUsers = ({ data }) => {
                   <div>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                       <span className="font-semibold text-gray-800 dark:text-gray-200">
-                        {pageData?.startView}
+                        {data?.startView}
                       </span>{" "}
-                      results of {pageData?.totalView} entries
+                      results of {data?.totalView} entries
                     </p>
                   </div>
                   <div>
@@ -381,10 +367,9 @@ const DashUsers = ({ data }) => {
                         href="dashboard/users"
                         className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                       >
-                        <BsViewList/>
+                        <BsViewList />
                         View All
                       </a>
-
                     </div>
                   </div>
                 </div>

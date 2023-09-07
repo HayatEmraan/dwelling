@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { AiFillFlag } from "react-icons/ai";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReserveButton from "../ReserveButton/ReserveButton";
 import DatePicker from "./DatePicker";
 
@@ -99,12 +99,12 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
                   </div>
                   {checkInDate && <small>{checkInDate.toDateString()}</small>}
                 </div>
-                <div className="border-b p-2">
+                {/* <div className="border-b p-2">
                   <h2>
                     <button onClick={togglePicker}>CheckOut</button>
                   </h2>
                   {checkOutDate && <small>{checkOutDate.toDateString()}</small>}
-                </div>
+                </div> */}
               </div>
 
               <div className="flex justify-between p-2">
@@ -123,7 +123,13 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
             </div>
           </div>
           <div>
-            <ReserveButton room={data}>{reviewAndReservation}</ReserveButton>
+            <ReserveButton
+              room={data}
+              checkInDate={checkInDate}
+              checkOutDate={checkOutDate}
+            >
+              {reviewAndReservation}
+            </ReserveButton>
             <p>You won't be changed yet</p>
           </div>
 

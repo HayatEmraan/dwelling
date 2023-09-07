@@ -1,5 +1,8 @@
 import React from "react";
-const CheckingModal = async () => {
+import Image from "next/image";
+import ReviewDates from "./startdate";
+
+const CheckingModal = async ({ checkInDate, checkOutDate }) => {
   const res = await fetch(
     "https://dwelling-bright-server.vercel.app/api/v1/getdetails/64f1d62a42ce44beb216c160",
     {
@@ -19,12 +22,15 @@ const CheckingModal = async () => {
   const img = data?.data?.images[0];
   const img2 = data?.data?.images[1];
   const img3 = data?.data?.images[2];
-  const startDate = data?.data?.dateRange?.startDate;
+  const startDate = checkInDate;
   const startD = new Date(startDate);
-  const endDate = data?.data?.dateRange?.endDate;
+  const endDate = checkOutDate;
   const endD = new Date(endDate);
+
   const paymentDetails = data?.data?.payment_methods[0]?.providerName;
-  const paymentIMG = data?.data?.payment_methods[0]?.image;
+  const paymentAllIMG = data?.data?.payment_methods;
+  const authorName = data?.data?.author?.name;
+  const authorPhoto = data?.data?.author?.photo;
 
   const options = {
     year: "numeric",
@@ -100,16 +106,7 @@ const CheckingModal = async () => {
 
                 <hr className="my-8 mx-8" />
 
-                <div className=" flex justify-between mx-8">
-                  <h1 className="font-bold">
-                    Check In Date: <br />{" "}
-                    <span className="font-light">{start}</span>{" "}
-                  </h1>
-                  <h1 className="font-bold">
-                    Check Out Date: <br />{" "}
-                    <span className="font-light">{end}</span>{" "}
-                  </h1>
-                </div>
+                <ReviewDates />
 
                 {/* People Info  */}
 
@@ -125,7 +122,7 @@ const CheckingModal = async () => {
                 </div>
 
                 {/* Location card  */}
-                <div className="flex flex-between">
+                <div className="flex justify-between">
                   <div className="mt-8 mx-8">
                     <h1 className="font-bold">Location Info:</h1>
                     <div>
@@ -145,24 +142,18 @@ const CheckingModal = async () => {
                       </h1>
                     </div>
                   </div>
-                  <div className="mt-8 mx-8">
-                    <h1 className="font-bold">Location Info:</h1>
-                    <div>
-                      <h1>
-                        Resort Name:{" "}
-                        <span className="font-semibold">{resortName}</span>
-                      </h1>
-                      <h1 className="mt-1">
-                        City: Hello
-                        <span className=" font-semibold">{city}</span>
-                      </h1>
-                      <h1 className="mt-1">
-                        Country:{" "}
-                        <span className=" font-semibold">{country}</span>
-                      </h1>
-                      <h1 className="mt-1">
-                        Region: <span className="font-semibold">{region}</span>
-                      </h1>
+                  <div className="mt-8 flex flex-col justify-center items-center">
+                    <h1 className="font-bold">Author Info:</h1>
+                    <div className="flex flex-col gap-2 justify-center items-center">
+                      <img
+                        className="rounded-full w-2/5 my-2"
+                        src={authorPhoto}
+                        alt=""
+                      />
+                      <div className="flex flex-col justify-center items-center">
+                        <h1>Name: </h1>
+                        <span className="font-semibold">{authorName}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -171,7 +162,21 @@ const CheckingModal = async () => {
                 <div className="my-12 mx-8">
                   <h1 className="font-bold">Payment Info:</h1>
                   <div>
-                    <img className="w-16" src={paymentIMG} alt="" />
+                    <div>
+                      {paymentAllIMG.map((pay, index) => (
+                        <div
+                          key={index}
+                          className="flex flex-col lg:flex-row  lg:pr-3"
+                        >
+                          <Image
+                            src={pay?.image}
+                            width={30}
+                            height={30}
+                            alt={pay.providerName}
+                          />
+                        </div>
+                      ))}
+                    </div>
                     <h1>
                       Payment via{" "}
                       <span className="font-bold">{paymentDetails}</span>
