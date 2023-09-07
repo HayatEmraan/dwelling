@@ -1,6 +1,8 @@
 "use server";
 import { cookies } from "next/headers";
 
+
+// admin - user (guests) - host
 export async function usersfilter(query) {
   const res = await fetch(
     `https://dwelling-bright-server.vercel.app/api/v2/usersfilter?query=${query}`,

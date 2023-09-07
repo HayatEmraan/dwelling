@@ -1,8 +1,7 @@
-"use client"
+"use client";
 import Link from "next/link";
 import { Libre_Bodoni } from "next/font/google";
 import LogInComp from "@/components/SEC/loginComp";
-import AvatarComp from "./avatar";
 import SearchComp from "./search/search";
 import { userAppStore } from "@/store/store";
 import Schedule from "@/components/common/Schedule";
@@ -13,17 +12,16 @@ const bodoni = Libre_Bodoni({
   subsets: ["latin"],
 });
 
-const HeaderComponent = () => {
-
-  const {
-    showScheduleBar,
-  } = userAppStore();
+const HeaderComponent = ({ children }) => {
+  const { showScheduleBar } = userAppStore();
 
   return (
     <div className="sticky top-0 z-30 w-full shadow-sm">
-      <header className={`w-full bg-white dark:bg-gray-900 flex flex-col justify-center transition-all duration-300
+      <header
+        className={`w-full bg-white dark:bg-gray-900 flex flex-col justify-center transition-all duration-300
     ${!showScheduleBar ? "border-b border-b-gray-200" : "shadow-sm"}
-    `}>
+    `}
+      >
         <div
           className="max-w-[150rem] w-full mx-auto px-5 md:px-4 lg:px-3 xl:px-2"
           aria-label="Global"
@@ -70,7 +68,7 @@ const HeaderComponent = () => {
               </div>
             </div>
             <div>{!showScheduleBar && <SearchComp />}</div>
-            
+
             <div
               id="navbar-collapse-with-animation"
               className="hs-collapse hidden overflow-hidden transition-all duration-300 md:block"
@@ -180,9 +178,7 @@ const HeaderComponent = () => {
                   >
                     Work with us
                   </a>
-                  <div className="pt-3 md:pt-0">
-                    <AvatarComp />
-                  </div>
+                  <div className="pt-3 md:pt-0">{children}</div>
                 </div>
               </div>
             </div>
