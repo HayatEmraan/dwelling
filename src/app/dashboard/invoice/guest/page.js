@@ -1,5 +1,5 @@
-import InvoiceGuest from '@/components/dashboard/invoiceGuestPage/InvoiceGuest';
 import React from 'react';
+import InvoiceGuest from '@/components/dashboard/invoiceGuestPage/InvoiceGuest';
 
 const GuestPage = () => {
     return (
