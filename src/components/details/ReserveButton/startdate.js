@@ -10,7 +10,7 @@ const ReviewDates = () => {
 
 
   return (
-    <div className=" flex justify-between mx-8">
+    <div className=" flex flex-col lg:flex-row gap-4 items-start justify-between mx-8">
       <h1 className="font-bold">
         Check In Date: <br /> <span className="font-light">{Sdate === 'Invalid Date' ? <div className="text-orange-400 flex items-center justify-center gap-2"><PiWarningFill /><span className="text-gray-600">No Date Selected</span></div> : Sdate}</span>{" "}
       </h1>
