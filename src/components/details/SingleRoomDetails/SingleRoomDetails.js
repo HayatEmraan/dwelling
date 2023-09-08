@@ -40,8 +40,8 @@ const SingleRoomDetails = ({ data }) => {
             </h2>
             <div>
               <span>
-                {data.capacity.adults} Adults, {data.capacity.children} Children , 
-                {data.capacity.pets} Pets, {data.capacity.infants} Infants
+                {data.capacity.adults} Adults, {data.capacity.children} Children
+                ,{data.capacity.pets} Pets, {data.capacity.infants} Infants
               </span>
             </div>
             {/* {data.capacity.map((item, index) => (
@@ -49,15 +49,10 @@ const SingleRoomDetails = ({ data }) => {
           ))} */}
           </div>
           <div className="lg:mr-10">
-            <Image
-              className="rounded-full"
-              src={data?.author.photo}
-              width={50}
-              height={50}
-            ></Image>
+            <Image className="rounded-full" src={data.author.photo} width={50} height={50} />
           </div>
         </div>
-        <hr className="mb-3"/>
+        <hr className="mb-3" />
         <div>
           <p>{data.description}</p>
         </div>

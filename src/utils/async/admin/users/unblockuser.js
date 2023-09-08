@@ -5,7 +5,7 @@ export async function unblockuser(id) {
   const res = await fetch(
     `https://dwelling-bright-server.vercel.app/api/v2/user/unblock?id=${id}`,
     {
-      method: "GET",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${cookies().get("accessToken")?.value}`,
