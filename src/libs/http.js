@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:3000";
+const apiUrl = "https://dwelling-bright-server.vercel.app/";
 const jwtKey = "accessToken";
 
 axios.interceptors.request.use(

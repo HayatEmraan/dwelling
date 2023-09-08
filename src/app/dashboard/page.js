@@ -25,14 +25,12 @@ const DashboardHomePage = async () => {
   return (
     <>
       <HomePageHeading />
-      <div className="lg:px-16 -mt-[70px] dark:bg-slate-700 dark:text-white">
+      <div className="max-w-[150rem] lg:px-16 -mt-[70px] dark:bg-slate-700 dark:text-white">
         <CardContainer />
         {/*Dashboard user list with chart */}
-        <div className="md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
-         <div>
+        <div className="xl:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
          <DashUsers data={data}></DashUsers>
-         </div>
-         <div className="border-2 shadow-md rounded-md">
+         <div className="border-2 shadow-md rounded-md xl:w-96 w-full">
          <Example></Example>
          </div>
       </div>
