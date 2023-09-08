@@ -6,6 +6,7 @@ import { searchuser } from "@/utils/async/admin/users/searchuser";
 import { usersfilter } from "@/utils/async/admin/users/userfilter";
 import { updateuser } from "@/utils/async/admin/users/updateuser";
 import { blockuser } from "@/utils/async/admin/users/blockuser";
+import { unblockuser } from "@/utils/async/admin/users/unblockuser";
 
 const UsersList = ({ data }) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -14,36 +15,44 @@ const UsersList = ({ data }) => {
     const response = await getusers(page);
     setPageData(response);
   };
-   const handleInputChange = async (event) => {
-     const value = event.target.value;
-     const data = await searchuser(value);
-     setPageData(data)
+  const handleInputChange = async (event) => {
+    const value = event.target.value;
+    const data = await searchuser(value);
+    setPageData(data);
   };
-  const handleFilterAdmin =async () => {
-    const filteredData =await usersfilter("admin");
+  const handleFilterAdmin = async () => {
+    const filteredData = await usersfilter("admin");
     setPageData(filteredData);
   };
-  const handleFilterHost =async () => {
-    const filteredData =await usersfilter("host");
+  const handleFilterHost = async () => {
+    const filteredData = await usersfilter("host");
     setPageData(filteredData);
   };
-  const handleFilterGuest =async () => {
-    const filteredData =await usersfilter("user");
+  const handleFilterGuest = async () => {
+    const filteredData = await usersfilter("user");
     setPageData(filteredData);
   };
-  const handleMakeAdmin =async () => {
-    const filteredData =await updateuser("id","admin");
-    console.log(filteredData);
+  const handleMakeAdmin = async (id) => {
+    const filteredData = await updateuser(id, "admin");
+    const response = await getusers();
+    setPageData(response);
   };
-  const handleMakeHost =async () => {
-    const filteredData =await updateuser("id","host");
-    setPageData(filteredData);
-  };
-  const handleBlockUser =async () => {
-    const filteredData =await blockuser("id");
-    console.log(filteredData);
-  };
+  const handleMakeHost = async (id) => {
+    const filteredData = await updateuser(id, "host");
 
+    const response = await getusers();
+    setPageData(response);
+  };
+  const handleBlockUser = async (id) => {
+    const filteredData = await blockuser(id);
+    const response = await getusers();
+    setPageData(response);
+  };
+  const handleUnblockUser = async (id) => {
+    const filteredData = await unblockuser(id);
+    const response = await getusers();
+    setPageData(response);
+  };
 
   return (
     <div className="mx-6">
@@ -378,7 +387,12 @@ const UsersList = ({ data }) => {
                                           className="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                                           href="#"
                                         >
-                                          <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                          <button
+                                            onClick={() =>
+                                              handleUnblockUser(user._id)
+                                            }
+                                            className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                                          >
                                             <svg
                                               className="w-3 h-3"
                                               xmlns="http://www.w3.org/2000/svg"
@@ -390,7 +404,7 @@ const UsersList = ({ data }) => {
                                               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                             </svg>
                                             Unblocked
-                                          </span>
+                                          </button>
                                         </a>
                                       )}
                                       {user?.blocked === false && (
@@ -399,7 +413,9 @@ const UsersList = ({ data }) => {
                                           href="#"
                                         >
                                           <button
-                                            onClick={handleBlockUser}
+                                            onClick={() =>
+                                              handleBlockUser(user._id)
+                                            }
                                             className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-green-200"
                                           >
                                             <svg
@@ -421,7 +437,9 @@ const UsersList = ({ data }) => {
                                         href="#"
                                       >
                                         <button
-                                          onClick={handleMakeAdmin}
+                                          onClick={() =>
+                                            handleMakeAdmin(user?._id)
+                                          }
                                           className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-green-200"
                                         >
                                           <svg
@@ -442,7 +460,9 @@ const UsersList = ({ data }) => {
                                         href="#"
                                       >
                                         <button
-                                          onClick={handleMakeHost}
+                                          onClick={() =>
+                                            handleMakeHost(user?._id)
+                                          }
                                           className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-green-200"
                                         >
                                           <svg

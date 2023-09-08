@@ -30,8 +30,8 @@ const RoomDetails = async ({ params }) => {
       {/* Details Sections */}
       <SingleRoomDetails
         data={data?.data}
-        reviewAndReservation={<CheckingModal> </CheckingModal>}
-      ></SingleRoomDetails>
+        reviewAndReservation={<CheckingModal> </CheckingModal>} 
+        ></SingleRoomDetails>
       {/* Facilities */}
       <div className="my-5">
         <div className=" my-5">

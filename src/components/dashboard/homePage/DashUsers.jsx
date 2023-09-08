@@ -4,7 +4,7 @@ const DashUsers = ({ data }) => {
   return (
     <div className="flex-1">
       {/* Table Section */}
-      <div className="max-w-full px-4 py-6 sm:px-6 md:px-8 lg:px-10 xl:px-16 mx-auto">
+      <div className="xl:max-w-[35rem] 2xl:max-w-[150rem] py-10 lg:py-14 mx-auto">
         {/* Card */}
         <div className="flex flex-col">
           <div className="-mx-2 overflow-x-auto">
