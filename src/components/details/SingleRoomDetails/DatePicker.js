@@ -1,21 +1,29 @@
+import useDateStore from "@/store/datestore";
 import React, { useState } from "react";
-import { DateRange} from "react-date-range";
+import { DateRange } from "react-date-range";
 
+const DatePicker = ({ handleSelect }) => {
+  const [state, setState] = useState([
+    {
+      startDate: new Date(),
+      endDate: null,
+      key: "selection",
+    },
+  ]);
 
+  const { setDate } = useDateStore();
 
-const DatePicker = ({ handleSelect}) => {
-  const [selectionRange, setSelectionRange] = useState({
-    startDate: new Date(),
-    endDate: new Date(),
-    key: "selection",
-  });
-
-  
   return (
     <div className="date-range-picker">
       <DateRange
-        ranges={[selectionRange]}
-        onChange={(ranges) => handleSelect(ranges.selection)}
+        editableDateInputs={true}
+        onChange={(item) => {
+          setState([item.selection]);
+          setDate(item.selection);
+        }}
+        moveRangeOnFirstSelection={false}
+        ranges={state}
+        className="rounded-2xl"
       />
     </div>
   );

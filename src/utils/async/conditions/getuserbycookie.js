@@ -1,10 +1,8 @@
 "use server";
 import { cookies } from "next/headers";
-
-// id - dicision (approved or declined)
-export async function propertyupdate(id, decision) {
+export async function getuserbycookie() {
   const res = await fetch(
-    `https://dwelling-bright-server.vercel.app/api/v2/property/update?id=${id}&decision=${decision}`,
+    `https://dwelling-bright-server.vercel.app/api/v2/user/getuserbycookie`,
     {
       method: "GET",
       headers: {
@@ -13,6 +11,5 @@ export async function propertyupdate(id, decision) {
       },
     }
   );
-  if (!res.ok) throw new Error("Failed to fetch data");
   return await res.json();
 }
