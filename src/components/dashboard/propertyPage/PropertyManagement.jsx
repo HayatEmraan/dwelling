@@ -4,6 +4,7 @@ import { FcApproval, FcCancel, FcViewDetails } from "react-icons/fc";
 import PropertyModal from "./PropertyModal";
 import { getproperties } from "@/utils/async/admin/properties/getproperties";
 import { searchuser } from "@/utils/async/admin/users/searchuser";
+import { searchproperty } from "@/utils/async/admin/properties/searchproperty";
 
 const PropertyManagement = ({ data }) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -15,13 +16,13 @@ const PropertyManagement = ({ data }) => {
 
   const handleChange = async (event) => {
     const value = event.target.value;
-    const data = await getproperties(value);
+    const data = await searchproperty(value);
     setPageData(data);
   };
 
   const handleApproved = async () => {
-   const filteredData = await getproperties("approved");
-   setPageData(filteredData);
+    const filteredData = await getproperties("approved");
+    setPageData(filteredData);
   };
   const handlePending = async () => {
     const filteredData = await getproperties("pending");
