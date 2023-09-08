@@ -11,7 +11,7 @@ const DatePicker = ({ handleSelect }) => {
     },
   ]);
 
-  const { date, setDate, getDate } = useDateStore();
+  const { setDate } = useDateStore();
 
   return (
     <div className="date-range-picker">
