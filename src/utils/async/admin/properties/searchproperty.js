@@ -1,7 +1,7 @@
 "use server";
 import { cookies } from "next/headers";
 
-export async function searchpropery(query) {
+export async function searchproperty(query) {
   const res = await fetch(
     `https://dwelling-bright-server.vercel.app/api/v2/searchproperty?query=${query}`,
     {
