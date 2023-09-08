@@ -29,9 +29,13 @@ const DashboardHomePage = async () => {
         <CardContainer />
         {/*Dashboard user list with chart */}
         <div className="md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
-          <DashUsers data={data}></DashUsers>
-          <Example></Example>
-        </div>
+         <div>
+         <DashUsers data={data}></DashUsers>
+         </div>
+         <div className="border-2 shadow-md rounded-md">
+         <Example></Example>
+         </div>
+      </div>
         {/* Dashboard Booking list with chart */}
         {/* <div  className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
           <Example></Example>

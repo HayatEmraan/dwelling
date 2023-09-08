@@ -1,6 +1,6 @@
 "use client";
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
-
+import { AiFillPieChart } from "react-icons/ai";
 const data = [
   { name: "Group A", value: 400 },
   { name: "Group B", value: 300 },
@@ -41,22 +41,46 @@ import React from "react";
 
 const Example = () => {
   return (
-    <PieChart width={200} height={400}>
-      <Pie
-        data={data}
-        cx="50%"
-        cy="50%"
-        labelLine={false}
-        label={renderCustomizedLabel}
-        outerRadius={80}
-        fill="#8884d8"
-        dataKey="value"
-      >
-        {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
-      </Pie>
-    </PieChart>
+    <div className="me-5">
+      <h2 className="font-semibold p-2">Total state</h2>
+      <hr />
+      <div>
+        <PieChart width={200} height={260}>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            label={renderCustomizedLabel}
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+        </PieChart>
+      </div>
+      <div>
+        <div className="flex items-center justify-between">
+          <p className="p-2 flex items-center gap-2"><AiFillPieChart className="text-xl text-blue-500"></AiFillPieChart>Total</p>
+          <p>100%</p>
+        </div>
+        <div className="flex items-center justify-between">
+          <p className="p-2 flex items-center gap-2"><AiFillPieChart className="text-xl text-green-500"></AiFillPieChart>Active</p>
+          <p>25%</p>
+        </div>
+        <div className="flex items-center justify-between">
+          <p className="p-2 flex items-center gap-2"><AiFillPieChart className="text-xl text-yellow-500"></AiFillPieChart>Pending</p>
+          <p>25%</p>
+        </div>
+        <div className="flex items-center justify-between">
+          <p className="p-2 flex items-center gap-2"><AiFillPieChart className="text-xl text-red-500"></AiFillPieChart>Blocked</p>
+          <p>25%</p>
+        </div>
+      </div>
+    </div>
   );
 };
 
