@@ -5,7 +5,7 @@ export async function searchpropery(query) {
   const res = await fetch(
     `https://dwelling-bright-server.vercel.app/api/v2/searchproperty?query=${query}`,
     {
-      method: "PATCH",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${cookies().get("accessToken")?.value}`,
