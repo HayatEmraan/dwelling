@@ -6,6 +6,7 @@ import ReserveButton from "../ReserveButton/ReserveButton";
 import DatePicker from "./DatePicker";
 
 
+
 const SingleRoomDetails = ({ data, reviewAndReservation }) => {
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
@@ -27,6 +28,8 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
   const togglePicker = () => {
     setShowPicker(!showPicker);
   };
+
+  
 
   return (
     <div className="grid gap-5 lg:grid-cols-3">
@@ -100,12 +103,12 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
                   </div>
                   {checkInDate && <small>{checkInDate.toDateString()}</small>}
                 </div>
-                {/* <div className="border-b p-2">
+                <div className="border-b p-2">
                   <h2>
                     <button onClick={togglePicker}>CheckOut</button>
                   </h2>
                   {checkOutDate && <small>{checkOutDate.toDateString()}</small>}
-                </div> */}
+                </div>
               </div>
 
               <div className="flex justify-between p-2">

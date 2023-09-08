@@ -1,6 +1,8 @@
 import useDateStore from "@/store/datestore";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { DateRange } from "react-date-range";
+import 'react-date-range/dist/styles.css'
+import 'react-date-range/dist/theme/default.css'
 
 const DatePicker = ({ handleSelect }) => {
   const [state, setState] = useState([
@@ -12,6 +14,9 @@ const DatePicker = ({ handleSelect }) => {
   ]);
 
   const { date, setDate, getDate } = useDateStore();
+
+
+
 
   return (
     <div className="date-range-picker">
