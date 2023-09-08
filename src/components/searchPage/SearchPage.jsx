@@ -13,7 +13,7 @@ const SearchPage = async ({
   pets,
 }) => {
   const res = await fetch(
-    `http://localhost:5000/api/v1/getsearch?start=${start}&end=${end}${
+    `https://dwelling-bright-server.vercel.app/api/v1/getsearch?start=${start}&end=${end}${
       adults ? `&adults=${adults}` : ""
     }${childrens ? `&children=${childrens}` : ""}${
       infants ? `&infants=${infants}` : ""
