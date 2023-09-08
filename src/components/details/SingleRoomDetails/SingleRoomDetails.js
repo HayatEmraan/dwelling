@@ -46,12 +46,7 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
           ))} */}
           </div>
           <div className="lg:mr-10">
-            <Image
-              className="rounded-full"
-              src={data?.author.photo}
-              width={50}
-              height={50}
-            ></Image>
+            <Image className="rounded-full" src={data.author.photo} width={50} height={50} />
           </div>
         </div>
         <hr className="mb-3" />
