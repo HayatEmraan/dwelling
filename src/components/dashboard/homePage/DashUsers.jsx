@@ -7,8 +7,8 @@ const DashUsers = ({ data }) => {
       <div className="xl:max-w-[35rem] 2xl:max-w-[150rem] py-10 lg:py-14 mx-auto">
         {/* Card */}
         <div className="flex flex-col">
-          <div className="-m-1.5 overflow-x-auto">
-            <div className="p-1.5 min-w-full inline-block align-middle">
+          <div className="-mx-2 overflow-x-auto">
+            <div className="px-2 min-w-full inline-block align-middle">
               <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700">
                 {/* Header */}
                 <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
@@ -259,7 +259,7 @@ const DashUsers = ({ data }) => {
                                     fill="currentColor"
                                     viewBox="0 0 16 16"
                                   >
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
                                   </svg>
                                   Blocked
                                 </span>
@@ -341,39 +341,77 @@ const DashUsers = ({ data }) => {
                                     </div>
                                   </div>
                                 </div>
+                                <a
+                                  className="py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-l-md text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                  href="#"
+                                >
+                                  <BsViewList className="w-4 h-4" />
+                                </a>
                               </div>
                             </div>
                           </td>
                         </tr>
                       );
                     })}
+                    {/* End Data Mapping */}
                   </tbody>
                 </table>
                 {/* End Table */}
-                {/* Footer */}
-                <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
-                  <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      <span className="font-semibold text-gray-800 dark:text-gray-200">
-                        {data?.startView}
-                      </span>{" "}
-                      results of {data?.totalView} entries
-                    </p>
-                  </div>
-                  <div>
-                    <div className="inline-flex gap-x-2">
-                      <a
-                        type="button"
-                        href="dashboard/users"
-                        className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                {/* Pagination */}
+                <nav
+                  className="px-6 py-3 bg-white border-t border-gray-200 dark:bg-slate-900 dark:border-gray-700"
+                  aria-label="Pagination"
+                >
+                  <ul className="inline-flex space-x-3">
+                    <li>
+                      <button
+                        className="flex items-center justify-center text-gray-400 rounded-md hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        onClick={() => {
+                          // Handle previous page click
+                        }}
                       >
-                        <BsViewList />
-                        View All
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                {/* End Footer */}
+                        <span className="sr-only">Previous</span>
+                        <svg
+                          className="w-5 h-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M7.293 9.293a1 1 0 011.414 0L11 11.586V6a1 1 0 112 0v5.586l2.293-2.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className="flex items-center justify-center text-blue-600 bg-blue-100 rounded-md hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        onClick={() => {
+                          // Handle next page click
+                        }}
+                      >
+                        <span className="sr-only">Next</span>
+                        <svg
+                          className="w-5 h-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M12.293 10.293a1 1 0 011.414 0l4 4a1 1 0 11-1.414 1.414L13 13.414V19a1 1 0 11-2 0v-5.586l-2.293 2.293a1 1 0 11-1.414-1.414l4-4z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    </li>
+                  </ul>
+                </nav>
+                {/* End Pagination */}
               </div>
             </div>
           </div>
