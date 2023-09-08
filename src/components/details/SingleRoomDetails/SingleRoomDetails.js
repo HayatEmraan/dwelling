@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import ReserveButton from "../ReserveButton/ReserveButton";
 import DatePicker from "./DatePicker";
 
+
+
 const SingleRoomDetails = ({ data, reviewAndReservation }) => {
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
@@ -27,6 +29,8 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
     setShowPicker(!showPicker);
   };
 
+  
+
   return (
     <div className="grid gap-5 lg:grid-cols-3">
       <div className="lg:col-span-2">
@@ -46,12 +50,7 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
           ))} */}
           </div>
           <div className="lg:mr-10">
-            <Image
-              className="rounded-full"
-              src={data?.author.photo}
-              width={50}
-              height={50}
-            ></Image>
+            <Image className="rounded-full" src={data.author.photo} width={50} height={50} />
           </div>
         </div>
         <hr className="mb-3" />
@@ -99,12 +98,12 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
                   </div>
                   {checkInDate && <small>{checkInDate.toDateString()}</small>}
                 </div>
-                {/* <div className="border-b p-2">
+                <div className="border-b p-2">
                   <h2>
                     <button onClick={togglePicker}>CheckOut</button>
                   </h2>
                   {checkOutDate && <small>{checkOutDate.toDateString()}</small>}
-                </div> */}
+                </div>
               </div>
 
               <div className="flex justify-between p-2">

@@ -23,13 +23,16 @@ const stripeCheckout = async (room) => {
         const createCheckOutSession = async () => {
             console.log('call session')
             const stripe = await stripePromise;
-            const res = await fetch('http://localhost:5000/api/v2/payment', {
-                method: 'POST',
+            const res = await fetch(
+              "https://dwelling-bright-server.vercel.app/api/v2/payment",
+              {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
+                  "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ item })
-            })
+                body: JSON.stringify({ item }),
+              }
+            );
             // create session 
             const checkoutSession = await res.json()
             // redirect to payment

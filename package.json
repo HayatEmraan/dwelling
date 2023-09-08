@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@faker-js/faker": "^8.0.2",
     "@headlessui/react": "^1.7.17",
     "@preline/dropdown": "^1.3.0",
     "@stripe/stripe-js": "^2.1.0",
@@ -50,6 +49,7 @@
     "zustand": "^4.4.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "daisyui": "^3.5.1",
     "encoding": "^0.1.13"
   }
