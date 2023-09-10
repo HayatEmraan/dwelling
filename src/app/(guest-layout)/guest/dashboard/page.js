@@ -2,7 +2,7 @@
 import dynamic from "next/dynamic";
 const Example = dynamic(
   () => {
-    return import("@/components/dashboard/homePage/ChartSide");
+    return import("@/components/guest/dashboard/homePage/ChartSide");
   },
   {
     ssr: false,
@@ -11,12 +11,14 @@ const Example = dynamic(
 
 
 import HomePageHeading from "@/components/dashboard/homePage/Heading";
-import { getusers } from "@/utils/async/admin/users/getusers";
+import { fet } from "@/utils/async/admin/users/getusers";
 import BookingHistory from "@/components/guest/dashboard/homePage/BookingHistory";
 import CardContainer from "@/components/guest/dashboard/homePage/CardContainer";
+import FetchCards from "@/components/home/cards/fetchcards";
+
 
 const DashboardHomePage = async () => {
-  const data = await getusers();
+  const data = await FetchCards();
   return (
     <>
       <HomePageHeading />
@@ -25,7 +27,7 @@ const DashboardHomePage = async () => {
 
         {/*Dashboard user list with chart */}
         <div className="xl:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
-         <BookingHistory data={data}></BookingHistory>
+         <BookingHistory />
          <div className="border-2 shadow-md rounded-md xl:w-96 w-full">
          <Example></Example>
          </div>

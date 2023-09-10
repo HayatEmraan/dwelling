@@ -1,6 +1,16 @@
 import { BsViewList } from "react-icons/bs";
 
-const BookingHistory = ({ data }) => {
+const BookingHistory = async () => {
+
+ const res = await fetch(
+    "https://dwelling-bright-server.vercel.app/api/v1/getrooms",
+    {
+      cache: "no-store",
+    }
+  );
+  const data = await res.json();
+
+
   return (
     <div className="flex-1">
       {/* Table Section */}
@@ -14,7 +24,7 @@ const BookingHistory = ({ data }) => {
                 <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
                   <div>
                     <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                      Booking History
+                     History
                     </h2>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                       All Booking info, approved, reject and more.
@@ -95,7 +105,7 @@ const BookingHistory = ({ data }) => {
                                 defaultValue={"checked"}
                               />
                               <span className="ml-3 text-sm text-gray-800 dark:text-gray-200">
-                                All Users
+                                Approved
                               </span>
                             </label>
                             <label
@@ -108,7 +118,8 @@ const BookingHistory = ({ data }) => {
                                 id="hs-as-filters-dropdown-published"
                               />
                               <span className="ml-3 text-sm text-gray-800 dark:text-gray-200">
-                                Hosts
+                               
+                                Pending
                               </span>
                             </label>
                             <label
@@ -121,7 +132,7 @@ const BookingHistory = ({ data }) => {
                                 id="hs-as-filters-dropdown-pending"
                               />
                               <span className="ml-3 text-sm text-gray-800 dark:text-gray-200">
-                                Guests
+                              Rejected
                               </span>
                             </label>
                           </div>
@@ -132,36 +143,24 @@ const BookingHistory = ({ data }) => {
                 </div>
                 {/* End Header */}
                 {/* Table */}
-                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                <table className="min-w-full divide-y  divide-gray-200 dark:divide-gray-700">
                   <thead className="bg-gray-50 dark:bg-slate-800">
                     <tr>
-                      <th scope="col" className="pl-6 py-3 text-left">
-                        <label
-                          htmlFor="hs-at-with-checkboxes-main"
-                          className="flex"
-                        >
-                          <input
-                            type="checkbox"
-                            className="shrink-0 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                            id="hs-at-with-checkboxes-main"
-                          />
-                          <span className="sr-only">Checkbox</span>
-                        </label>
-                      </th>
+                      
                       <th
                         scope="col"
-                        className="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3 text-left"
+                        className="pl-6 lg:pl-6 pr-6 py-3 text-left"
                       >
                         <div className="flex items-center gap-x-2">
                           <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                            Name
+                            Resort Name
                           </span>
                         </div>
                       </th>
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
                           <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                            Position
+                            Country
                           </span>
                         </div>
                       </th>
@@ -172,54 +171,41 @@ const BookingHistory = ({ data }) => {
                           </span>
                         </div>
                       </th>
-
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
                           <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                            Created
+                            Check In Date
                           </span>
                         </div>
                       </th>
-                      <th scope="col" className="px-6 py-3 text-right" />
+
+                      <th scope="col" className="px-6 py-3 text-left">
+                        <div className="flex  gap-x-2">
+                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                            Total Paid
+                          </span>
+                        </div>
+                      </th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                     {/* data mapping */}
 
-                    {data?.data?.slice(0, 5).map((user, index) => {
+                    {data?.data?.slice(0, 5).map((book, index) => {
+                     
                       return (
                         <tr key={index}>
+                          
                           <td className="h-px w-px whitespace-nowrap">
-                            <div className="pl-6 py-3">
-                              <label
-                                htmlFor="hs-at-with-checkboxes-1"
-                                className="flex"
-                              >
-                                <input
-                                  type="checkbox"
-                                  className="shrink-0 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                  id="hs-at-with-checkboxes-1"
-                                />
-                                <span className="sr-only">Checkbox</span>
-                              </label>
-                            </div>
-                          </td>
-                          <td className="h-px w-px whitespace-nowrap">
-                            <div className="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
+                            <div className="pl-6 lg:pl-6 pr-6 py-3">
                               <div className="flex items-center gap-x-3">
-                                <img
-                                  src={user?.image}
-                                  width={"30"}
-                                  height={"30"}
-                                  className="rounded-full"
-                                  alt="users"
-                                />
+                                
                                 <div className="grow">
                                   <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
-                                    {user?.name}
+                                    {book?.name}
                                   </span>
                                   <span className="block text-sm text-gray-500">
-                                    {user?.email}
+                                    {'City: Tropical Paradise Island'}
                                   </span>
                                 </div>
                               </div>
@@ -227,14 +213,31 @@ const BookingHistory = ({ data }) => {
                           </td>
                           <td className="h-px w-72 whitespace-nowrap">
                             <div className="px-6 py-3">
-                              <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200 uppercase">
-                                {user?.role}
+                              <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200 ">
+                                {'Thailand'}
                               </span>
                             </div>
                           </td>
-                          <td className="h-px w-px whitespace-nowrap">
+                          <td className="h-px w-72 whitespace-nowrap">
                             <div className="px-6 py-3">
-                              {user?.blocked === false && (
+                            <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                        <svg
+                                          className="w-3 h-3"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          width={20}
+                                          height={20}
+                                          fill="currentColor"
+                                          viewBox="0 0 16 16"
+                                        >
+                                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                        </svg>
+                                        Approved
+                                      </span>
+                            </div>
+                          </td>
+                          {/* <td className="h-px w-px whitespace-nowrap">
+                            <div className="px-6 py-3">
+                              {book?.blocked === false && (
                                 <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                                   <svg
                                     className="w-2.5 h-2.5"
@@ -249,7 +252,7 @@ const BookingHistory = ({ data }) => {
                                   Active
                                 </span>
                               )}
-                              {user?.blocked === true && (
+                              {book?.blocked === true && (
                                 <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
                                   <svg
                                     className="w-2.5 h-2.5"
@@ -265,91 +268,22 @@ const BookingHistory = ({ data }) => {
                                 </span>
                               )}
                             </div>
-                          </td>
+                          </td> */}
 
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="px-6 py-3">
                               <span className="text-sm text-gray-500">
-                                {user?.createdAt}
+                                {book?.dateRange.startDate.split("T")[0]}
                               </span>
                             </div>
-                          </td>
+                          </td> 
                           <td className="h-px w-px whitespace-nowrap">
-                            <div className="px-6 py-1.5 flex justify-end">
-                              <div className="group inline-flex items-center divide-x divide-gray-300 border border-gray-300 bg-white shadow-sm rounded-md transition-all dark:divide-gray-700 dark:bg-slate-700 dark:border-gray-700">
-                                <div className="hs-dropdown relative inline-flex [--placement:bottom-right]">
-                                  <button
-                                    id="hs-table-dropdown-1"
-                                    type="button"
-                                    className="hs-dropdown-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-r-md text-gray-700 align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                                  >
-                                    <svg
-                                      className="w-4 h-4"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      width={16}
-                                      height={16}
-                                      fill="currentColor"
-                                      viewBox="0 0 16 16"
-                                    >
-                                      <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-                                    </svg>
-                                  </button>
-                                  <div
-                                    className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mt-2 divide-y divide-gray-200 min-w-[10rem] z-10 bg-white shadow-2xl rounded-lg p-2  dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700"
-                                    aria-labelledby="hs-table-dropdown-1"
-                                  >
-                                    <div className="py-2 first:pt-0 last:pb-0">
-                                      <span className="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-600">
-                                        Change Status
-                                      </span>
-                                      <a
-                                        className="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                                        href="#"
-                                      >
-                                        <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                          <svg
-                                            className="w-3 h-3"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={20}
-                                            height={20}
-                                            fill="currentColor"
-                                            viewBox="0 0 16 16"
-                                          >
-                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                                          </svg>
-                                          Unblocked
-                                        </span>
-                                      </a>
-                                      <a
-                                        className="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                                        href="#"
-                                      >
-                                        <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-green-200">
-                                          <svg
-                                            className="w-2.5 h-2.5"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={16}
-                                            height={16}
-                                            fill="currentColor"
-                                            viewBox="0 0 16 16"
-                                          >
-                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-                                          </svg>
-                                          Blocked
-                                        </span>
-                                      </a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <a
-                                  className="py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-l-md text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                                  href="#"
-                                >
-                                  <BsViewList className="w-4 h-4" />
-                                </a>
-                              </div>
+                            <div className="px-6 py-3">
+                              <span className="text-sm text-gray-500">
+                                {book?.price * 5 + ' ' + 'USD'}
+                              </span>
                             </div>
-                          </td>
+                          </td> 
                         </tr>
                       );
                     })}

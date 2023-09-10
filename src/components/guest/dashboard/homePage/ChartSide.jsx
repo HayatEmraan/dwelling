@@ -45,7 +45,7 @@ const Example = () => {
       <h2 className="font-semibold p-2">Total state</h2>
       <hr />
       <div>
-        <ResponsiveContainer width="95%" height={270}>
+        <ResponsiveContainer width="95%" height={320}>
           <PieChart width={200} height={260}>
             <Pie
               data={data}
@@ -68,7 +68,7 @@ const Example = () => {
         </ResponsiveContainer>
       </div>
       <div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center  justify-between">
           <p className="p-2 flex items-center gap-2">
             <AiFillPieChart className="text-xl text-blue-500"></AiFillPieChart>
             Total
