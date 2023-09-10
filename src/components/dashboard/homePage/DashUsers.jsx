@@ -364,7 +364,7 @@ const DashUsers = ({ data }) => {
                 >
                   <ul className="inline-flex space-x-3">
                     <li>
-                      <button
+                      {/* <button
                         className="flex items-center justify-center text-gray-400 rounded-md hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         onClick={() => {
                           // Handle previous page click
@@ -384,10 +384,10 @@ const DashUsers = ({ data }) => {
                             clipRule="evenodd"
                           />
                         </svg>
-                      </button>
+                      </button> */}
                     </li>
                     <li>
-                      <button
+                      {/* <button
                         className="flex items-center justify-center text-blue-600 bg-blue-100 rounded-md hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         onClick={() => {
                           // Handle next page click
@@ -407,7 +407,7 @@ const DashUsers = ({ data }) => {
                             clipRule="evenodd"
                           />
                         </svg>
-                      </button>
+                      </button> */}
                     </li>
                   </ul>
                 </nav>
