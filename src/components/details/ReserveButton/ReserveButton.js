@@ -1,8 +1,8 @@
 "use client";
-import useDateStore from "@/store/datestore";
-import { userAppStore } from "@/store/store";
+
 import stripeCheckout from "@/utils/async/stripeCheckout";
 import React from "react";
+
 
 const ReserveButton = ({ room, children, checkInDate, checkOutDate }) => {
   const handleStripeCheckout = () => {
@@ -20,10 +20,14 @@ const ReserveButton = ({ room, children, checkInDate, checkOutDate }) => {
 
       <div className="block" data-hs-overlay="#checkingModal">
         <div className=" py-1.5">
-          <div className="cursor-pointer btn py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border   shadow-sm align-middle text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 bg-green-700 text-white w-full dark:hover:text-white">
-            Review & Confirm
+          <div 
+
+          className="cursor-pointer btn py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border   shadow-sm align-middle text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 bg-green-700 text-white w-full dark:hover:text-white">
+            Review & Reserve
           </div>
+          
           {children}
+          
         </div>
       </div>
     </div>
