@@ -36,7 +36,7 @@ const dashboardCards = [
 
 const CardContainer = () => {
     return (
-      <div className="space-y-6 md:space-y-0 md:flex justify-between gap-6 items-center px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div className="space-y-6 md:space-y-0 md:flex justify-between gap-6 items-center px-4 lg:px-0">
         {dashboardCards.map(
           ({ id, title, icon, project_detail, completed }) => {
             return (

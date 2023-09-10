@@ -12,7 +12,7 @@ import SingleRoomDetails from "@/components/details/SingleRoomDetails/SingleRoom
 import DetailsMapIndex from "@/components/details/detailMap";
 
 const RoomDetails = async ({ params }) => {
-  const { slug, checkInDate, checkOutDate } = params;
+  const { slug } = params;
   const res = await fetch(
     `https://dwelling-bright-server.vercel.app/api/v1/getdetails/${slug}`,
     {
@@ -30,8 +30,8 @@ const RoomDetails = async ({ params }) => {
       {/* Details Sections */}
       <SingleRoomDetails
         data={data?.data}
-        reviewAndReservation={<CheckingModal> </CheckingModal>} 
-        ></SingleRoomDetails>
+        reviewAndReservation={<CheckingModal data={data} />}
+      ></SingleRoomDetails>
       {/* Facilities */}
       <div className="my-5">
         <div className=" my-5">

@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import { FcApproval, FcCancel, FcViewDetails } from "react-icons/fc";
-import PropertyModal from "./PropertyModal";
 import { getproperties } from "@/utils/async/admin/properties/getproperties";
 import { propertyupdate } from "@/utils/async/admin/properties/updateproperties";
 import { filterproperties } from "@/utils/async/admin/properties/filterproperties";
+import PropertyModal from "./PropertyModal";
 
 const PropertyManagement = ({ data }) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -173,7 +173,7 @@ const PropertyManagement = ({ data }) => {
                 {/* End Header */}
                 {/* Table */}
                 <table className="p-2 min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                  <thead className="bg-gray-50 dark:bg-slate-800">
+                  <thead className="bg-gray-50 dark:bg-slate-800 whitespace-nowrap">
                     <tr className="">
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
@@ -193,14 +193,14 @@ const PropertyManagement = ({ data }) => {
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
                           <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                            Property Status
+                            Status
                           </span>
                         </div>
                       </th>
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
                           <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                            Action Property
+                            Action
                           </span>
                         </div>
                       </th>
@@ -218,8 +218,12 @@ const PropertyManagement = ({ data }) => {
                       <tr key={index}>
                         <td className="h-px w-px whitespace-nowrap">
                           <div className="px-6 py-2 text-left">
-                            <p className="text-sm text-blue-600 decoration-2" href="#">
-                              <span>#</span>{item?.propertyID}
+                            <p
+                              className="text-sm text-blue-600 decoration-2"
+                              href="#"
+                            >
+                              <span>#</span>
+                              {item?.propertyID}
                             </p>
                           </div>
                         </td>
@@ -230,7 +234,6 @@ const PropertyManagement = ({ data }) => {
                             </span>
                           </div>
                         </td>
-
                         <td className="h-px w-px whitespace-nowrap">
                           <div className="px-6 py-2">
                             {item?.status === "approved" && (
@@ -281,9 +284,9 @@ const PropertyManagement = ({ data }) => {
                           </div>
                         </td>
                         <td className="h-px w-px whitespace-nowrap">
-                          <div className=" py-1.5 mx-auto max-w-[10rem]">
+                          <div className=" py-1.5 ps-4">
                             <div className="group inline-flex items-center divide-x divide-gray-300 border border-gray-300 bg-white shadow-sm rounded-md transition-all dark:divide-gray-700 dark:bg-slate-700 dark:border-gray-700">
-                              <div className="hs-tooltip inline-block">
+                              <div className="hs-tooltip relative inline-block">
                                 <button
                                   onClick={() => handleApprove(item?._id)}
                                   className="hs-tooltip-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-l-md bg-white text-gray-700 align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
@@ -364,7 +367,7 @@ const PropertyManagement = ({ data }) => {
                               <div className="cursor-pointer py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
                                 <FcViewDetails />
                                 View
-                                {/* <PropertyModal></PropertyModal> */}
+                                <PropertyModal data={item} title={"Property/Ads Details"} subtitle={"Property"}></PropertyModal>
                               </div>
                             </div>
                           </div>

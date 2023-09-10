@@ -95,3 +95,54 @@ body {
   border-radius: 2px;
   box-shadow: 0px 1px 10px #999;
 }
+
+
+/* payment failed page design */
+
+#notfound {
+  @apply relative h-screen;
+}
+#notfound .notfound {
+  @apply absolute -translate-x-2/4 -translate-y-2/4 left-2/4 top-2/4;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.notfound {
+  @apply max-w-[410px] w-full text-center;
+}
+.notfound .notfound-404 {
+  @apply h-[280px] relative z-[-1];
+}
+.notfound .notfound-404 h1 {
+  @apply text-[230px] font-black absolute -translate-x-2/4 !bg-cover bg-center m-0 left-2/4;
+  font-family: "Montserrat", sans-serif;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  background: url("/img/bg.jpg") no-repeat;
+  background-size: cover;
+  margin-top: -50px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.notfound h2 {
+  @apply text-black text-2xl font-bold uppercase mt-0;
+  font-family: "Montserrat", sans-serif;
+}
+.notfound p {
+  @apply text-black text-sm font-normal mt-0 mb-5;
+  font-family: "Montserrat", sans-serif;
+}
+.notfound a {
+  @apply text-sm no-underline uppercase inline-block text-white font-bold shadow-[0px_4px_15px_-5px_#0046d5] px-[30px] py-[15px] rounded-[40px];
+  font-family: "Montserrat", sans-serif;
+  background: #0046d5;
+  -webkit-box-shadow: 0px 4px 15px -5px #0046d5;
+}
+@media only screen and (max-width: 767px) {
+  .notfound .notfound-404 {
+    @apply h-[142px];
+  }
+  .notfound .notfound-404 h1 {
+    @apply text-[112px] -mt-[30px];
+  }
+}

@@ -4,7 +4,7 @@ const DashUsers = ({ data }) => {
   return (
     <div className="flex-1">
       {/* Table Section */}
-      <div className="xl:max-w-[35rem] 2xl:max-w-[150rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div className="xl:max-w-[35rem] 2xl:max-w-[150rem] px-4 py-10 sm:px-6 lg:px-0 lg:py-14 mx-auto">
         {/* Card */}
         <div className="flex flex-col">
           <div className="-mx-2 overflow-x-auto">
@@ -364,11 +364,11 @@ const DashUsers = ({ data }) => {
                 >
                   <ul className="inline-flex space-x-3">
                     <li>
-                      {/* <button
+                      <button
                         className="flex items-center justify-center text-gray-400 rounded-md hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        onClick={() => {
-                          // Handle previous page click
-                        }}
+                        // onClick={() => {
+                        //   // Handle previous page click
+                        // }}
                       >
                         <span className="sr-only">Previous</span>
                         <svg
@@ -384,7 +384,7 @@ const DashUsers = ({ data }) => {
                             clipRule="evenodd"
                           />
                         </svg>
-                      </button> */}
+                      </button>
                     </li>
                     <li>
                       {/* <button
