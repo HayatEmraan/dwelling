@@ -283,7 +283,7 @@ const PropertyManagement = ({ data }) => {
                         <td className="h-px w-px whitespace-nowrap">
                           <div className=" py-1.5 mx-auto max-w-[10rem]">
                             <div className="group inline-flex items-center divide-x divide-gray-300 border border-gray-300 bg-white shadow-sm rounded-md transition-all dark:divide-gray-700 dark:bg-slate-700 dark:border-gray-700">
-                              <div className="hs-tooltip inline-block">
+                              <div className="hs-tooltip relative inline-block">
                                 <button
                                   onClick={() => handleApprove(item?._id)}
                                   className="hs-tooltip-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-l-md bg-white text-gray-700 align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
