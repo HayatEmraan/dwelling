@@ -1,9 +1,9 @@
 "use server";
 import { cookies } from "next/headers";
 
-export async function getproperties() {
+export async function getproperties(page) {
   const res = await fetch(
-    `https://dwelling-bright-server.vercel.app/api/v2/properties`,
+    `https://dwelling-bright-server.vercel.app/api/v2/properties?page=${page}`,
     {
       method: "GET",
       headers: {
