@@ -281,7 +281,7 @@ const PropertyManagement = ({ data }) => {
                           </div>
                         </td>
                         <td className="h-px w-px whitespace-nowrap">
-                          <div className=" py-1.5 flex justify-center">
+                          <div className=" py-1.5 mx-auto max-w-[10rem]">
                             <div className="group inline-flex items-center divide-x divide-gray-300 border border-gray-300 bg-white shadow-sm rounded-md transition-all dark:divide-gray-700 dark:bg-slate-700 dark:border-gray-700">
                               <div className="hs-tooltip inline-block">
                                 <button
