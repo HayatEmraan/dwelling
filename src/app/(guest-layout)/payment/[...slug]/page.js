@@ -9,7 +9,12 @@ const FailedComp = dynamic(() => import("@/components/payment/failed/failed"), {
 });
 const PaymentSlug = ({ searchParams }) => {
   const { pay } = searchParams;
-  return <>{pay === "true" ? <SuccessComp /> : <FailedComp />}</>;
+  return (
+    <>
+      {(pay === "true" && <SuccessComp />) ||
+        (pay === "false" && <FailedComp />)}
+    </>
+  );
 };
 
 export default PaymentSlug;
