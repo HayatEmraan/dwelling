@@ -96,7 +96,6 @@ body {
   box-shadow: 0px 1px 10px #999;
 }
 
-
 /* payment failed page design */
 
 #notfound {
@@ -145,4 +144,12 @@ body {
   .notfound .notfound-404 h1 {
     @apply text-[112px] -mt-[30px];
   }
+}
+
+#payment-form {
+  @apply rounded-[3px] shadow-[0_30px_50px_-20px_rgb(50_50_93_/_25%),0_30px_60px_-30px_rgb(0_0_0_/_30%)] mx-0 my-5 p-5 border-[#F6F9FC] border-solid border-[1px];
+}
+#messages {
+  @apply hidden bg-[#0A253C] text-[#00D924] rounded-[3px] text-[0.7em] mx-0 my-5 p-5;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New";
 }

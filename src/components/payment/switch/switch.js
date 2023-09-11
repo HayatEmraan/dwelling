@@ -12,6 +12,7 @@ const SwitchComp = ({ roomID }) => {
   const handleSSL = async () => {
     console.log(roomID, checkIn, checkOut);
     const result = await SSLCommerz(roomID, checkIn, checkOut);
+    console.log(result);
     if (result.url) router.replace(result.url);
   };
   return (

@@ -1,14 +1,12 @@
-
-import Setting from '@/components/dashboard/settingPage/Setting';
-import React from 'react';
+import Setting from "@/components/dashboard/settingPage/Setting";
+import React from "react";
 
 const SettingPage = () => {
-    return (
-        <div>
-        
-            <Setting></Setting>
-        </div>
-    );
+  return (
+    <>
+      <Setting></Setting>
+    </>
+  );
 };
 
 export default SettingPage;
