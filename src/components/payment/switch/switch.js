@@ -11,10 +11,8 @@ const SwitchComp = ({ roomID }) => {
   const checkOut = dateFormatEnd?.toISOString()?.split("T")[0];
   const handleSSL = async () => {
     console.log(roomID, checkIn, checkOut);
-    const response = await SSLCommerz(roomID, checkIn, checkOut);
-    if (response.url) {
-      router.push(response.url);
-    }
+    const result = await SSLCommerz(roomID, checkIn, checkOut);
+    if (result.url) router.replace(result.url);
   };
   return (
     <div className="flex items-center w-full absolute justify-center min-h-screen z-[100] -top-1/4 -bottom-1/2">
