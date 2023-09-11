@@ -19,6 +19,7 @@ import HomePageHeading from "@/components/dashboard/homePage/Heading";
 import MyTaskTable from "@/components/dashboard/homePage/MyTaskTable/MyTaskTable";
 import MyTeam from "@/components/dashboard/homePage/MyTeam/MyTeam";
 import { getusers } from "@/utils/async/admin/users/getusers";
+import BookingGuestChart from "@/components/dashboard/bookingGuest/BookingGuestChart";
 
 const DashboardHomePage = async () => {
   const data = await getusers();
@@ -35,8 +36,10 @@ const DashboardHomePage = async () => {
           </div>
         </div>
         {/* Dashboard Booking list with chart */}
-        /* <div  className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
-          <Example></Example>
+        <div className="xl:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
+          <div className="border-2 shadow-md rounded-md xl:w-96 mx-4 lg:mx-0">
+            <BookingGuestChart></BookingGuestChart>
+          </div>
           <DashBooking></DashBooking>
         </div>
         Dashboard Invoice list with chart
@@ -46,7 +49,7 @@ const DashboardHomePage = async () => {
         </div>
         Dashboard Property list with chart
         <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
-        <Example></Example>
+          <Example></Example>
           <DashProperty></DashProperty>
         </div>
         Dashboard Host list with chart
