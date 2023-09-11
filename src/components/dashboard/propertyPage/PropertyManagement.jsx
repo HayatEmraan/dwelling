@@ -48,7 +48,7 @@ const PropertyManagement = ({ data }) => {
   return (
     <>
       {/* Table Section */}
-      <div className="max-w-[150rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div className="max-w-[150rem] py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         {/* Card */}
         <div className="flex flex-col">
           <div className="-m-1.5 overflow-x-auto">
@@ -308,7 +308,7 @@ const PropertyManagement = ({ data }) => {
                                 >
                                   <FcCancel className="text-xl" />
                                   <span
-                                    className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-md shadow-sm dark:bg-slate-700"
+                                    className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 -top-[29px] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-md shadow-sm dark:bg-slate-700"
                                     role="tooltip"
                                   >
                                     Decline Property
