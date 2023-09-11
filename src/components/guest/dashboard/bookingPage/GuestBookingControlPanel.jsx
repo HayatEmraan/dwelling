@@ -1,4 +1,4 @@
-const BookingControlPanel = () => {
+const GuestBookingControlPanel = () => {
   return (
     <div className="max-w-[150rem] mx-auto px-4 sm:px-6 lg:px-8 ">
       <>
@@ -1596,4 +1596,4 @@ const BookingControlPanel = () => {
   );
 };
 
-export default BookingControlPanel;
+export default GuestBookingControlPanel;

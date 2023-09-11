@@ -1,10 +1,10 @@
 import { BsViewList } from "react-icons/bs";
 
-const DashUsers = ({ data }) => {
+const BookingHistory = ({ data }) => {
   return (
     <div className="flex-1">
       {/* Table Section */}
-      <div className="xl:max-w-[35rem] 2xl:max-w-[150rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div className="xl:max-w-[35rem] 2xl:max-w-[150rem] py-10 lg:py-14 mx-auto">
         {/* Card */}
         <div className="flex flex-col">
           <div className="-mx-2 overflow-x-auto">
@@ -14,10 +14,10 @@ const DashUsers = ({ data }) => {
                 <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
                   <div>
                     <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                      Users
+                      Booking History
                     </h2>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                      All users, edit and more.
+                      All Booking info, approved, reject and more.
                     </p>
                   </div>
                   {/* filter and search */}
@@ -423,4 +423,4 @@ const DashUsers = ({ data }) => {
   );
 };
 
-export default DashUsers;
+export default BookingHistory;

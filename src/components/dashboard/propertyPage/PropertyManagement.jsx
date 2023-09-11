@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { FcApproval, FcCancel, FcViewDetails } from "react-icons/fc";
 import PropertyModal from "./PropertyModal";
 import { getproperties } from "@/utils/async/admin/properties/getproperties";
-import { searchuser } from "@/utils/async/admin/users/searchuser";
-import { searchproperty } from "@/utils/async/admin/properties/searchproperty";
+import { propertyupdate } from "@/utils/async/admin/properties/updateproperties";
+import { filterproperties } from "@/utils/async/admin/properties/filterproperties";
 
 const PropertyManagement = ({ data }) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -14,32 +14,33 @@ const PropertyManagement = ({ data }) => {
     setPageData(response);
   };
 
-  const handleChange = async (event) => {
+  const handleInputChange = async (event) => {
     const value = event.target.value;
-    const data = await searchproperty(value);
+    const data = await getproperties(value);
     setPageData(data);
   };
 
-  const handleApproved = async () => {
-    const filteredData = await getproperties("approved");
+  const handleFilteringApproved = async () => {
+    console.log("filtering");
+    const filteredData = await filterproperties("approved");
     setPageData(filteredData);
   };
-  const handlePending = async () => {
-    const filteredData = await getproperties("pending");
+  const handleFilteringPending = async () => {
+    const filteredData = await filterproperties("pending");
     setPageData(filteredData);
   };
-  const handleDeclined = async () => {
-    const filteredData = await getproperties("declined");
+  const handleFilteringDeclined = async () => {
+    const filteredData = await filterproperties("declined");
     setPageData(filteredData);
   };
 
   const handleApprove = async (id) => {
-    const filteredData = await updateproperties(id, "approved");
+    await propertyupdate(id, "approved");
     const response = await getproperties();
     setPageData(response);
   };
   const handleDecline = async (id) => {
-    const filteredData = await updateproperties(id, "declined");
+    await propertyupdate(id, "declined");
     const response = await getproperties();
     setPageData(response);
   };
@@ -47,7 +48,7 @@ const PropertyManagement = ({ data }) => {
   return (
     <>
       {/* Table Section */}
-      <div className="max-w-[150rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div className="max-w-[150rem] py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         {/* Card */}
         <div className="flex flex-col">
           <div className="-m-1.5 overflow-x-auto">
@@ -82,7 +83,7 @@ const PropertyManagement = ({ data }) => {
                             name="hs-as-table-product-review-search"
                             className="py-2 px-3 pl-11 block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                             placeholder="Search"
-                            onChange={handleChange}
+                            onChange={handleInputChange}
                           />
                           <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none pl-4">
                             <svg
@@ -130,79 +131,35 @@ const PropertyManagement = ({ data }) => {
                         >
                           <div className="divide-y divide-gray-200 dark:divide-gray-700">
                             <label
-                              htmlFor="hs-as-filters-dropdown-all"
-                              className="flex py-2.5 px-3"
-                            >
-                              <input
-                                type="checkbox"
-                                className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                id="hs-as-filters-dropdown-all"
-                                defaultValue={"checked"}
-                              />
-                              <span className="ml-3 text-sm text-gray-800 dark:text-gray-200">
-                                All Users
-                              </span>
-                            </label>
-                            <label
                               htmlFor="hs-as-filters-dropdown-published"
                               className="flex py-2.5 px-3"
                             >
-                              <input
-                                type="checkbox"
-                                className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                id="hs-as-filters-dropdown-published"
-                              />
                               <button
                                 className="ml-3 text-sm text-gray-800 dark:text-gray-200"
-                                onClick={handleApproved}
+                                onClick={handleFilteringApproved}
                               >
-                                Accepted
+                                Approved
                               </button>
                             </label>
                             <label
                               htmlFor="hs-as-filters-dropdown-published"
                               className="flex py-2.5 px-3"
                             >
-                              <input
-                                type="checkbox"
-                                className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                id="hs-as-filters-dropdown-published"
-                              />
                               <button
                                 className="ml-3 text-sm text-gray-800 dark:text-gray-200"
-                                onClick={handlePending}
+                                onClick={handleFilteringPending}
                               >
                                 Pending
                               </button>
                             </label>
+
                             <label
                               htmlFor="hs-as-filters-dropdown-published"
                               className="flex py-2.5 px-3"
                             >
-                              <input
-                                type="checkbox"
-                                className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                id="hs-as-filters-dropdown-published"
-                              />
                               <button
                                 className="ml-3 text-sm text-gray-800 dark:text-gray-200"
-                                onClick={handleDeclined}
-                              >
-                                Pending
-                              </button>
-                            </label>
-                            <label
-                              htmlFor="hs-as-filters-dropdown-published"
-                              className="flex py-2.5 px-3"
-                            >
-                              <input
-                                type="checkbox"
-                                className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                id="hs-as-filters-dropdown-published"
-                              />
-                              <button
-                                className="ml-3 text-sm text-gray-800 dark:text-gray-200"
-                                onClick={handlePending}
+                                onClick={handleFilteringDeclined}
                               >
                                 Declined
                               </button>
@@ -247,6 +204,13 @@ const PropertyManagement = ({ data }) => {
                           </span>
                         </div>
                       </th>
+                      <th scope="col" className="px-6 py-3 text-left">
+                        <div className="flex items-center gap-x-2">
+                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                            Checked By
+                          </span>
+                        </div>
+                      </th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -254,8 +218,8 @@ const PropertyManagement = ({ data }) => {
                       <tr key={index}>
                         <td className="h-px w-px whitespace-nowrap">
                           <div className="px-6 py-2 text-left">
-                            <p className="text-sm  decoration-2" href="#">
-                              <span>#</span> {item?.propertyID}
+                            <p className="text-sm text-blue-600 decoration-2" href="#">
+                              <span>#</span>{item?.propertyID}
                             </p>
                           </div>
                         </td>
@@ -269,25 +233,57 @@ const PropertyManagement = ({ data }) => {
 
                         <td className="h-px w-px whitespace-nowrap">
                           <div className="px-6 py-2">
-                            <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                              <svg
-                                className="w-2.5 h-2.5"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                              </svg>
-                              {item?.status}
-                            </span>
+                            {item?.status === "approved" && (
+                              <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                <svg
+                                  className="w-2.5 h-2.5"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width={16}
+                                  height={16}
+                                  fill="currentColor"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                </svg>
+                                {item?.status}
+                              </span>
+                            )}
+                            {item?.status === "pending" && (
+                              <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-green-200">
+                                <svg
+                                  className="w-2.5 h-2.5"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width={16}
+                                  height={16}
+                                  fill="currentColor"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                </svg>
+                                {item?.status}
+                              </span>
+                            )}
+                            {item?.status === "declined" && (
+                              <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-green-200">
+                                <svg
+                                  className="w-2.5 h-2.5"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width={16}
+                                  height={16}
+                                  fill="currentColor"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                </svg>
+                                {item?.status}
+                              </span>
+                            )}
                           </div>
                         </td>
                         <td className="h-px w-px whitespace-nowrap">
-                          <div className=" py-1.5 flex justify-center">
+                          <div className=" py-1.5 mx-auto max-w-[10rem]">
                             <div className="group inline-flex items-center divide-x divide-gray-300 border border-gray-300 bg-white shadow-sm rounded-md transition-all dark:divide-gray-700 dark:bg-slate-700 dark:border-gray-700">
-                              <div className="hs-tooltip inline-block">
+                              <div className="hs-tooltip relative inline-block">
                                 <button
                                   onClick={() => handleApprove(item?._id)}
                                   className="hs-tooltip-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-l-md bg-white text-gray-700 align-middle focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
@@ -312,7 +308,7 @@ const PropertyManagement = ({ data }) => {
                                 >
                                   <FcCancel className="text-xl" />
                                   <span
-                                    className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-md shadow-sm dark:bg-slate-700"
+                                    className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 -top-[29px] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-md shadow-sm dark:bg-slate-700"
                                     role="tooltip"
                                   >
                                     Decline Property
@@ -320,6 +316,43 @@ const PropertyManagement = ({ data }) => {
                                 </button>
                               </div>
                             </div>
+                          </div>
+                        </td>
+                        <td className="h-px w-px whitespace-nowrap">
+                          <div className="px-6 py-2">
+                            {item?.checkedBy ? (
+                              <>
+                                <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                  <svg
+                                    className="w-2.5 h-2.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={16}
+                                    height={16}
+                                    fill="currentColor"
+                                    viewBox="0 0 16 16"
+                                  >
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                  </svg>
+                                  {item?.checkedBy}
+                                </span>
+                              </>
+                            ) : (
+                              <>
+                                <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-green-200">
+                                  <svg
+                                    className="w-2.5 h-2.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={16}
+                                    height={16}
+                                    fill="currentColor"
+                                    viewBox="0 0 16 16"
+                                  >
+                                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                  </svg>
+                                  Not Checked
+                                </span>
+                              </>
+                            )}
                           </div>
                         </td>
                         <td className="h-px w-px whitespace-nowrap">
@@ -331,7 +364,7 @@ const PropertyManagement = ({ data }) => {
                               <div className="cursor-pointer py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
                                 <FcViewDetails />
                                 View
-                                <PropertyModal></PropertyModal>
+                                {/* <PropertyModal></PropertyModal> */}
                               </div>
                             </div>
                           </div>

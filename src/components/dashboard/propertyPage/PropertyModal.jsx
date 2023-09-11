@@ -7,9 +7,7 @@ const PropertyModal = async () => {
       cache: "no-store",
     }
   );
-
   const data = await res.json();
-
   const resortName = data?.data.name;
   const city = data?.data?.location?.city;
   const country = data?.data?.location?.country;

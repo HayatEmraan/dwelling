@@ -36,22 +36,29 @@ const dashboardCards = [
 
 const CardContainer = () => {
     return (
-        <div className="space-y-6 md:space-y-0 md:flex justify-between gap-6 items-center">
-            {
-                dashboardCards.map(({id, title, icon, project_detail, completed})=>{
-                    return (
-                        <div key={id} className="shadow-md p-4 w-full rounded-md bg-white transition-all hover:-translate-y-1 dark:bg-slate-800 dark:text-white">
-                            <div className="flex justify-between items-center">
-                                <p className="font-bold">{title}</p>
-                                <span className="text-2xl rounded-md bg-[#D0C9FF] text-primary p-2 dark:bg-slate-700 dark:text-white">{icon}</span>
-                            </div>
-                            <h2 className="text-4xl font-bold pt-5 pb-4">{project_detail}</h2>
-                            <p>{completed} Completed</p>
-                        </div>
-                    )
-                } )
-            }
-        </div>
+      <div className="space-y-6 md:space-y-0 md:flex justify-between gap-6 items-center px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        {dashboardCards.map(
+          ({ id, title, icon, project_detail, completed }) => {
+            return (
+              <div
+                key={id}
+                className="shadow-md p-4 w-full rounded-md bg-white transition-all hover:-translate-y-1 dark:bg-slate-800 dark:text-white"
+              >
+                <div className="flex justify-between items-center">
+                  <p className="font-bold">{title}</p>
+                  <span className="text-2xl rounded-md bg-[#D0C9FF] text-primary p-2 dark:bg-slate-700 dark:text-white">
+                    {icon}
+                  </span>
+                </div>
+                <h2 className="text-4xl font-bold pt-5 pb-4">
+                  {project_detail}
+                </h2>
+                <p>{completed} Completed</p>
+              </div>
+            );
+          }
+        )}
+      </div>
     );
 };
 
