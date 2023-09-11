@@ -1,41 +1,43 @@
-import { AiOutlineUnorderedList } from "react-icons/ai";
-import { GoProjectSymlink } from "react-icons/go";
-import { FiUsers } from "react-icons/fi";
-import { VscTarget } from "react-icons/vsc";
+import { BiSolidLeaf } from "react-icons/bi";
+import { PiWarningFill } from "react-icons/pi";
+import { GiConfirmed } from "react-icons/gi";
+import { MdCancel } from "react-icons/md";
+import { SiPayoneer } from "react-icons/si";
+
 
 const dashboardCards = [
     {
         id: 1,
         title: 'Total Approved Booking',
-        icon: <GoProjectSymlink />,
+        icon: <GiConfirmed />,
         project_detail: '152',
         completed: 2
     },
     {
         id: 2,
         title: 'Active Booking',
-        icon: <AiOutlineUnorderedList />,
+        icon: <BiSolidLeaf />,
         project_detail: 2,
         completed: 28
     },
     {
         id: 3,
         title: 'Pending Booking',
-        icon: <FiUsers />,
+        icon: <PiWarningFill />,
         project_detail: 22,
         completed: 1
     },
     {
         id: 4,
         title: 'Rejected Booking',
-        icon: <VscTarget />,
+        icon: <MdCancel />,
         project_detail: '32',
         completed: ''
     },
     {
         id: 5,
         title: 'Total Amount Spend',
-        icon: <VscTarget />,
+        icon: <SiPayoneer />,
         project_detail: '$268.45k',
         completed: 'Discount $15k'
     },

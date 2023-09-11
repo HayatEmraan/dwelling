@@ -14,7 +14,7 @@ const BookingHistory = async () => {
   return (
     <div className="flex-1">
       {/* Table Section */}
-      <div className="xl:max-w-[35rem] 2xl:max-w-[150rem] py-10 lg:py-14 mx-auto">
+      <div className="max-w-[35rem] 2xl:max-w-[150rem] py-10 lg:py-14 mx-auto">
         {/* Card */}
         <div className="flex flex-col">
           <div className="-mx-2 overflow-x-auto">
