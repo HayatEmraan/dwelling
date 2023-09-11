@@ -34,31 +34,31 @@ const DashboardHomePage = async () => {
          <Example></Example>
          </div>
       </div>
-        {/* Dashboard Booking list with chart */}
-        {/* <div  className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
+        Dashboard Booking list with chart
+        <div  className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
           <Example></Example>
           <DashBooking></DashBooking>
-        </div> */}
-        {/*Dashboard Invoice list with chart */}
-        {/* <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
+        </div>
+        Dashboard Invoice list with chart
+        <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
           <DashInvoice></DashInvoice>
           <Example></Example>
-        </div> */}
-        {/*Dashboard Property list with chart */}
-        {/* <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
+        </div>
+        Dashboard Property list with chart
+        <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
         <Example></Example>
           <DashProperty></DashProperty>
-        </div> */}
-        {/*Dashboard Host list with chart */}
-        {/* <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
+        </div>
+        Dashboard Host list with chart
+        <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
           <DashHost></DashHost>
           <Example></Example>
-        </div> */}
+        </div>
       </div>
-      {/* <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
+      <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
         <Example></Example>
         <DashBooking></DashBooking>
-      </div> */}
+      </div>
     </>
   );
 };
