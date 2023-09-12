@@ -1,15 +1,23 @@
 import { userAppStore } from "@/store/store";
 import React from "react";
 
-export default function FloorPlan() {
-  const { placeSpace, setPlaceSpace } = userAppStore();
+export default function Availability() {
+  const { selectionType, searchPlaceSpace, setSearchPlaceSpace } =
+    userAppStore();
+
   const handleIncrement = (type) => {
-    setPlaceSpace({ ...placeSpace, [type]: placeSpace[type] + 1 });
+    setSearchPlaceSpace({
+      ...searchPlaceSpace,
+      [type]: searchPlaceSpace[type] + 1,
+    });
   };
 
   const handleDecrement = (type) => {
-    if (placeSpace[type] > 1) {
-      setPlaceSpace({ ...placeSpace, [type]: placeSpace[type] - 1 });
+    if (searchPlaceSpace[type] > 1) {
+      setSearchPlaceSpace({
+        ...searchPlaceSpace,
+        [type]: searchPlaceSpace[type] - 1,
+      });
     }
   };
 
@@ -21,21 +29,21 @@ export default function FloorPlan() {
         </h2>
         <p>You'll add more details later, such as bed types.</p>
       </div>
-      <div className="flex  flex-col w-[40%] gap-5">
-        {Object.keys(placeSpace).map((place) => (
-          <div
+      <ul className="flex  flex-col w-[40%] gap-5">
+        {Object.keys(searchPlaceSpace).map((place) => (
+          <li
             className="flex justify-between w-full text-lg items-center"
             key={place}
           >
             <span className="capitalize ">{place}</span>
-            <div className="flex gap-10 items-center justify-between w-48">
+            <div className="flex gap-3 items-center justify-between w-48">
               <button
                 className="border border-gray-200 py-[10px] rounded-full px-5 flex items-center justify-center hover:border-gray-500"
                 onClick={() => handleDecrement(place)}
               >
                 -
               </button>
-              <span className="min-w-[20px]">{placeSpace[place]}</span>
+              <span className="min-w-[20px]">{searchPlaceSpace[place]}</span>
               <button
                 className="border border-gray-200 py-[10px] rounded-full px-[18px] flex items-center justify-center hover:border-gray-500"
                 onClick={() => handleIncrement(place)}
@@ -43,9 +51,9 @@ export default function FloorPlan() {
                 +
               </button>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

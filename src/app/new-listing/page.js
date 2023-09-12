@@ -8,7 +8,11 @@ import PlaceDetails from "@/components/process/PlaceDetails";
 import PlaceLocation from "@/components/process/PlaceLocation";
 import ProcessAmeneties from "@/components/process/ProcessAmeneties";
 import StepOneStarter from "@/components/process/StepOneStarter";
+import Availability from "@/components/process/availability";
+import Description from "@/components/process/description";
 import ListingCreated from "@/components/process/listingCreated";
+import Price from "@/components/process/price";
+import Title from "@/components/process/title";
 import { Libre_Bodoni } from "next/font/google";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -22,7 +26,7 @@ const bodoni = Libre_Bodoni({
 const NewListingPage = () => {
   const [step, setStep] = useState(0);
 
-  const getComponent = () => {
+  const getComponent = () => {  
     switch (step) {
       case 0:
         return <Overview />;
@@ -38,11 +42,19 @@ const NewListingPage = () => {
         return <PlaceDetails />;
       case 6:
         return <FloorPlan />;
-      case 7:
-        return <ProcessAmeneties />;
+      case 7: 
+        return <Availability />
       case 8:
-        return <Photos />;
+        return <ProcessAmeneties />;
       case 9:
+        return <Title />;
+      case 10:
+        return <Description />;
+      case 11:
+        return <Price />;
+      case 12:
+        return <Photos />;
+      case 13:
         return <ListingCreated />;
     }
   };

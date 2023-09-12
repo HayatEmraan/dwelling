@@ -1,4 +1,4 @@
-"use client";
+"use server";
 export async function cloudinaryUpload(image) {
   const form = new FormData();
   form.append("file", image);
