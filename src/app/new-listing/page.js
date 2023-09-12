@@ -27,10 +27,12 @@ const bodoni = Libre_Bodoni({
 const NewListingPage = () => {
   const [step, setStep] = useState(0);
   const {
-    locationData,
-    mapData,
+    locationType,
     placeType,
+    mapData,
+    locationData,
     placeSpace,
+    searchPlaceSpace,
     selectionType,
     placeAmeneites,
     title,
@@ -39,19 +41,8 @@ const NewListingPage = () => {
     taxes,
     photos,
   } = userAppStore();
-  console.log(
-    locationData,
-    mapData,
-    placeType,
-    placeSpace,
-    selectionType,
-    placeAmeneites,
-    title,
-    description,
-    price,
-    taxes,
-    photos
-  );
+
+  console.log(searchPlaceSpace);
   const getComponent = () => {
     switch (step) {
       case 0:
@@ -130,7 +121,31 @@ const NewListingPage = () => {
         {step !== 0 ? (
           <button
             onClick={handleNext}
-            // disabled={step == 2 && location == undefined ? true : false}
+            disabled={
+              step === 2 && locationType === undefined
+                ? true
+                : false || (step === 3 && placeType === undefined)
+                ? true
+                : false || (step === 4 && mapData === undefined)
+                ? true
+                : false || (step === 5 && locationData === undefined)
+                ? true
+                : false || (step === 6 && placeSpace === undefined)
+                ? true // problem start from this line
+                : false || (step === 7 && searchPlaceSpace?.adults != 0)
+                ? false
+                : true || (step === 8 && placeAmeneites.length > 0)
+                ? false
+                : true || (step === 9 && title.length > 10)
+                ? false
+                : true || (step === 10 && description.length > 50)
+                ? true
+                : false || (step === 11 && price > 0)
+                ? false
+                : true || (step === 12 && photos.length > 4)
+                ? false
+                : true
+            }
             className="bg-[#222222] py-3 mt-5 px-5 text-base font-medium text-white rounded-md cursor-pointer disabled:bg-red-500"
           >
             Next

@@ -34,4 +34,6 @@ export const createProcessSlice = (set, get) => ({
   setPrice: (price) => set({ price }),
   taxes: 0,
   setTaxes: (taxes) => set({ taxes }),
+  addressInfo: {},
+  setAddressInfo: (addressInfo) => set({ addressInfo }),
 });

@@ -24,7 +24,6 @@ const ListingTypeSelector = () => {
             </button>
           ))}
         </div>
-        {locationType && locationType?.name}
       </div>
     </div>
   );

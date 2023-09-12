@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import image from "../../../../public/profile/images.jpg";
 import Image from "next/image";
 import { cloudinaryUpload } from "@/utils/async/sharedt/sharedt";
+import { profileimg } from "@/utils/async/profile/profleimg";
 
 const Setting = () => {
   const [selectedImages, setSelectedImages] = useState([]);
@@ -19,7 +20,8 @@ const Setting = () => {
   const imageOnchange = async (e) => {
     const image = e.target.files[0];
     const result = await cloudinaryUpload(image);
-    console.log(result?.secure_url);
+    const newResult = await profileimg(result?.secure_url);
+    console.log(newResult);
   };
 
   const handleSaveAll = (event) => {
