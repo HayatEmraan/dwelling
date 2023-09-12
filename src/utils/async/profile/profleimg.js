@@ -1,8 +1,8 @@
 "use server";
 import { cookies } from "next/headers";
-export async function profileimg(id, photoURL) {
+export async function profileimg(photoURL) {
   const res = await fetch(
-    `https://dwelling-bright-server.vercel.app/api/v2/user/updateimg?id=${id}`,
+    `https://dwelling-bright-server.vercel.app/api/v2/user/updateimg`,
     {
       method: "PATCH",
       headers: {

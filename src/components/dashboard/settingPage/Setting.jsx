@@ -16,60 +16,59 @@ const Setting = () => {
     setImageURLs(newImageUrls);
   }, [selectedImages]);
 
-  // const [info, setInfo] = useState([]);
-  // useEffect(() => {
-  //   fetch("generelInfo.json")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setInfo(data);
-  //     });
-  // }, []);
-
   const imageOnchange = async (e) => {
     const image = e.target.files[0];
     const result = await cloudinaryUpload(image);
     console.log(result?.secure_url);
   };
 
-
-
-
-
-  const handleSaveAll = (event) =>{
+  const handleSaveAll = (event) => {
     event.preventDefault();
-
-
-const form = event.target;
-const firstName = form.firstName.value;
-const lastName = form.lastName.value;
-const country = form.country.value;
-const city = form.city.value;
-const address= form.address.value;
-const email= form.email.value;
-const birthday= form.birthday.value;
-const organization= form.organization.value;
-// const role= form.role.value;
-// const department= form.department.value;
-const zipCode= form.zipCode.value;
-
-
-
-
-const saveNewInfo = {firstName,lastName,country,city,address,email,birthday,organization,zipCode}
-    console.log(saveNewInfo);
-  }
-
-  const handlePassword = (event)=>{
-    event.preventDefault();
-
     const form = event.target;
-    const currentPassword= form.currentPassword.value;
-    const newPassword= form.newPassword.value;
-    const confirmPassword= form.confirmPassword.value;
+    const firstName = form.firstName.value;
+    const lastName = form.lastName.value;
+    const country = form.country.value;
+    const city = form.city.value;
+    const address = form.address.value;
+    const email = form.email.value;
+    const birthday = form.birthday.value;
+    const organization = form.organization.value;
+    // const role= form.role.value;
+    // const department= form.department.value;
+    const zipCode = form.zipCode.value;
+    const saveNewInfo = {
+      firstName,
+      lastName,
+      country,
+      city,
+      address,
+      email,
+      birthday,
+      organization,
+      zipCode,
+    };
+    const save = api(id,
+  name,
+  address,
+  city,
+  phone,
+  country,
+  dob,
+  postcode,
+  organization,
+  dialingCode)
+    console.log(saveNewInfo);
+  };
 
-    const savePassword = {currentPassword,newPassword,confirmPassword}
-    console.log(savePassword)
-  }
+  const handlePassword = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const currentPassword = form.currentPassword.value;
+    const newPassword = form.newPassword.value;
+    const confirmPassword = form.confirmPassword.value;
+    const savePassword = { currentPassword, newPassword, confirmPassword };
+    console.log(savePassword);
+  };
 
   return (
     <div>
@@ -574,7 +573,7 @@ const saveNewInfo = {firstName,lastName,country,city,address,email,birthday,orga
                     required=""
                   />
                 </div>
-             
+
                 <div className="col-span-6 sm:col-span-3">
                   <label
                     htmlFor="zip-code"

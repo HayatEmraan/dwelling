@@ -1,7 +1,6 @@
 "use server";
 import { cookies } from "next/headers";
 export async function profileupdate(
-  id,
   name,
   address,
   city,
@@ -13,7 +12,7 @@ export async function profileupdate(
   dialingCode
 ) {
   const res = await fetch(
-    `https://dwelling-bright-server.vercel.app/api/v2/user/updateinfo?id=${id}`,
+    `https://dwelling-bright-server.vercel.app/api/v2/user/updateinfo`,
     {
       method: "PATCH",
       headers: {
