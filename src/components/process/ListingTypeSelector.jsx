@@ -4,7 +4,6 @@ import React from "react";
 
 const ListingTypeSelector = () => {
   const { locationType, setLocationType } = userAppStore();
-
   return (
     <div className="flex items-center justify-center max-h-[80vh] h-[80vh]">
       <div>
@@ -25,6 +24,7 @@ const ListingTypeSelector = () => {
             </button>
           ))}
         </div>
+        {locationType && locationType?.name}
       </div>
     </div>
   );

@@ -3,14 +3,13 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./DetailsMap.css";
 
-const DetailsMap = () => {
-  const position = [23.794343121597283, 90.40432617658985];
-
+const DetailsMap = ({ location }) => {
+  const position = [location?.lat, location?.lng];
   const customIcon = L.icon({
     iconUrl: "/icons/location_icon.png",
     iconSize: [32, 32],
   });
-
+  
   return (
     <>
       <div className="border-t mt-10">

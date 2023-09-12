@@ -1,5 +1,3 @@
-
-
 import { userAppStore } from "@/store/store";
 import React from "react";
 import { AmenetiesType } from "../data/Ameneties";
@@ -23,7 +21,7 @@ export default function ProcessAmeneties() {
                 <h2 className="font-semibold text-4xl">
                     Tell guests what your place has to offer
                 </h2>
-                <p>You can add more amenities after you publish your listing.</p>
+                <p>Your most popular amenities, etc.</p>
                 <div className="flex flex-col gap-5 max-h-[65vh] overflow-auto scroll no-scrollbar">
                     {AmenetiesType.map(({ type, data }) => (
                         <div key={type} className="flex flex-col gap-5">

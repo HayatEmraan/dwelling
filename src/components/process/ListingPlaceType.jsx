@@ -26,7 +26,6 @@ const data = [
 
 const ListingPlaceType = () => {
   const { placeType, setPlaceType } = userAppStore();
-
   return (
     <div className="flex items-center justify-center flex-col h-full gap-10">
       <h2 className="font-semibold text-4xl">

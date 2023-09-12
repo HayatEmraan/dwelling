@@ -8,7 +8,12 @@ import PlaceDetails from "@/components/process/PlaceDetails";
 import PlaceLocation from "@/components/process/PlaceLocation";
 import ProcessAmeneties from "@/components/process/ProcessAmeneties";
 import StepOneStarter from "@/components/process/StepOneStarter";
+import Availability from "@/components/process/availability";
+import Description from "@/components/process/description";
 import ListingCreated from "@/components/process/listingCreated";
+import Price from "@/components/process/price";
+import Title from "@/components/process/title";
+import { userAppStore } from "@/store/store";
 import { Libre_Bodoni } from "next/font/google";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -21,7 +26,32 @@ const bodoni = Libre_Bodoni({
 
 const NewListingPage = () => {
   const [step, setStep] = useState(0);
-
+  const {
+    locationData,
+    mapData,
+    placeType,
+    placeSpace,
+    selectionType,
+    placeAmeneites,
+    title,
+    description,
+    price,
+    taxes,
+    photos,
+  } = userAppStore();
+  console.log(
+    locationData,
+    mapData,
+    placeType,
+    placeSpace,
+    selectionType,
+    placeAmeneites,
+    title,
+    description,
+    price,
+    taxes,
+    photos
+  );
   const getComponent = () => {
     switch (step) {
       case 0:
@@ -39,10 +69,18 @@ const NewListingPage = () => {
       case 6:
         return <FloorPlan />;
       case 7:
-        return <ProcessAmeneties />;
+        return <Availability />;
       case 8:
-        return <Photos />;
+        return <ProcessAmeneties />;
       case 9:
+        return <Title />;
+      case 10:
+        return <Description />;
+      case 11:
+        return <Price />;
+      case 12:
+        return <Photos />;
+      case 13:
         return <ListingCreated />;
     }
   };
@@ -92,7 +130,8 @@ const NewListingPage = () => {
         {step !== 0 ? (
           <button
             onClick={handleNext}
-            className="bg-[#222222] py-3 mt-5 px-5 text-base font-medium text-white rounded-md cursor-pointer"
+            // disabled={step == 2 && location == undefined ? true : false}
+            className="bg-[#222222] py-3 mt-5 px-5 text-base font-medium text-white rounded-md cursor-pointer disabled:bg-red-500"
           >
             Next
           </button>

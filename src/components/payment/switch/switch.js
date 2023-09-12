@@ -12,9 +12,9 @@ const SwitchComp = ({ roomID }) => {
   const handleSSL = async () => {
     console.log(roomID, checkIn, checkOut);
     const result = await SSLCommerz(roomID, checkIn, checkOut);
-    console.log(result);
     if (result.url) router.replace(result.url);
   };
+
   return (
     <div className="flex items-center w-full absolute justify-center min-h-screen z-[100] -top-1/4 -bottom-1/2">
       <div className="shadow-lg p-16 md:p-20 bg-white rounded-lg w-full mx-12 md:w-fit">
@@ -30,8 +30,8 @@ const SwitchComp = ({ roomID }) => {
             <img src="/img/payment/ssl.png" alt="ssl" className="w-24 mr-2" />
             <span className="hidden md:block">Pay with SSL </span>Commerz
           </button>
-          <button
-            type="button"
+          <a
+            href={`/payment/stripe/checkout?it=str&msg=pay&lang=en-US&page=1&&sort=&rm=${roomID}&pay=true&checkIn=${checkIn}&checkOut=${checkOut}&id=62f745e4100853aecc6b4701`}
             className="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 mr-2 mb-2"
           >
             <img
@@ -40,7 +40,7 @@ const SwitchComp = ({ roomID }) => {
               className="w-24 mr-2 h-5"
             />
             <span className="hidden md:inline-flex mr-1">Pay with</span>Stripe
-          </button>
+          </a>
         </div>
       </div>
     </div>

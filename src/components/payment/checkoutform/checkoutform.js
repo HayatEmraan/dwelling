@@ -3,7 +3,7 @@ import { PaymentElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ rm }) {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -19,9 +19,10 @@ export default function CheckoutForm() {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${window.location.origin}/completion`,
+        return_url: `https://dwelling-bright-server.vercel.app/api/v2/payment/success/stripe?rm=${rm}`,
       },
     });
+    console.log(paymentIntent);
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);
     } else {

@@ -1,11 +1,8 @@
 import React from 'react';
 
-const PaymentIntent = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+const PaymentIntent = ({ searchParams }) => {
+    const { rm } = searchParams;
+  return <div></div>;
 };
 
 export default PaymentIntent;
