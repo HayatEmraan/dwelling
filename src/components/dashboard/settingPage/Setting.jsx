@@ -16,20 +16,60 @@ const Setting = () => {
     setImageURLs(newImageUrls);
   }, [selectedImages]);
 
-  const [info, setInfo] = useState([]);
-  useEffect(() => {
-    fetch("generelInfo.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setInfo(data);
-      });
-  }, []);
+  // const [info, setInfo] = useState([]);
+  // useEffect(() => {
+  //   fetch("generelInfo.json")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setInfo(data);
+  //     });
+  // }, []);
 
   const imageOnchange = async (e) => {
     const image = e.target.files[0];
     const result = await cloudinaryUpload(image);
     console.log(result?.secure_url);
   };
+
+
+
+
+
+  const handleSaveAll = (event) =>{
+    event.preventDefault();
+
+
+const form = event.target;
+const firstName = form.firstName.value;
+const lastName = form.lastName.value;
+const country = form.country.value;
+const city = form.city.value;
+const address= form.address.value;
+const email= form.email.value;
+const birthday= form.birthday.value;
+const organization= form.organization.value;
+// const role= form.role.value;
+// const department= form.department.value;
+const zipCode= form.zipCode.value;
+
+
+
+
+const saveNewInfo = {firstName,lastName,country,city,address,email,birthday,organization,zipCode}
+    console.log(saveNewInfo);
+  }
+
+  const handlePassword = (event)=>{
+    event.preventDefault();
+
+    const form = event.target;
+    const currentPassword= form.currentPassword.value;
+    const newPassword= form.newPassword.value;
+    const confirmPassword= form.confirmPassword.value;
+
+    const savePassword = {currentPassword,newPassword,confirmPassword}
+    console.log(savePassword)
+  }
 
   return (
     <div>
@@ -388,7 +428,7 @@ const Setting = () => {
             <h3 className="mb-4 text-xl font-semibold dark:text-white">
               General information
             </h3>
-            <form action="#">
+            <form action="#" onSubmit={handleSaveAll}>
               <div className="grid grid-cols-6 gap-6">
                 <div className="col-span-6 sm:col-span-3">
                   <label
@@ -399,7 +439,7 @@ const Setting = () => {
                   </label>
                   <input
                     type="text"
-                    name="first-name"
+                    name="firstName"
                     id="first-name"
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Bonnie"
@@ -415,7 +455,7 @@ const Setting = () => {
                   </label>
                   <input
                     type="text"
-                    name="last-name"
+                    name="lastName"
                     id="last-name"
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Green"
@@ -495,7 +535,7 @@ const Setting = () => {
                   </label>
                   <input
                     type="number"
-                    name="phone-number"
+                    name="phoneNumber"
                     id="phone-number"
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="e.g. +(12)3456 789"
@@ -534,38 +574,7 @@ const Setting = () => {
                     required=""
                   />
                 </div>
-                <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="role"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Role
-                  </label>
-                  <input
-                    type="text"
-                    name="role"
-                    id="role"
-                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    placeholder="React Developer"
-                    required=""
-                  />
-                </div>
-                <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="department"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Department
-                  </label>
-                  <input
-                    type="text"
-                    name="department"
-                    id="department"
-                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    placeholder="Development"
-                    required=""
-                  />
-                </div>
+             
                 <div className="col-span-6 sm:col-span-3">
                   <label
                     htmlFor="zip-code"
@@ -575,7 +584,7 @@ const Setting = () => {
                   </label>
                   <input
                     type="number"
-                    name="zip-code"
+                    name="zipCode"
                     id="zip-code"
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={123456}
@@ -597,7 +606,7 @@ const Setting = () => {
             <h3 className="mb-4 text-xl font-semibold dark:text-white">
               Password information
             </h3>
-            <form action="#">
+            <form action="#" onSubmit={handlePassword}>
               <div className="grid grid-cols-6 gap-6">
                 <div className="col-span-6 sm:col-span-3">
                   <label
@@ -608,7 +617,7 @@ const Setting = () => {
                   </label>
                   <input
                     type="text"
-                    name="current-password"
+                    name="currentPassword"
                     id="current-password"
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="••••••••"
@@ -626,6 +635,7 @@ const Setting = () => {
                     data-popover-target="popover-password"
                     data-popover-placement="bottom"
                     type="password"
+                    name="newPassword"
                     id="password"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="••••••••"
@@ -711,7 +721,7 @@ const Setting = () => {
                   </label>
                   <input
                     type="text"
-                    name="confirm-password"
+                    name="confirmPassword"
                     id="confirm-password"
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="••••••••"
