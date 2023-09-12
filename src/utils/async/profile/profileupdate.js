@@ -1,6 +1,17 @@
 "use server";
 import { cookies } from "next/headers";
-export async function profileupdate(id) {
+export async function profileupdate(
+  id,
+  name,
+  address,
+  city,
+  phone,
+  country,
+  dob,
+  postcode,
+  organization,
+  dialingCode
+) {
   const res = await fetch(
     `https://dwelling-bright-server.vercel.app/api/v2/user/updateinfo?id=${id}`,
     {
@@ -9,6 +20,17 @@ export async function profileupdate(id) {
         "Content-Type": "application/json",
         authorization: `Bearer ${cookies().get("accessToken")?.value}`,
       },
+      body: JSON.stringify({
+        name,
+        address,
+        city,
+        phone,
+        country,
+        dob,
+        postcode,
+        organization,
+        dialingCode,
+      }),
     }
   );
   if (!res.ok) throw new Error("Failed to fetch data");

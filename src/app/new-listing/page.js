@@ -13,6 +13,7 @@ import Description from "@/components/process/description";
 import ListingCreated from "@/components/process/listingCreated";
 import Price from "@/components/process/price";
 import Title from "@/components/process/title";
+import { userAppStore } from "@/store/store";
 import { Libre_Bodoni } from "next/font/google";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -25,8 +26,33 @@ const bodoni = Libre_Bodoni({
 
 const NewListingPage = () => {
   const [step, setStep] = useState(0);
-
-  const getComponent = () => {  
+  const {
+    locationData,
+    mapData,
+    placeType,
+    placeSpace,
+    selectionType,
+    placeAmeneites,
+    title,
+    description,
+    price,
+    taxes,
+    photos,
+  } = userAppStore();
+  console.log(
+    locationData,
+    mapData,
+    placeType,
+    placeSpace,
+    selectionType,
+    placeAmeneites,
+    title,
+    description,
+    price,
+    taxes,
+    photos
+  );
+  const getComponent = () => {
     switch (step) {
       case 0:
         return <Overview />;
@@ -42,8 +68,8 @@ const NewListingPage = () => {
         return <PlaceDetails />;
       case 6:
         return <FloorPlan />;
-      case 7: 
-        return <Availability />
+      case 7:
+        return <Availability />;
       case 8:
         return <ProcessAmeneties />;
       case 9:
@@ -104,7 +130,8 @@ const NewListingPage = () => {
         {step !== 0 ? (
           <button
             onClick={handleNext}
-            className="bg-[#222222] py-3 mt-5 px-5 text-base font-medium text-white rounded-md cursor-pointer"
+            // disabled={step == 2 && location == undefined ? true : false}
+            className="bg-[#222222] py-3 mt-5 px-5 text-base font-medium text-white rounded-md cursor-pointer disabled:bg-red-500"
           >
             Next
           </button>

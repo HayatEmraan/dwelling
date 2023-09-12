@@ -3,7 +3,7 @@ import FormInput from "../common/FormInput";
 import { userAppStore } from "@/store/store";
 
 export default function PlaceDetails() {
-  const { locationData, setLocationData } = userAppStore();
+  const { locationData, setLocationData} = userAppStore();
   const handleChange = (name, value) => {
     setLocationData({ ...locationData, [name]: value });
   };
