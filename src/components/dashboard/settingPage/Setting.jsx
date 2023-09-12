@@ -16,15 +16,6 @@ const Setting = () => {
     setImageURLs(newImageUrls);
   }, [selectedImages]);
 
-  // const [info, setInfo] = useState([]);
-  // useEffect(() => {
-  //   fetch("generelInfo.json")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setInfo(data);
-  //     });
-  // }, []);
-
   const imageOnchange = async (e) => {
     const image = e.target.files[0];
     const result = await cloudinaryUpload(image);
