@@ -31,13 +31,16 @@ const Cards = async ({ data }) => {
                   <div className="flex justify-between items-center">
                     <div className="font-semibold text-lg">{room.name}</div>
                     <div className="text-md flex items-center">
-                      <AiFillStar />
-                      {room.rating}
+                      {room?.rating && <AiFillStar />}
+                      {room?.rating}
                     </div>
                   </div>
-                  <div className="font-light text-neutral-500 -my-2">
+                  <div className="font-light text-neutral-500 -my-2 flex justify-between items-center">
                     {moment(room?.dateRange?.startDate).format("MMM DD")} -{" "}
                     {moment(room?.dateRange?.endDate).format("MMM DD")}
+                    <p className="text-sm bg-gradient-to-r from-sky-400 via-rose-400 to-lime-400 bg-clip-text text-transparent">
+                      {room?.category?.type}
+                    </p>
                   </div>
                   <div className="flex flex-row items-center gap-1">
                     <div className="font-semibold">$ {room.price}</div>

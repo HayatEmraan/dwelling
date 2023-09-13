@@ -19,10 +19,6 @@ const DetailsMapIndex = dynamic(
 );
 
 const RoomDetails = async ({ params }) => {
-  const location = {
-    lat: 23.807834697453142,
-    lng: 90.41453565758886,
-  };
   const { slug } = params;
   const res = await fetch(
     `https://dwelling-bright-server.vercel.app/api/v1/getdetails/${slug}`,
@@ -31,7 +27,10 @@ const RoomDetails = async ({ params }) => {
     }
   );
   const data = await res.json();
-
+  const location = {
+    lat: data?.data?.lat || 23.807834697453142,
+    lng: data?.data?.lng || 90.41453565758886,
+  };
   return (
     <div className="max-w-6xl lg:mx-auto px-5">
       {/* Header Section */}
@@ -58,7 +57,7 @@ const RoomDetails = async ({ params }) => {
 
       {/* reviews */}
       <Reviews
-        reviews={<ReviewsComp />}
+        reviews={<ReviewsComp reviews={data?.data?.reviews} />}
         reviewsModal={<ReviewsModal />}
         reviewsLength={data?.data?.reviews?.length}
       />
