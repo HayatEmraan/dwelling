@@ -39,8 +39,6 @@ const address= form.address.value;
 const email= form.email.value;
 const birthday= form.birthday.value;
 const organization= form.organization.value;
-// const role= form.role.value;
-// const department= form.department.value;
 const zipCode= form.zipCode.value;
 
 
@@ -49,6 +47,22 @@ const zipCode= form.zipCode.value;
 const saveNewInfo = {firstName,lastName,country,city,address,email,birthday,organization,zipCode}
     console.log(saveNewInfo);
   }
+
+    fetch(`https://dwelling-bright-server.vercel.app/api/v2/user/updateinfo}`,{
+      method: 'POST',
+      headers:{
+        'Content-Type':"application/json",
+      },
+      body : JSON.stringify(saveNewInfo)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log("Data from server:", data);
+      // if(!data){
+      //   alert('Error')
+      //   return false;}else  window.location="/profile";
+        
+    })
 
   const handlePassword = (event)=>{
     event.preventDefault();
@@ -434,7 +448,7 @@ const saveNewInfo = {firstName,lastName,country,city,address,email,birthday,orga
                     id="first-name"
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Bonnie"
-                    required=""
+                    required="required"
                   />
                 </div>
                 <div className="col-span-6 sm:col-span-3">
@@ -450,7 +464,7 @@ const saveNewInfo = {firstName,lastName,country,city,address,email,birthday,orga
                     id="last-name"
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Green"
-                    required=""
+                    required="required"
                   />
                 </div>
                 <div className="col-span-6 sm:col-span-3">
@@ -466,7 +480,7 @@ const saveNewInfo = {firstName,lastName,country,city,address,email,birthday,orga
                     id="country"
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="United States"
-                    required=""
+                    required="required"
                   />
                 </div>
                 <div className="col-span-6 sm:col-span-3">
@@ -514,7 +528,7 @@ const saveNewInfo = {firstName,lastName,country,city,address,email,birthday,orga
                     id="email"
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="example@company.com"
-                    required=""
+                    required="required"
                   />
                 </div>
                 <div className="col-span-6 sm:col-span-3">
@@ -579,7 +593,7 @@ const saveNewInfo = {firstName,lastName,country,city,address,email,birthday,orga
                     id="zip-code"
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={123456}
-                    required=""
+                    required="required"
                   />
                 </div>
                 <div className="col-span-6 sm:col-full">
