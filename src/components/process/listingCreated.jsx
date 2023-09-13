@@ -1,53 +1,9 @@
-import { createLisitngAPI } from "@/libs/listing";
-import { userAppStore } from "@/store/store";
-
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
 import Confetti from "react-confetti";
 
 export default function ListingCreated() {
   const router = useRouter();
-  const {
-    locationType,
-    placetype,
-    mapData,
-    locationData,
-    placeSpace,
-    placeAmeneites,
-    photos,
-    title,
-    description,
-    price,
-    userInfo,
-  } = userAppStore();
-  useEffect(() => {
-    createLisitngAPI({
-      locationType,
-      placetype,
-      mapData,
-      locationData,
-      placeSpace,
-      placeAmeneites,
-      photos,
-      title,
-      description,
-      price,
-      listingCreatedBy: { id: userInfo?.id },
-    });
-  }, [
-    locationType,
-    placetype,
-    mapData,
-    locationData,
-    placeSpace,
-    placeAmeneites,
-    photos,
-    title,
-    description,
-    price,
-    userInfo,
-  ]);
-
   return (
     <div className="flex flex-col gap-5 items-center justify-center h-full">
       <div className="flex flex-col gap-2 items-center justify-center">

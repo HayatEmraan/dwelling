@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import SearchBeds from "@/components/SearchScheduler/SearchBeds";
 import DetailsFacilities from "@/components/details/DetailsFacilities/DetailsFacilities";
 import Header from "@/components/details/Header/Header";
@@ -9,9 +10,19 @@ import ReviewsComp from "@/components/details/Review/review";
 import ReviewsModal from "@/components/details/Review/reviewmodal";
 import Reviews from "@/components/details/Reviews/Reviews";
 import SingleRoomDetails from "@/components/details/SingleRoomDetails/SingleRoomDetails";
-import DetailsMapIndex from "@/components/details/detailMap";
+
+const DetailsMapIndex = dynamic(
+  () => import("@/components/details/detailMap/DetailsMap"),
+  {
+    ssr: false,
+  }
+);
 
 const RoomDetails = async ({ params }) => {
+  const location = {
+    lat: 23.807834697453142,
+    lng: 90.41453565758886,
+  };
   const { slug } = params;
   const res = await fetch(
     `https://dwelling-bright-server.vercel.app/api/v1/getdetails/${slug}`,
@@ -53,7 +64,7 @@ const RoomDetails = async ({ params }) => {
       />
 
       {/* details map  */}
-      <DetailsMapIndex />
+      <DetailsMapIndex location={location} />
       <section></section>
     </div>
   );

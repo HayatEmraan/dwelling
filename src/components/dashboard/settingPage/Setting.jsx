@@ -4,6 +4,7 @@ import image from "../../../../public/profile/images.jpg";
 import Image from "next/image";
 import { cloudinaryUpload } from "@/utils/async/sharedt/sharedt";
 import { profileimg } from "@/utils/async/profile/profleimg";
+import { profileupdate } from "@/utils/async/profile/profileupdate";
 
 const Setting = () => {
   const [selectedImages, setSelectedImages] = useState([]);
@@ -24,7 +25,7 @@ const Setting = () => {
     console.log(newResult);
   };
 
-  const handleSaveAll = (event) => {
+  const handleSaveAll = async (event) => {
     event.preventDefault();
     const form = event.target;
     const firstName = form.firstName.value;
@@ -33,33 +34,22 @@ const Setting = () => {
     const city = form.city.value;
     const address = form.address.value;
     const email = form.email.value;
-    const birthday = form.birthday.value;
+    const dob = form.birthday.value;
     const organization = form.organization.value;
-    // const role= form.role.value;
-    // const department= form.department.value;
-    const zipCode = form.zipCode.value;
-    const saveNewInfo = {
+    const postcode = form.zipCode.value;
+    const name = {
       firstName,
       lastName,
-      country,
-      city,
-      address,
-      email,
-      birthday,
-      organization,
-      zipCode,
     };
-    const save = api(id,
-  name,
-  address,
-  city,
-  phone,
-  country,
-  dob,
-  postcode,
-  organization,
-  dialingCode)
-    console.log(saveNewInfo);
+    const result = await profileupdate(
+      name,
+      address,
+      city,
+      country,
+      dob,
+      postcode,
+      organization,
+    );
   };
 
   const handlePassword = (event) => {
