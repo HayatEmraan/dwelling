@@ -10,6 +10,7 @@ export async function getproperties(page) {
         "Content-Type": "application/json",
         authorization: `Bearer ${cookies().get("accessToken")?.value}`,
       },
+      cache: "no-store",
     }
   );
   if (!res.ok) throw new Error("Failed to fetch data");

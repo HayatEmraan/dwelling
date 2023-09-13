@@ -1,5 +1,3 @@
-import Barn from "@/svg/listingTypes/barn";
-import BedBreakfast from "@/svg/listingTypes/bed-breakfast";
 import Boat from "@/svg/listingTypes/boat";
 import Cabin from "@/svg/listingTypes/cabin";
 import Campervan from "@/svg/listingTypes/campervan";
@@ -33,8 +31,6 @@ import Yurt from "@/svg/listingTypes/yurt";
 export const listingTypes = [
   { name: "House", svgPath: <House /> },
   { name: "Flat/apartment", svgPath: <Flat /> },
-  { name: "Barn", svgPath: <Barn /> },
-  { name: "Bed & breakfast", svgPath: <BedBreakfast /> },
   { name: "Boat", svgPath: <Boat /> },
   { name: "Cabin", svgPath: <Cabin /> },
   { name: "Campervan/motorhouse", svgPath: <Campervan /> },

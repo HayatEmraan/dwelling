@@ -1,16 +1,12 @@
-import React, { useState } from "react";
-
-
-
+import React from "react";
 import FormInput from "../common/FormInput";
 import { userAppStore } from "@/store/store";
 
 export default function PlaceDetails() {
-  const { locationData, setLocationData } = userAppStore();
+  const { locationData, setLocationData, addressInfo } = userAppStore();
   const handleChange = (name, value) => {
     setLocationData({ ...locationData, [name]: value });
   };
-
   return (
     <div className="flex justify-center items-center h-full flex-col gap-2 w-full">
       <div className="flex flex-col gap-3">
@@ -22,14 +18,6 @@ export default function PlaceDetails() {
       </div>
       <div className="flex flex-col w-full items-center gap-3 h-full overflow-auto no-scrollbar pb-20 pt-5">
         <div className="flex flex-col gap-2 w-[30%]">
-          <FormInput
-            isListing
-            name="country"
-            placeholder="Country"
-            setValue={handleChange}
-            type="text"
-            value={locationData?.country}
-          />
           <FormInput
             isListing
             name="neighborhood"
@@ -54,7 +42,7 @@ export default function PlaceDetails() {
             placeholder="Street Address"
             setValue={handleChange}
             type="text"
-            value={locationData?.locality}
+            value={addressInfo?.displayName}
           />
         </div>
         <div className="flex flex-col gap-2 w-[30%]">
@@ -72,14 +60,14 @@ export default function PlaceDetails() {
             placeholder="City / town"
             setValue={handleChange}
             type="text"
-            value={locationData?.district}
+            value={addressInfo?.location?.city}
           />
         </div>
         <div className="flex flex-col gap-2 w-[30%]">
           <FormInput
             isListing
             name="postcode"
-            placeholder="PIN code"
+            placeholder="Post code"
             setValue={handleChange}
             type="text"
             value={locationData?.postcode}
@@ -90,7 +78,7 @@ export default function PlaceDetails() {
             placeholder="Country / province"
             setValue={handleChange}
             type="text"
-            value={locationData?.country}
+            value={addressInfo?.location?.country}
           />
         </div>
       </div>
