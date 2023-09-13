@@ -8,11 +8,10 @@ import { BsViewList } from "react-icons/bs";
 
 const DashHost = () => {
 
-
+ 
 
     return (
-   <div className=" mx-auto px-4 sm:px-6 lg:px-8 ">
-         <div className="xl:max-w-[35rem] 2xl:max-w-[150rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <div className="max-w-[150rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto ">
             {/* Card */}
             <div className="flex flex-col">
                 <div className="-m-1.5 overflow-x-auto">
@@ -31,10 +30,10 @@ const DashHost = () => {
                                 </div>
 
                                 <div className="inline-flex gap-x-4 items-center">
-
+                                 
                                     <div className="sm:col-span-2 md:grow">
                                         <div className="flex justify-end gap-x-2">
-
+                                        
                                             <div
                                                 className="hs-dropdown relative inline-block [--placement:bottom-right]"
                                                 data-hs-dropdown-auto-close="inside"
@@ -124,7 +123,7 @@ const DashHost = () => {
                                     </div>
                                 </div>
                             </div>
-
+                  
 
                             <table className="p-2 min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                 <thead className="bg-gray-50 dark:bg-slate-800">
@@ -260,28 +259,28 @@ const DashHost = () => {
                             {/* End Table */}
                             {/* Footer */}
                             <div className="px-6 flex justify-between items-center border-t border-gray-200 dark:border-gray-700">
-                                <div>
-                                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                                        <span className="font-semibold text-gray-800 dark:text-gray-200">
-                                            1
-                                        </span>{" "}
-                                        results of 12 entries
-                                    </p>
-                                </div>
-                                <div className="px-0 py-4 grid gap-3 md:flex md:justify-center md:items-center border-t border-gray-200 dark:border-gray-700">
-                                    <div className="inline-flex gap-x-2">
-                                        <a
-                                            type="button"
-                                            href="dashboard/host"
-                                            className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                                        >
-                                            <BsViewList />
-                                            View All
-                                        </a>
+                                    <div>
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                                            <span className="font-semibold text-gray-800 dark:text-gray-200">
+                                                1
+                                            </span>{" "}
+                                            results of 12 entries
+                                        </p>
+                                    </div>
+                                    <div className="px-0 py-4 grid gap-3 md:flex md:justify-center md:items-center border-t border-gray-200 dark:border-gray-700">
+                                        <div className="inline-flex gap-x-2">
+                                            <a
+                                                type="button"
+                                                href="dashboard/host"
+                                                className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                                            >
+                                                <BsViewList />
+                                                View All
+                                            </a>
 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             {/* End Footer */}
                         </div>
                     </div>
@@ -289,7 +288,6 @@ const DashHost = () => {
             </div>
             {/* End Card */}
         </div>
-   </div>
     );
 };
 

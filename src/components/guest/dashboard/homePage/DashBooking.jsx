@@ -5,7 +5,7 @@ const DashBooking = () => {
       <div className=" mx-auto px-4 sm:px-6 lg:px-8 ">
         <>
           {/* Table Section */}
-          <div className="xl:max-w-[35rem] 2xl:max-w-[150rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+          <div className="py-10 sm:px-6 lg:px-6 lg:py-14">
             {/* Card */}
             <div className="flex flex-col">
               <div className="-m-1.5 overflow-x-auto">
