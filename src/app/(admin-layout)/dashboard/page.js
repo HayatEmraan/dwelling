@@ -40,7 +40,7 @@ const DashboardHomePage = async () => {
 
         {/* Dashboard Booking list with chart */}
         <div className="xl:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
-          <div className="border-2 shadow-sm rounded-md xl:w-150 mx-4 lg:mx-0">
+          <div className="border-2 shadow-sm rounded-md xl:w-96 mx-4 lg:mx-0">
             <DashBarChart></DashBarChart>
           </div>
           <DashBooking></DashBooking>
