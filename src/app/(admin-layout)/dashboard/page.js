@@ -4,7 +4,7 @@ import CardContainer from "@/components/dashboard/homePage/CardContainer";
 import dynamic from "next/dynamic";
 const Example = dynamic(
   () => {
-    return import("@/components/dashboard/homePage/ChartSide");
+    return import("@/components/dashboard/homePage/DashPieChart");
   },
   {
     ssr: false,
@@ -20,6 +20,7 @@ import MyTaskTable from "@/components/dashboard/homePage/MyTaskTable/MyTaskTable
 import MyTeam from "@/components/dashboard/homePage/MyTeam/MyTeam";
 import { getusers } from "@/utils/async/admin/users/getusers";
 import BookingGuestChart from "@/components/dashboard/bookingGuest/BookingGuestChart";
+import DashBarChart from "@/components/dashboard/DashBarChart";
 
 const DashboardHomePage = async () => {
   const data = await getusers();
@@ -28,6 +29,7 @@ const DashboardHomePage = async () => {
       <HomePageHeading />
       <div className="max-w-[150rem] lg:px-16 -mt-[70px] dark:bg-slate-700 dark:text-white">
         <CardContainer />
+
         {/*Dashboard user list with chart */}
         <div className="xl:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
           <DashUsers data={data}></DashUsers>
@@ -35,32 +37,38 @@ const DashboardHomePage = async () => {
             <Example></Example>
           </div>
         </div>
+
         {/* Dashboard Booking list with chart */}
         <div className="xl:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
-          <div className="border-2 shadow-md rounded-md xl:w-96 mx-4 lg:mx-0">
-            <BookingGuestChart></BookingGuestChart>
+          <div className="border-2 shadow-sm rounded-md xl:w-150 mx-4 lg:mx-0">
+            <DashBarChart></DashBarChart>
           </div>
           <DashBooking></DashBooking>
         </div>
-        Dashboard Invoice list with chart
-        <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
+
+        {/* Dashboard Invoice list with chart */}
+        <div className="xl:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
           <DashInvoice></DashInvoice>
-          <Example></Example>
+          <div className="border-2 shadow-md rounded-md xl:w-96 mx-4 lg:mx-0">
+            <Example></Example>
+          </div>
         </div>
-        Dashboard Property list with chart
-        <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
-          <Example></Example>
+
+        {/* Dashboard Property list with chart */}
+        <div className="xl:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
+          <div className="border-2 shadow-sm rounded-md xl:w-150 mx-4 lg:mx-0">
+            <DashBarChart></DashBarChart>
+          </div>
           <DashProperty></DashProperty>
         </div>
-        Dashboard Host list with chart
-        <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
+
+        {/* Dashboard Host list with chart */}
+        <div className="xl:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
           <DashHost></DashHost>
-          <Example></Example>
+          <div className="border-2 shadow-md rounded-md xl:w-96 mx-4 lg:mx-0">
+            <Example></Example>
+          </div>
         </div>
-      </div>
-      <div className="px-6 md:px-10 lg:px-16 md:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
-        <Example></Example>
-        <DashBooking></DashBooking>
       </div>
     </>
   );
