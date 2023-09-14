@@ -51,13 +51,6 @@ const NewListingPage = () => {
     (amenetiy) => amenetiy?.popular !== true
   );
 
-  const startDate = new Date();
-  const endDate = new Date();
-
-  if (startDate.toDateString() === endDate.toDateString()) {
-    endDate.setDate(endDate.getDate() + 15);
-  }
-
   function getRandomTime() {
     const hours = Math.floor(Math.random() * 12) + 1;
     const minutes = Math.floor(Math.random() * 60);
@@ -170,10 +163,6 @@ const NewListingPage = () => {
     description: description,
     price: price,
     taxes: taxes,
-    dateRange: {
-      startDate: startDate?.toISOString(),
-      endDate: endDate?.toISOString(),
-    },
     popular_facilities: Popular,
     facilities: NonPopular,
     house_rules: houseRules,

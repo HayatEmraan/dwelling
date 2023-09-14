@@ -1,7 +1,8 @@
 import Cards from "@/components/home/cards/cards";
+import CardSkeleton from "@/components/home/cards/cardskeleton";
 import CategoriesComponent from "@/components/home/categories/categories";
 import Toggle from "@/components/home/toggle/Toggle";
-import React from "react";
+import React, { Suspense } from "react";
 
 const FilterPage = async ({ searchParams }) => {
   const { filter } = searchParams;
@@ -11,12 +12,14 @@ const FilterPage = async ({ searchParams }) => {
       cache: "no-store",
     }
   );
-  const cardData = await res.json();
+  const data = await res.json();
   return (
     <div>
       <CategoriesComponent />
       <Toggle />
-      <Cards data={cardData?.data} />
+      <Suspense fallback={<CardSkeleton data={data} />}>
+        <Cards filter={filter} />
+      </Suspense>
     </div>
   );
 };

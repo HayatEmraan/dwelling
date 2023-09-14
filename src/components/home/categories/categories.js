@@ -17,6 +17,7 @@ import { MdOutlineVilla } from "react-icons/md";
 import CategoryBox from "./category";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { listingTypes } from "@/new-listing-data/ListingTypes";
 
 export const categories = [
   {
@@ -137,12 +138,12 @@ const CategoriesComponent = () => {
           gap-4
         "
           >
-            {categories.map((item) => (
+            {listingTypes.map((navCategory) => (
               <CategoryBox
-                key={item.label}
-                label={item.label}
-                icon={item.icon}
-                selected={category === item.label}
+                key={navCategory?.name}
+                label={navCategory?.name}
+                icon={navCategory?.svgPath}
+                selected={category === navCategory?.name}
               />
             ))}
           </div>
