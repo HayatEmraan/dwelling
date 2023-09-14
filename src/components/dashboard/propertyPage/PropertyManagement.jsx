@@ -367,7 +367,12 @@ const PropertyManagement = ({ data }) => {
                               <div className="cursor-pointer py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
                                 <FcViewDetails />
                                 View
-                                <PropertyModal data={item} title={"Property/Ads Details"} subtitle={"Property"}></PropertyModal>
+                                <PropertyModal
+                                  fullArray={pageData}
+                                  data={item}
+                                  title={"Property/Ads Details"}
+                                  subtitle={"Property"}
+                                ></PropertyModal>
                               </div>
                             </div>
                           </div>

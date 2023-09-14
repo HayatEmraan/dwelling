@@ -1,7 +1,14 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
-const PropertyModal = ({ data, title, subtitle }) => {
+const PropertyModal = ({ data: madalData, title, subtitle, fullArray }) => {
+
+  console.log(fullArray?.data);
+
+  const findModal = fullArray?.data?.find((item) => item._id === madalData._id);
+  console.log(findModal);
+  const [data, setModalData] = useState(madalData);
   const resortName = data?.name;
   const city = data?.location?.city;
   const country = data?.location?.country;
