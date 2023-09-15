@@ -6,6 +6,7 @@ import { cloudinaryUpload } from "@/utils/async/sharedt/sharedt";
 import { profileimg } from "@/utils/async/profile/profleimg";
 import { profileupdate } from "@/utils/async/profile/profileupdate";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const Setting = () => {
   const [selectedImages, setSelectedImages] = useState([]);
@@ -53,6 +54,27 @@ const Setting = () => {
       postcode,
       organization
     );
+      if(result.modifyCount === 1){
+        if(data.insertedId){
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
+      }
+      }
+      else{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Your work has not been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    
   };
 
   const handlePassword = (event) => {
@@ -63,7 +85,21 @@ const Setting = () => {
     const confirmPassword = form.confirmPassword.value;
     const savePassword = { currentPassword, newPassword, confirmPassword };
     console.log(savePassword);
+
+ 
   };
+
+ const validateBirthdate = (input) => {
+    const dateRegex ="/^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/";
+    const inputValue = input.value;
+
+    if (dateRegex.test(inputValue)) {
+        console.log("Valid birthdate:", inputValue);
+    } else {
+        console.log("Invalid birthdate:", inputValue);
+    }
+}
+
 
   return (
     <div className="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
@@ -685,7 +721,7 @@ const Setting = () => {
                   Birthday
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   name="birthday"
                   id="birthday"
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
