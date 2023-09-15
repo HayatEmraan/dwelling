@@ -296,7 +296,8 @@ const UsersList = ({ data }) => {
                                 />
                                 <div className="grow">
                                   <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
-                                    {user?.name}
+                                    {user?.name?.firstName}{" "}
+                                    {user?.name?.lastName}
                                   </span>
                                   <span className="block text-sm text-gray-500">
                                     {user?.email}

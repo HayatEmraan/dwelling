@@ -135,7 +135,7 @@ const DashUsers = ({ data }) => {
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                   <thead className="bg-gray-50 dark:bg-slate-800">
                     <tr>
-                      <th scope="col" className="pl-6 py-3 text-left">
+                      <th scope="col" className="pl-6 py-3 text-left" style={{visibility: 'hidden'}}>
                         <label
                           htmlFor="hs-at-with-checkboxes-main"
                           className="flex"
@@ -189,7 +189,10 @@ const DashUsers = ({ data }) => {
                     {data?.data?.slice(0, 5).map((user, index) => {
                       return (
                         <tr key={index}>
-                          <td className="h-px w-px whitespace-nowrap">
+                          <td
+                            className="h-px w-px whitespace-nowrap"
+                            style={{ visibility: "hidden" }}
+                          >
                             <div className="pl-6 py-3">
                               <label
                                 htmlFor="hs-at-with-checkboxes-1"
@@ -216,7 +219,7 @@ const DashUsers = ({ data }) => {
                                 />
                                 <div className="grow">
                                   <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
-                                    {user?.name}
+                                    {user?.name?.firstName}
                                   </span>
                                   <span className="block text-sm text-gray-500">
                                     {user?.email}

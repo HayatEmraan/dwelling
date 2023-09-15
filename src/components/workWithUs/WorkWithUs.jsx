@@ -28,7 +28,7 @@ const WorkWithUs = () => {
                 <hr className='my-8 ' />
 
                 <div className='bg-red-500 py-40 text-center my-10 '>
-                    <h1 className='uppercase font-bold text-white text-5xl '>Welcome to <br /> Dwelling Team</h1>
+                    <h1 className='uppercase font-bold text-white text-lg'>Welcome to <br /> Dwelling Team</h1>
                 </div>
                 <div className='flex gap-20 items-center justify-center mx-20'>
                     <div className='w-1/3'>
@@ -44,12 +44,12 @@ const WorkWithUs = () => {
                             <PartnerRegisterModal />
                         </button> */}
 
-                        <button
+                        <div
                             type="button"
                             data-hs-overlay="#hs-vertically-centered-modal"
                         >
                             <PartnerRegisterModal />
-                        </button>
+                        </div>
                     </div>
                     <div>
                         <Image

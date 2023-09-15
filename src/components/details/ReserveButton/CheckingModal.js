@@ -21,7 +21,8 @@ const CheckingModal = ({ data }) => {
   const img2 = data?.data?.images[1];
   const img3 = data?.data?.images[2];
   const paymentAllIMG = data?.data?.payment_methods;
-  const authorName = data?.data?.author?.name;
+  const firstName = data?.data?.author?.firstName;
+  const lastName = data?.data?.author?.lastName;
   const authorPhoto = data?.data?.author?.photo;
   const [isOpen, setIsOpen] = useState(false);
 
@@ -141,7 +142,7 @@ const CheckingModal = ({ data }) => {
                       <div className="flex flex-col justify-center items-center">
                         <h1 className="text-sm italic">Name: </h1>
                         <span className="font-semibold text-sm">
-                          {authorName}
+                          {firstName + " " + lastName}
                         </span>
                       </div>
                     </div>

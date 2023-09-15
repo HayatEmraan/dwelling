@@ -3,11 +3,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 const PropertyModal = ({ data: madalData, title, subtitle, fullArray }) => {
-
-  console.log(fullArray?.data);
-
-  const findModal = fullArray?.data?.find((item) => item._id === madalData._id);
-  console.log(findModal);
   const [data, setModalData] = useState(madalData);
   const resortName = data?.name;
   const city = data?.location?.city;
@@ -21,7 +16,8 @@ const PropertyModal = ({ data: madalData, title, subtitle, fullArray }) => {
   const children = data?.capacity?.children;
   const pets = data?.capacity?.pets;
   const infants = data?.capacity?.infants;
-  const authorName = data?.author?.name;
+  const firstName = data?.author?.firstName;
+  const lastName = data?.author?.lastName;
   const authorPhoto = data?.author?.photo;
   const img = data?.images[0];
   const img2 = data?.images[1];
@@ -165,7 +161,7 @@ const PropertyModal = ({ data: madalData, title, subtitle, fullArray }) => {
                       <div className="flex flex-col justify-center items-center">
                         <h1 className="text-sm italic">Name: </h1>
                         <span className="font-semibold text-sm">
-                          {authorName}
+                          {firstName + " " + lastName}
                         </span>
                       </div>
                     </div>
