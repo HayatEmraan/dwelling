@@ -21,8 +21,8 @@ const CheckingModal = ({ data }) => {
   const img2 = data?.data?.images[1];
   const img3 = data?.data?.images[2];
   const paymentAllIMG = data?.data?.payment_methods;
-  const firstName = data?.data?.author?.firstName;
-  const lastName = data?.data?.author?.lastName;
+  const firstName = data?.data?.author?.name?.firstName;
+  const lastName = data?.data?.author?.name?.lastName;
   const authorPhoto = data?.data?.author?.photo;
   const [isOpen, setIsOpen] = useState(false);
 

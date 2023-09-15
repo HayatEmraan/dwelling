@@ -16,8 +16,8 @@ const PropertyModal = ({ data: madalData, title, subtitle, fullArray }) => {
   const children = data?.capacity?.children;
   const pets = data?.capacity?.pets;
   const infants = data?.capacity?.infants;
-  const firstName = data?.author?.firstName;
-  const lastName = data?.author?.lastName;
+  const firstName = data?.author?.name?.firstName;
+  const lastName = data?.author?.name?.lastName;
   const authorPhoto = data?.author?.photo;
   const img = data?.images[0];
   const img2 = data?.images[1];

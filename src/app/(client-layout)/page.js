@@ -1,3 +1,4 @@
+import ChatboxComp from "@/components/chatbox/chatbox";
 import FetchCards from "@/components/home/cards/fetchcards";
 import CategoriesComponent from "@/components/home/categories/categories";
 import Toggle from "@/components/home/toggle/Toggle";
@@ -8,6 +9,7 @@ export default function Home() {
       <CategoriesComponent />
       <Toggle />
       <FetchCards />
+      <ChatboxComp />
     </main>
   );
 }

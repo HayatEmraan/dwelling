@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import image from "../../../../public/profile/images.jpg";
 import Image from "next/image";
 import { cloudinaryUpload } from "@/utils/async/sharedt/sharedt";
 import { profileimg } from "@/utils/async/profile/profleimg";
@@ -20,31 +19,28 @@ const Setting = () => {
     setImageURLs(newImageUrls);
   }, [selectedImages]);
 
-  const imageOnchange = async (e) => {
-    const image = e.target.files[0];
+  const imageOnchange = async (image) => {
     const result = await cloudinaryUpload(image);
-    const newResult = await profileimg(result?.secure_url);
-    console.log(image);
-    if(newResult.msg === "Success"){
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Your work has been saved',
-        showConfirmButton: false,
-        timer: 1500
-      })
-  }
-  
-  else{
-    Swal.fire({
-      position: 'top-end',
-      icon: 'error',
-      title: 'Your work has not been saved',
-      showConfirmButton: false,
-      timer: 1500
-    })
-  }
-    toast.success("Image Uploaded!");
+    // console.log(result);
+    // const newResult = await profileimg(result?.secure_url);
+    // if (newResult.msg === "Success") {
+    //   Swal.fire({
+    //     position: "top-end",
+    //     icon: "success",
+    //     title: "Your work has been saved",
+    //     showConfirmButton: false,
+    //     timer: 1500,
+    //   });
+    // } else {
+    //   Swal.fire({
+    //     position: "top-end",
+    //     icon: "error",
+    //     title: "Your work has not been saved",
+    //     showConfirmButton: false,
+    //     timer: 1500,
+    //   });
+    // }
+    // toast.success("Image Uploaded!");
   };
 
   const handleSaveAll = async (event) => {
@@ -73,26 +69,24 @@ const Setting = () => {
       postcode,
       organization
     );
-      if(result.msg === "Success"){
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Your work has been saved',
-            showConfirmButton: false,
-            timer: 1500
-          })
-      }
-      
-      else{
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Your work has not been saved',
-          showConfirmButton: false,
-          timer: 1500
-        })
-      }
-    console.log(result)
+    if (result.msg === "Success") {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Your work has not been saved",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    console.log(result);
   };
 
   const handlePassword = (event) => {
@@ -103,21 +97,18 @@ const Setting = () => {
     const confirmPassword = form.confirmPassword.value;
     const savePassword = { currentPassword, newPassword, confirmPassword };
     console.log(savePassword);
-
- 
   };
 
- const validateBirthdate = (input) => {
-    const dateRegex ="/^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/";
+  const validateBirthdate = (input) => {
+    const dateRegex = "/^(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/d{4}$/";
     const inputValue = input.value;
 
     if (dateRegex.test(inputValue)) {
-        console.log("Valid birthdate:", inputValue);
+      console.log("Valid birthdate:", inputValue);
     } else {
-        console.log("Invalid birthdate:", inputValue);
+      console.log("Invalid birthdate:", inputValue);
     }
-}
-
+  };
 
   return (
     <div className="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
@@ -186,7 +177,10 @@ const Setting = () => {
                   <input
                     type="file"
                     className="hidden"
-                    onChange={imageOnchange}
+                    onChange={(e) => {
+                      imageOnchange(e.target);
+                    }}
+                    name="photoIn"
                     accept="image/*"
                     id="photoInput"
                   />
