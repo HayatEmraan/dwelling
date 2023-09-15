@@ -1,4 +1,3 @@
-import ActiveProjectTable from "@/components/dashboard/homePage/ActiveProjectTable";
 import CardContainer from "@/components/dashboard/homePage/CardContainer";
 // import Example from "@/components/dashboard/homePage/ChartSide";
 import dynamic from "next/dynamic";
@@ -16,10 +15,7 @@ import DashInvoice from "@/components/dashboard/homePage/DashInvoice";
 import DashProperty from "@/components/dashboard/homePage/DashProperty";
 import DashUsers from "@/components/dashboard/homePage/DashUsers";
 import HomePageHeading from "@/components/dashboard/homePage/Heading";
-import MyTaskTable from "@/components/dashboard/homePage/MyTaskTable/MyTaskTable";
-import MyTeam from "@/components/dashboard/homePage/MyTeam/MyTeam";
 import { getusers } from "@/utils/async/admin/users/getusers";
-import BookingGuestChart from "@/components/dashboard/bookingGuest/BookingGuestChart";
 import DashBarChart from "@/components/dashboard/DashBarChart";
 
 const DashboardHomePage = async () => {
