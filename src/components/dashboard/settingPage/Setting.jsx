@@ -24,7 +24,26 @@ const Setting = () => {
     const image = e.target.files[0];
     const result = await cloudinaryUpload(image);
     const newResult = await profileimg(result?.secure_url);
-    console.log(newResult);
+    console.log(image);
+    if(newResult.msg === "Success"){
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      })
+  }
+  
+  else{
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'Your work has not been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
     toast.success("Image Uploaded!");
   };
 
@@ -54,8 +73,7 @@ const Setting = () => {
       postcode,
       organization
     );
-      if(result.modifyCount === 1){
-        if(data.insertedId){
+      if(result.msg === "Success"){
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -64,7 +82,7 @@ const Setting = () => {
             timer: 1500
           })
       }
-      }
+      
       else{
         Swal.fire({
           position: 'top-end',
@@ -74,7 +92,7 @@ const Setting = () => {
           timer: 1500
         })
       }
-    
+    console.log(result)
   };
 
   const handlePassword = (event) => {
