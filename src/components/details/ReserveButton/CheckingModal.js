@@ -1,20 +1,14 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import ReviewDates from "./startdate";
+import SwitchComp from "@/components/payment/switch/switch";
 
-const CheckingModal = async ({ checkInDate, checkOutDate }) => {
-  const res = await fetch(
-    "https://dwelling-bright-server.vercel.app/api/v1/getdetails/64f1d62a42ce44beb216c160",
-    {
-      cache: "no-store",
-    }
-  );
-  const data = await res.json();
-
+const CheckingModal = ({ data }) => {
+  const roomID = data?.data?._id;
   const resortName = data?.data?.name;
   const city = data?.data?.location?.city;
   const country = data?.data?.location?.country;
-  const region = data?.data?.location?.region;
   const guests = data?.data?.availability?.guests;
   const bedrooms = data?.data?.availability?.bedrooms;
   const beds = data?.data?.availability?.beds;
@@ -26,24 +20,10 @@ const CheckingModal = async ({ checkInDate, checkOutDate }) => {
   const img = data?.data?.images[0];
   const img2 = data?.data?.images[1];
   const img3 = data?.data?.images[2];
-  const startDate = data?.data?.dateRange?.startDate;
-  const startD = new Date(startDate);
-  const endDate = data?.data?.dateRange?.endDate;
-  const endD = new Date(endDate);
-
-  const paymentDetails = data?.data?.payment_methods[0]?.providerName;
   const paymentAllIMG = data?.data?.payment_methods;
   const authorName = data?.data?.author?.name;
   const authorPhoto = data?.data?.author?.photo;
-
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-
-  const start = startD.toLocaleDateString(undefined, options);
-  const end = endD.toLocaleDateString(undefined, options);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -53,8 +33,8 @@ const CheckingModal = async ({ checkInDate, checkOutDate }) => {
       >
         <div className="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
           <div className="flex flex-col bg-white  shadow-sm rounded-xl dark:bg-gray-800  dark:shadow-slate-700/[.7]">
-            <div className="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700 bg-[#003c95] rounded-t-xl">
-              <h3 className="font-bold text-xl text-white dark:text-white">
+            <div className="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-sky-700 via-blue-800 to-fuchsia-800 rounded-t-xl">
+              <h3 className="font-bold text-xl bg-gradient-to-br from-blue-800 via-fuchsia-300 to-white bg-clip-text text-transparent dark:text-white">
                 Confirm Your Booking
               </h3>
               <button
@@ -142,23 +122,31 @@ const CheckingModal = async ({ checkInDate, checkOutDate }) => {
                         <span className=" font-semibold">{country}</span>
                       </h1>
                       <h1 className="my-6">
-                        Room Capacity: <br /> <span className="font-semibold">{guests} Guests, {bedrooms} Bedrooms with {beds} Beds. {baths} Baths</span>
+                        Room Capacity: <br />{" "}
+                        <span className="font-semibold">
+                          {guests} Guests, {bedrooms} Bedrooms with {beds} Beds.{" "}
+                          {baths} Baths
+                        </span>
                       </h1>
                     </div>
                   </div>
-                  <div className='hidden lg:flex flex-col scale-75 justify-center items-center'>
-                    <h1 className='font-bold text-xs'>Author Info:</h1>
-                    <div className='flex flex-col gap-2 justify-center items-center'>
-                      <img className='rounded-full w-2/5 my-1' src={authorPhoto} alt="" />
-                      <div className='flex flex-col justify-center items-center'>
-                        <h1 className="text-xs italic">Name: </h1>
-                        <span className='font-semibold text-xs'>{authorName}</span>
+                  <div className="hidden lg:flex flex-col scale-75 justify-center items-center">
+                    <h1 className="font-bold text-sm">Author Info:</h1>
+                    <div className="flex flex-col gap-2 justify-center items-center">
+                      <img
+                        className="rounded-full w-2/5 my-1"
+                        src={authorPhoto}
+                        alt=""
+                      />
+                      <div className="flex flex-col justify-center items-center">
+                        <h1 className="text-sm italic">Name: </h1>
+                        <span className="font-semibold text-sm">
+                          {authorName}
+                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
-
-
                 <div className="my-3 mx-8">
                   <h2 className="font-bold">Most Popular Facilities</h2>
                   <div className="flex flex-wrap gap-3 mt-5">
@@ -170,19 +158,18 @@ const CheckingModal = async ({ checkInDate, checkOutDate }) => {
                           width={10}
                           height={10}
                         ></Image>
-                        <p className="flex text-xs">{facilities.name}</p>
+                        <p className="flex text-md">{facilities.name}</p>
                       </div>
                     ))}
                   </div>
                 </div>
-
                 {/* payment info  */}
                 <div className=" my-12 mx-8">
                   <h1 className="font-bold">Payment Support</h1>
                   <div>
                     <div className="flex flex-wrap  gap-4 items-center lg:pr-3">
                       {paymentAllIMG.map((pay, index) => (
-                        <div key={index} >
+                        <div key={index}>
                           <Image
                             src={pay?.image}
                             width={40}
@@ -196,7 +183,6 @@ const CheckingModal = async ({ checkInDate, checkOutDate }) => {
                 </div>
               </div>
             </div>
-
             <div className="flex justify-end items-center gap-x-2 py-3 px-4 border-t dark:border-gray-700">
               <button
                 type="button"
@@ -205,15 +191,17 @@ const CheckingModal = async ({ checkInDate, checkOutDate }) => {
               >
                 Close
               </button>
-              <a
+              <button
+                type="button"
+                onClick={() => setIsOpen(true)}
                 className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                href="#"
               >
                 Agree & Confirm
-              </a>
+              </button>
             </div>
           </div>
         </div>
+        {isOpen && <SwitchComp roomID={roomID} />}
       </div>
     </>
   );

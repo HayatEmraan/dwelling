@@ -1,10 +1,8 @@
-
 import { userAppStore } from "@/store/store";
-import React, { useState } from "react";
+import React from "react";
 
 export default function FloorPlan() {
   const { placeSpace, setPlaceSpace } = userAppStore();
-
   const handleIncrement = (type) => {
     setPlaceSpace({ ...placeSpace, [type]: placeSpace[type] + 1 });
   };

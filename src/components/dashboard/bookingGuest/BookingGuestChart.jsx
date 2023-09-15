@@ -29,7 +29,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Chart.js Bar Chart",
+      text: "Booking Guest Invoice Bar Chart",
     },
   },
 };

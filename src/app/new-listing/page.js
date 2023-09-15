@@ -8,7 +8,13 @@ import PlaceDetails from "@/components/process/PlaceDetails";
 import PlaceLocation from "@/components/process/PlaceLocation";
 import ProcessAmeneties from "@/components/process/ProcessAmeneties";
 import StepOneStarter from "@/components/process/StepOneStarter";
+import Availability from "@/components/process/availability";
+import Description from "@/components/process/description";
 import ListingCreated from "@/components/process/listingCreated";
+import Price from "@/components/process/price";
+import Title from "@/components/process/title";
+import { userAppStore } from "@/store/store";
+import { insertroom } from "@/utils/async/host/insertroom";
 import { Libre_Bodoni } from "next/font/google";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -21,6 +27,154 @@ const bodoni = Libre_Bodoni({
 
 const NewListingPage = () => {
   const [step, setStep] = useState(0);
+  const {
+    locationType,
+    placeType,
+    mapData,
+    locationData,
+    addressInfo,
+    placeSpace,
+    searchPlaceSpace,
+    placeAmeneites,
+    title,
+    description,
+    price,
+    taxes,
+    photos,
+  } = userAppStore();
+
+  const Popular = placeAmeneites?.filter(
+    (amenetiy) => amenetiy?.popular === true
+  );
+
+  const NonPopular = placeAmeneites?.filter(
+    (amenetiy) => amenetiy?.popular !== true
+  );
+
+  const startDate = new Date();
+  const endDate = new Date();
+
+  if (startDate.toDateString() === endDate.toDateString()) {
+    endDate.setDate(endDate.getDate() + 15);
+  }
+
+  const houseRules = [
+    {
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/zeiqcd82orjubexz6wgg.svg",
+      name: "Check in",
+      time: "12:00 PM",
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/wfbjzyil59ubwec0nias.svg",
+      name: "Check out",
+      time: "12:00 PM",
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/n8c3nwnxeyiwdjop8gt4.svg",
+      name: "Cancellation",
+      des: "Free cancellation up to 7 days before arrival.",
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/ywdokjfsev4rkhik9d1s.svg",
+      name: "Children & Beds",
+      des: "Children are welcome. Extra beds available.",
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/pbapmple7pyfok2jbklg.svg",
+      name: "Age restriction",
+      des: "No age restrictions.",
+    },
+  ];
+
+  const paymentMethods = [
+    {
+      providerName: "Master Card",
+      accepted: true,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/gdvhlkdaefjdliwrl8vy.svg",
+    },
+    {
+      providerName: "VISA Card",
+      accepted: true,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/bcmtypdecdugr6bipzgx.svg",
+    },
+    {
+      providerName: "Discover Card",
+      accepted: false,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/hz989hhvwy2dj8hlpcsc.png",
+    },
+    {
+      providerName: "American Express",
+      accepted: true,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/s4qzhx00abdlxf30rfem.svg",
+    },
+    {
+      providerName: "Diners Club",
+      accepted: false,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/tbnaqxc337ghnagqcwgz.svg",
+    },
+    {
+      providerName: "UnionPay",
+      accepted: true,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244280/ehqq4ylkzwjpdtqdtw2j.png",
+    },
+    {
+      providerName: "PayPal",
+      accepted: false,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244099/n2y2ibcoiydtsq8wd6xs.svg",
+    },
+    {
+      providerName: "Cash on Arrival",
+      accepted: false,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244099/s1jytaczagoti5ql5ftj.svg",
+    },
+  ];
+
+  const finalListing = {
+    name: title,
+    location: addressInfo?.location,
+    category: {
+      name: locationType?.name,
+      type: placeType?.title,
+    },
+    lat: addressInfo?.lat,
+    lng: addressInfo?.lng,
+    capacity: {
+      adults: searchPlaceSpace?.adults,
+      children: searchPlaceSpace?.childrens,
+      infants: searchPlaceSpace?.infants,
+    },
+    availability: {
+      bedrooms: placeSpace?.beds,
+      baths: placeSpace?.bathrooms,
+      guests: placeSpace?.guests,
+    },
+    images: photos,
+    description: description,
+    price: price,
+    taxes: taxes,
+    dateRange: {
+      startDate: startDate?.toISOString(),
+      endDate: endDate?.toISOString(),
+    },
+    popular_facilities: Popular,
+    facilities: NonPopular,
+    house_rules: houseRules,
+    payment_methods: paymentMethods,
+    reviews: [],
+  };
 
   const getComponent = () => {
     switch (step) {
@@ -39,10 +193,18 @@ const NewListingPage = () => {
       case 6:
         return <FloorPlan />;
       case 7:
-        return <ProcessAmeneties />;
+        return <Availability />;
       case 8:
-        return <Photos />;
+        return <ProcessAmeneties />;
       case 9:
+        return <Title />;
+      case 10:
+        return <Description />;
+      case 11:
+        return <Price />;
+      case 12:
+        return <Photos />;
+      case 13:
         return <ListingCreated />;
     }
   };
@@ -54,7 +216,12 @@ const NewListingPage = () => {
   const handlePrevious = () => {
     setStep(step - 1);
   };
-
+  const handleListing = async () => {
+    const result = await insertroom(finalListing);
+    if (result?.data?.insertedId) {
+      setStep(step + 1);
+    }
+  };
   return (
     <div className="grid grid-rows-new-listing h-[100vh]">
       <header className="flex items-center px-20 justify-between">
@@ -67,17 +234,14 @@ const NewListingPage = () => {
             Dwelling
           </Link>
         </div>
-        {step <= 13 && (
-          <button className="border border-gray-300 px-3 py-2 rounded-full font-semibold hover:border-gray-700 cursor-pointer">
-            Save & Exit
-          </button>
-        )}
       </header>
 
       {getComponent()}
 
       <footer
-        className={`flex items-center px-20 pb-4 border-t-4 border-t-gray-300 ${
+        className={`flex items-center ${
+          step === 13 ? "hidden" : ""
+        } px-20 pb-4 border-t-4 border-t-gray-300 ${
           step > 0 ? "justify-between" : "justify-end"
         }`}
       >
@@ -91,10 +255,35 @@ const NewListingPage = () => {
         )}
         {step !== 0 ? (
           <button
-            onClick={handleNext}
-            className="bg-[#222222] py-3 mt-5 px-5 text-base font-medium text-white rounded-md cursor-pointer"
+            onClick={step === 12 ? handleListing : handleNext}
+            disabled={
+              step === 2 && locationType === undefined
+                ? true
+                : false || (step === 3 && placeType === undefined)
+                ? true
+                : false || (step === 4 && mapData === undefined)
+                ? true
+                : false || (step === 5 && locationData === undefined)
+                ? true
+                : false || (step === 6 && placeSpace === undefined)
+                ? true
+                : false || (step === 7 && searchPlaceSpace?.adults === 0)
+                ? true
+                : false || (step === 8 && placeAmeneites.length === 0)
+                ? true
+                : false || (step === 9 && title.length <= 10)
+                ? true
+                : false || (step === 10 && description.length <= 50)
+                ? true
+                : false || (step === 11 && price <= 0)
+                ? true
+                : false || (step === 12 && photos.length <= 4)
+                ? true
+                : false
+            }
+            className="bg-[#222222] py-3 mt-5 px-5 text-base font-medium text-white rounded-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Next
+            {step === 12 ? "Submit" : "Next"}
           </button>
         ) : (
           <button

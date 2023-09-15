@@ -1,30 +1,23 @@
 import React from "react";
 
-const PropertyModal = async () => {
-  const res = await fetch(
-    "https://dwelling-bright-server.vercel.app/api/v1/getdetails/64f1d62a42ce44beb216c160",
-    {
-      cache: "no-store",
-    }
-  );
-  const data = await res.json();
-  const resortName = data?.data.name;
-  const city = data?.data?.location?.city;
-  const country = data?.data?.location?.country;
-  const region = data?.data?.location?.region;
-  const adults = data?.data?.capacity?.adults;
-  const children = data?.data?.capacity?.children;
-  const pets = data?.data?.capacity?.pets;
-  const infants = data?.data?.capacity?.infants;
-  const img = data?.data?.images[0];
-  const img2 = data?.data?.images[1];
-  const img3 = data?.data?.images[2];
-  const startDate = data?.data?.dateRange?.startDate;
+const PropertyModal = ({ data, title, subtitle }) => {
+  const resortName = data?.name;
+  const city = data?.location?.city;
+  const country = data?.location?.country;
+  const region = data?.location?.region;
+  const adults = data?.capacity?.adults;
+  const children = data?.capacity?.children;
+  const pets = data?.capacity?.pets;
+  const infants = data?.capacity?.infants;
+  const img = data?.images[0];
+  const img2 = data?.images[1];
+  const img3 = data?.images[2];
+  const startDate = data?.dateRange?.startDate;
   const startD = new Date(startDate);
-  const endDate = data?.data?.dateRange?.endDate;
+  const endDate = data?.dateRange?.endDate;
   const endD = new Date(endDate);
-  const paymentDetails = data?.data?.payment_methods[0]?.providerName;
-  const paymentIMG = data?.data?.payment_methods[0]?.image;
+  const paymentDetails = data?.payment_methods[0]?.providerName;
+  const paymentIMG = data?.payment_methods[0]?.image;
 
   const options = {
     year: "numeric",
@@ -45,7 +38,7 @@ const PropertyModal = async () => {
           <div className="flex flex-col bg-white  shadow-sm rounded-xl dark:bg-gray-800  dark:shadow-slate-700/[.7]">
             <div className="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700 bg-[#003c95] rounded-t-xl">
               <h3 className="font-bold text-xl text-white dark:text-white">
-                Booking Details
+                {title}
               </h3>
               <button
                 type="button"
@@ -74,7 +67,7 @@ const PropertyModal = async () => {
               {/* location & people info */}
               <div className="border-2 my-5 mx-10 border-gray-200 justify-between items-center">
                 <h1 className="pl-8 p-2 font-semibold  text-gray-600 bg-gray-200">
-                  Booking Confirmation Details
+                  {subtitle} Confirmation Details
                 </h1>
 
                 <div className="flex flex-col lg:flex-row gap-2 transition-all lg:gap-6 justify-center items-center mt-8">

@@ -6,9 +6,10 @@ import InvoiceModal from "../invoicePage/invoicemodal";
 
 const DashInvoice = () => {
   return (
-    <>
+   <div className=" mx-auto px-4 sm:px-6 lg:px-8 ">
+     <>
       {/* Table Section */}
-      <div className="max-w-[150rem] py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div className="xl:max-w-[35rem] 2xl:max-w-[150rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         {/* Card */}
         <div className="flex flex-col">
           <div className="-m-1.5 overflow-x-auto">
@@ -615,6 +616,7 @@ const DashInvoice = () => {
       <InvoiceModal/>
       {/* End Modal */}
     </>
+   </div>
   );
 };
 

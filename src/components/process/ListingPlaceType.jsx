@@ -6,7 +6,7 @@ import React from "react";
 
 const data = [
   {
-    title: "An entire place",
+    title: "Full place",
     subTitle: "Guests have the whole place to themselves.",
     svg: <House />,
   },
@@ -17,7 +17,7 @@ const data = [
     svg: <Room />,
   },
   {
-    title: "A shared room",
+    title: "Shared",
     subTitle:
       "Guests sleep in a room or common area that may be shared with you or others.",
     svg: <SharedRoom />,
@@ -26,7 +26,6 @@ const data = [
 
 const ListingPlaceType = () => {
   const { placeType, setPlaceType } = userAppStore();
-
   return (
     <div className="flex items-center justify-center flex-col h-full gap-10">
       <h2 className="font-semibold text-4xl">

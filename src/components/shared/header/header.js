@@ -7,6 +7,7 @@ import { userAppStore } from "@/store/store";
 import Schedule from "@/components/common/Schedule";
 import WorkWithUs from "@/components/workWithUs/WorkWithUs";
 
+
 // google fonts
 const bodoni = Libre_Bodoni({
   weight: ["400", "500", "600", "700"],
@@ -15,7 +16,6 @@ const bodoni = Libre_Bodoni({
 
 const HeaderComponent = ({ children }) => {
   const { showScheduleBar } = userAppStore();
-
   return (
     <div className="sticky top-0 z-30 w-full shadow-sm">
       <header
