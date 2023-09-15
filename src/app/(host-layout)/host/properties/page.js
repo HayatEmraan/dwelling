@@ -1,17 +1,20 @@
-import HostPropertyTotal from '@/components/host/HostPropertyTotal';
-import PropertyHost from '@/components/host/PropertyHost';
-import { getproperties } from '@/utils/async/admin/properties/getproperties';
-import React from 'react';
+import HostPropertyChart from "@/components/host/HostPropertyChart";
+import HostPropertyTotal from "@/components/host/HostPropertyTotal";
+import PropertyHost from "@/components/host/PropertyHost";
+import { getproperties } from "@/utils/async/admin/properties/getproperties";
+import React from "react";
 
 const PropertiesHost = async () => {
-    const data = await getproperties();
-    return (
-        <div className="m-5">
-           <h2 className="text-3xl pb-4 font-bold sm:px-6">Property Management</h2>
-           <HostPropertyTotal></HostPropertyTotal>
-           <PropertyHost data={data}></PropertyHost>
-        </div>
-    );
+  const data = await getproperties();
+  return (
+    <div className="m-5">
+      {/* <HostPropertyTotal></HostPropertyTotal> */}
+      <div className="mx-auto items-center mt-5">
+        <HostPropertyChart></HostPropertyChart>
+        <PropertyHost data={data}></PropertyHost>
+      </div>
+    </div>
+  );
 };
 
 export default PropertiesHost;

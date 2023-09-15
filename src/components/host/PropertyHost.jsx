@@ -198,13 +198,13 @@ const PropertyHost = ({ data }) => {
                           </span>
                         </div>
                       </th>
-                      <th scope="col" className="px-6 py-3 text-left">
+                      {/* <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
                           <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
                             Action
                           </span>
                         </div>
-                      </th>
+                      </th> */}
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
                           <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
@@ -284,7 +284,7 @@ const PropertyHost = ({ data }) => {
                             )}
                           </div>
                         </td>
-                        <td className="h-px w-px whitespace-nowrap">
+                        {/* <td className="h-px w-px whitespace-nowrap">
                           <div className=" py-1.5 ps-4">
                             <div className="group inline-flex items-center divide-x divide-gray-300 border border-gray-300 bg-white shadow-sm rounded-md transition-all dark:divide-gray-700 dark:bg-slate-700 dark:border-gray-700">
                               <div className="hs-tooltip relative inline-block">
@@ -321,7 +321,7 @@ const PropertyHost = ({ data }) => {
                               </div>
                             </div>
                           </div>
-                        </td>
+                        </td> */}
                         <td className="h-px w-px whitespace-nowrap">
                           <div className="px-6 py-2">
                             {item?.checkedBy ? (
