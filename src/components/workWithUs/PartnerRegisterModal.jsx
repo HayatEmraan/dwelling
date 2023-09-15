@@ -15,15 +15,13 @@ const PartnerRegisterModal = () => {
                 id="hs-vertically-centered-scrollable-modal"
                 className="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto"
             >
-                <div className="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto h-[calc(100%-3.5rem)] min-h-[calc(100%-3.5rem)] flex items-center">
-                    <div className="max-h-full overflow-hidden flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-                        <div className="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
-                            <h3 className="font-bold text-gray-800 dark:text-white">
-                                Dwelling Partner Register
-                            </h3>
+                <div className="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto h-[calc(100%-3.5rem)] min-h-[calc(100%-3.5rem)] flex items-center ">
+                    <div className="max-h-full overflow-hidden flex flex-col bg-white shadow-sm border-4 border-[#c63434] rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
+                        <div className="flex bg-[#c63434] justify-between items-center py-2 px-4 border-b dark:border-gray-700">
+                            <span className='uppercase font-bold text-white py-2'>Lets Dwelling Partner</span>
                             <button
 
-                                className="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+                                className="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
                                 data-hs-overlay="#hs-vertically-centered-scrollable-modal"
                             >
                                 <span className="sr-only">Close</span>
@@ -42,51 +40,30 @@ const PartnerRegisterModal = () => {
                                 </svg>
                             </button>
                         </div>
-                        <div className="p-10 overflow-y-auto flex justify-center items-center  ">
-                            <form className="form">
-                                <div className="flex">
-                                    <label>
-                                        <input required="" placeholder="" type="text" className="input" />
-                                        <span>first name</span>
-                                    </label>
-                                    <label>
-                                        <input required="" placeholder="" type="text" className="input" />
-                                        <span>last name</span>
-                                    </label>
-                                </div>
-                                <label>
-                                    <input required="" placeholder="" type="email" className="input" />
-                                    <span>email</span>
-                                </label>
-                                <label>
-                                    <input required="" type="tel" placeholder="" className="input" />
-                                    <span>contact number</span>
-                                </label>
-                                <label>
-                                    <textarea
-                                        required=""
-                                        rows={3}
-                                        placeholder=""
-                                        className="input01"
-                                        defaultValue={""}
-                                    />
-                                    <span>message</span>
-                                </label>
-                                <span className="form-title">Upload your photo</span>
-                                <p className="form-paragraph">File should be an image</p>
-                                <label htmlFor="file-input" className="drop-container">
-                                    <span className="drop-title">Drop files here</span>
-                                    or
-                                    <input type="file" accept="image/*" required="" id="file-input" />
-                                </label>
-                                <button className="fancy" href="#">
-                                    <span className="top-key" />
-                                    <span className="text">submit</span>
-                                    <span className="bottom-key-1" />
-                                    <span className="bottom-key-2" />
-                                </button>
+                        <div className="overflow-y-auto flex justify-center items-center  ">
+                            <div className="form-container  ">
+                            
+                                <form className="form px-20 my-4">
+                                    <label>Name</label>
+                                    <input type="text" className="input" placeholder="Your Name" />
+                                    <label>Email</label>
+                                    <input type="email" className="input" placeholder="Enter yout email" />
+                                    <label>Contact No.</label>
+                                    <input type="number" className="input" placeholder="Contact Number" />
 
-                            </form>
+                                    <div className="form_upload mx-auto">
+                                        <span className='text-[#ef4444]'>Upload Your Photo</span>
+                                        <label for="file-input" className="drop-container">
+                                            <span className="drop-title">Drop files here</span>
+                                            or
+                                            <input type="file" accept="image/*" required="" id="file-input"/>
+                                        </label>
+                                    </div>
+
+                                </form>
+                                    <button type='submit' className='rounded-b-md bg-[#c63434] hover:bg-[#d44343] mt-2 py-3 px-0 text-white text-xl uppercase w-full'>Submit</button>
+                            </div>
+
                         </div>
 
                     </div>

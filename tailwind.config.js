@@ -5,7 +5,9 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "node_modules/preline/dist/*.js",
-    "./src/**/*.{html,js}"
+    "./src/**/*.{html,js}",
+    './pages/**/*.{html,js}',
+    './components/**/*.{html,js}',
   ],
   darkMode: "class",
   theme: {
