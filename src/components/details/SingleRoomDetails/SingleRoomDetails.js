@@ -33,8 +33,8 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
         <div className="mb-2 lg:flex items-center justify-between">
           <div>
             <h2 className="font-bold text-xl mb-2">
-              {data?.name} hosted by{" "}
-              {data?.author?.firstName + " " + data?.author?.lastName}
+              {data?.name} hosted by {data?.author?.firstName}{" "}
+              {data?.author?.lastName}
             </h2>
             <div>
               <span>

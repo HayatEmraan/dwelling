@@ -161,7 +161,7 @@ const PropertyModal = ({ data: madalData, title, subtitle, fullArray }) => {
                       <div className="flex flex-col justify-center items-center">
                         <h1 className="text-sm italic">Name: </h1>
                         <span className="font-semibold text-sm">
-                          {firstName + " " + lastName}
+                          {firstName} {lastName}
                         </span>
                       </div>
                     </div>
