@@ -9,8 +9,14 @@ const CategoryBox = ({ label, icon: Icon, selected }) => {
         selected ? "border-b-neutral-800 text-neutral-800" : "text-neutral-500"
       }`}
     >
-      <Icon size={26} />
-      <div className="text-sm font-medium">{label}</div>
+      <div className="w-10 h-10">{Icon}</div>
+      <div
+        className={`text-sm ${
+          !selected && "text-gray-500"
+        } hover:text-neutral-800 font-medium whitespace-nowrap`}
+      >
+        {label}
+      </div>
     </Link>
   );
 };

@@ -1,7 +1,8 @@
 // import required modules
 
-import React from "react";
+import React, { Suspense } from "react";
 import Cards from "../home/cards/cards";
+import CardSkeleton from "../home/cards/cardskeleton";
 
 const SearchPage = async ({
   location,
@@ -22,10 +23,21 @@ const SearchPage = async ({
       cache: "no-store",
     }
   );
+  const data = await res.json();
 
-  const carddata = await res.json();
-
-  return <Cards data={carddata.data} />;
+  return (
+    <Suspense fallback={<CardSkeleton data={data} />}>
+      <Cards
+        location={location}
+        start={start}
+        end={end}
+        adults={adults}
+        childrens={childrens}
+        infants={infants}
+        pets={pets}
+      />
+    </Suspense>
+  );
 };
 
 export default SearchPage;

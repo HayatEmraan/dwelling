@@ -25,24 +25,24 @@ const HouseRules = ({ data }) => {
               ></Image>
               <p className="w-1/3">{rules.name}</p>
             </div>
-            <div className="col-span-2">
-              {rules.time && <p>{rules.time}</p>}
-              {rules.des && <p>{rules.des}</p>}
+            <div className="col-span-2 gap-2 whitespace-nowrap overflow-x-auto no-scrollbar">
+              {rules?.time && <p>{rules?.time}</p>}
+              {rules?.des && <p>{rules?.des}</p>}
             </div>
           </div>
         ))}
         <div className="grid grid-cols-3 border-b py-5">
           <div className="col-span-1">
-            <p>Payment Methods</p>
+            <p>Payment <span className="hidden lg:inline">methods</span></p>
           </div>
           <div className="flex col-span-2">
-            {data.payment_methods.map((pay, index) => (
-              <div key={index} className="lg:flex lg:pr-3">
+            {data?.payment_methods?.map((pay, index) => (
+              <div key={index} className="lg:flex lg:pr-3 items-center">
                 <Image
-                  src={pay.image}
+                  src={pay?.image}
                   width={30}
                   height={30}
-                  alt={pay.providerName}
+                  alt={pay?.providerName}
                 />
               </div>
             ))}

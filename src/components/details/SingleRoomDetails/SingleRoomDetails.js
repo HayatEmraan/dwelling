@@ -5,8 +5,6 @@ import React, { useEffect, useState } from "react";
 import ReserveButton from "../ReserveButton/ReserveButton";
 import DatePicker from "./DatePicker";
 
-
-
 const SingleRoomDetails = ({ data, reviewAndReservation }) => {
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
@@ -29,49 +27,55 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
     setShowPicker(!showPicker);
   };
 
-  
-
   return (
     <div className="grid gap-5 lg:grid-cols-3">
       <div className="lg:col-span-2">
         <div className="mb-2 lg:flex items-center justify-between">
           <div>
             <h2 className="font-bold text-xl mb-2">
-              {data?.name} hosted by {data.author.name}
+              {data?.name} hosted by {data?.author?.firstName}{" "}
+              {data?.author?.lastName}
             </h2>
             <div>
               <span>
-                {data.capacity.adults} Adults, {data.capacity.children} Children
-                ,{data.capacity.pets} Pets, {data.capacity.infants} Infants
+                {data?.capacity?.adults} Adults, {data?.capacity?.children}{" "}
+                Children ,{data?.capacity?.pets} Pets, {data?.capacity?.infants}{" "}
+                Infants
               </span>
             </div>
-            {/* {data.capacity.map((item, index) => (
-            <p key={index}>{item}</p>
-          ))} */}
           </div>
           <div className="lg:mr-10">
-            <Image className="rounded-full" src={data.author.photo} width={50} height={50} />
+            {data?.author?.photo && (
+              <Image
+                className="rounded-full"
+                src={data?.author?.photo}
+                width={50}
+                height={50}
+              />
+            )}
           </div>
         </div>
         <hr className="mb-3" />
         <div>
-          <p>{data.description}</p>
+          <p>{data?.description}</p>
         </div>
         <div>
-          <h2 className="font-bold text-xl">Category-{data.category}</h2>
+          <h2 className="font-bold text-xl">
+            Category - {data?.category?.name}
+          </h2>
         </div>
         <div>
           <h2 className="font-bold">Most Popular Facilites</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
-            {data.popular_facilities?.map((facilities, index) => (
+            {data?.popular_facilities?.map((facilities, index) => (
               <div key={index} className="flex items-center">
                 <Image
                   className="mr-2"
-                  src={facilities.image}
+                  src={facilities?.image}
                   width={20}
                   height={20}
                 ></Image>
-                <p className="flex">{facilities.name}</p>
+                <p className="flex">{facilities?.name}</p>
               </div>
             ))}
           </div>
@@ -81,7 +85,7 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
       <div>
         <div className="border rounded shadow-lg p-5">
           <h5 className="flex items-center my-3">
-            <span className="font-bold mr-2">${data.price}</span>night
+            <span className="font-bold mr-2">${data?.price}</span>night
           </h5>
 
           <div>
@@ -96,13 +100,15 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
                       <DatePicker handleSelect={handleDateSelect} />
                     )}
                   </div>
-                  {checkInDate && <small>{checkInDate.toDateString()}</small>}
+                  {checkInDate && <small>{checkInDate?.toDateString()}</small>}
                 </div>
                 <div className="border-b p-2">
                   <h2>
                     <button onClick={togglePicker}>CheckOut</button>
                   </h2>
-                  {checkOutDate && <small>{checkOutDate.toDateString()}</small>}
+                  {checkOutDate && (
+                    <small>{checkOutDate?.toDateString()}</small>
+                  )}
                 </div>
               </div>
 
@@ -136,21 +142,21 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
             <div className="flex justify-between">
               <h3>Price * Night</h3>
 
-              <h3>$305</h3>
+              <h3>${data?.price}</h3>
             </div>
             <div className="flex justify-between">
-              <h3>Cleaning Fee</h3>
-              <h3>$9</h3>
+              <h3>Taxes</h3>
+              <h3>${data?.taxes || 0}</h3>
             </div>
             <div className="flex justify-between">
               <h3>Dewling Service fee</h3>
-              <h3>$44</h3>
+              <h3>$2.99</h3>
             </div>
           </div>
           <div className="divider"></div>
           <div className="flex justify-between font-bold">
             <h3>Total before taxes</h3>
-            <h3>$358</h3>
+            <h3>${data?.price}</h3>
           </div>
         </div>
         <div className="my-3 justify-center flex items-center">

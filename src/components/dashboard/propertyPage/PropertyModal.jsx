@@ -1,14 +1,24 @@
-import React from "react";
+"use client";
+import Image from "next/image";
+import React, { useState } from "react";
 
-const PropertyModal = ({ data, title, subtitle }) => {
+const PropertyModal = ({ data: madalData, title, subtitle, fullArray }) => {
+  const [data, setModalData] = useState(madalData);
   const resortName = data?.name;
   const city = data?.location?.city;
   const country = data?.location?.country;
   const region = data?.location?.region;
+  const guests = data?.availability?.guests;
+  const bedrooms = data?.availability?.bedrooms;
+  const beds = data?.availability?.beds;
+  const baths = data?.availability?.baths;
   const adults = data?.capacity?.adults;
   const children = data?.capacity?.children;
   const pets = data?.capacity?.pets;
   const infants = data?.capacity?.infants;
+  const firstName = data?.author?.firstName;
+  const lastName = data?.author?.lastName;
+  const authorPhoto = data?.author?.photo;
   const img = data?.images[0];
   const img2 = data?.images[1];
   const img3 = data?.images[2];
@@ -16,9 +26,7 @@ const PropertyModal = ({ data, title, subtitle }) => {
   const startD = new Date(startDate);
   const endDate = data?.dateRange?.endDate;
   const endD = new Date(endDate);
-  const paymentDetails = data?.payment_methods[0]?.providerName;
-  const paymentIMG = data?.payment_methods[0]?.image;
-
+  const paymentAllIMG = data?.payment_methods;
   const options = {
     year: "numeric",
     month: "long",
@@ -36,8 +44,8 @@ const PropertyModal = ({ data, title, subtitle }) => {
       >
         <div className="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
           <div className="flex flex-col bg-white  shadow-sm rounded-xl dark:bg-gray-800  dark:shadow-slate-700/[.7]">
-            <div className="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700 bg-[#003c95] rounded-t-xl">
-              <h3 className="font-bold text-xl text-white dark:text-white">
+            <div className="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-sky-700 via-blue-800 to-fuchsia-800 rounded-t-xl">
+              <h3 className="font-bold text-xl bg-gradient-to-br from-blue-800 via-fuchsia-300 to-white bg-clip-text text-transparent dark:text-white">
                 {title}
               </h3>
               <button
@@ -118,33 +126,85 @@ const PropertyModal = ({ data, title, subtitle }) => {
                 </div>
 
                 {/* Location card  */}
-                <div className="mt-8 mx-8">
-                  <h1 className="font-bold">Location Info:</h1>
-                  <div>
-                    <h1>
-                      Resort Name:{" "}
-                      <span className="font-semibold">{resortName}</span>
-                    </h1>
-                    <h1 className="mt-1">
-                      City: <span className=" font-semibold">{city}</span>
-                    </h1>
-                    <h1 className="mt-1">
-                      Country: <span className=" font-semibold">{country}</span>
-                    </h1>
-                    <h1 className="mt-1">
-                      Region: <span className="font-semibold">{region}</span>
-                    </h1>
+                <div className="flex flex-col lg:flex-row justify-between items-baseline">
+                  <div className="mt-8 mx-8">
+                    <h1 className="font-bold">Room & Location Info:</h1>
+                    <div>
+                      <h1>
+                        Resort Name:{" "}
+                        <span className="font-semibold">{resortName}</span>
+                      </h1>
+                      <h1 className="mt-1">
+                        City: <span className=" font-semibold">{city}</span>
+                      </h1>
+                      <h1 className="mt-1">
+                        Country:{" "}
+                        <span className=" font-semibold">{country}</span>
+                      </h1>
+                      <h1 className="my-6">
+                        Room Capacity: <br />{" "}
+                        <span className="font-semibold">
+                          {guests} Guests, {bedrooms} Bedrooms with {beds} Beds.{" "}
+                          {baths} Baths
+                        </span>
+                      </h1>
+                    </div>
+                  </div>
+                  <div className="hidden lg:flex flex-col scale-75 justify-center items-center">
+                    <h1 className="font-bold text-sm">Author Info:</h1>
+                    <div className="flex flex-col gap-2 justify-center items-center">
+                      <img
+                        className="rounded-full w-2/5 my-1"
+                        src={authorPhoto}
+                        alt=""
+                      />
+                      <div className="flex flex-col justify-center items-center">
+                        <h1 className="text-sm italic">Name: </h1>
+                        <span className="font-semibold text-sm">
+                          {firstName} {lastName}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="my-3 mx-8">
+                  <h2 className="font-bold">Most Popular Facilities</h2>
+                  <div className="flex flex-wrap gap-3 mt-5">
+                    {data?.popular_facilities.map((facilities, index) => (
+                      <div key={index} className="flex items-center">
+                        <Image
+                          className="mr-2"
+                          src={facilities.image}
+                          width={10}
+                          height={10}
+                        ></Image>
+                        <p className="flex text-md">{facilities.name}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
                 {/* payment info  */}
                 <div className="my-12 mx-8">
-                  <h1 className="font-bold">Payment Info:</h1>
+                  <h1 className="font-bold">Payment method:</h1>
                   <div>
-                    <img className="w-16" src={paymentIMG} alt="" />
-                    <h1>
+                    <div>
+                      <div className="flex flex-wrap  gap-4 items-center lg:pr-3">
+                        {paymentAllIMG?.map((pay, index) => (
+                          <div key={index}>
+                            <Image
+                              src={pay?.image}
+                              width={40}
+                              height={40}
+                              alt={pay?.providerName}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <h1 className="mt-1">
                       Payment via{" "}
-                      <span className="font-bold">{paymentDetails}</span>
+                      <span className="font-bold">Stripe / SSL Commerz</span>
                     </h1>
                   </div>
                 </div>

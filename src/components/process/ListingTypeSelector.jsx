@@ -14,17 +14,16 @@ const ListingTypeSelector = () => {
           {listingTypes.map((type) => (
             <button
               onClick={() => setLocationType(type)}
-              key={type.name}
+              key={type?.name}
               className={`${
-                type.name === locationType?.name &&
+                type?.name === locationType?.name &&
                 "border-gray-950 bg-slate-100"
               } flex flex-col font-semibold rounded-md border border-gray-300 p-3 hover:border-gray-950 transition-all duration-300`}
             >
-              {type.svgPath} <span>{type.name}</span>
+              {type?.svgPath} <span>{type?.name}</span>
             </button>
           ))}
         </div>
-        {locationType && locationType?.name}
       </div>
     </div>
   );

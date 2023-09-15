@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import SearchBeds from "@/components/SearchScheduler/SearchBeds";
 import DetailsFacilities from "@/components/details/DetailsFacilities/DetailsFacilities";
 import Header from "@/components/details/Header/Header";
@@ -9,7 +10,13 @@ import ReviewsComp from "@/components/details/Review/review";
 import ReviewsModal from "@/components/details/Review/reviewmodal";
 import Reviews from "@/components/details/Reviews/Reviews";
 import SingleRoomDetails from "@/components/details/SingleRoomDetails/SingleRoomDetails";
-import DetailsMapIndex from "@/components/details/detailMap";
+
+const DetailsMapIndex = dynamic(
+  () => import("@/components/details/detailMap/DetailsMap"),
+  {
+    ssr: false,
+  }
+);
 
 const RoomDetails = async ({ params }) => {
   const { slug } = params;
@@ -20,7 +27,10 @@ const RoomDetails = async ({ params }) => {
     }
   );
   const data = await res.json();
-
+  const location = {
+    lat: data?.data?.lat || 23.807834697453142,
+    lng: data?.data?.lng || 90.41453565758886,
+  };
   return (
     <div className="max-w-6xl lg:mx-auto px-5">
       {/* Header Section */}
@@ -47,13 +57,13 @@ const RoomDetails = async ({ params }) => {
 
       {/* reviews */}
       <Reviews
-        reviews={<ReviewsComp />}
+        reviews={<ReviewsComp reviews={data?.data?.reviews} />}
         reviewsModal={<ReviewsModal />}
         reviewsLength={data?.data?.reviews?.length}
       />
 
       {/* details map  */}
-      <DetailsMapIndex />
+      <DetailsMapIndex location={location} />
       <section></section>
     </div>
   );

@@ -5,6 +5,8 @@ import LogInComp from "@/components/SEC/loginComp";
 import SearchComp from "./search/search";
 import { userAppStore } from "@/store/store";
 import Schedule from "@/components/common/Schedule";
+import WorkWithUs from "@/components/workWithUs/WorkWithUs";
+
 
 // google fonts
 const bodoni = Libre_Bodoni({
@@ -14,7 +16,6 @@ const bodoni = Libre_Bodoni({
 
 const HeaderComponent = ({ children }) => {
   const { showScheduleBar } = userAppStore();
-
   return (
     <div className="sticky top-0 z-30 w-full shadow-sm">
       <header
@@ -174,7 +175,7 @@ const HeaderComponent = ({ children }) => {
                   </div>
                   <a
                     className="font-medium text-gray-800 hover:text-gray-600 py-3 md:py-6 dark:text-gray-200 dark:hover:text-gray-500"
-                    href="#"
+                    href= "/dwepartner"
                   >
                     Work with us
                   </a>

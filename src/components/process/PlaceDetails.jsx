@@ -3,7 +3,7 @@ import FormInput from "../common/FormInput";
 import { userAppStore } from "@/store/store";
 
 export default function PlaceDetails() {
-  const { locationData, setLocationData} = userAppStore();
+  const { locationData, setLocationData, addressInfo } = userAppStore();
   const handleChange = (name, value) => {
     setLocationData({ ...locationData, [name]: value });
   };
@@ -42,7 +42,7 @@ export default function PlaceDetails() {
             placeholder="Street Address"
             setValue={handleChange}
             type="text"
-            value={locationData?.locality}
+            value={addressInfo?.displayName}
           />
         </div>
         <div className="flex flex-col gap-2 w-[30%]">
@@ -60,7 +60,7 @@ export default function PlaceDetails() {
             placeholder="City / town"
             setValue={handleChange}
             type="text"
-            value={locationData?.district}
+            value={addressInfo?.location?.city}
           />
         </div>
         <div className="flex flex-col gap-2 w-[30%]">
@@ -78,7 +78,7 @@ export default function PlaceDetails() {
             placeholder="Country / province"
             setValue={handleChange}
             type="text"
-            value={locationData?.country}
+            value={addressInfo?.location?.country}
           />
         </div>
       </div>

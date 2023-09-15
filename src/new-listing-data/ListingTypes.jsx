@@ -33,7 +33,7 @@ export const listingTypes = [
   { name: "Flat/apartment", svgPath: <Flat /> },
   { name: "Boat", svgPath: <Boat /> },
   { name: "Cabin", svgPath: <Cabin /> },
-  { name: "Campervan/motorhouse", svgPath: <Campervan /> },
+  { name: "Campervan", svgPath: <Campervan /> },
   { name: "Casa particular", svgPath: <CasaParticular /> },
   { name: "Castle", svgPath: <Castle /> },
   { name: "Cave", svgPath: <Cave /> },

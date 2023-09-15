@@ -14,6 +14,7 @@ import ListingCreated from "@/components/process/listingCreated";
 import Price from "@/components/process/price";
 import Title from "@/components/process/title";
 import { userAppStore } from "@/store/store";
+import { insertroom } from "@/utils/async/host/insertroom";
 import { Libre_Bodoni } from "next/font/google";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -27,11 +28,13 @@ const bodoni = Libre_Bodoni({
 const NewListingPage = () => {
   const [step, setStep] = useState(0);
   const {
-    locationData,
-    mapData,
+    locationType,
     placeType,
+    mapData,
+    locationData,
+    addressInfo,
     placeSpace,
-    selectionType,
+    searchPlaceSpace,
     placeAmeneites,
     title,
     description,
@@ -39,19 +42,134 @@ const NewListingPage = () => {
     taxes,
     photos,
   } = userAppStore();
-  console.log(
-    locationData,
-    mapData,
-    placeType,
-    placeSpace,
-    selectionType,
-    placeAmeneites,
-    title,
-    description,
-    price,
-    taxes,
-    photos
+
+  const Popular = placeAmeneites?.filter(
+    (amenetiy) => amenetiy?.popular === true
   );
+
+  const NonPopular = placeAmeneites?.filter(
+    (amenetiy) => amenetiy?.popular !== true
+  );
+
+  function getRandomTime() {
+    const hours = Math.floor(Math.random() * 12) + 1;
+    const minutes = Math.floor(Math.random() * 60);
+    const ampm = Math.random() < 0.5 ? "AM" : "PM";
+    const formattedHours = hours.toString().padStart(2, "0");
+    const formattedMinutes = minutes.toString().padStart(2, "0");
+    return `${formattedHours}:${formattedMinutes} ${ampm}`;
+  }
+
+  getRandomTime();
+
+  const houseRules = [
+    {
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/zeiqcd82orjubexz6wgg.svg",
+      name: "Check in",
+      time: getRandomTime(),
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/wfbjzyil59ubwec0nias.svg",
+      name: "Check out",
+      time: getRandomTime(),
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/n8c3nwnxeyiwdjop8gt4.svg",
+      name: "Cancellation",
+      des: "Free cancellation up to 7 days before arrival.",
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/ywdokjfsev4rkhik9d1s.svg",
+      name: "Children",
+      des: "Children are welcome. Extra beds available.",
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/pbapmple7pyfok2jbklg.svg",
+      name: "Age",
+      des: "No age restrictions.",
+    },
+  ];
+
+  const paymentMethods = [
+    {
+      providerName: "Master Card",
+      accepted: true,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/gdvhlkdaefjdliwrl8vy.svg",
+    },
+    {
+      providerName: "VISA Card",
+      accepted: true,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/bcmtypdecdugr6bipzgx.svg",
+    },
+    {
+      providerName: "Discover Card",
+      accepted: false,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/hz989hhvwy2dj8hlpcsc.png",
+    },
+    {
+      providerName: "American Express",
+      accepted: true,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/s4qzhx00abdlxf30rfem.svg",
+    },
+    {
+      providerName: "Diners Club",
+      accepted: false,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244098/tbnaqxc337ghnagqcwgz.svg",
+    },
+    {
+      providerName: "UnionPay",
+      accepted: true,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244280/ehqq4ylkzwjpdtqdtw2j.png",
+    },
+    {
+      providerName: "Cash on Arrival",
+      accepted: false,
+      image:
+        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244099/s1jytaczagoti5ql5ftj.svg",
+    },
+  ];
+
+  const finalListing = {
+    name: title,
+    location: addressInfo?.location,
+    category: {
+      name: locationType?.name,
+      type: placeType?.title,
+    },
+    lat: addressInfo?.lat,
+    lng: addressInfo?.lng,
+    capacity: {
+      adults: searchPlaceSpace?.adults,
+      children: searchPlaceSpace?.childrens,
+      infants: searchPlaceSpace?.infants,
+    },
+    availability: {
+      bedrooms: placeSpace?.beds,
+      baths: placeSpace?.bathrooms,
+      guests: placeSpace?.guests,
+    },
+    images: photos,
+    description: description,
+    price: price,
+    taxes: taxes,
+    popular_facilities: Popular,
+    facilities: NonPopular,
+    house_rules: houseRules,
+    payment_methods: paymentMethods,
+    reviews: [],
+  };
+
   const getComponent = () => {
     switch (step) {
       case 0:
@@ -92,7 +210,12 @@ const NewListingPage = () => {
   const handlePrevious = () => {
     setStep(step - 1);
   };
-
+  const handleListing = async () => {
+    const result = await insertroom(finalListing);
+    if (result?.data?.insertedId) {
+      setStep(step + 1);
+    }
+  };
   return (
     <div className="grid grid-rows-new-listing h-[100vh]">
       <header className="flex items-center px-20 justify-between">
@@ -105,17 +228,14 @@ const NewListingPage = () => {
             Dwelling
           </Link>
         </div>
-        {step <= 13 && (
-          <button className="border border-gray-300 px-3 py-2 rounded-full font-semibold hover:border-gray-700 cursor-pointer">
-            Save & Exit
-          </button>
-        )}
       </header>
 
       {getComponent()}
 
       <footer
-        className={`flex items-center px-20 pb-4 border-t-4 border-t-gray-300 ${
+        className={`flex items-center ${
+          step === 13 ? "hidden" : ""
+        } px-20 pb-4 border-t-4 border-t-gray-300 ${
           step > 0 ? "justify-between" : "justify-end"
         }`}
       >
@@ -129,11 +249,35 @@ const NewListingPage = () => {
         )}
         {step !== 0 ? (
           <button
-            onClick={handleNext}
-            // disabled={step == 2 && location == undefined ? true : false}
-            className="bg-[#222222] py-3 mt-5 px-5 text-base font-medium text-white rounded-md cursor-pointer disabled:bg-red-500"
+            onClick={step === 12 ? handleListing : handleNext}
+            disabled={
+              step === 2 && locationType === undefined
+                ? true
+                : false || (step === 3 && placeType === undefined)
+                ? true
+                : false || (step === 4 && mapData === undefined)
+                ? true
+                : false || (step === 5 && locationData === undefined)
+                ? true
+                : false || (step === 6 && placeSpace === undefined)
+                ? true
+                : false || (step === 7 && searchPlaceSpace?.adults === 0)
+                ? true
+                : false || (step === 8 && placeAmeneites.length === 0)
+                ? true
+                : false || (step === 9 && title.length <= 10)
+                ? true
+                : false || (step === 10 && description.length <= 50)
+                ? true
+                : false || (step === 11 && price <= 0)
+                ? true
+                : false || (step === 12 && photos.length <= 4)
+                ? true
+                : false
+            }
+            className="bg-[#222222] py-3 mt-5 px-5 text-base font-medium text-white rounded-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Next
+            {step === 12 ? "Submit" : "Next"}
           </button>
         ) : (
           <button

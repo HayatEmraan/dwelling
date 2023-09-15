@@ -7,7 +7,6 @@ import {
 } from "react-icons/ai";
 
 const Header = ({ data }) => {
-  
   return (
     <header className="my-5">
       <h2 className="font-bold text-2xl">{data?.name}</h2>
@@ -19,10 +18,10 @@ const Header = ({ data }) => {
           </p>
           <div className="flex items-center">
             <AiFillEnvironment className="mr-2" />
-            Superhost-
-            <small className="underline font-bold">
-              {data?.location.city},{data?.location.country},
-              {data?.location.region}
+            Superhost - 
+            <small className="underline font-bold ms-1">
+              {data?.location?.city}, {data?.location?.country}
+              {data?.location?.region}
             </small>
           </div>
         </div>

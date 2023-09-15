@@ -2,7 +2,7 @@ import { userAppStore } from "@/store/store";
 import React from "react";
 
 export default function Availability() {
-  const { selectionType, searchPlaceSpace, setSearchPlaceSpace } =
+  const { searchPlaceSpace, setSearchPlaceSpace } =
     userAppStore();
 
   const handleIncrement = (type) => {
