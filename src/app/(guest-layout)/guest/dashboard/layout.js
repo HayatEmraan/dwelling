@@ -6,7 +6,6 @@ import useToggleOpen from "@/utils/useToggleOpen";
 
 const DashboardLayout = ({ children }) => {
   const [isOpen, toggleMenu] = useToggleOpen();
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-6">
       <div

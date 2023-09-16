@@ -51,25 +51,29 @@ const NewListingPage = () => {
     (amenetiy) => amenetiy?.popular !== true
   );
 
-  const startDate = new Date();
-  const endDate = new Date();
-
-  if (startDate.toDateString() === endDate.toDateString()) {
-    endDate.setDate(endDate.getDate() + 15);
+  function getRandomTime() {
+    const hours = Math.floor(Math.random() * 12) + 1;
+    const minutes = Math.floor(Math.random() * 60);
+    const ampm = Math.random() < 0.5 ? "AM" : "PM";
+    const formattedHours = hours.toString().padStart(2, "0");
+    const formattedMinutes = minutes.toString().padStart(2, "0");
+    return `${formattedHours}:${formattedMinutes} ${ampm}`;
   }
+
+  getRandomTime();
 
   const houseRules = [
     {
       image:
         "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/zeiqcd82orjubexz6wgg.svg",
       name: "Check in",
-      time: "12:00 PM",
+      time: getRandomTime(),
     },
     {
       image:
         "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/wfbjzyil59ubwec0nias.svg",
       name: "Check out",
-      time: "12:00 PM",
+      time: getRandomTime(),
     },
     {
       image:
@@ -80,13 +84,13 @@ const NewListingPage = () => {
     {
       image:
         "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/ywdokjfsev4rkhik9d1s.svg",
-      name: "Children & Beds",
+      name: "Children",
       des: "Children are welcome. Extra beds available.",
     },
     {
       image:
         "https://res.cloudinary.com/dkozp31ij/image/upload/v1692692851/pbapmple7pyfok2jbklg.svg",
-      name: "Age restriction",
+      name: "Age",
       des: "No age restrictions.",
     },
   ];
@@ -129,12 +133,6 @@ const NewListingPage = () => {
         "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244280/ehqq4ylkzwjpdtqdtw2j.png",
     },
     {
-      providerName: "PayPal",
-      accepted: false,
-      image:
-        "https://res.cloudinary.com/dkozp31ij/image/upload/v1693244099/n2y2ibcoiydtsq8wd6xs.svg",
-    },
-    {
       providerName: "Cash on Arrival",
       accepted: false,
       image:
@@ -165,10 +163,6 @@ const NewListingPage = () => {
     description: description,
     price: price,
     taxes: taxes,
-    dateRange: {
-      startDate: startDate?.toISOString(),
-      endDate: endDate?.toISOString(),
-    },
     popular_facilities: Popular,
     facilities: NonPopular,
     house_rules: houseRules,

@@ -17,6 +17,8 @@ import { MdOutlineVilla } from "react-icons/md";
 import CategoryBox from "./category";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { listingTypes } from "@/new-listing-data/ListingTypes";
+import Toggle from "../toggle/Toggle";
 
 export const categories = [
   {
@@ -123,7 +125,7 @@ const CategoriesComponent = () => {
           : "-translate-y-full md:-translate-y-0 shadow-sm opacity-0 md:opacity-100"
       }`}
     >
-      <div className="max-w-[1560px] mx-auto">
+      <div className="container mx-auto">
         <div className="flex items-center justify-between pb-1">
           <div
             className="
@@ -137,15 +139,16 @@ const CategoriesComponent = () => {
           gap-4
         "
           >
-            {categories.map((item) => (
+            {listingTypes.map((navCategory) => (
               <CategoryBox
-                key={item.label}
-                label={item.label}
-                icon={item.icon}
-                selected={category === item.label}
+                key={navCategory?.name}
+                label={navCategory?.name}
+                icon={navCategory?.svgPath}
+                selected={category === navCategory?.name}
               />
             ))}
           </div>
+          <Toggle />
         </div>
       </div>
     </div>

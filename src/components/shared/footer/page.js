@@ -1,12 +1,9 @@
-
 import React from "react";
 import { FaGlobe } from "react-icons/fa";
 
 const Footer = () => {
-
-
   return (
-    <div className="max-w-[1560px] mx-auto">
+    <div className="container mx-auto">
       <footer className="footer p-10 text-base-content">
         <div className="mt-16">
           <span className="footer-title">Support</span>
@@ -36,11 +33,9 @@ const Footer = () => {
           <a className="link link-hover">Dwelling.org disaster relief</a>
         </div>
         <div className="mt-16">
-         
-            <button className=" btn btn-primary bg-[#003B95]">
-              Lets Talk With Us
-            </button>
-          
+          <button className=" btn btn-primary bg-[#003B95]">
+            Lets Talk With Us
+          </button>
         </div>
       </footer>
       <footer className="px-4 py-4 space-y-1 border-t md:flex justify-between items-center text-base-content border-base-300">

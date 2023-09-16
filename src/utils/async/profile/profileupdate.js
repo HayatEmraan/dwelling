@@ -8,8 +8,7 @@ export async function profileupdate(
   country,
   dob,
   postcode,
-  organization,
-  dialingCode
+  organization
 ) {
   const res = await fetch(
     `https://dwelling-bright-server.vercel.app/api/v2/user/updateinfo`,
@@ -28,7 +27,6 @@ export async function profileupdate(
         dob,
         postcode,
         organization,
-        dialingCode,
       }),
     }
   );

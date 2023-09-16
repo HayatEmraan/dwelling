@@ -9,13 +9,11 @@ const Example = dynamic(
   }
 );
 
-
 import HomePageHeading from "@/components/dashboard/homePage/Heading";
 import { fet } from "@/utils/async/admin/users/getusers";
 import BookingHistory from "@/components/guest/dashboard/homePage/BookingHistory";
 import CardContainer from "@/components/guest/dashboard/homePage/CardContainer";
 import FetchCards from "@/components/home/cards/fetchcards";
-
 
 const DashboardHomePage = async () => {
   const data = await FetchCards();
@@ -27,11 +25,11 @@ const DashboardHomePage = async () => {
 
         {/*Dashboard user list with chart */}
         <div className="xl:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
-         <BookingHistory />
-         <div className="border-2 shadow-md rounded-md  w-full">
-         <Example></Example>
-         </div>
-      </div>
+          <BookingHistory />
+          <div className="border-2 shadow-md rounded-md  w-full">
+            <Example></Example>
+          </div>
+        </div>
       </div>
     </>
   );

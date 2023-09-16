@@ -55,7 +55,7 @@ export const data = {
 const DashBarChart = () => {
   return (
     <div className="max-w-[150rem] py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-      <Bar options={options} data={data} />
+      <Bar options={options} height={292} data={data} />
     </div>
   );
 };

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Cards from "./cards";
-import BookingHistory from "@/components/guest/dashboard/homePage/BookingHistory";
+import CardSkeleton from "./cardskeleton";
 
 const FetchCards = async () => {
   const res = await fetch(
@@ -9,10 +9,12 @@ const FetchCards = async () => {
       cache: "no-store",
     }
   );
-  const cardData = await res.json();
+  const data = await res.json();
   return (
     <>
-      <Cards data={cardData.data} />
+      <Suspense fallback={<CardSkeleton data={data} />}>
+        <Cards />
+      </Suspense>
     </>
   );
 };

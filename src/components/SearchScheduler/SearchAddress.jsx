@@ -50,7 +50,7 @@ export default function SearchAddress({ setLocation }) {
           ref={containerRef}
         >
           <ul className="flex gap-0 flex-col">
-            {searchedAddresss?.map((address, index) => (
+            {searchedAddresss?.slice(0, 5)?.map((address, index) => (
               <li
                 key={index}
                 className="hover:bg-gray-300 transition-all duration-300 py-2"

@@ -6,8 +6,8 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "node_modules/preline/dist/*.js",
     "./src/**/*.{html,js}",
-    './pages/**/*.{html,js}',
-    './components/**/*.{html,js}',
+    "./pages/**/*.{html,js}",
+    "./components/**/*.{html,js}",
   ],
   darkMode: "class",
   theme: {
@@ -27,5 +27,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui"), require("preline/plugin")],
+  plugins: [require("daisyui"), require("preline/plugin"), require("rippleui")],
 };

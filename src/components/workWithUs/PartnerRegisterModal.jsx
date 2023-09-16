@@ -53,7 +53,7 @@ const PartnerRegisterModal = () => {
 
                                     <div className="form_upload mx-auto">
                                         <span className='text-[#ef4444]'>Upload Your Photo</span>
-                                        <label for="file-input" className="drop-container">
+                                        <label htmlFor="file-input" className="drop-container">
                                             <span className="drop-title">Drop files here</span>
                                             or
                                             <input type="file" accept="image/*" required="" id="file-input"/>

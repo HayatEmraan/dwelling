@@ -7,11 +7,11 @@ const ReviewCard = async ({ review }) => {
       <div className=" flex gap-x-3">
         <img
           className="w-14 h-14 border  rounded-full"
-          src={review?.profile_image}
+          src={review?.photo}
           alt=""
         />
         <div className="flex flex-col">
-          <h2 className="">{review?.name}</h2>
+          <h2 className="">{review?.reviewer_name}</h2>
           <p className="text-sm">
             {moment(review?.date, "YYYY-MM-DD").format("YYYY-MM-DD")}
           </p>

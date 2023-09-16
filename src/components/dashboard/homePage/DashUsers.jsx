@@ -135,7 +135,7 @@ const DashUsers = ({ data }) => {
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                   <thead className="bg-gray-50 dark:bg-slate-800">
                     <tr>
-                      <th scope="col" className="pl-6 py-3 text-left">
+                      <th scope="col" className="pl-6 py-3 text-left" style={{visibility: 'hidden'}}>
                         <label
                           htmlFor="hs-at-with-checkboxes-main"
                           className="flex"
@@ -189,7 +189,10 @@ const DashUsers = ({ data }) => {
                     {data?.data?.slice(0, 5).map((user, index) => {
                       return (
                         <tr key={index}>
-                          <td className="h-px w-px whitespace-nowrap">
+                          <td
+                            className="h-px w-px whitespace-nowrap"
+                            style={{ visibility: "hidden" }}
+                          >
                             <div className="pl-6 py-3">
                               <label
                                 htmlFor="hs-at-with-checkboxes-1"
@@ -216,7 +219,7 @@ const DashUsers = ({ data }) => {
                                 />
                                 <div className="grow">
                                   <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
-                                    {user?.name}
+                                    {user?.name?.firstName}
                                   </span>
                                   <span className="block text-sm text-gray-500">
                                     {user?.email}
@@ -341,12 +344,6 @@ const DashUsers = ({ data }) => {
                                     </div>
                                   </div>
                                 </div>
-                                <a
-                                  className="py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-l-md text-gray-700 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                                  href="#"
-                                >
-                                  <BsViewList className="w-4 h-4" />
-                                </a>
                               </div>
                             </div>
                           </td>
@@ -357,61 +354,28 @@ const DashUsers = ({ data }) => {
                   </tbody>
                 </table>
                 {/* End Table */}
-                {/* Pagination */}
-                <nav
-                  className="px-6 py-3 bg-white border-t border-gray-200 dark:bg-slate-900 dark:border-gray-700"
-                  aria-label="Pagination"
-                >
-                  <ul className="inline-flex space-x-3">
-                    <li>
-                      <button
-                        className="flex items-center justify-center text-gray-400 rounded-md hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        // onClick={() => {
-                        //   // Handle previous page click
-                        // }}
+                <div className="px-6 flex justify-between items-center border-t border-gray-200 dark:border-gray-700">
+                  <div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <span className="font-semibold text-gray-800 dark:text-gray-200">
+                        1
+                      </span>{" "}
+                      results of 12 entries
+                    </p>
+                  </div>
+                  <div className="px-0 py-4 grid gap-3 md:flex md:justify-center md:items-center border-t border-gray-200 dark:border-gray-700">
+                    <div className="inline-flex gap-x-2">
+                      <a
+                        type="button"
+                        href="dashboard/users"
+                        className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                       >
-                        <span className="sr-only">Previous</span>
-                        <svg
-                          className="w-5 h-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M7.293 9.293a1 1 0 011.414 0L11 11.586V6a1 1 0 112 0v5.586l2.293-2.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button>
-                    </li>
-                    <li>
-                      {/* <button
-                        className="flex items-center justify-center text-blue-600 bg-blue-100 rounded-md hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        onClick={() => {
-                          // Handle next page click
-                        }}
-                      >
-                        <span className="sr-only">Next</span>
-                        <svg
-                          className="w-5 h-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M12.293 10.293a1 1 0 011.414 0l4 4a1 1 0 11-1.414 1.414L13 13.414V19a1 1 0 11-2 0v-5.586l-2.293 2.293a1 1 0 11-1.414-1.414l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button> */}
-                    </li>
-                  </ul>
-                </nav>
-                {/* End Pagination */}
+                        <BsViewList />
+                        View All
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
