@@ -8,7 +8,6 @@ const SearchResult = async ({ searchParams }) => {
   return (
     <div>
       <CategoriesComponent />
-      <Toggle />
       <SearchPage
         location={location}
         start={start}

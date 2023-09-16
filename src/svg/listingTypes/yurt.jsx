@@ -18,6 +18,7 @@ export default function Yurt() {
               height: "100%",
               transform: "translate3d(0px, 0px, 0px)",
               contentVisibility: "visible",
+              opacity: 0.8,
             }}
           >
             <defs id="l_d_815">

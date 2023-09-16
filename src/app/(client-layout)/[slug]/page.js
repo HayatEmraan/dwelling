@@ -1,7 +1,6 @@
 import Cards from "@/components/home/cards/cards";
 import CardSkeleton from "@/components/home/cards/cardskeleton";
 import CategoriesComponent from "@/components/home/categories/categories";
-import Toggle from "@/components/home/toggle/Toggle";
 import React, { Suspense } from "react";
 
 const FilterPage = async ({ searchParams }) => {
@@ -16,7 +15,6 @@ const FilterPage = async ({ searchParams }) => {
   return (
     <div>
       <CategoriesComponent />
-      <Toggle />
       <Suspense fallback={<CardSkeleton data={data} />}>
         <Cards filter={filter} />
       </Suspense>

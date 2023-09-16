@@ -2,7 +2,7 @@ import React from "react";
 
 const CardSkeleton = ({ data }) => {
   return (
-    <div className="max-w-[1560px] mx-auto space-y-4">
+    <div className="container mx-auto space-y-4">
       <div className="px-5 md:px-4 lg:px-3 xl:px-2">
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 mb-4">
           {data?.data?.map((card, index) => (

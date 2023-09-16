@@ -1,6 +1,5 @@
 "use client";
-import UsersCard from "./UsersCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getusers } from "@/utils/async/admin/users/getusers";
 import { searchuser } from "@/utils/async/admin/users/searchuser";
 import { usersfilter } from "@/utils/async/admin/users/userfilter";
@@ -8,9 +7,22 @@ import { updateuser } from "@/utils/async/admin/users/updateuser";
 import { blockuser } from "@/utils/async/admin/users/blockuser";
 import { unblockuser } from "@/utils/async/admin/users/unblockuser";
 
-const UsersList = ({ data }) => {
+const UsersList = () => {
   const [pageNumber, setPageNumber] = useState(1);
-  const [pageData, setPageData] = useState(data);
+  const [pageData, setPageData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const usersData = await getusers();
+        setPageData(usersData);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   const handlePageNumber = async (page) => {
     const response = await getusers(page);
     setPageData(response);
@@ -56,10 +68,6 @@ const UsersList = ({ data }) => {
 
   return (
     <div className="mx-6">
-      <div className="mt-4 lg:mt-6 -mb-4">
-        <h2 className="text-2xl font-semibold mb-4 pl-6">Users</h2>
-        <UsersCard />
-      </div>
       {/* Table Section */}
       <div className="max-w-[150rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         {/* Card */}
@@ -215,7 +223,11 @@ const UsersList = ({ data }) => {
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                   <thead className="bg-gray-50 dark:bg-slate-800">
                     <tr>
-                      <th scope="col" className="pl-6 py-3 text-left">
+                      <th
+                        scope="col"
+                        className="pl-6 py-3 text-left"
+                        style={{ visibility: "hidden" }}
+                      >
                         <label
                           htmlFor="hs-at-with-checkboxes-main"
                           className="flex"
@@ -269,7 +281,10 @@ const UsersList = ({ data }) => {
                     {pageData?.data?.map((user, index) => {
                       return (
                         <tr key={index}>
-                          <td className="h-px w-px whitespace-nowrap">
+                          <td
+                            className="h-px w-px whitespace-nowrap"
+                            style={{ visibility: "hidden" }}
+                          >
                             <div className="pl-6 py-3">
                               <label
                                 htmlFor="hs-at-with-checkboxes-1"

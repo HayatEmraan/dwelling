@@ -18,6 +18,7 @@ import CategoryBox from "./category";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { listingTypes } from "@/new-listing-data/ListingTypes";
+import Toggle from "../toggle/Toggle";
 
 export const categories = [
   {
@@ -124,7 +125,7 @@ const CategoriesComponent = () => {
           : "-translate-y-full md:-translate-y-0 shadow-sm opacity-0 md:opacity-100"
       }`}
     >
-      <div className="max-w-[1560px] mx-auto">
+      <div className="container mx-auto">
         <div className="flex items-center justify-between pb-1">
           <div
             className="
@@ -147,6 +148,7 @@ const CategoriesComponent = () => {
               />
             ))}
           </div>
+          <Toggle />
         </div>
       </div>
     </div>

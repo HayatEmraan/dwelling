@@ -11,7 +11,7 @@ const CategoryBox = ({ label, icon: Icon, selected }) => {
     >
       <div className="w-10 h-10">{Icon}</div>
       <div
-        className={`text-sm ${
+        className={`text-[0.79rem] font-medium ${
           !selected && "text-gray-500"
         } hover:text-neutral-800 font-medium whitespace-nowrap`}
       >
