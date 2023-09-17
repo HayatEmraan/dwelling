@@ -1,3 +1,6 @@
+
+import Refund from './Refund';
+
 const GuestBookingControlPanel = () => {
   return (
     <div className="max-w-[150rem] mx-auto px-4 sm:px-6 lg:px-8 ">
@@ -128,6 +131,13 @@ const GuestBookingControlPanel = () => {
                             </span>
                           </div>
                         </th>
+                        <th scope="col" className="px-6 py-3 text-left">
+                          <div className="flex items-center gap-x-2">
+                            <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                              Action
+                            </span>
+                          </div>
+                        </th>
                         <th scope="col" className="px-6 py-3 text-right" />
                       </tr>
                     </thead>
@@ -239,6 +249,12 @@ const GuestBookingControlPanel = () => {
                               </svg>
                               Confirm
                             </span>
+                          </div>
+                        </td>
+                        <td className="h-px w-px whitespace-nowrap">
+                          <div className="px-6 py-2">
+                             
+                              <Refund />
                           </div>
                         </td>
                         <td className="h-px w-px whitespace-nowrap">
@@ -440,6 +456,12 @@ const GuestBookingControlPanel = () => {
                           </div>
                         </td>
                         <td className="h-px w-px whitespace-nowrap">
+                          <div className="px-6 py-2">
+                             
+                              <Refund />
+                          </div>
+                        </td>
+                        <td className="h-px w-px whitespace-nowrap">
                           <div className="px-6 py-1.5 flex justify-end">
                             <div className="group inline-flex items-center divide-x divide-gray-300 border border-gray-300 bg-white shadow-sm rounded-md transition-all dark:divide-gray-700 dark:bg-slate-700 dark:border-gray-700">
                               <div className="hs-dropdown relative inline-flex [--placement:bottom-right]">
@@ -638,6 +660,12 @@ const GuestBookingControlPanel = () => {
                           </div>
                         </td>
                         <td className="h-px w-px whitespace-nowrap">
+                          <div className="px-6 py-2">
+                             
+                              <Refund />
+                          </div>
+                        </td>
+                        <td className="h-px w-px whitespace-nowrap">
                           <div className="px-6 py-1.5 flex justify-end">
                             <div className="group inline-flex items-center divide-x divide-gray-300 border border-gray-300 bg-white shadow-sm rounded-md transition-all dark:divide-gray-700 dark:bg-slate-700 dark:border-gray-700">
                               <div className="hs-dropdown relative inline-flex [--placement:bottom-right]">
@@ -777,6 +805,7 @@ const GuestBookingControlPanel = () => {
                             </span>
                           </div>
                         </td>
+                       
                         <td className="h-px w-px whitespace-nowrap">
                           <div className="px-6 py-2">
                             <div className="flex items-center gap-x-2">
@@ -838,6 +867,12 @@ const GuestBookingControlPanel = () => {
                               </svg>
                               Declined
                             </span>
+                          </div>
+                        </td>
+                        <td className="h-px w-px whitespace-nowrap">
+                          <div className="px-6 py-2">
+                             
+                              <Refund />
                           </div>
                         </td>
                         <td className="h-px w-px whitespace-nowrap">
@@ -1039,6 +1074,12 @@ const GuestBookingControlPanel = () => {
                           </div>
                         </td>
                         <td className="h-px w-px whitespace-nowrap">
+                          <div className="px-6 py-2">
+                             
+                              <Refund />
+                          </div>
+                        </td>
+                        <td className="h-px w-px whitespace-nowrap">
                           <div className="px-6 py-1.5 flex justify-end">
                             <div className="group inline-flex items-center divide-x divide-gray-300 border border-gray-300 bg-white shadow-sm rounded-md transition-all dark:divide-gray-700 dark:bg-slate-700 dark:border-gray-700">
                               <div className="hs-dropdown relative inline-flex [--placement:bottom-right]">
@@ -1234,6 +1275,12 @@ const GuestBookingControlPanel = () => {
                               </svg>
                               Confirm
                             </span>
+                          </div>
+                        </td>
+                        <td className="h-px w-px whitespace-nowrap">
+                          <div className="px-6 py-2">
+                             
+                              <Refund />
                           </div>
                         </td>
                         <td className="h-px w-px whitespace-nowrap">
@@ -1436,6 +1483,12 @@ const GuestBookingControlPanel = () => {
                               </svg>
                               Pending
                             </span>
+                          </div>
+                        </td>
+                        <td className="h-px w-px whitespace-nowrap">
+                          <div className="px-6 py-2">
+                             
+                              <Refund />
                           </div>
                         </td>
                         <td className="h-px w-px whitespace-nowrap">
