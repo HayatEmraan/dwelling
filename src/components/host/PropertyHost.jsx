@@ -6,7 +6,6 @@ import { propertyupdate } from "@/utils/async/admin/properties/updateproperties"
 import { filterproperties } from "@/utils/async/admin/properties/filterproperties";
 import PropertyModal from "../dashboard/propertyPage/PropertyModal";
 
-
 const PropertyHost = ({ data }) => {
   const [pageNumber, setPageNumber] = useState(1);
   const [pageData, setPageData] = useState(data);
@@ -337,7 +336,8 @@ const PropertyHost = ({ data }) => {
                                   >
                                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                   </svg>
-                                  {item?.checkedBy}
+                                  {item?.checkedBy?.firstName}{" "}
+                                  {item?.checkedBy?.lastName}
                                 </span>
                               </>
                             ) : (
@@ -368,7 +368,11 @@ const PropertyHost = ({ data }) => {
                               <div className="cursor-pointer py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
                                 <FcViewDetails />
                                 View
-                                <PropertyModal data={item} title={"Property/Ads Details"} subtitle={"Property"}></PropertyModal>
+                                <PropertyModal
+                                  data={item}
+                                  title={"Property/Ads Details"}
+                                  subtitle={"Property"}
+                                ></PropertyModal>
                               </div>
                             </div>
                           </div>
