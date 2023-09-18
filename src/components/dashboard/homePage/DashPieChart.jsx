@@ -45,8 +45,8 @@ const Example = () => {
       <h2 className="font-semibold p-2">Total state</h2>
       <hr />
       <div>
-        <ResponsiveContainer width="95%" height={270}>
-          <PieChart width={200} height={260}>
+        <ResponsiveContainer width="50%" height={270}>
+          <PieChart width={100} height={260}>
             <Pie
               data={data}
               cx="50%"
