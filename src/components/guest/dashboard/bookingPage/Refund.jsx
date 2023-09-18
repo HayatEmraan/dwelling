@@ -66,6 +66,12 @@ const Refund = () => {
                             >
                                 Submit
                             </a>
+                            <a
+                                className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 font-semibold bg-white text-gray-500 hover:text-white hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                                href="#"
+                            >
+                                Re-Schedule
+                            </a>
                         </div>
                     </div>
                 </div>
