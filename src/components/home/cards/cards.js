@@ -50,7 +50,7 @@ const Cards = async ({
               <a
                 key={index}
                 href={`/details/${room?._id}`}
-                className="block rounded-lg p-4 shadow-sm shadow-indigo-100 group"
+                className="block rounded-lg p-4 shadow-md shadow-indigo-100 group"
               >
                 <div className="flex flex-col gap-2 w-full">
                   <div className="w-full relative overflow-hidden rounded-xl">
@@ -63,7 +63,10 @@ const Cards = async ({
                     <dl>
                       <div className="flex flex-row items-center gap-1 justify-between">
                         <PriceCard room={room} />
-                        <p className="text-sm bg-gradient-to-r from-sky-400 via-rose-400 to-lime-400 bg-clip-text text-transparent">
+                        <p
+                          className="text-sm bg-gradient-to-l from-violet-100 via-purple-400 to-slate-900
+                        bg-clip-text text-transparent bg-[#B8B4EB]"
+                        >
                           {room?.category?.type}
                         </p>
                       </div>
