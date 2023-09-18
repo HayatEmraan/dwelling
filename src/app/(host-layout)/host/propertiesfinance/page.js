@@ -1,6 +1,7 @@
 import Example from "@/components/dashboard/homePage/DashPieChart";
 import PropertyManagement from "@/components/dashboard/propertyPage/PropertyManagement";
 import PropertyTotal from "@/components/dashboard/propertyPage/PropertyTotal";
+import PropertiesFinanceTable from "@/components/dashboard/propertyPage/propertyFinance/PropertiesFinanceTable";
 import PropertyFinanceBarChart from "@/components/dashboard/propertyPage/propertyFinance/PropertyFinanceBarChart";
 import PropertyFinanceLineChart from "@/components/dashboard/propertyPage/propertyFinance/PropertyFinanceLineChart";
 import HostPropertyChart from "@/components/host/HostPropertyChart";
@@ -16,11 +17,11 @@ const PropertiesFinance = async () => {
         <h2>Properties Finance</h2>
         <div>
           <PropertyTotal></PropertyTotal>
-          <div className="flex gap-2 my-10 px-4">
+          <div className="flex gap-3 my-10 px-7 justify-center items-center">
             <PropertyFinanceLineChart></PropertyFinanceLineChart>
             <PropertyFinanceBarChart></PropertyFinanceBarChart>
           </div>
-          <PropertyManagement data={data}></PropertyManagement>
+          <PropertiesFinanceTable data={data}> </PropertiesFinanceTable>
         </div>
       </div>
     </div>

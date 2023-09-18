@@ -14,13 +14,12 @@ const PropertyFinanceLineChart = () => {
         series: [
             {
                 name: "series-1",
-                data: [60, 65, 50]
+                data: [40, 65, 50]
             }
         ]
     })
     return (
-        <div >
-            <h2 className='font-semibold ms-5'>Properties State</h2>
+        <div className='shadow-md rounded-sm border-t-8'>
             <Chart
                 options={state.options}
                 series={state.series}
