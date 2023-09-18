@@ -7,6 +7,14 @@ const PropertyFinanceBarChart = () => {
             chart: {
                 id: "basic-bar"
             },
+            theme: {
+                monochrome: {
+                  enabled: true,
+                  color: '#255aee',
+                  shadeTo: 'light',
+                  shadeIntensity: 0.65
+                }
+              },
             xaxis: {
                 categories: ['Approved', 'Declined', 'Pending']
             }
@@ -14,13 +22,12 @@ const PropertyFinanceBarChart = () => {
         series: [
             {
                 name: "series-1",
-                data: [60, 65, 50]
+                data: [45, 65, 50]
             }
         ]
     })
     return (
-        <div >
-            <h2 className='font-semibold ms-5'>Properties State</h2>
+        <div className='shadow-md rounded-sm border-t-8'>
             <Chart
                 options={state.options}
                 series={state.series}
