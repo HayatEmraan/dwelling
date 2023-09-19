@@ -42,7 +42,7 @@ const Cards = async ({
   const data = await res.json();
 
   return (
-    <div className="container mx-auto space-y-4">
+    <div className="container mx-auto bg-white dark:bg-gray-900 py-8 space-y-4">
       <div className="px-5 md:px-4 lg:px-3 xl:px-2">
         {data?.data?.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 mb-4">
@@ -52,7 +52,7 @@ const Cards = async ({
                 <a
                   key={index}
                   href={`/details/${room?._id}`}
-                  className="block rounded-lg p-4 shadow-md shadow-indigo-100 group"
+                  className="block rounded-lg p-4 shadow-md shadow-indigo-100 dark:shadow-gray-950 group"
                 >
                   <div className="flex flex-col gap-2 w-full">
                     <div className="w-full relative overflow-hidden rounded-xl">
@@ -63,17 +63,17 @@ const Cards = async ({
                     </div>
                     <div className="mt-2">
                       <dl>
-                        <div className="flex flex-row items-center gap-1 justify-between">
+                        <div className="flex flex-row items-center gap-1 justify-between text-gray-400 dark:text-gray-200">
                           <PriceCard room={room} />
                           <p
-                            className="text-sm bg-gradient-to-l from-violet-100 via-purple-400 to-slate-900
+                            className="text-sm bg-gradient-to-l from-violet-100 via-purple-400 to-slate-900 
                         bg-clip-text text-transparent bg-[#B8B4EB]"
                           >
                             {room?.category?.type}
                           </p>
                         </div>
                         <div className="flex justify-between items-center">
-                          <div className="font-semibold text-lg">
+                          <div className="font-semibold text-black dark:text-white text-lg">
                             {room?.name}
                           </div>
                           <div className="text-md flex items-center">
@@ -104,7 +104,7 @@ const Cards = async ({
                           </svg>
                           <div className="mt-1.5 sm:mt-0">
                             <p className="text-gray-500">Guests</p>
-                            <p className="font-medium">
+                            <p className="font-medium text-gray-500 dark:text-gray-200">
                               {room?.availability?.guests} spaces
                             </p>
                           </div>
@@ -126,7 +126,7 @@ const Cards = async ({
                           </svg>
                           <div className="mt-1.5 sm:mt-0">
                             <p className="text-gray-500">Bathroom</p>
-                            <p className="font-medium">
+                            <p className="font-medium text-gray-500 dark:text-gray-200">
                               {room?.availability?.baths} rooms
                             </p>
                           </div>
@@ -148,7 +148,7 @@ const Cards = async ({
                           </svg>
                           <div className="mt-1.5 sm:mt-0">
                             <p className="text-gray-500">Bedroom</p>
-                            <p className="font-medium">
+                            <p className="font-medium text-gray-500 dark:text-gray-200">
                               {room?.availability?.bedrooms} rooms
                             </p>
                           </div>

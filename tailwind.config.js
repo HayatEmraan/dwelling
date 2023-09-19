@@ -9,7 +9,7 @@ module.exports = {
     "./pages/**/*.{html,js}",
     "./components/**/*.{html,js}",
   ],
-  darkMode: "class",
+  darkMode: 'class',
   theme: {
     extend: {
       backgroundImage: {
@@ -31,7 +31,7 @@ module.exports = {
 };
 
 // const team = [
-//   {
+//   {0
 //     Name: "Emraan Hasan Hayat",
 //     Position: "MERN Stack Developer",
 //     Bio: "I'm Hayat a skilled MERN stack developer with a strong background in front-end and back-end development, I'm dedicated to building robust and innovative solutions for today's digital world.",

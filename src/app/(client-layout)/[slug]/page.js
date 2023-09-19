@@ -13,7 +13,7 @@ const FilterPage = async ({ searchParams }) => {
   );
   const data = await res.json();
   return (
-    <div>
+    <div className="bg-white dark:bg-gray-900">
       <CategoriesComponent />
       <Suspense fallback={<CardSkeleton data={data} />}>
         <Cards filter={filter} />

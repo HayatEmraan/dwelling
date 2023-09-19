@@ -188,7 +188,7 @@ const HeaderComponent = ({ children }) => {
       </header>
       {<LogInComp />}
       {showScheduleBar && (
-        <div className="flex justify-center bg-white">
+        <div className="flex justify-center bg-white dark:bg-gray-900">
           <Schedule />
         </div>
       )}

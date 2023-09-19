@@ -6,15 +6,17 @@ import PartnerRegisterModal from "./PartnerRegisterModal";
 import WorkCard from "./WorkCard/WorkCard";
 import Accordian from "./accordian/Accordian";
 import AvatarComp from "../shared/header/avatar";
+import TopbarComp from "../shared/topbar/topbar";
 
 const WorkWithUs = () => {
   return (
-    <>
+    <div className="bg-white dark:bg-gray-900">
+    <TopbarComp />
       <HeaderComponent>
         <AvatarComp></AvatarComp>
       </HeaderComponent>
 
-      <div className="max-w-[150rem] my-8">
+      <div className="max-w-[150rem] my-8 ">
         <div className="container mx-auto">
           <div className="flex flex-col lg:flex-row gap-4 lg:justify-between lg:min-h-[calc(100vh-20rem)] items-center mx-4">
             <div>
@@ -40,7 +42,7 @@ const WorkWithUs = () => {
             </div>
           </div>
         </div>
-        <hr className="my-8 lg:my-16" />
+        <hr className="my-8 lg:my-16  " />
         <div className="container mx-auto">
           <div className="flex flex-col-reverse lg:flex-row gap-6 lg:gap-40 items-center justify-center mx-4 my-8">
             <div>
@@ -73,7 +75,7 @@ const WorkWithUs = () => {
       <WorkCard />
       <Accordian />
       <Footer />
-    </>
+    </div>
   );
 };
 

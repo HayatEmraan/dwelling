@@ -9,10 +9,10 @@ const CategoryBox = ({ label, icon: Icon, selected }) => {
         selected ? "border-b-neutral-800 text-neutral-800" : "text-neutral-500"
       }`}
     >
-      <div className="w-10 h-10">{Icon}</div>
+      <div className="w-10 h-10 ">{Icon}</div>
       <div
         className={`text-[0.79rem] font-medium ${
-          !selected && "text-gray-500"
+          !selected && "text-gray-950"
         } hover:text-neutral-800 font-medium whitespace-nowrap`}
       >
         {label}
