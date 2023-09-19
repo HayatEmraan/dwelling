@@ -28,7 +28,8 @@ const RoomDetails = async ({ params }) => {
     lng: data?.data?.lng || 90.41453565758886,
   };
   return (
-    <div className="max-w-6xl lg:mx-auto px-5">
+    <div className="bg-white dark:bg-gray-900">
+      <div className="max-w-6xl lg:mx-auto px-5 py-8">
       {/* Header Section */}
       <Header data={data?.data}></Header>
       {/* Grid  Images */}
@@ -61,6 +62,7 @@ const RoomDetails = async ({ params }) => {
       {/* details map  */}
       <DetailsMapIndex location={location} />
       <section></section>
+    </div>
     </div>
   );
 };

@@ -57,14 +57,14 @@ export default function Schedule() {
       ref={containerRef}
     >
       <div
-        className="flex flex-col hover:bg-gray-100 px-4 lg:px-10 py-4 rounded-full cursor-pointer relative"
+        className="flex flex-col hover:bg-gray-100 dark:hover:bg-gray-950 px-4 lg:px-10 py-4 rounded-full cursor-pointer relative"
         onClick={() => setSelectionType("where")}
       >
         <SearchAddress setLocation={setLocation} />
       </div>
       <div
         onClick={() => setSelectionType("check-in")}
-        className="flex flex-col hover:bg-gray-100 px-2 lg:px-10 py-4 rounded-full cursor-pointer items-center justify-center"
+        className="flex flex-col hover:bg-gray-100 dark:hover:bg-gray-950 px-2 lg:px-10 py-4 rounded-full cursor-pointer items-center justify-center"
       >
         <label htmlFor="" className="text-xs font-semibold lg:flex flex-col hidden     ">
           Check in
@@ -85,7 +85,7 @@ export default function Schedule() {
         )}
       </div>
       <div
-        className="flex flex-col hover:bg-gray-100 px-2 lg:px-10 py-4 rounded-full cursor-pointer items-center justify-center"
+        className="flex flex-col hover:bg-gray-100 dark:hover:bg-gray-950 px-2 lg:px-10 py-4 rounded-full cursor-pointer items-center justify-center"
         onClick={() => setSelectionType("check-out")}
       >
         <label htmlFor="" className="text-xs hidden lg:block font-semibold">
@@ -107,7 +107,7 @@ export default function Schedule() {
         )}
       </div>
       <div
-        className="flex hover:bg-gray-100 justify-between text-xs lg:text-base px-2 lg:px-4 py-4 pl-7 rounded-full cursor-pointer gap-2 lg:gap-7"
+        className="flex hover:bg-gray-100 dark:hover:bg-gray-950 justify-between text-xs lg:text-base px-2 lg:px-4 py-4 pl-7 rounded-full cursor-pointer gap-2 lg:gap-7"
         onClick={() => setSelectionType("who")}
       >
         <SearchBeds setGuests={setGuests} />

@@ -40,7 +40,7 @@ export default function SearchBeds({ setGuests }) {
       </div>
       {selectionType === "who" && (
         <div
-          className="absolute w-96 right-0 h-max top-[4.7rem] shadow-lg rounded-3xl bg-white py-10 px-10 z-50"
+          className="absolute w-96 right-0 h-max top-[4.7rem] shadow-lg rounded-3xl bg-white dark:bg-gray-900 py-10 px-10 z-50"
           ref={containerRef}
         >
           <ul className="flex flex-col gap-5">

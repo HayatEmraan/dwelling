@@ -8,7 +8,8 @@ const UnfoundComp = () => {
     router.push("/");
   };
   return (
-    <div id="notfound" style={{ height: "calc(100vh - 400px)" }}>
+    <div className="bg-white dark:bg-gray-900 w-full">
+      <div id="notfound" style={{ height: "calc(100vh - 400px)" }}>
       <div className="notfound">
         <div className="notfound-404">
           <h1>Oops!</h1>
@@ -38,6 +39,7 @@ const UnfoundComp = () => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };

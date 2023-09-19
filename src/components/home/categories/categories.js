@@ -119,7 +119,7 @@ const CategoriesComponent = () => {
   return (
     <div
       id="navBar"
-      className={`bg-white sticky top-24 md:top-14 z-20 transition-transform ${
+      className={`bg-white  dark:bg-gray-900  sticky top-24 md:top-14 z-20 transition-transform ${
         visible
           ? "translate-y-0 opacity-100 shadow-sm md:shadow-none"
           : "-translate-y-full md:-translate-y-0 shadow-sm opacity-0 md:opacity-100"
@@ -137,6 +137,7 @@ const CategoriesComponent = () => {
           no-scrollbar
           flex-grow
           gap-4
+          dark:invert
         "
           >
             {listingTypes.map((navCategory) => (

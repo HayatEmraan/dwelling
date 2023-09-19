@@ -26,7 +26,8 @@ const SearchPage = async ({
   const data = await res.json();
 
   return (
-    <Suspense fallback={<CardSkeleton data={data} />}>
+    <div className="bg-white dark:bg-gray-900">
+      <Suspense  fallback={<CardSkeleton data={data} />}>
       <Cards
         location={location}
         start={start}
@@ -35,8 +36,10 @@ const SearchPage = async ({
         childrens={childrens}
         infants={infants}
         pets={pets}
+        
       />
     </Suspense>
+    </div>
   );
 };
 
