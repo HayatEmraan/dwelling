@@ -1,5 +1,10 @@
 import React from "react";
 
+
+export const metadata = {
+  title: "404",
+  description: "A project by BrightCoders team",
+};
 const NotFound = () => {
   return (
     <section className="bg-white dark:bg-gray-900 ">

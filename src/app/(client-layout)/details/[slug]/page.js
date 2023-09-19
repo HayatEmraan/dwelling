@@ -69,4 +69,23 @@ const RoomDetails = async ({ params }) => {
   );
 };
 
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+  const res = await fetch(
+    `https://dwelling-bright-server.vercel.app/api/v1/getdetails/${slug}`,
+    {
+      cache: "no-store",
+    }
+  );
+  const data = await res.json();
+  const name = data?.data?.name?.replace(/\.$/, "");
+  return {
+    metadataBase: new URL("http://localhost:3000"),
+    title: name,
+    openGraph: {
+      images: data?.data?.images[0],
+    },
+  };
+}
+
 export default RoomDetails;
