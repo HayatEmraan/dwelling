@@ -1,5 +1,9 @@
 import React from "react";
 
+export const metadata = {
+  title: "Refund & Reschedule Policy",
+};
+
 const RefundPage = () => {
   return (
     <section className="container mx-auto px-4">

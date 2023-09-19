@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <main>
       <CategoriesComponent />
-      {/* <Toggle /> */}
       <div className="mt-4">
         <FetchCards />
       </div>

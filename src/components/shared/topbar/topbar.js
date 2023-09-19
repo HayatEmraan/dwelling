@@ -1,3 +1,4 @@
+import DarkToogle from "@/app/(client-layout)/darktoggle";
 import React from "react";
 
 const TopbarComp = () => {
@@ -32,6 +33,7 @@ const TopbarComp = () => {
         >
           Get started
         </a>
+        <DarkToogle />
       </div>
     </div>
   );
