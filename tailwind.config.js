@@ -27,10 +27,19 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require("daisyui"),
-    require("preline/plugin"),
-    require("rippleui"),
-    require("@tailwindcss/forms"),
-  ],
+  plugins: [require("daisyui"), require("preline/plugin"), require("rippleui")],
 };
+
+// const team = [
+//   {
+//     Name: "Emraan Hasan Hayat",
+//     Position: "MERN Stack Developer",
+//     Bio: "I'm Hayat a skilled MERN stack developer with a strong background in front-end and back-end development, I'm dedicated to building robust and innovative solutions for today's digital world.",
+//     Github: "https://github.com/HayatEmraan",
+//     Discord: "https://discord.com/users/hayatemraan",
+//     Linkedin: "https://www.linkedin.com/in/hayatemraan/",
+//     portfolio: "https://hayatemraan.netlify.app/",
+//     PhotoURL:
+//       "https://res.cloudinary.com/dkozp31ij/image/upload/v1692171117/bhgywbrz4jqxnq5j6xyt.jpg",
+//   },
+// ];
