@@ -17,7 +17,7 @@ const SliderComponent = ({ images }) => {
       spaceBetween={10}
       loop={true}
       pagination={{
-      clickable: true,
+        clickable: true,
       }}
       navigation={true}
       modules={[Pagination, Navigation]}

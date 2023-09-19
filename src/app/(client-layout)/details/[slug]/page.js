@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import SearchBeds from "@/components/SearchScheduler/SearchBeds";
 import DetailsFacilities from "@/components/details/DetailsFacilities/DetailsFacilities";
 import Header from "@/components/details/Header/Header";
 import HouseRules from "@/components/details/HouseRules/HouseRules";
@@ -21,10 +20,7 @@ const DetailsMapIndex = dynamic(
 const RoomDetails = async ({ params }) => {
   const { slug } = params;
   const res = await fetch(
-    `https://dwelling-bright-server.vercel.app/api/v1/getdetails/${slug}`,
-    {
-      cache: "no-store",
-    }
+    `https://dwelling-bright-server.vercel.app/api/v1/getdetails/${slug}`
   );
   const data = await res.json();
   const location = {
@@ -68,5 +64,24 @@ const RoomDetails = async ({ params }) => {
     </div>
   );
 };
+
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+  const res = await fetch(
+    `https://dwelling-bright-server.vercel.app/api/v1/getdetails/${slug}`,
+    {
+      cache: "no-store",
+    }
+  );
+  const data = await res.json();
+  const name = data?.data?.name?.replace(/\.$/, "");
+  return {
+    metadataBase: new URL("http://localhost:3000"),
+    title: name,
+    openGraph: {
+      images: data?.data?.images[0],
+    },
+  };
+}
 
 export default RoomDetails;

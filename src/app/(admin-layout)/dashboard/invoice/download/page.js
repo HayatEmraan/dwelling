@@ -136,7 +136,7 @@ function InvoiceDownload() {
                 <th className="w-1/5 text-center">Sum Cost</th>
                 <th className="w-1/5 text-center">Discount</th>
                 <th className="w-1/5 text-center">Tax</th>
-                {/* <th className="w-1/5 text-center">Total Price</th> */}
+      
               </tr>
             </thead>
             <tbody>
@@ -154,9 +154,7 @@ function InvoiceDownload() {
                 <td className="text-center pt-3 ">
                   <span className="font-mono"> $3,000.00</span>
                 </td>
-                {/* <td className="text-center  pt-3 ">
-                  <strong className="font-mono">$20,000.00</strong>
-                </td> */}
+             
               </tr>
             </tbody>
           </table>

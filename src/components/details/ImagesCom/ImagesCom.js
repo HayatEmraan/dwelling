@@ -28,12 +28,17 @@ const ImagesCom = ({ data }) => {
     <div className="my-5">
       {isMobile ? (
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-          {data.images.map((singleImg, index) => (
+          {data?.images?.map((singleImg, index) => (
             <SwiperSlide key={index}>
               <div
                 style={{ width: "100%", height: "290px", position: "relative" }}
               >
-                <Image src={singleImg} layout="fill" objectFit="cover"></Image>
+                <Image
+                  src={singleImg}
+                  fill
+                  alt="Room Image"
+                  style={{ objectFit: "cover" }}
+                ></Image>
               </div>
             </SwiperSlide>
           ))}
@@ -46,16 +51,13 @@ const ImagesCom = ({ data }) => {
                 src={data?.images[0]}
                 alt="Image 0"
                 fill
-                objectFit="cover"
+                style={{ objectFit: "cover" }}
               />
             </div>
 
             <div className="grid grid-cols-2 gap-2">
               {data?.images?.slice(1, 5).map((image, index) => (
-                <div
-                  key={index}
-                  className="overflow-hidden rounded-lg"
-                >
+                <div key={index} className="overflow-hidden rounded-lg">
                   <img
                     src={image}
                     alt={`Image ${index + 1}`}

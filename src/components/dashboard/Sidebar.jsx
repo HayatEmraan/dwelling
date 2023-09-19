@@ -4,7 +4,7 @@ import { FcHome } from "react-icons/fc";
 import { DiGhostSmall } from "react-icons/di";
 const Sidebar = () => {
   return (
-    <div className="fixed top-0 dark:lg:w-1/6 dark:w-3/4 dark:bg-slate-800 dark:text-white dark:h-full">
+    <div className="fixed top-0 dark:bg-slate-800 dark:text-white dark:h-full">
       <div className="text-2xl font-semibold px-2 pt-3 pb-4 text-center ">
         <Link href={"/dashboard"}>Admin Panel</Link>
       </div>
@@ -15,6 +15,7 @@ const Sidebar = () => {
               <ul className="space-y-2 sidebar-font">
                 <li>
                   <Link
+                    prefetch={false}
                     href="/dashboard"
                     className="flex items-center p-2  font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
@@ -32,6 +33,7 @@ const Sidebar = () => {
                 </li>
                 <li>
                   <Link
+                    prefetch={false}
                     href="/dashboard/properties"
                     className="flex items-center sidebar-font p-2  font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
@@ -49,7 +51,8 @@ const Sidebar = () => {
                   </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
+                    prefetch={false}
                     href="/dashboard/booking"
                     className="flex items-center p-2  font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
@@ -65,10 +68,11 @@ const Sidebar = () => {
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       Booking
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link
+                    prefetch={false}
                     href="/dashboard/invoice"
                     className="flex items-center p-2  font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
@@ -91,6 +95,7 @@ const Sidebar = () => {
                 </li>
                 <li>
                   <Link
+                    prefetch={false}
                     href="/dashboard/hosts"
                     className="flex items-center p-2  font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
@@ -100,6 +105,7 @@ const Sidebar = () => {
                 </li>
                 <li>
                   <Link
+                    prefetch={false}
                     href="/dashboard/users"
                     className="flex items-center p-2  font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
@@ -120,6 +126,7 @@ const Sidebar = () => {
                 </li>
                 <li>
                   <Link
+                    prefetch={false}
                     href="/dashboard/settings"
                     className="flex items-center p-2  font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
@@ -156,6 +163,7 @@ const Sidebar = () => {
                 </li>
                 <li>
                   <Link
+                    prefetch={false}
                     href="/"
                     target="_blank"
                     className="flex items-center p-2  font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"

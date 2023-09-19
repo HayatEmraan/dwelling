@@ -8,7 +8,10 @@ import PrelineComp from "@/components/preline/preline";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Dwelling | BrightCoders",
+  title: {
+    template: "%s | Dwelling",
+    default: "Dwelling - BrightCoders",
+  },
   description: "A project by BrightCoders team",
 };
 

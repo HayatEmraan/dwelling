@@ -5,6 +5,9 @@ import InvoiceLatestPage from "../invoicePage/InvoiceLatestPage";
 // import ChartGuest from './ChartGuest';
 
 import dynamic from "next/dynamic";
+import Victory from "./Victory";
+import { VictoryChart } from "victory";
+
 
 const Scroll = dynamic(
   () => {
@@ -18,6 +21,8 @@ const InvoiceGuest = () => {
     <div>
       <Scroll></Scroll>
       {/* <Chart></Chart> */}
+      {/* <Victory></Victory> */}
+      {/* <VictoryChart></VictoryChart> */}
       <InvoiceLatestPage></InvoiceLatestPage>
     </div>
   );

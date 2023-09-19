@@ -4,7 +4,7 @@ import React from "react";
 
 const LoadingComp = () => {
   return (
-    <div className="flex justify-center items-center w-full h-[219px]">
+    <div className="flex justify-center items-center w-full h-screen">
       <Player
         autoplay
         loop
