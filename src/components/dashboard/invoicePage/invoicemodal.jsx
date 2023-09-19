@@ -1,6 +1,39 @@
+'use client'
 import React from "react";
+import Link from 'next/link';
 
+
+const pdfFile = 'http://localhost:3000/Dwelling _ BrightCoders.pdf'
 const InvoiceModal = () => {
+
+  const handleDownloadFile=(url)=>{
+
+fetch(url)
+.then(res => res.blob())
+.then(blob => {
+  const blobURL = window.URL.createObjectURL(new Blob([blob]))
+  const fileName = url.split('/').pop()
+  const aTag = document.createElement('a')
+  aTag.href = blobURL
+
+    aTag.setAttribute('download', fileName)
+    document.body.appendChild(aTag)
+    aTag.click();
+    aTag.remove();
+})
+
+  }
+
+
+
+    // <div>
+    //   <h1>Download PDF</h1>
+    //   <p>Click the link below to download the PDF:</p>
+    //   <Link href={pdfUrl}>
+    //     <a>Download PDF</a>
+    //   </Link>
+    // </div>
+  
   return (
     <div
       id="hs-ai-invoice-modal"
@@ -163,10 +196,11 @@ const InvoiceModal = () => {
             {/* Button */}
 
             <div className="mt-5 flex justify-end gap-x-2">
-              <a
+              <button  onClick={()=>{handleDownloadFile(pdfFile)}}
                 className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800 download-btn"
-                href="#"
+               
               >
+               
                 <svg
                   className="w-4 h-4"
                   xmlns="http://www.w3.org/2000/svg"
@@ -179,7 +213,7 @@ const InvoiceModal = () => {
                   <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                 </svg>
                 Invoice PDF
-              </a>
+              </button>
               <a
                 className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
                 href="#"

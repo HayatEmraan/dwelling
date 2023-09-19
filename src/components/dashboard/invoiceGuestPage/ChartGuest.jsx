@@ -16,25 +16,25 @@ const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink"];
 const data = [
   {
     name: "Paid",
-    value: 24000,
+    value: 40000,
     pv: 2400,
     amt: 2400,
   },
   {
     name: "Refund",
-    value: 13000,
+    value: 30000,
     pv: 1398,
     amt: 2210,
   },
   {
     name: "Declined",
-    value: 10000,
+    value: 20000,
     pv: 9800,
     amt: 2290,
   },
   {
     name: "Total",
-    value: 40000,
+    value: 50000,
     pv: 3908,
     amt: 2000,
   },

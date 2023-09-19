@@ -3,6 +3,7 @@ import FilterInvoice from "./filterInvoice";
 import InvoiceModal from "./invoicemodal";
 
 const InvoiceLatestPage = () => {
+
   return (
     <>
       {/* Table Section */}
