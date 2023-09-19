@@ -26,6 +26,8 @@
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
     "firebase": "^10.2.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "leaflet": "^1.9.4",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",

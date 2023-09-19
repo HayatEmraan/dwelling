@@ -99,16 +99,17 @@ const Setting = () => {
     console.log(savePassword);
   };
 
-  const validateBirthdate = (input) => {
-    const dateRegex = "/^(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/d{4}$/";
-    const inputValue = input.value;
+//  const validateBirthdate = (input) => {
+//     const dateRegex ="/^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/";
+//     const inputValue = input.value;
 
-    if (dateRegex.test(inputValue)) {
-      console.log("Valid birthdate:", inputValue);
-    } else {
-      console.log("Invalid birthdate:", inputValue);
-    }
-  };
+//     if (dateRegex.test(inputValue)) {
+//         console.log("Valid birthdate:", inputValue);
+//     } else {
+//         console.log("Invalid birthdate:", inputValue);
+//     }
+// }
+
 
   return (
     <div className="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
