@@ -27,5 +27,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui"), require("preline/plugin"), require("rippleui")],
+  plugins: [
+    require("daisyui"),
+    require("preline/plugin"),
+    require("rippleui"),
+    require("@tailwindcss/forms"),
+  ],
 };
