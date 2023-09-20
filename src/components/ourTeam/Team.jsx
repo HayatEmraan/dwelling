@@ -62,13 +62,13 @@ const teamData = [
 const Team = () => {
   return (
     <div>
-      <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ... rounded-lg">
+      {/* <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ... rounded-lg">
         <h2 className="text-xl font-bold md:text-4xl md:leading-tight text-white dark:text-white">
           "In software, the most beautiful code, the most beautiful functions,
           and the most beautiful programs are sometimes not there at all." - Jon
           Bentley,
         </h2>
-      </div>
+      </div> */}
 
       {/* Team */}
       <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
