@@ -70,7 +70,7 @@ const ImagesCom = ({ data }) => {
           {data?.images.length > 5 && (
             <div className="flex justify-center absolute bottom-2 right-5">
               <button
-                className="flex items-center bg-white border border-gray-950 rounded px-5 py-1 show-all-button"
+                className="flex items-center bg-white dark:bg-gray-900 border border-gray-950 rounded px-5 py-1 show-all-button"
                 onClick={() => setShowModal(true)}
               >
                 <BsGrid3X3Gap className="mr-2" />

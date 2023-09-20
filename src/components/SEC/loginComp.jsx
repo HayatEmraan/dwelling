@@ -46,11 +46,11 @@ const LogInComp = () => {
   };
   return (
     <dialog id="my_modal_3" className="modal">
-      <div method="dialog" className="modal-box">
+      <div method="dialog" className="modal-box text-black dark:text-white bg-white dark:bg-gray-900">
         <div className="flex justify-center items-center">
           <button
             onClick={() => my_modal_3.close()}
-            className="btn btn-sm btn-circle btn-ghost absolute left-2 top-2 text-xl"
+            className="btn btn-sm btn-circle dark:btn-ghost absolute left-2 top-2 text-xl"
           >
             ✕
           </button>
@@ -77,7 +77,7 @@ const LogInComp = () => {
                     setErrorEmail("Invalid email");
                   }
                 }}
-                className={`peer block w-full appearance-none border rounded-md ${
+                className={`peer block text-gray-400 dark:text-gray-200  w-full appearance-none border rounded-md ${
                   errorEmail === "Invalid email"
                     ? "border-[#C13515] bg-[#FFF8F6]"
                     : "border-gray-500 focus:border-black"
@@ -86,7 +86,7 @@ const LogInComp = () => {
               />
               <label
                 htmlFor="email"
-                className={`absolute top-3 left-2 z-10 origin-[0] -translate-y-4 scale-75 transform text-md ${
+                className={`absolute  top-3 left-2 z-10 origin-[0] -translate-y-4 scale-75 transform text-md ${
                   errorEmail === "Invalid email"
                     ? "text-[#C13515]"
                     : "text-gray-500"
@@ -137,7 +137,7 @@ const LogInComp = () => {
                     setErrorPassword("Invalid password");
                   }
                 }}
-                className={`peer block w-full appearance-none border rounded-md ${
+                className={`peer block text-gray-400 dark:text-gray-200 w-full appearance-none border rounded-md ${
                   errorPassword === "Invalid password"
                     ? "border-[#C13515] bg-[#FFF8F6]"
                     : "border-gray-500 focus:border-black"

@@ -53,7 +53,7 @@ export default function Schedule() {
   const sliceEnd = sliceDateEnd[0].slice(0, 3);
   return (
     <div
-      className="flex justify-center items-center rounded-full border border-gray-300 text-airbnb-light-black relative my-4 gap-1 "
+      className="flex text-gray-400 dark:text-gray-200 justify-center items-center rounded-full border border-gray-300 text-airbnb-light-black relative my-4 gap-1 "
       ref={containerRef}
     >
       <div
@@ -66,16 +66,16 @@ export default function Schedule() {
         onClick={() => setSelectionType("check-in")}
         className="flex flex-col hover:bg-gray-100 dark:hover:bg-gray-950 px-2 lg:px-10 py-4 rounded-full cursor-pointer items-center justify-center"
       >
-        <label htmlFor="" className="text-xs font-semibold lg:flex flex-col hidden     ">
+        <label htmlFor="" className="text-xs  font-semibold lg:flex flex-col hidden     ">
           Check in
         </label>
-        <label htmlFor="" className="text-xs font-semibold lg:hidden flex flex-col    ">
+        <label htmlFor="" className="text-xs  font-semibold lg:hidden flex flex-col    ">
           In
         </label>
         <span>{sliceStart + " " + sliceDateStart[1]}</span>
         {selectionType === "check-in" && (
           <>
-            <div className="lg:hidden block absolute top-[6.5rem] scale-[115%] left-4 shadow-xl z-[400]">
+            <div className="lg:hidden  block absolute top-[6.5rem] scale-[115%] left-4 shadow-xl z-[400]">
               <Calender2 state={state} setState={setState} />
             </div>
             <div className="hidden lg:block absolute top-[4.7rem] -left-16 shadow-xl 0]">
@@ -88,7 +88,7 @@ export default function Schedule() {
         className="flex flex-col hover:bg-gray-100 dark:hover:bg-gray-950 px-2 lg:px-10 py-4 rounded-full cursor-pointer items-center justify-center"
         onClick={() => setSelectionType("check-out")}
       >
-        <label htmlFor="" className="text-xs hidden lg:block font-semibold">
+        <label htmlFor="" className="text-xs hidden  lg:block font-semibold">
           Check out
         </label>
         <label htmlFor="" className="text-xs lg:hidden font-semibold">
@@ -97,17 +97,17 @@ export default function Schedule() {
         <span>{sliceEnd + " " + sliceDateEnd[1]}</span>
         {selectionType === "check-out" && (
           <>
-            <div className="lg:hidden block absolute top-[6.5rem] scale-[115%] left-4 shadow-xl z-[400]">
+            <div className="lg:hidden block  absolute top-[6.5rem] scale-[115%] left-4 shadow-xl z-[400]">
               <Calender2 state={state} setState={setState} />
             </div>
-            <div className="hidden lg:block absolute top-[4.7rem] -left-16 shadow-xl 0]">
+            <div className="hidden lg:block  absolute top-[4.7rem] -left-16 shadow-xl 0]">
               <Calender state={state} setState={setState} />
             </div>
           </>
         )}
       </div>
       <div
-        className="flex hover:bg-gray-100 dark:hover:bg-gray-950 justify-between text-xs lg:text-base px-2 lg:px-4 py-4 pl-7 rounded-full cursor-pointer gap-2 lg:gap-7"
+        className="flex hover:bg-gray-100 dark:hover:bg-gray-950 justify-between text-xs lg:text-base  px-2 lg:px-4 py-4 pl-7 rounded-full cursor-pointer gap-2 lg:gap-7"
         onClick={() => setSelectionType("who")}
       >
         <SearchBeds setGuests={setGuests} />

@@ -4,7 +4,7 @@ const Accordian = () => {
     return (
         <div className='mx-4 lg:mx-80 '>
             <div className='flex flex-col lg:flex-row  justify-center mx-auto max-w-[100rem]'>
-            <div className='w-full dark:invert mx-4 lg:mx-0 lg:w-1/2'>
+            <div className='w-full dark:invert mt-16 mx-4 lg:mx-0 lg:w-1/2'>
                 <img className='lg:w-9/12' src="Why-best.png" alt="" />
             </div>
             <div className=' px-4  py-4 sm:px-6 lg:px-8 lg:py-14 mx-auto w-full lg:w-1/2'>

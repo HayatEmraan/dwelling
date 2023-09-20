@@ -3,8 +3,14 @@ import React, { useState } from "react";
 import Image from "next/image";
 import ReviewDates from "./startdate";
 import SwitchComp from "@/components/payment/switch/switch";
+import { userAppStore } from "@/store/store";
 
 const CheckingModal = ({ data }) => {
+
+  const {
+    searchPlaceSpace
+  } = userAppStore();
+
   const roomID = data?.data?._id;
   const resortName = data?.data?.name;
   const city = data?.data?.location?.city;
@@ -13,10 +19,10 @@ const CheckingModal = ({ data }) => {
   const bedrooms = data?.data?.availability?.bedrooms;
   const beds = data?.data?.availability?.beds;
   const baths = data?.data?.availability?.baths;
-  const adults = data?.data?.capacity?.adults;
-  const children = data?.data?.capacity?.children;
-  const pets = data?.data?.capacity?.pets;
-  const infants = data?.data?.capacity?.infants;
+  const adults = searchPlaceSpace?.adults;
+  const children = searchPlaceSpace?.childrens;
+  const pets = searchPlaceSpace?.pets;
+  const infants = searchPlaceSpace?.infants;
   const img = data?.data?.images[0];
   const img2 = data?.data?.images[1];
   const img3 = data?.data?.images[2];
