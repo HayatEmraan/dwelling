@@ -1,23 +1,24 @@
 "use client";
 import React, { useState } from "react";
-import InvoiceModal from "./invoicemodal";
-import { searchinvoies } from "@/utils/async/admin/invoices/searchinvoices";
-import { getinvoices } from "@/utils/async/admin/invoices/getinvoices";
+import InvoiceModal from "../invoicePage/invoicemodal";
+import { ginvoices } from "@/utils/async/guest/ginvoices/ginvoices";
+import { gsinvoice } from "@/utils/async/guest/ginvoices/gsinvoice";
 
-const InvoiceLatestPage = ({ data: initialData }) => {
+const GuestInvoices = ({ data: initialData }) => {
   const [data, setData] = useState(initialData);
   const [pageNumber, setPageNumber] = useState(1);
-  
+
   const handleInputChange = async (event) => {
     const value = event.target.value;
-    const data = await searchinvoies(value);
+    const data = await gsinvoice(value);
     setData(data);
   };
 
   const handlePageNumber = async (page) => {
-    const res = await getinvoices(page);
+    const res = await ginvoices(page);
     setData(res);
   };
+
   return (
     <>
       {/* Table Section */}
@@ -419,4 +420,4 @@ const InvoiceLatestPage = ({ data: initialData }) => {
   );
 };
 
-export default InvoiceLatestPage;
+export default GuestInvoices;

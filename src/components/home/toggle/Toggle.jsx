@@ -10,7 +10,7 @@ const Toggle = () => {
   };
 
   return (
-    <div className="justify-center items-center py-4 px-5 md:px-4 lg:px-3 xl:px-2 mt-4 hidden md:flex">
+    <div className="justify-center items-center py-4 px-5 md:px-4 lg:px-3 xl:px-2 mt-4 hidden md:flex dark:text-gray-400">
       <div className="flex justify-between gap-2 items-center px-2 border border-[#DDDDDD] rounded-xl h-[3.4rem]">
         <div className="flex items-center">
           <h2 className="text-[0.81rem] text-gray-500 font-semibold whitespace-nowrap">

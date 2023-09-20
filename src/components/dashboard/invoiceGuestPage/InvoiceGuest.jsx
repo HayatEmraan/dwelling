@@ -1,13 +1,7 @@
 import React from "react";
-import InvoiceLatestPage from "../invoicePage/InvoiceLatestPage";
-// import Barchart from './Barchart';
-// import Chart from './Chart';
-// import ChartGuest from './ChartGuest';
-
 import dynamic from "next/dynamic";
-import Victory from "./Victory";
-import { VictoryChart } from "victory";
-
+import { ginvoices } from "@/utils/async/guest/ginvoices/ginvoices";
+import GuestInvoices from "./guestinvoices";
 
 const Scroll = dynamic(
   () => {
@@ -16,14 +10,12 @@ const Scroll = dynamic(
   { ssr: false }
 );
 
-const InvoiceGuest = () => {
+const InvoiceGuest = async () => {
+  const data = await ginvoices();
   return (
     <div>
       <Scroll></Scroll>
-      {/* <Chart></Chart> */}
-      {/* <Victory></Victory> */}
-      {/* <VictoryChart></VictoryChart> */}
-      <InvoiceLatestPage></InvoiceLatestPage>
+      <GuestInvoices data={data}></GuestInvoices>
     </div>
   );
 };
