@@ -27,9 +27,6 @@ export default function SearchGuests({ setGuests }) {
   return (
     <>
       <div className="flex flex-col">
-        <label htmlFor="" className="text-xs font-semibold">
-          Who
-        </label>
         <span>
           {searchPlaceSpace.adults +
             searchPlaceSpace.childrens +
