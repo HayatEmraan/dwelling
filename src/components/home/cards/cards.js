@@ -52,7 +52,7 @@ const Cards = async ({
                 <a
                   key={index}
                   href={`/details/${room?._id}`}
-                  className="block rounded-lg p-4 shadow-md shadow-indigo-100 dark:shadow-gray-950 group"
+                  className="block rounded-lg p-4 shadow-md bg-white dark:bg-gray-800 shadow-indigo-100 dark:shadow-gray-950 group"
                 >
                   <div className="flex flex-col gap-2 w-full">
                     <div className="w-full relative overflow-hidden rounded-xl">
