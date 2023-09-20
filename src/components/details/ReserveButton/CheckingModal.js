@@ -33,7 +33,7 @@ const CheckingModal = ({ data }) => {
         className="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto"
       >
         <div className="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
-          <div className="flex flex-col bg-white  shadow-sm rounded-xl dark:bg-gray-800  dark:shadow-slate-700/[.7]">
+          <div className="flex flex-col bg-white  shadow-sm rounded-xl dark:bg-gray-900  dark:shadow-slate-700/[.7]">
             <div className="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-sky-700 via-blue-800 to-fuchsia-800 rounded-t-xl">
               <h3 className="font-bold text-xl bg-gradient-to-br from-blue-800 via-fuchsia-300 to-white bg-clip-text text-transparent dark:text-white">
                 Confirm Your Booking
@@ -63,8 +63,8 @@ const CheckingModal = ({ data }) => {
 
             <div className="p-4 overflow-y-auto">
               {/* location & people info */}
-              <div className="border-2 lg:my-5 lg:mx-10 border-gray-200 justify-between items-center">
-                <h1 className="pl-8 p-2 font-semibold  text-gray-600 bg-gray-200">
+              <div className="border-2 lg:my-5 lg:mx-10 border-gray-200 dark:border-gray-700 justify-between items-center">
+                <h1 className="pl-8 p-2 font-semibold  text-gray-600 dark:text-gray-200 bg-gray-200 dark:bg-gray-700">
                   Check Your Booking Details
                 </h1>
 

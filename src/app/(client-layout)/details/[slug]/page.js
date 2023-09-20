@@ -28,7 +28,7 @@ const RoomDetails = async ({ params }) => {
     lng: data?.data?.lng || 90.41453565758886,
   };
   return (
-    <div className="bg-white dark:bg-gray-900">
+    <div className="bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-200">
       <div className="max-w-6xl lg:mx-auto px-5 py-8">
       {/* Header Section */}
       <Header data={data?.data}></Header>
