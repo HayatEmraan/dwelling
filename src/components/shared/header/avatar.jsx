@@ -1,7 +1,6 @@
 import { getuserbycookie } from "@/utils/async/conditions/getuserbycookie";
 import LoginAndSignModal from "./loginmodal";
 import HandleLogout from "./handlelogout";
-import Link from "next/link";
 
 const AvatarComp = async () => {
   const response = await getuserbycookie();
