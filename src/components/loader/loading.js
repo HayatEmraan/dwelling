@@ -8,7 +8,7 @@ const LoadingComp = () => {
       <Player
         autoplay
         loop
-        src="loader/loading.json"
+        src="https://raw.githubusercontent.com/HayatEmraan/dwelling/dev/public/loader/loading.json"
         style={{ height: "300px", width: "300px" }}
       >
         <Controls
