@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { BsGithub } from "react-icons/bs";
 import { FcHome } from "react-icons/fc";
-import { DiGhostSmall } from "react-icons/di";
 const Sidebar = () => {
   return (
-    <div className="fixed top-0 dark:lg:w-1/6 dark:w-3/4 dark:bg-slate-800 dark:text-white dark:h-full">
+    <div className="fixed top-0 dark:bg-slate-800 dark:text-white dark:h-full">
       <div className="text-2xl font-semibold px-2 pt-3 pb-4 text-center ">
         <Link href={"/guest/dashboard"}>Admin Panel</Link>
       </div>
