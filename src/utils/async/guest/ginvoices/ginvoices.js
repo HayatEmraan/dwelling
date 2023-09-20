@@ -1,8 +1,8 @@
 "use server";
 import { cookies } from "next/headers";
-export async function ginvoices() {
+export async function ginvoices(page) {
   const res = await fetch(
-    `https://dwelling-bright-server.vercel.app/api/v2/ginvoices`,
+    `https://dwelling-bright-server.vercel.app/api/v2/ginvoices?page=${page}`,
     {
       method: "GET",
       headers: {
