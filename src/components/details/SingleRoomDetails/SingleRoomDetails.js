@@ -4,11 +4,20 @@ import { AiFillFlag } from "react-icons/ai";
 import React, { useEffect, useState } from "react";
 import ReserveButton from "../ReserveButton/ReserveButton";
 import DatePicker from "./DatePicker";
+import { userAppStore } from "@/store/store";
+import SearchGuests from "./SearchGuests";
 
 const SingleRoomDetails = ({ data, reviewAndReservation }) => {
+
+  const {
+
+    setSelectionType,
+  } = userAppStore();
+
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
   const [showPicker, setShowPicker] = useState(false);
+  const [guests, setGuests] = useState(null);
 
   const handleDateSelect = (dateRange) => {
     if (!checkInDate) {
@@ -112,18 +121,11 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
                 </div>
               </div>
 
-              <div className="flex justify-between p-2">
-                <h2>Guest</h2>
-                <div>
-                  <select>
-                    <option value=""></option>
-                    <option value="person1">Person-1</option>
-                    <option value="person2">Person-2</option>
-                    <option value="person3">Person-3</option>
-                    <option value="person4">Person-4</option>
-                    <option value="morethenFour">More Than Four</option>
-                  </select>
-                </div>
+              <div
+                className="flex hover:bg-gray-100 dark:hover:bg-gray-950 justify-between text-xs lg:text-base  px-2 lg:px-4 py-4 pl-7 rounded-full cursor-pointer gap-2 lg:gap-7"
+                onClick={() => setSelectionType("who")}
+              >
+                <SearchGuests guests={guests} setGuests={setGuests} />
               </div>
             </div>
           </div>
