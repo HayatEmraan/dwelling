@@ -21,7 +21,7 @@ const ImagesModal = ({ data, visible, setShowModal }) => {
       onClick={modalHandler}
       className=" z-40 fixed inset-0 border  bg-black bg-opacity-30 backdrop-blur-sm flex justify-center "
     >
-      <div className="w-full md:w-3/4  border rounded-lg bg-white  overflow-scroll overflow-x-hidden mt-40 lg:mt-24 mb-20">
+      <div className="w-full md:w-3/4  border rounded-lg bg-white dark:bg-gray-900  overflow-scroll overflow-x-hidden mt-40 lg:mt-24 mb-20">
         <div className="flex justify-end">
           <button
             onClick={() => setShowModal(false)}
