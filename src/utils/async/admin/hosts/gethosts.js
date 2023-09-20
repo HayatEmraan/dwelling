@@ -2,7 +2,7 @@
 import { cookies } from "next/headers";
 export async function gethosts(page) {
   const res = await fetch(
-    `http://localhost:5000/api/v2/gethosts?page=${page}`,
+    `https://dwelling-bright-server.vercel.app/api/v2/gethosts?page=${page}`,
     {
       method: "GET",
       headers: {

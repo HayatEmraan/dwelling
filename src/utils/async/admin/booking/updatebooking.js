@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 
 export async function updatebooking(id, decision) {
   const res = await fetch(
-    `http://localhost:5000/api/v2/updatebooking?id=${id}&decision=${decision}`,
+    `https://dwelling-bright-server.vercel.app/api/v2/updatebooking?id=${id}&decision=${decision}`,
     {
       method: "PATCH",
       headers: {

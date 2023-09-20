@@ -10,7 +10,6 @@ const Example = dynamic(
 );
 
 import HomePageHeading from "@/components/dashboard/homePage/Heading";
-import { fet } from "@/utils/async/admin/users/getusers";
 import BookingHistory from "@/components/guest/dashboard/homePage/BookingHistory";
 import CardContainer from "@/components/guest/dashboard/homePage/CardContainer";
 import FetchCards from "@/components/home/cards/fetchcards";

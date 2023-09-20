@@ -1,9 +1,9 @@
 "use server";
 import { cookies } from "next/headers";
 
-export async function filterinvoies(query) {
+export async function gsinvoice(query) {
   const res = await fetch(
-    `http://localhost:5000/api/v2/filterinvoices?query=${query}`,
+    `http://localhost:5000/api/v2/gsinvoice?query=${query}`,
     {
       method: "GET",
       headers: {
