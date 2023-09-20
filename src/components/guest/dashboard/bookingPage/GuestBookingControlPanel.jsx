@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Refund from "./Refund";
 import { gbookings } from "@/utils/async/guest/gbookings/gbookings";
+import ReviewForm from "./review/ReviewForm";
 
 const GuestBookingControlPanel = ({ data: initialData }) => {
   const [data, setData] = useState(initialData);
@@ -93,6 +94,7 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                             </span>
                           </div>
                         </th>
+                        <th scope="col" className="px-6 py-3 text-right" />
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -1114,6 +1116,11 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                             <td className="h-px w-px whitespace-nowrap">
                               <div className="px-6 py-2">
                                 <Refund />
+                              </div>
+                            </td>
+                            <td className="h-px w-px whitespace-nowrap">
+                              <div className="px-6 py-2">
+                                <ReviewForm id={item?.roomID} />
                               </div>
                             </td>
                           </tr>
