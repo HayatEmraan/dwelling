@@ -122,7 +122,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="termsconditions"
                       className="text-body-color hover:text-primary mb-2 inline-block text-gray-400 dark:text-gray-400 text-base leading-loose"
                     >
                       Setting &amp; Privacy
