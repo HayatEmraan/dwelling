@@ -71,7 +71,7 @@ const GuestBookingInformationCard = () => {
     <div className="max-w-[150rem] mx-auto px-4 py-10 sm:px-6 lg:px-8 lg:py-4">
       {/* Card  */}
 
-      <h1 className="text-2xl font-bold px-4 py-10 sm:px-6  lg:py-4">
+      <h1 className="text-2xl font-bold dark:text-gray-300 px-4 py-10 sm:px-6   lg:py-4">
         Booking Information:
       </h1>
 
@@ -134,7 +134,7 @@ const GuestBookingInformationCard = () => {
                   </span>
                 </div>
                 <p className="mt-5 text-slate-500">{title}</p>
-                <h2 className="text-2xl font-bold pt-5 pb-4">{amount}</h2>
+                <h2 className="text-2xl font-bold dark:text-gray-300 pt-5 pb-4">{amount}</h2>
               </div>
             );
           }

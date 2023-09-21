@@ -26,8 +26,8 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                     {/* Input */}
                     <div className="sm:col-span-1">
                       <div className="relative">
-                        <h1 className="text-2xl font-bold">Control Panel:</h1>
-                        <span>Manage Your All Booking</span>
+                        <h1 className="text-2xl dark:text-gray-300 font-bold">Control Panel:</h1>
+                        <span className="dark:text-gray-300">Manage Your All Booking</span>
                       </div>
                     </div>
                     {/* End Input */}

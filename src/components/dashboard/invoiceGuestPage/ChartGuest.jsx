@@ -58,7 +58,7 @@ const TriangleBar = (props) => {
 };
 const ChartGuest = () => {
   return (
-    <div className="items-center	">
+    <div className="items-center dark:bg-slate-900	">
       <ResponsiveContainer width="100%" height={300}>
         <BarChart
           width={300}
