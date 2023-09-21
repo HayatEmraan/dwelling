@@ -3,6 +3,9 @@ import { useState } from "react";
 import Refund from "./Refund";
 import { gbookings } from "@/utils/async/guest/gbookings/gbookings";
 import ReviewForm from "./review/ReviewForm";
+import ReScheduleModal from "./ReScheduleModal";
+import { BiCalendar } from "react-icons/bi";
+import { RiRefund2Line } from "react-icons/ri";
 
 const GuestBookingControlPanel = ({ data: initialData }) => {
   const [data, setData] = useState(initialData);
@@ -1087,6 +1090,21 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                                     {item?.update}
                                   </span>
                                 )}
+                                {item?.update === "rescheduled" && (
+                                  <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                    <svg
+                                      className="w-2.5 h-2.5"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width={16}
+                                      height={16}
+                                      fill="currentColor"
+                                      viewBox="0 0 16 16"
+                                    >
+                                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                    </svg>
+                                    {item?.update}
+                                  </span>
+                                )}
                                 {!item?.update && (
                                   <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-green-200">
                                     <svg
@@ -1117,16 +1135,54 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                                     {item?.update}
                                   </span>
                                 )}
+                                {item?.update === "refunded" && (
+                                  <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-green-200">
+                                    <svg
+                                      className="w-2.5 h-2.5"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width={16}
+                                      height={16}
+                                      fill="currentColor"
+                                      viewBox="0 0 16 16"
+                                    >
+                                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                    </svg>
+                                    {item?.update}
+                                  </span>
+                                )}
                               </div>
                             </td>
                             <td className="h-px w-px whitespace-nowrap">
                               <div className="px-6 py-2">
-                                <Refund id={item?.roomID} />
+                                {item?.update === "refunded" ? (
+                                  <>
+                                    <button
+                                      type="button"
+                                      className="inline-flex cursor-not-allowed items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                                    >
+                                      <RiRefund2Line /> N/A
+                                    </button>
+                                  </>
+                                ) : (
+                                  <Refund id={item?.roomID} />
+                                )}
                               </div>
                             </td>
                             <td className="h-px w-px whitespace-nowrap">
                               <div className="px-6 py-2">
-                                <ReScheduleModal id={item?.roomID} />
+                                {item?.update === "rescheduled" ? (
+                                  <>
+                                    <button
+                                      type="button"
+                                      className="inline-flex cursor-not-allowed items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                                    >
+                                      <BiCalendar />
+                                      N/A
+                                    </button>
+                                  </>
+                                ) : (
+                                  <ReScheduleModal id={item?.roomID} />
+                                )}
                               </div>
                             </td>
                             <td className="h-px w-px whitespace-nowrap">
