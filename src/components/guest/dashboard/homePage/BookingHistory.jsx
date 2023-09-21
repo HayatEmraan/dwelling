@@ -11,7 +11,7 @@ const BookingHistory =  () => {
    (async () => {
      const res = await gbookings();
      setData(res);
-   }) 
+   }) ()
   }, [])
 
   console.log(data)
@@ -207,10 +207,10 @@ const BookingHistory =  () => {
 
                                 <div className="grow">
                                   <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
-                                    {book?.name}
+                                    {book?.paymentInfo?.product_name}
                                   </span>
-                                  <span className="block text-sm text-gray-500">
-                                    {'City: Tropical Paradise Island'}
+                                  <span className="block text-sm text-gray-500"> Host Name:
+                                    {book?.hostInfo?.name?.firstName + ' ' + book?.hostInfo?.name?.lastName}
                                   </span>
                                 </div>
                               </div>
@@ -219,13 +219,14 @@ const BookingHistory =  () => {
                           <td className="h-px w-72 whitespace-nowrap">
                             <div className="px-6 py-3">
                               <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200 ">
-                                {'Thailand'}
+                                {book?.hostInfo?.country}
                               </span>
                             </div>
                           </td>
                           <td className="h-px w-72 whitespace-nowrap">
                             <div className="px-6 py-3">
-                              <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                              {
+                                book?.update === 'approved' ? <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                                 <svg
                                   className="w-3 h-3"
                                   xmlns="http://www.w3.org/2000/svg"
@@ -236,8 +237,47 @@ const BookingHistory =  () => {
                                 >
                                   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                 </svg>
-                                Approved
-                              </span>
+                                {book?.update}
+                              </span> :
+                              book?.update === 'declined' ? <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+                              <svg
+                                className="w-2.5 h-2.5"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width={16}
+                                height={16}
+                                fill="currentColor"
+                                viewBox="0 0 16 16"
+                              >
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                              </svg>
+                              {book?.update}
+                            </span> :
+                            book?.update === 'pending' ? <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-green-200">
+                            <svg
+                              className="w-2.5 h-2.5"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width={16}
+                              height={16}
+                              fill="currentColor"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg>
+                            {book?.update}
+                          </span> : <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-green-200">
+                            <svg
+                              className="w-2.5 h-2.5"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width={16}
+                              height={16}
+                              fill="currentColor"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg>
+                            {book?.update}
+                          </span>
+                              }
                             </div>
                           </td>
                           {/* <td className="h-px w-px whitespace-nowrap">
@@ -278,14 +318,14 @@ const BookingHistory =  () => {
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="px-6 py-3">
                               <span className="text-sm text-gray-500">
-                                {book?.data?.checkIn?.split("T")[0]}
+                                {book?.checkIn?.split("T")[0]}
                               </span>
                             </div>
                           </td>
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="px-6 py-3">
-                              <span className="text-sm text-gray-500">
-                                {book?.price * 5 + ' ' + 'USD'}
+                              <span className="text-sm text-gray-500">$
+                                {book?.paymentInfo?.amount}
                               </span>
                             </div>
                           </td>
