@@ -19,7 +19,7 @@ export default function SearchAddress({ setLocation }) {
   const [containerRef] = useClickOutside();
   return (
     <>
-      <label htmlFor="" className="text-xs text-gray-400 dark:text-gray-200 font-semibold">
+      <label htmlFor="" className="text-xs text-gray-600 dark:text-gray-200 font-semibold">
         Where
       </label>
       <input

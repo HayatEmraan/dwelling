@@ -18,7 +18,7 @@ const HostList = ({ data: initialData }) => {
     const res = await getsearchhost(value);
     setData(res);
   };
-  console.log(initialData);
+
   return (
     <div className="max-w-[150rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto ">
       {/* Card */}

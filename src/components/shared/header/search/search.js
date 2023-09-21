@@ -10,7 +10,7 @@ const SearchComp = () => {
       className="border-[1px] w-full md:w-auto py-2 rounded-full mt-2 shadow-sm hover:shadow-md transition my-4"
       onClick={setShowScheduleBar}
     >
-      <div className="flex flex-row items-center text-gray-500 dark:text-gray-100 justify-between">
+      <div className="flex flex-row items-center text-gray-600 dark:text-gray-100 justify-between">
         <div className="text-sm cursor-pointer font-semibold px-6">
           Anywhere
         </div>

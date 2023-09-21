@@ -134,7 +134,7 @@ const GuestBookingInformationCard = () => {
                   </span>
                 </div>
                 <p className="mt-5 text-slate-500">{title}</p>
-                <h2 className="text-2xl font-bold pt-5 pb-4">{amount}</h2>
+                <h2 className="text-2xl font-bold dark:text-gray-300 pt-5 pb-4">{amount}</h2>
               </div>
             );
           }

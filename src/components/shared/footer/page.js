@@ -20,13 +20,13 @@ const Footer = () => {
                   <p className="mb-6 inline-block max-w-[160px]">
                     <Link
                       href="/"
-                      className={`flex-none text-gray-400 dark:text-gray-400 text-2xl font-bold  ${bodoni.className} bg-gradient-to-r from-fuchsia-500 to-cyan-500 bg-clip-text text-transparent`}
+                      className={`flex-none text-gray-600 dark:text-gray-400 text-2xl font-bold  ${bodoni.className} bg-gradient-to-r from-fuchsia-500 to-cyan-500 bg-clip-text text-transparent`}
                       aria-label="Brand"
                     >
                       Dwelling
                     </Link>
                   </p>
-                  <p className="text-body-color text-gray-400 dark:text-gray-400 mb-7 text-base">
+                  <p className="text-body-color text-gray-700 dark:text-gray-400 mb-7 text-base">
                     Vacation Homes & Roommate Finder. The Dwelling is a booking
                     platform project that aims to develop a user-friendly online
                     marketplace for accommodation rentals.
@@ -52,14 +52,14 @@ const Footer = () => {
               </div>
               <div className="w-full px-4 sm:w-1/2 lg:w-2/12">
                 <div className="mb-10 w-full">
-                  <h4 className="text-dark text-gray-400 dark:text-gray-400 mb-9 text-lg font-semibold">
+                  <h4 className="text-dark text-gray-600 dark:text-gray-400 mb-9 text-lg font-semibold">
                     Resources
                   </h4>
                   <ul>
                     <li>
                       <a
                         href="#"
-                        className="text-body-color text-gray-400 dark:text-gray-400 hover:text-primary mb-2 inline-block text-base leading-loose"
+                        className="text-body-color text-gray-600 dark:text-gray-400 hover:text-primary mb-2 inline-block text-base leading-loose"
                       >
                         SaaS Development
                       </a>
@@ -67,7 +67,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="#"
-                        className="text-body-color text-gray-400 dark:text-gray-400 hover:text-primary mb-2 inline-block text-base leading-loose"
+                        className="text-body-color text-gray-600 dark:text-gray-400 hover:text-primary mb-2 inline-block text-base leading-loose"
                       >
                         Our Products
                       </a>
@@ -75,7 +75,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="#"
-                        className="text-body-color text-gray-400 dark:text-gray-400 hover:text-primary mb-2 inline-block text-base leading-loose"
+                        className="text-body-color text-gray-600 dark:text-gray-400 hover:text-primary mb-2 inline-block text-base leading-loose"
                       >
                         User Flow
                       </a>
@@ -83,7 +83,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="#"
-                        className="text-body-color hover:text-primary mb-2 inline-block text-base text-gray-400 dark:text-gray-400 leading-loose"
+                        className="text-body-color hover:text-primary mb-2 inline-block text-base text-gray-600 dark:text-gray-400 leading-loose"
                       >
                         User Strategy
                       </a>
@@ -93,14 +93,14 @@ const Footer = () => {
               </div>
               <div className="w-full px-4 sm:w-1/2 lg:w-2/12">
                 <div className="mb-10 w-full">
-                  <h4 className="text-dark text-gray-400 dark:text-gray-400 mb-9 text-lg font-semibold">
+                  <h4 className="text-dark text-gray-600 dark:text-gray-400 mb-9 text-lg font-semibold">
                     Company
                   </h4>
                   <ul>
                     <li>
                       <a
                         href="#"
-                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-400 dark:text-gray-400 text-base leading-loose"
+                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-600 dark:text-gray-400 text-base leading-loose"
                       >
                         About Dwelling
                       </a>
@@ -108,7 +108,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="refund-policy"
-                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-400 dark:text-gray-400 text-base leading-loose"
+                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-600 dark:text-gray-400 text-base leading-loose"
                       >
                         Refund Policy
                       </a>
@@ -116,7 +116,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="terms-conditions"
-                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-400 dark:text-gray-400 text-base leading-loose"
+                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-600 dark:text-gray-400 text-base leading-loose"
                       >
                         Terms of use
                       </a>
@@ -124,7 +124,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="privacy-policy"
-                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-400 dark:text-gray-400 text-base leading-loose"
+                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-600 dark:text-gray-400 text-base leading-loose"
                       >
                         Privacy Policy
                       </a>
@@ -134,14 +134,14 @@ const Footer = () => {
               </div>
               <div className="w-full px-4 sm:w-1/2 lg:w-2/12">
                 <div className="mb-10 w-full">
-                  <h4 className="text-dark text-gray-400 dark:text-gray-400 mb-9 text-lg font-semibold">
+                  <h4 className="text-dark text-gray-600 dark:text-gray-400 mb-9 text-lg font-semibold">
                     Quick Links
                   </h4>
                   <ul>
                     <li>
                       <a
                         href="#"
-                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-400 dark:text-gray-400 text-base leading-loose"
+                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-600 dark:text-gray-400 text-base leading-loose"
                       >
                         Premium Support
                       </a>
@@ -149,7 +149,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="#"
-                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-400 dark:text-gray-400 text-base leading-loose"
+                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-600 dark:text-gray-400 text-base leading-loose"
                       >
                         Our Services
                       </a>
@@ -157,7 +157,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="#"
-                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-400 dark:text-gray-400 text-base leading-loose"
+                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-600 dark:text-gray-400 text-base leading-loose"
                       >
                         Know Our Team
                       </a>
@@ -165,7 +165,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="#"
-                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-400 dark:text-gray-400 text-base leading-loose"
+                        className="text-body-color hover:text-primary mb-2 inline-block text-gray-600 dark:text-gray-400 text-base leading-loose"
                       >
                         Download App
                       </a>
@@ -175,13 +175,13 @@ const Footer = () => {
               </div>
               <div className="w-full px-4 sm:w-1/2 lg:w-3/12">
                 <div className="mb-10 w-full">
-                  <h4 className="text-dark text-gray-400 dark:text-gray-400 mb-9 text-lg font-semibold">
+                  <h4 className="text-dark text-gray-600 dark:text-gray-400 mb-9 text-lg font-semibold">
                     Follow Us On
                   </h4>
                   <div className="mb-6 flex items-center">
                     <a
                       href="#"
-                      className="text-dark text-gray-400 dark:text-gray-400 hover:bg-primary hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
+                      className="text-dark text-gray-600 dark:text-gray-400 hover:bg-primary hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
                     >
                       <svg
                         width={8}
@@ -194,7 +194,7 @@ const Footer = () => {
                     </a>
                     <a
                       href="#"
-                      className="text-dark text-gray-400 dark:text-gray-400 hover:bg-primary hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
+                      className="text-dark text-gray-600 dark:text-gray-400 hover:bg-primary hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
                     >
                       <svg
                         width={16}
@@ -207,7 +207,7 @@ const Footer = () => {
                     </a>
                     <a
                       href="#"
-                      className="text-dark text-gray-400 dark:text-gray-400 hover:bg-primary hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
+                      className="text-dark text-gray-600 dark:text-gray-400 hover:bg-primary hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
                     >
                       <svg
                         width={16}
@@ -220,7 +220,7 @@ const Footer = () => {
                     </a>
                     <a
                       href="#"
-                      className="text-dark text-gray-400 dark:text-gray-400 hover:bg-primary hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
+                      className="text-dark text-gray-600 dark:text-gray-400 hover:bg-primary hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
                     >
                       <svg
                         width={14}
@@ -232,7 +232,7 @@ const Footer = () => {
                       </svg>
                     </a>
                   </div>
-                  <p className="text-body-color text-gray-400 dark:text-gray-400 text-base">
+                  <p className="text-body-color text-gray-600 dark:text-gray-400 text-base">
                     © 2023 - Dwelling, Inc
                   </p>
                 </div>
@@ -240,7 +240,7 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <span className="absolute text-gray-400 dark:text-gray-400 left-0 bottom-0 z-[-1]">
+            <span className="absolute text-gray-600 dark:text-gray-400 left-0 bottom-0 z-[-1]">
               <svg
                 width={217}
                 height={229}
@@ -267,7 +267,7 @@ const Footer = () => {
                 </defs>
               </svg>
             </span>
-            <span className="absolute text-gray-400 dark:text-gray-400 top-10 right-10 z-[-1]">
+            <span className="absolute text-gray-600 dark:text-gray-400 top-10 right-10 z-[-1]">
               <svg
                 width={75}
                 height={75}
