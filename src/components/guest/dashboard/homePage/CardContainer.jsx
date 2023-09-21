@@ -3,47 +3,52 @@ import { PiWarningFill } from "react-icons/pi";
 import { GiConfirmed } from "react-icons/gi";
 import { MdCancel } from "react-icons/md";
 import { SiPayoneer } from "react-icons/si";
+import { guestdashstats } from "@/utils/async/guest/gdash/gdashstats";
 
 
-const dashboardCards = [
-    {
-        id: 1,
-        title: 'Total Approved Booking',
-        icon: <GiConfirmed />,
-        project_detail: '152',
-        completed: 2
-    },
-    {
-        id: 2,
-        title: 'Active Booking',
-        icon: <BiSolidLeaf />,
-        project_detail: 2,
-        completed: 28
-    },
-    {
-        id: 3,
-        title: 'Pending Booking',
-        icon: <PiWarningFill />,
-        project_detail: 22,
-        completed: 1
-    },
-    {
-        id: 4,
-        title: 'Rejected Booking',
-        icon: <MdCancel />,
-        project_detail: '32',
-        completed: ''
-    },
-    {
-        id: 5,
-        title: 'Total Amount Spend',
-        icon: <SiPayoneer />,
-        project_detail: '$268.45k',
-        completed: 'Discount $15k'
-    },
-]
 
-const CardContainer = () => {
+
+const CardContainer = async () => {
+    const data = await guestdashstats();
+    const dashboardCards = [
+        {
+            id: 1,
+            title: 'Total Approved Booking',
+            icon: <GiConfirmed />,
+            project_detail: `${data?.data?.approved}`,
+            completed: 2
+        },
+        {
+            id: 2,
+            title: 'Active Booking',
+            icon: <BiSolidLeaf />,
+            project_detail: `${data?.data?.active}`,
+            completed: 28
+        },
+        {
+            id: 3,
+            title: 'Pending Booking',
+            icon: <PiWarningFill />,
+            project_detail: `${data?.data?.pending}`,
+            completed: 1
+        },
+        {
+            id: 4,
+            title: 'Rejected Booking',
+            icon: <MdCancel />,
+            project_detail: `${data?.data?.declined}`,
+            completed: ''
+        },
+        {
+            id: 5,
+            title: 'Total Amount Spend',
+            icon: <SiPayoneer />,
+            project_detail: `$ ${data?.data?.spend}`,
+            completed: 'Discount $15k'
+        },
+    ]
+
+    
     return (
         <div className="space-y-6 md:space-y-0  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 justify-between gap-6 items-center">
             {
