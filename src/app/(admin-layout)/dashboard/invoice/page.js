@@ -6,8 +6,8 @@ import React from "react";
 const InvoicePage = async () => {
   const data = await getinvoices();
   return (
-    <div className="m-5">
-      <h3 className="text-3xl pb-4 font-bold sm:px-6">Invoice</h3>
+    <div className=" dark:bg-slate-900">
+      <h3 className="text-3xl pb-4 font-bold dark:text-gray-300 sm:px-6">Invoice</h3>
       <InvoiceListPage />
       <InvoiceLatestPage data={data} />
     </div>
