@@ -1117,7 +1117,7 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                             <td className="h-px w-px whitespace-nowrap">
                               <div className="px-6 py-2">
                                 <Refund />
-                                <ReScheduleModal />
+                                
                               </div>
                             </td>
                             <td className="h-px w-px whitespace-nowrap">

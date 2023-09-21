@@ -89,7 +89,7 @@ const Refund = ({ id }) => {
                 Close
               </button> */}
               
-              {/* <ReScheduleModal /> */}
+              <ReScheduleModal />
             </div>
           </div>
         </div>
