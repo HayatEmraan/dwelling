@@ -5,7 +5,7 @@ import { gbookings } from "@/utils/async/guest/gbookings/gbookings";
 const Booking = async () => {
   const data = await gbookings();
   return (
-    <div>
+    <div className="bg-white dark:bg-slate-700 h-screen">
       <GuestBookingInformationCard />
       <GuestBookingControlPanel data={data} />
     </div>

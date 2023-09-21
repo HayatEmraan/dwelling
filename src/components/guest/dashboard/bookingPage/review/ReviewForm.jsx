@@ -14,7 +14,7 @@ const ReviewForm = ({ id }) => {
         const comment =form.comment.value;
         const rating = form.rating.value;
         console.log(comment, rating);
-       const abc = await postreview(id, comment, rating);
+       const abc = await postreview (id, comment, rating);
        console.log(abc)
         Swal.fire({
             title: 'Success!',
@@ -66,12 +66,12 @@ const ReviewForm = ({ id }) => {
                             </button>
                         </div>
                         <div className="p-8 mx-auto overflow-y-auto">
-                            <form onSubmit={handleReview} className="form">
+                            <form onSubmit={handleReview} className="form bg-white dark:bg-gray-900">
                                 <div className="title">Share Your Experience</div>
                                 <div>
                                     <div className="w-full relative ">
                                         <h1 className="text-gray-700 dark:text-gray-200">Your Rating</h1>
-                                        <select name="rating" className="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                                        <select name="rating" className="block appearance-none w-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-400 text-gray-700 dark:text-gray-400 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                                             <option>5</option>
                                             <option>4</option>
                                             <option>3</option>
@@ -88,28 +88,33 @@ const ReviewForm = ({ id }) => {
                                 <h1 className="text-gray-700 dark:text-gray-200">Your Comment</h1>
                                 <textarea
                                     name="comment"
+                                    className="bg-white border-gray-200 text-black dark:text-white dark:border-gray-400 dark:bg-gray-800"
                                     placeholder="Write your experience !!! "
                                     defaultValue={""}
                                 />
                                 <h1 className="hidden" name="id">{id}</h1>
-                                <button type="submit"
-                                className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                                href="#"
-                            >
-                                Submit
-                            </button>
-                            </form>
-                        </div>
-                        <div className="flex justify-center items-center gap-x-2 py-4 px-4 dark:border-gray-700">
+                                
+                                <div className="flex justify-center items-center gap-x-2 py-4 dark:border-gray-700">
                             <button
                                 type="button"
-                                className="hs-dropdown-toggle py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                                className="hs-dropdown-toggle hover:bg-gray-500 py-3 px-4 inline-flex bg-slate-200 justify-center items-center gap-2 rounded-md border font-medium  text-gray-700 shadow-sm align-middle  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-500 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-200 dark:hover:text-white dark:focus:ring-offset-gray-800"
                                 data-hs-overlay="#hs-static-review"
                             >
                                 Close
                             </button>
+
+                            <button type="submit"
+                                className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-green-600 dark:hover:bg-slate-900 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                                href="#"
+                            >
+                                Submit
+                            </button>
                             
                         </div>
+
+                            </form>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
