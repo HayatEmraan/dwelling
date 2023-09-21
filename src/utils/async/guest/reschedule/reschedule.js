@@ -4,7 +4,7 @@ export async function reschedule(id, start, end) {
   const res = await fetch(
     `https://dwelling-bright-server.vercel.app/api/v2/reschedule?id=${id}`,
     {
-      method: "PATH",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${cookies().get("accessToken")?.value}`,
