@@ -1,15 +1,20 @@
+'use client'
+import { gbookings } from "@/utils/async/guest/gbookings/gbookings";
+import { useEffect, useState } from "react";
 import { BsViewList } from "react-icons/bs";
 
-const BookingHistory = async () => {
+const BookingHistory =  () => {
 
- const res = await fetch(
-    "https://dwelling-bright-server.vercel.app/api/v1/getrooms",
-    {
-      cache: "no-store",
-    }
-  );
-  const data = await res.json();
+  const [data, setData] = useState();
+  
+  useEffect(() => {
+   (async () => {
+     const res = await gbookings();
+     setData(res);
+   }) 
+  }, [])
 
+  console.log(data)
 
   return (
     <div className="flex-1">
@@ -24,7 +29,7 @@ const BookingHistory = async () => {
                 <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
                   <div>
                     <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                     History
+                      History
                     </h2>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                       All Booking info, approved, reject and more.
@@ -118,7 +123,7 @@ const BookingHistory = async () => {
                                 id="hs-as-filters-dropdown-published"
                               />
                               <span className="ml-3 text-sm text-gray-800 dark:text-gray-200">
-                               
+
                                 Pending
                               </span>
                             </label>
@@ -132,7 +137,7 @@ const BookingHistory = async () => {
                                 id="hs-as-filters-dropdown-pending"
                               />
                               <span className="ml-3 text-sm text-gray-800 dark:text-gray-200">
-                              Rejected
+                                Rejected
                               </span>
                             </label>
                           </div>
@@ -146,7 +151,7 @@ const BookingHistory = async () => {
                 <table className="min-w-full divide-y  divide-gray-200 dark:divide-gray-700">
                   <thead className="bg-gray-50 dark:bg-slate-800">
                     <tr>
-                      
+
                       <th
                         scope="col"
                         className="pl-6 lg:pl-6 pr-6 py-3 text-left"
@@ -192,14 +197,14 @@ const BookingHistory = async () => {
                     {/* data mapping */}
 
                     {data?.data?.slice(0, 5).map((book, index) => {
-                     
+
                       return (
                         <tr key={index}>
-                          
+
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="pl-6 lg:pl-6 pr-6 py-3">
                               <div className="flex items-center gap-x-3">
-                                
+
                                 <div className="grow">
                                   <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
                                     {book?.name}
@@ -220,19 +225,19 @@ const BookingHistory = async () => {
                           </td>
                           <td className="h-px w-72 whitespace-nowrap">
                             <div className="px-6 py-3">
-                            <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                        <svg
-                                          className="w-3 h-3"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          width={20}
-                                          height={20}
-                                          fill="currentColor"
-                                          viewBox="0 0 16 16"
-                                        >
-                                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                                        </svg>
-                                        Approved
-                                      </span>
+                              <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                <svg
+                                  className="w-3 h-3"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width={20}
+                                  height={20}
+                                  fill="currentColor"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                </svg>
+                                Approved
+                              </span>
                             </div>
                           </td>
                           {/* <td className="h-px w-px whitespace-nowrap">
@@ -273,17 +278,17 @@ const BookingHistory = async () => {
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="px-6 py-3">
                               <span className="text-sm text-gray-500">
-                                {book?.dateRange.startDate.split("T")[0]}
+                                {book?.data?.checkIn?.split("T")[0]}
                               </span>
                             </div>
-                          </td> 
+                          </td>
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="px-6 py-3">
                               <span className="text-sm text-gray-500">
                                 {book?.price * 5 + ' ' + 'USD'}
                               </span>
                             </div>
-                          </td> 
+                          </td>
                         </tr>
                       );
                     })}
