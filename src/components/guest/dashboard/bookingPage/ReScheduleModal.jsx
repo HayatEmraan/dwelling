@@ -2,6 +2,7 @@ import DatePicker from '@/components/details/SingleRoomDetails/DatePicker';
 import React, { useState } from 'react';
 import './Refund.css'
 import { reschedule } from '@/utils/async/guest/reschedule/reschedule';
+import { BiCalendar } from 'react-icons/bi';
 
 const ReScheduleModal = ({id}) => {
     const [checkInDate, setCheckInDate] = useState(null);
@@ -39,12 +40,12 @@ const ReScheduleModal = ({id}) => {
     return (
         <>
             <button
-                className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 font-semibold bg-white text-gray-500 hover:text-white hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                data-hs-overlay="#hs-static"
-                href="#"
-            >
-                Re-Schedule
-            </button>
+        type="button"
+        className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+        data-hs-overlay="#hs-static"
+      >
+        <BiCalendar />Schedule
+      </button>
             <div
                 id="hs-static"
                 className="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto [--overlay-backdrop:static]"
@@ -77,19 +78,19 @@ const ReScheduleModal = ({id}) => {
                         </div>
 
                         <h1 className='font-bold text-2xl text-center text-blue-500'>Re-schedule your booking date</h1>
-                        <div className="grid grid-cols-2 text-center my-8" >
-                            <div className="border-r border-b p-2 relative">
+                        <div className="grid grid-cols-2 gap-4 text-center my-8" >
+                            <div className="border-r border-b border-t active:bg-gray-700 p-2 relative">
                                 <h2>
                                     <button onClick={togglePicker}>CheckIn</button>
                                 </h2>
-                                <div className="absolute z-10">
+                                <div className="absolute z-10 h-full top-[2.5rem]">
                                     {showPicker && (
                                         <DatePicker handleSelect={handleDateSelect} />
                                     )}
                                 </div>
                                 {checkInDate && <small>{checkInDate?.toDateString()}</small>}
                             </div>
-                            <div className="border-b p-2">
+                            <div className="border-b border-l border-t active:bg-gray-700 p-2">
                                 <h2>
                                     <button onClick={togglePicker}>CheckOut</button>
                                 </h2>
