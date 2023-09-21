@@ -1,20 +1,16 @@
-'use client'
+"use client";
 import { gbookings } from "@/utils/async/guest/gbookings/gbookings";
 import { useEffect, useState } from "react";
-import { BsViewList } from "react-icons/bs";
 
-const BookingHistory =  () => {
-
-  const [data, setData] = useState();
-  
+const BookingHistory = () => {
+  const [data, setData] = useState(null);
   useEffect(() => {
-   (async () => {
-     const res = await gbookings();
-     setData(res);
-   }) 
-  }, [])
-
-  console.log(data)
+    (async () => {
+      const res = await gbookings();
+      setData(res);
+    })();
+  }, []);
+  console.log(data);
 
   return (
     <div className="flex-1">
@@ -123,7 +119,6 @@ const BookingHistory =  () => {
                                 id="hs-as-filters-dropdown-published"
                               />
                               <span className="ml-3 text-sm text-gray-800 dark:text-gray-200">
-
                                 Pending
                               </span>
                             </label>
@@ -151,7 +146,6 @@ const BookingHistory =  () => {
                 <table className="min-w-full divide-y  divide-gray-200 dark:divide-gray-700">
                   <thead className="bg-gray-50 dark:bg-slate-800">
                     <tr>
-
                       <th
                         scope="col"
                         className="pl-6 lg:pl-6 pr-6 py-3 text-left"
@@ -197,20 +191,17 @@ const BookingHistory =  () => {
                     {/* data mapping */}
 
                     {data?.data?.slice(0, 5).map((book, index) => {
-
                       return (
                         <tr key={index}>
-
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="pl-6 lg:pl-6 pr-6 py-3">
                               <div className="flex items-center gap-x-3">
-
                                 <div className="grow">
                                   <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
                                     {book?.name}
                                   </span>
                                   <span className="block text-sm text-gray-500">
-                                    {'City: Tropical Paradise Island'}
+                                    {"City: Tropical Paradise Island"}
                                   </span>
                                 </div>
                               </div>
@@ -219,7 +210,7 @@ const BookingHistory =  () => {
                           <td className="h-px w-72 whitespace-nowrap">
                             <div className="px-6 py-3">
                               <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200 ">
-                                {'Thailand'}
+                                {"Thailand"}
                               </span>
                             </div>
                           </td>
@@ -285,7 +276,7 @@ const BookingHistory =  () => {
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="px-6 py-3">
                               <span className="text-sm text-gray-500">
-                                {book?.price * 5 + ' ' + 'USD'}
+                                {book?.price * 5 + " " + "USD"}
                               </span>
                             </div>
                           </td>

@@ -19,10 +19,10 @@ const Setting = () => {
     })();
   }, []);
 
-  const imageOnchange = async (image) => {
+  const imageOnchange = async (event) => {
     const form = new FormData();
-    form.append("file", image);
-    form.append("upload_preset", "dkozp31ij");
+    form.append("file", event.target.files[0]);
+    form.append("upload_preset", "vflnndvq");
     const response = await fetch(
       "https://api.cloudinary.com/v1_1/dkozp31ij/image/upload",
       {
@@ -51,7 +51,6 @@ const Setting = () => {
       });
     }
   };
-
   const handleSaveAll = async (event) => {
     event.preventDefault();
     const form = event?.target;
@@ -173,8 +172,12 @@ const Setting = () => {
           <div className="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4">
             <img
               className="mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0"
-              src="https://i.ibb.co/VMk1CZQ/images.jpg"
-              alt="Jese picture"
+              src={
+                user?.data?.photoURL
+                  ? user?.data?.photoURL
+                  : "https://i.ibb.co/VMk1CZQ/images.jpg"
+              }
+              alt="Profile picture"
             />
             <div>
               <h3 className="mb-1 text-xl font-bold text-gray-900 dark:text-white">
@@ -185,9 +188,7 @@ const Setting = () => {
                   <input
                     type="file"
                     className="hidden"
-                    onChange={(e) => {
-                      imageOnchange(e.target);
-                    }}
+                    onChange={imageOnchange}
                     name="photoIn"
                     accept="image/*"
                     id="photoInput"
