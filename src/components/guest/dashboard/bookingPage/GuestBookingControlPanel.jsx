@@ -3,7 +3,6 @@ import { useState } from "react";
 import Refund from "./Refund";
 import { gbookings } from "@/utils/async/guest/gbookings/gbookings";
 import ReviewForm from "./review/ReviewForm";
-import ReScheduleModal from "./ReScheduleModal";
 
 const GuestBookingControlPanel = ({ data: initialData }) => {
   const [data, setData] = useState(initialData);
@@ -12,7 +11,6 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
     const res = await gbookings(page);
     setData(res);
   };
-  console.log(data);
   return (
     <div className="max-w-[150rem] mx-auto px-4 sm:px-6 lg:px-8 ">
       <>
@@ -101,7 +99,7 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                       {data?.data?.map((item, index) => {
                         return (
-                          <tr>
+                          <tr key={index}>
                             <td className="h-px w-px whitespace-nowrap">
                               <div className="pl-6 py-2">
                                 <label
@@ -178,11 +176,11 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                                             >
                                               <stop
                                                 offset="0"
-                                                stop-color="#222357"
+                                                stopColor="#222357"
                                               />
                                               <stop
                                                 offset="1"
-                                                stop-color="#254aa5"
+                                                stopColor="#254aa5"
                                               />
                                             </linearGradient>
                                             <clipPath
@@ -193,7 +191,7 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                                             </clipPath>
                                           </defs>
                                           <g
-                                            clip-path="url(#a)"
+                                            clipPath="url(#a)"
                                             transform="matrix(4.98469 0 0 -4.98469 -1804.82 502.202)"
                                           >
                                             <path

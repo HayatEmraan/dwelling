@@ -7,7 +7,7 @@ import { getinvoices } from "@/utils/async/admin/invoices/getinvoices";
 const InvoiceLatestPage = ({ data: initialData }) => {
   const [data, setData] = useState(initialData);
   const [pageNumber, setPageNumber] = useState(1);
-  
+
   const handleInputChange = async (event) => {
     const value = event.target.value;
     const data = await searchinvoies(value);
@@ -199,7 +199,10 @@ const InvoiceLatestPage = ({ data: initialData }) => {
                   <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                     {data?.data?.map((item, index) => {
                       return (
-                        <tr className="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
+                        <tr
+                          key={index}
+                          className="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800"
+                        >
                           <td className="h-px w-px whitespace-nowrap">
                             <a
                               className="block"

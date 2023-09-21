@@ -72,7 +72,7 @@ const ReviewForm = ({ id }) => {
                 className="form bg-white dark:bg-gray-900"
               >
                 <div className="title">Share Your Experience</div>
-                <div>
+                <div className="w-full">
                   <div className="w-full relative ">
                     <h1 className="text-gray-700 dark:text-gray-200">
                       Your Rating

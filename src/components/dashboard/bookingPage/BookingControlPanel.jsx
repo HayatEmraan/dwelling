@@ -24,7 +24,6 @@ const BookingControlPanel = ({ data: initialData }) => {
   const handleApprove = async (id) => {
     await updatebooking(id, "approved");
     const res = await getbookings();
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -183,7 +182,7 @@ const BookingControlPanel = ({ data: initialData }) => {
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                       {data?.data?.map((item, index) => {
                         return (
-                          <tr>
+                          <tr key={index}>
                             <td className="h-px w-px whitespace-nowrap">
                               <div className="pl-6 py-2">
                                 <label
@@ -257,11 +256,11 @@ const BookingControlPanel = ({ data: initialData }) => {
                                             >
                                               <stop
                                                 offset="0"
-                                                stop-color="#222357"
+                                                stopColor="#222357"
                                               />
                                               <stop
                                                 offset="1"
-                                                stop-color="#254aa5"
+                                                stopColor="#254aa5"
                                               />
                                             </linearGradient>
                                             <clipPath
@@ -272,7 +271,7 @@ const BookingControlPanel = ({ data: initialData }) => {
                                             </clipPath>
                                           </defs>
                                           <g
-                                            clip-path="url(#a)"
+                                            clipPath="url(#a)"
                                             transform="matrix(4.98469 0 0 -4.98469 -1804.82 502.202)"
                                           >
                                             <path

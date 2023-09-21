@@ -3,6 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import Link from "next/link";
 import ThemeButton from "./homePage/ThemeButton";
 import HandleLogout from "../shared/header/handlelogout";
+import { getuserbycookie } from "@/utils/async/conditions/getuserbycookie";
 
 const TopBar = ({ toggleMenu, isOpen }) => {
   const [theme, setTheme] = useState(false);
