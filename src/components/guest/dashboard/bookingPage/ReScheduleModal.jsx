@@ -1,58 +1,60 @@
-import React from "react";
-import { RiRefund2Line } from "react-icons/ri";
+import DatePicker from "@/components/details/SingleRoomDetails/DatePicker";
+import React, { useState } from "react";
 import "./Refund.css";
-import { grefund } from "@/utils/async/guest/grefund/grefund";
-import Swal from "sweetalert2";
-import ReScheduleModal from "./ReScheduleModal";
+import { reschedule } from "@/utils/async/guest/reschedule/reschedule";
+import { BiCalendar } from "react-icons/bi";
 
-const Refund = ({ id }) => {
+const ReScheduleModal = ({ id }) => {
+  const [checkInDate, setCheckInDate] = useState(null);
+  const [checkOutDate, setCheckOutDate] = useState(null);
+  const [showPicker, setShowPicker] = useState(false);
 
-  const handleRefund = async (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const msg = form.text.value;
-    console.log(msg, id);
-    const abc = await grefund(id, msg);
-    console.log(abc)
-    if (abc.data.modifiedCount === 1) {
-      Swal.fire({
-        title: "Success!",
-        text: "Refund Request Successfully",
-        icon: "success",
-        confirmButtonText: "Thank you",
-      });
+  const handleDateSelect = (dateRange) => {
+    if (!checkInDate) {
+      setCheckInDate(dateRange.startDate);
+      setShowPicker(true);
+    } else if (!checkOutDate) {
+      setCheckOutDate(dateRange.endDate);
+      setShowPicker(false);
     } else {
-      Swal.fire({
-        title: "Error!",
-        text: "Refund Request Failed",
-        icon: "error",
-        confirmButtonText: "Try Again",
-      });
+      setCheckInDate(null);
+      setCheckOutDate(null);
     }
   };
 
+  const togglePicker = () => {
+    setShowPicker(!showPicker);
+  };
+
+  const handleSchedule = async () => {
+    const start = checkInDate;
+    const end = checkOutDate;
+    const check = await reschedule(id, start, end);
+    console.log(check);
+  };
 
   return (
     <>
       <button
         type="button"
         className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-        data-hs-overlay="#hs-basic-modal"
+        data-hs-overlay="#hs-static"
       >
-        <RiRefund2Line /> Refund
+        <BiCalendar />
+        Schedule
       </button>
       <div
-        id="hs-basic-modal"
+        id="hs-static"
         className="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto [--overlay-backdrop:static]"
         data-hs-overlay-keyboard="false"
       >
         <div className="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
-          <div className="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
+          <div className="flex flex-col h-[39rem] bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
             <div className="flex justify-end items-center py-3 px-4 dark:border-gray-700">
               <button
                 type="button"
                 className="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
-                data-hs-overlay="#hs-basic-modal"
+                data-hs-overlay="#hs-static"
               >
                 <span className="sr-only">Close</span>
                 <svg
@@ -70,33 +72,34 @@ const Refund = ({ id }) => {
                 </svg>
               </button>
             </div>
-            <div className="p-8 mx-auto overflow-y-auto ">
-              <form onSubmit={handleRefund} className="form bg-white dark:bg-gray-900">
-                <div className="title"> Explain Refund Reason</div>
-                <textarea
-                  name="text"
-                  className="bg-white dark:bg-gray-800 text-black dark:text-white"
-                  placeholder="Write your refund reason here..."
-                  defaultValue={""}
-                />
-                <button
-                  type="submit"
-                  className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                  href="#"
-                >
-                  Submit
-                </button>
-              </form>
+
+            <h1 className="font-bold text-2xl text-center text-blue-500">
+              Re-schedule your booking date
+            </h1>
+            <div className="grid grid-cols-2 gap-4 text-center my-8">
+              <div className="border-r border-b border-t active:bg-gray-700 p-2 relative">
+                <h2>
+                  <button onClick={togglePicker}>CheckIn</button>
+                </h2>
+                <div className="absolute z-10 h-full top-[2.5rem]">
+                  {showPicker && <DatePicker handleSelect={handleDateSelect} />}
+                </div>
+                {checkInDate && <small>{checkInDate?.toDateString()}</small>}
+              </div>
+              <div className="border-b border-l border-t active:bg-gray-700 p-2">
+                <h2>
+                  <button onClick={togglePicker}>CheckOut</button>
+                </h2>
+                {checkOutDate && <small>{checkOutDate?.toDateString()}</small>}
+              </div>
             </div>
-            <div className="flex justify-center items-center gap-x-2 py-4 px-4 dark:border-gray-700">
-              <button
-                type="button"
-                className="hs-dropdown-toggle py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                data-hs-overlay="#hs-basic-modal"
-              >
-                Close
-              </button>
-            </div>
+            <button
+              onClick={handleSchedule}
+              className="relative top-96 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-b-xl border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+              href="#"
+            >
+              Confirm
+            </button>
           </div>
         </div>
       </div>
@@ -104,4 +107,4 @@ const Refund = ({ id }) => {
   );
 };
 
-export default Refund;
+export default ReScheduleModal;

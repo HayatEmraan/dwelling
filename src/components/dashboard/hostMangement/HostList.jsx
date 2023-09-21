@@ -18,7 +18,7 @@ const HostList = ({ data: initialData }) => {
     const res = await getsearchhost(value);
     setData(res);
   };
-  console.log(initialData);
+
   return (
     <div className="max-w-[150rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto ">
       {/* Card */}
@@ -176,7 +176,7 @@ const HostList = ({ data: initialData }) => {
                 <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                   {data?.data?.map((item, index) => {
                     return (
-                      <tr>
+                      <tr key={index}>
                         <td className="h-px w-px whitespace-nowrap">
                           <div className="px-6 py-2 text-left">
                             <p className="text-sm text-blue-600 decoration-2 dark:text-blue-500">

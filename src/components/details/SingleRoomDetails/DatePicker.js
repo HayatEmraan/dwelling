@@ -1,3 +1,4 @@
+import useClickOutside from "@/hooks/useClickOutside";
 import useDateStore from "@/store/datestore";
 import React, { useCallback, useState } from "react";
 import { DateRange } from "react-date-range";
@@ -17,9 +18,11 @@ const DatePicker = ({ handleSelect }) => {
 
 
 
+  const [containerRef] = useClickOutside();
+
 
   return (
-    <div className="date-range-picker">
+    <div className="date-range-picker" ref={containerRef}>
       <DateRange
         editableDateInputs={true}
         onChange={(item) => {
@@ -28,7 +31,10 @@ const DatePicker = ({ handleSelect }) => {
         }}
         moveRangeOnFirstSelection={false}
         ranges={state}
+        
+        direction="horizontal"
         className="rounded-2xl"
+        
       />
     </div>
   );

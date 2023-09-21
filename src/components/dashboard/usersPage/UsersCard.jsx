@@ -54,9 +54,9 @@ const InvoiceListPage = () => {
           return (
             <div
               key={id}
-              className="shadow-md p-4 w-full rounded-md bg-white transition-all hover:-translate-y-1"
+              className="shadow-md p-4 w-full rounded-md dark:bg-slate-900 dark:border bg-white transition-all hover:-translate-y-1"
             >
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between  items-center">
                 <span className="text-2xl rounded-md ">
                   <div
                     className={`p-2 rounded ${
@@ -97,7 +97,7 @@ const InvoiceListPage = () => {
                 </span>
               </div>
               <p className="mt-5 text-slate-500">{title}</p>
-              <h2 className="text-2xl font-bold pt-5 pb-4">{amount}</h2>
+              <h2 className="text-2xl font-bold pt-5 dark:text-slate-200 pb-4">{amount}</h2>
             </div>
           );
         }
