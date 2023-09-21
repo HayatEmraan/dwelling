@@ -31,6 +31,7 @@ const ReScheduleModal = ({id}) => {
     const handleSchedule = async () => {
         const start = checkInDate;
         const end = checkOutDate;
+        console.log(start, end)
       const check =  await reschedule (id, start, end);
       console.log(check)
     }
