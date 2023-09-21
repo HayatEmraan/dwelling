@@ -68,10 +68,10 @@ const dashboardCards = [
 
 const GuestBookingInformationCard = () => {
   return (
-    <div className="max-w-[150rem] mx-auto px-4 py-10 sm:px-6 lg:px-8 lg:py-4">
+    <div className="max-w-[150rem] mx-auto px-4 py-10 sm:px-6 lg:px-8 lg:py-4 text-black dark:text-gray-200">
       {/* Card  */}
 
-      <h1 className="text-2xl font-bold dark:text-gray-300 px-4 py-10 sm:px-6   lg:py-4">
+      <h1 className="text-2xl font-bold px-4 py-10 sm:px-6   lg:py-4">
         Booking Information:
       </h1>
 

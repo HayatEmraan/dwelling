@@ -8,7 +8,7 @@
     background-color: white;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 10px 10px 10px -10px rgba(27, 26, 26, 0.315);
+
   }
   
   .form .title {
@@ -43,14 +43,12 @@
   
   .form button {
     align-self: flex-end;
-    padding: 8px;
+    padding: 8px 14px;
     outline: 0;
     border: 0;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 500;
-    background-color: royalblue;
-    color: #fff;
     cursor: pointer;
   }
       
