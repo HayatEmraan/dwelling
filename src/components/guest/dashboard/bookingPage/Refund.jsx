@@ -11,16 +11,24 @@ const Refund = ({ id }) => {
     event.preventDefault();
     const form = event.target;
     const msg = form.text.value;
-    console.log(msg);
+    console.log(msg, id);
     const abc = await grefund(id, msg);
     console.log(abc)
-    Swal.fire({
-      title: 'Success!',
-      text: 'Review Successfully',
-      icon: 'success',
-      confirmButtonText: 'Thank you'
-    })
-    form.reset('');
+    if (abc.data.modifiedCount === 1) {
+      Swal.fire({
+        title: "Success!",
+        text: "Refund Request Successfully",
+        icon: "success",
+        confirmButtonText: "Thank you",
+      });
+    } else {
+      Swal.fire({
+        title: "Error!",
+        text: "Refund Request Failed",
+        icon: "error",
+        confirmButtonText: "Try Again",
+      });
+    }
   };
 
 
@@ -31,7 +39,7 @@ const Refund = ({ id }) => {
         className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
         data-hs-overlay="#hs-basic-modal"
       >
-        <RiRefund2Line /> Refund / Reschedule
+        <RiRefund2Line /> Refund
       </button>
       <div
         id="hs-basic-modal"
@@ -72,24 +80,22 @@ const Refund = ({ id }) => {
                   defaultValue={""}
                 />
                 <button
-                type="submit"
-                className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                href="#"
-              >
-                Submit
-              </button>
+                  type="submit"
+                  className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                  href="#"
+                >
+                  Submit
+                </button>
               </form>
             </div>
             <div className="flex justify-center items-center gap-x-2 py-4 px-4 dark:border-gray-700">
-              {/* <button
+              <button
                 type="button"
                 className="hs-dropdown-toggle py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                 data-hs-overlay="#hs-basic-modal"
               >
                 Close
-              </button> */}
-              
-              <ReScheduleModal />
+              </button>
             </div>
           </div>
         </div>

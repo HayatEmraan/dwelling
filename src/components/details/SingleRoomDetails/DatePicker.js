@@ -31,6 +31,8 @@ const DatePicker = ({ handleSelect }) => {
         }}
         moveRangeOnFirstSelection={false}
         ranges={state}
+        
+        direction="horizontal"
         className="rounded-2xl"
         
       />

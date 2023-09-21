@@ -93,6 +93,13 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                             </span>
                           </div>
                         </th>
+                        <th scope="col" className="px-6 py-3 text-left">
+                          <div className="flex items-center gap-x-2">
+                            <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                              Action
+                            </span>
+                          </div>
+                        </th>
                         <th scope="col" className="px-6 py-3 text-right" />
                       </tr>
                     </thead>
@@ -1114,7 +1121,12 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                             </td>
                             <td className="h-px w-px whitespace-nowrap">
                               <div className="px-6 py-2">
-                                <Refund />
+                                <Refund id={item?.roomID} />
+                              </div>
+                            </td>
+                            <td className="h-px w-px whitespace-nowrap">
+                              <div className="px-6 py-2">
+                                <ReScheduleModal id={item?.roomID} />
                               </div>
                             </td>
                             <td className="h-px w-px whitespace-nowrap">
