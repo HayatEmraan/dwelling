@@ -11,11 +11,11 @@ const FetchCards = async () => {
   );
   const data = await res.json();
   return (
-    <>
+    <div >
       <Suspense fallback={<CardSkeleton data={data} />}>
         <Cards />
       </Suspense>
-    </>
+    </div>
   );
 };
 

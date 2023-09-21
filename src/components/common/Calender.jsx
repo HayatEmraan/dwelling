@@ -13,7 +13,7 @@ export default function Calender({ state, setState }) {
         months={2}
         ranges={state}
         direction="horizontal"
-        className="rounded-3xl"
+        className="rounded-3xl "
       />
     </div>
   );

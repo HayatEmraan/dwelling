@@ -1,9 +1,23 @@
-import React from "react";
-import FilterInvoice from "./filterInvoice";
+"use client";
+import React, { useState } from "react";
 import InvoiceModal from "./invoicemodal";
+import { searchinvoies } from "@/utils/async/admin/invoices/searchinvoices";
+import { getinvoices } from "@/utils/async/admin/invoices/getinvoices";
 
-const InvoiceLatestPage = () => {
+const InvoiceLatestPage = ({ data: initialData }) => {
+  const [data, setData] = useState(initialData);
+  const [pageNumber, setPageNumber] = useState(1);
+  
+  const handleInputChange = async (event) => {
+    const value = event.target.value;
+    const data = await searchinvoies(value);
+    setData(data);
+  };
 
+  const handlePageNumber = async (page) => {
+    const res = await getinvoices(page);
+    setData(res);
+  };
   return (
     <>
       {/* Table Section */}
@@ -23,7 +37,6 @@ const InvoiceLatestPage = () => {
                       View invoices, filter, download and more.
                     </p>
                   </div>
-
                   <div className="inline-flex gap-x-4 items-center">
                     <div className="grid gap-3 md:flex md:justify-between md:items-center border-gray-200 dark:border-gray-700">
                       {/* Input */}
@@ -36,6 +49,7 @@ const InvoiceLatestPage = () => {
                         </label>
                         <div className="relative">
                           <input
+                            onChange={handleInputChange}
                             type="text"
                             id="hs-as-table-product-review-search"
                             name="hs-as-table-product-review-search"
@@ -57,7 +71,6 @@ const InvoiceLatestPage = () => {
                         </div>
                       </div>
                     </div>
-                    <FilterInvoice />
                   </div>
                 </div>
                 {/* End Header */}
@@ -162,14 +175,7 @@ const InvoiceLatestPage = () => {
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
                           <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                            Status
-                          </span>
-                        </div>
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left">
-                        <div className="flex items-center gap-x-2">
-                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                            Due
+                            Payment Status
                           </span>
                         </div>
                       </th>
@@ -180,865 +186,156 @@ const InvoiceLatestPage = () => {
                           </span>
                         </div>
                       </th>
+                      <th scope="col" className="px-6 py-3 text-left">
+                        <div className="flex items-center gap-x-2">
+                          <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                            Status
+                          </span>
+                        </div>
+                      </th>
                       <th scope="col" className="px-6 py-3 text-right" />
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                    <tr className="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="font-mono text-sm text-blue-600 dark:text-blue-500">
-                              #ADUQ2189H1-0038
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              US $400.00
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                              <svg
-                                className="w-2.5 h-2.5"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                              </svg>
-                              Paid
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              10 Jan 2023
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              28 Dec, 12:12
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-1.5">
-                            <div className="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
-                              <svg
-                                className="w-4 h-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
-                                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
-                              </svg>
-                              View
+                    {data?.data?.map((item, index) => {
+                      return (
+                        <tr className="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
+                          <td className="h-px w-px whitespace-nowrap">
+                            <a
+                              className="block"
+                              data-hs-overlay="#hs-ai-invoice-modal"
+                            >
+                              <div className="px-6 py-2">
+                                <span className="font-mono text-sm text-blue-600 dark:text-blue-500">
+                                  #{item?.paymentInfo?.txid.slice(0, 16)}
+                                </span>
+                              </div>
+                            </a>
+                          </td>
+                          <td className="h-px w-px whitespace-nowrap">
+                            <a
+                              className="block"
+                              data-hs-overlay="#hs-ai-invoice-modal"
+                            >
+                              <div className="px-6 py-2">
+                                <span className="text-sm text-gray-600 dark:text-gray-400">
+                                  {item?.gateway === "stripe"
+                                    ? "US $"
+                                    : "BDT ৳"}
+                                  {item?.paymentInfo?.amount}
+                                </span>
+                              </div>
+                            </a>
+                          </td>
+                          <td className="h-px w-px whitespace-nowrap">
+                            <a
+                              className="block"
+                              data-hs-overlay="#hs-ai-invoice-modal"
+                            >
+                              <div className="px-6 py-2">
+                                <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                  <svg
+                                    className="w-2.5 h-2.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={16}
+                                    height={16}
+                                    fill="currentColor"
+                                    viewBox="0 0 16 16"
+                                  >
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                  </svg>
+                                  {item?.status}
+                                </span>
+                              </div>
+                            </a>
+                          </td>
+                          <td className="h-px w-px whitespace-nowrap">
+                            <a
+                              className="block"
+                              data-hs-overlay="#hs-ai-invoice-modal"
+                            >
+                              <div className="px-6 py-2">
+                                <span className="text-sm text-gray-600 dark:text-gray-400">
+                                  {new Date(item?.date).toDateString()}
+                                </span>
+                              </div>
+                            </a>
+                          </td>
+                          <td className="h-px w-px whitespace-nowrap">
+                            <div className="px-6 py-2">
+                              {item?.update === "approved" && (
+                                <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                  <svg
+                                    className="w-2.5 h-2.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={16}
+                                    height={16}
+                                    fill="currentColor"
+                                    viewBox="0 0 16 16"
+                                  >
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                  </svg>
+                                  {item?.update}
+                                </span>
+                              )}
+                              {!item?.update && (
+                                <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-green-200">
+                                  <svg
+                                    className="w-2.5 h-2.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={16}
+                                    height={16}
+                                    fill="currentColor"
+                                    viewBox="0 0 16 16"
+                                  >
+                                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                  </svg>
+                                  Pending
+                                </span>
+                              )}
+                              {item?.update === "declined" && (
+                                <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-green-200">
+                                  <svg
+                                    className="w-2.5 h-2.5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={16}
+                                    height={16}
+                                    fill="currentColor"
+                                    viewBox="0 0 16 16"
+                                  >
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                  </svg>
+                                  {item?.update}
+                                </span>
+                              )}
                             </div>
-                          </div>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr className="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="font-mono text-sm text-blue-600 dark:text-blue-500">
-                              #ADUQ218ADD-0099
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              US $200.00
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                              <svg
-                                className="w-2.5 h-2.5"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                              </svg>
-                              Paid
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              06 Jan 2023
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              20 Dec, 09:27
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-1.5">
-                            <div className="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
-                              <svg
-                                className="w-4 h-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
-                                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
-                              </svg>
-                              View
-                            </div>
-                          </div>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr className="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="font-mono text-sm text-blue-600 dark:text-blue-500">
-                              #ADUQ218F94-0061
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              US $994.00
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-green-200">
-                              <svg
-                                className="w-2.5 h-2.5"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-                              </svg>
-                              Declined
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              01 Jan 2023
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              14 Dec, 09:45
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-1.5">
-                            <div className="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
-                              <svg
-                                className="w-4 h-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
-                                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
-                              </svg>
-                              View
-                            </div>
-                          </div>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr className="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="font-mono text-sm text-blue-600 dark:text-blue-500">
-                              #ADUQ2138D4-0038
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              US $4,150.00
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                              <svg
-                                className="w-2.5 h-2.5"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                              </svg>
-                              Paid
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              29 Dec
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              01 Dec, 16:59
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-1.5">
-                            <div className="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
-                              <svg
-                                className="w-4 h-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
-                                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
-                              </svg>
-                              View
-                            </div>
-                          </div>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr className="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="font-mono text-sm text-blue-600 dark:text-blue-500">
-                              #ADUQ2138R2-0012
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              US $2,489.00
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                              <svg
-                                className="w-2.5 h-2.5"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                              </svg>
-                              Paid
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              29 Dec
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              01 Dec, 16:59
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-1.5">
-                            <div className="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
-                              <svg
-                                className="w-4 h-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
-                                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
-                              </svg>
-                              View
-                            </div>
-                          </div>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr className="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="font-mono text-sm text-blue-600 dark:text-blue-500">
-                              #ADUQ2131GS-0010
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              US $47.00
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                              <svg
-                                className="w-2.5 h-2.5"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                              </svg>
-                              Paid
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              28 Dec
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              28 Nov, 11:00
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-1.5">
-                            <div className="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
-                              <svg
-                                className="w-4 h-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
-                                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
-                              </svg>
-                              View
-                            </div>
-                          </div>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr className="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="font-mono text-sm text-blue-600 dark:text-blue-500">
-                              #ADUQ288UUE-3892
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              US $2,220.00
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                              <svg
-                                className="w-2.5 h-2.5"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                              </svg>
-                              Paid
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              24 Dec
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              20 Dec, 09:27
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-1.5">
-                            <div className="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
-                              <svg
-                                className="w-4 h-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
-                                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
-                              </svg>
-                              View
-                            </div>
-                          </div>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr className="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="font-mono text-sm text-blue-600 dark:text-blue-500">
-                              #ADUQ2189C7-3822
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              US $80.00
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-green-200">
-                              <svg
-                                className="w-2.5 h-2.5"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-                              </svg>
-                              Declined
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              29 Nov
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              28 Nov, 12:04
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-1.5">
-                            <div className="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
-                              <svg
-                                className="w-4 h-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
-                                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
-                              </svg>
-                              View
-                            </div>
-                          </div>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr className="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="font-mono text-sm text-blue-600 dark:text-blue-500">
-                              #ADUQ2138F2-0099
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              US $1,249.00
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                              <svg
-                                className="w-2.5 h-2.5"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                              </svg>
-                              Paid
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              29 Nov
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              01 Nov, 14:32
-                            </span>
-                          </div>
-                        </a>
-                      </td>
-                      <td className="h-px w-px whitespace-nowrap">
-                        <a
-                          className="block"
-                          data-hs-overlay="#hs-ai-invoice-modal"
-                        >
-                          <div className="px-6 py-1.5">
-                            <div className="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
-                              <svg
-                                className="w-4 h-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
-                                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
-                              </svg>
-                              View
-                            </div>
-                          </div>
-                        </a>
-                      </td>
-                    </tr>
+                          </td>
+                          <td className="h-px w-px whitespace-nowrap">
+                            <a
+                              className="block"
+                              data-hs-overlay="#hs-ai-invoice-modal"
+                            >
+                              <div className="px-6 py-1.5">
+                                <div className="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white">
+                                  <svg
+                                    className="w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={16}
+                                    height={16}
+                                    fill="currentColor"
+                                    viewBox="0 0 16 16"
+                                  >
+                                    <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
+                                    <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+                                  </svg>
+                                  View
+                                </div>
+                              </div>
+                            </a>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
                 {/* End Table */}
@@ -1047,52 +344,60 @@ const InvoiceLatestPage = () => {
                   <div>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                       <span className="font-semibold text-gray-800 dark:text-gray-200">
-                        9
+                        {data?.startView}
                       </span>{" "}
-                      results of 12 entries
+                      results of {data?.totalView} entries
                     </p>
                   </div>
                   <div>
                     <div className="inline-flex gap-x-2">
                       <button
+                        onClick={() => {
+                          if (pageNumber > 1) {
+                            setPageNumber(pageNumber - 1);
+                            handlePageNumber(pageNumber - 1);
+                          }
+                        }}
                         type="button"
                         className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                       >
                         <svg
                           className="w-3 h-3"
+                          xmlns="http://www.w3.org/2000/svg"
                           width={16}
                           height={16}
-                          viewBox="0 0 16 15"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          viewBox="0 0 16 16"
                         >
                           <path
-                            d="M10.506 1.64001L4.85953 7.28646C4.66427 7.48172 4.66427 7.79831 4.85953 7.99357L10.506 13.64"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            strokeLinecap="round"
+                            fillRule="evenodd"
+                            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
                           />
                         </svg>
                         Prev
                       </button>
                       <button
                         type="button"
+                        onClick={() => {
+                          if (pageNumber < data?.totalPages) {
+                            setPageNumber(pageNumber + 1);
+                            handlePageNumber(pageNumber + 1);
+                          }
+                        }}
                         className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                       >
                         Next
                         <svg
                           className="w-3 h-3"
+                          xmlns="http://www.w3.org/2000/svg"
                           width={16}
                           height={16}
+                          fill="currentColor"
                           viewBox="0 0 16 16"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            d="M4.50598 2L10.1524 7.64645C10.3477 7.84171 10.3477 8.15829 10.1524 8.35355L4.50598 14"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            strokeLinecap="round"
+                            fillRule="evenodd"
+                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
                           />
                         </svg>
                       </button>

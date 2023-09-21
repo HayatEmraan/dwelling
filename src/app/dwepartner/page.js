@@ -1,11 +1,15 @@
 import WorkWithUs from '@/components/workWithUs/WorkWithUs';
 import React from 'react';
+import DarkMode from '../(client-layout)/darkmode';
 
 const dwepartner = () => {
     return (
-        <div>
+        <>  
+
+            <DarkMode>
             <WorkWithUs />
-        </div>
+            </DarkMode>
+        </>
     );
 };
 

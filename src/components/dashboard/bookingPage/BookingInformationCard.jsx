@@ -60,11 +60,9 @@ const BookingInformationCard = () => {
   return (
     <div className="max-w-[150rem] mx-auto px-4 py-10 sm:px-6 lg:px-8 lg:py-4">
       {/* Card  */}
-
       <h1 className="text-2xl font-bold px-4 py-10 sm:px-6  lg:py-4">
         Booking Information:
       </h1>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 justify-center gap-4 items-center sm:px-6">
         {dashboardCards.map(
           ({ id, title, icon, clientPercentage, amount, arrow, bgColor }) => {
@@ -119,7 +117,7 @@ const BookingInformationCard = () => {
                     </div>
                   </span>
                 </div>
-                <p className="mt-5 text-slate-500">{title}</p>
+                <p className="mt-5 text-slate-500 dark:text-white">{title}</p>
                 <h2 className="text-2xl font-bold pt-5 pb-4">{amount}</h2>
               </div>
             );

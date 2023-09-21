@@ -4,9 +4,8 @@ import CategoriesComponent from "@/components/home/categories/categories";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-white dark:bg-gray-900">
       <CategoriesComponent />
-      {/* <Toggle /> */}
       <div className="mt-4">
         <FetchCards />
       </div>
