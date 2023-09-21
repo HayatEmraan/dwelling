@@ -4,6 +4,7 @@ import { filterbookings } from "@/utils/async/admin/booking/filterbookings";
 import { getbookings } from "@/utils/async/admin/booking/getbookings";
 import { updatebooking } from "@/utils/async/admin/booking/updatebooking";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const BookingControlPanel = ({ data: initialData }) => {
   const [data, setData] = useState(initialData);
@@ -20,11 +21,33 @@ const BookingControlPanel = ({ data: initialData }) => {
     const res = await getbookings(page);
     setData(res);
   };
+
   const handleApprove = async (id) => {
     await updatebooking(id, "approved");
     const res = await getbookings();
-    setData(res);
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Approved it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Approved!',
+          'Your booking has been Approved.',
+          'success'
+        )
+        setData(res);
+      }
+    })
+
+    
   };
+
   const handleDecline = async (id) => {
     await updatebooking(id, "declined");
     const res = await getbookings();
@@ -1196,6 +1219,7 @@ const BookingControlPanel = ({ data: initialData }) => {
                                       >
                                         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
                                       </svg>
+                                      {/* <ActionPopup></ActionPopup> */}
                                     </button>
                                     <div
                                       className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden mt-2 divide-y divide-gray-200 min-w-[10rem] z-10 bg-white shadow-2xl rounded-lg p-2  dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700"
@@ -1206,10 +1230,9 @@ const BookingControlPanel = ({ data: initialData }) => {
                                           Change Status
                                         </span>
                                         <button
-                                          className="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                          className="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800  focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                                           onClick={() =>
-                                            handleApprove(item?._id)
-                                          }
+                                            handleApprove(item?._id)}
                                         >
                                           <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                                             <svg
@@ -1224,9 +1247,11 @@ const BookingControlPanel = ({ data: initialData }) => {
                                             </svg>
                                             Approved
                                           </span>
+                                          
+                                          
                                         </button>
                                         <button
-                                          className="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                          className="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-8 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                                           onClick={() =>
                                             handleDecline(item?._id)
                                           }
