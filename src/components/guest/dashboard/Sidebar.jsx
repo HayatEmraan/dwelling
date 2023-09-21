@@ -29,7 +29,7 @@ const Sidebar = () => {
                     <span className="ml-3">Dashboard</span>
                   </Link>
                 </li>
-                
+
                 <li>
                   <a
                     href="/guest/dashboard/booking"
@@ -50,7 +50,7 @@ const Sidebar = () => {
                   </a>
                 </li>
                 <li>
-                  <Link
+                  <a
                     href="/guest/dashboard/invoice"
                     className="flex items-center p-2  font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
@@ -69,11 +69,11 @@ const Sidebar = () => {
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       Invoices
                     </span>
-                  </Link>
+                  </a>
                 </li>
-                
+
                 <li>
-                  <Link
+                  <a
                     href="/guest/dashboard/settings"
                     className="flex items-center p-2  font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
@@ -93,7 +93,7 @@ const Sidebar = () => {
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       Settings
                     </span>
-                  </Link>
+                  </a>
                 </li>
                 <hr />
                 <li>
@@ -109,7 +109,7 @@ const Sidebar = () => {
                   </a>
                 </li>
                 <li>
-                  <Link
+                  <a
                     href="/"
                     target="_blank"
                     className="flex items-center p-2  font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -118,7 +118,7 @@ const Sidebar = () => {
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       Dwelling
                     </span>
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>

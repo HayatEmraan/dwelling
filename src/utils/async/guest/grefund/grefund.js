@@ -9,7 +9,7 @@ export async function grefund(id, msg) {
         "Content-Type": "application/json",
         authorization: `Bearer ${cookies().get("accessToken")?.value}`,
       },
-      body: JSON.stringify({ msg }),
+      body: JSON.stringify({ msg: msg }),
     }
   );
   if (!res.ok) throw new Error("Failed to fetch data");
