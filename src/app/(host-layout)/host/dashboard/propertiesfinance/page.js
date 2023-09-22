@@ -4,7 +4,10 @@ import PropertyFinanceBarChart from "@/components/dashboard/propertyPage/propert
 import PropertyFinanceLineChart from "@/components/dashboard/propertyPage/propertyFinance/PropertyFinanceLineChart";
 import { getrooms } from "@/utils/async/host/getrooms";
 
-import React from "react";
+export const metadata = {
+  title: "Properties Finance - Host",
+  description: "A project by BrightCoders team",
+};
 
 const PropertiesFinance = async () => {
   const data = await getrooms();

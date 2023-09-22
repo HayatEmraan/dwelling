@@ -1,6 +1,6 @@
 "use client";
-import Sidebar from "@/components/dashboard/Sidebar";
 import TopBar from "@/components/dashboard/TopBar";
+import HostSideBar from "@/components/host/hostsidebar/hostsidebar";
 import ProviderTheme from "@/utils/themeProvider";
 import useToggleOpen from "@/utils/useToggleOpen";
 
@@ -13,7 +13,7 @@ const HostLayOut = ({ children }) => {
           isOpen ? "" : "hidden"
         }`}
       >
-        <Sidebar />
+        <HostSideBar />
       </div>
       <div
         className={`w-full md:col-span-4 lg:col-span-5 transition-all ${

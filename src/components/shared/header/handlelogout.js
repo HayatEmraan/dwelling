@@ -1,12 +1,15 @@
 "use client";
 import { handleLogout } from "@/libs/security/AuthStore";
 import { removecookie } from "@/utils/async/conditions/removeCookie";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const HandleLogout = () => {
+  const router = useRouter();
   const handleCookie = async () => {
     await handleLogout();
     await removecookie();
+    await router.push("/");
   };
   return (
     <div

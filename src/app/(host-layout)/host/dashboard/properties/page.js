@@ -3,6 +3,11 @@ import PropertyHost from "@/components/host/PropertyHost";
 import { getrooms } from "@/utils/async/host/getrooms";
 import React from "react";
 
+export const metadata = {
+  title: "Properties - Host",
+  description: "A project by BrightCoders team",
+};
+
 const PropertiesHost = async () => {
   const data = await getrooms();
   return (

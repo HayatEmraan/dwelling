@@ -3,6 +3,11 @@ import PropertyTotal from "@/components/dashboard/propertyPage/PropertyTotal";
 import { getproperties } from "@/utils/async/admin/properties/getproperties";
 import React from "react";
 
+export const metadata = {
+  title: "Properties - Admin",
+  description: "A project by BrightCoders team",
+};
+
 const PropertyPage = async () => {
   const data = await getproperties();
   return (

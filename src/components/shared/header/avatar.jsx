@@ -5,6 +5,8 @@ import HandleLogout from "./handlelogout";
 const AvatarComp = async () => {
   const response = await getuserbycookie();
   const user = response;
+
+  console.log(user);
   return (
     <div className="cursor-pointer">
       {user?.msg === "Success" ? (
@@ -13,13 +15,15 @@ const AvatarComp = async () => {
             type="button"
             className="flex items-center w-full text-gray-800 hover:text-gray-500 font-medium dark:text-gray-200 dark:hover:text-gray-400"
           >
-            <img
-              className="rounded-full"
-              src={user?.photoURL ? user?.photoURL : "/avatar.png"}
-              alt=""
-              width={24}
-              height={24}
-            />
+            <div className="w-7 h-7 rounded-full">
+              <img
+                src={
+                  user?.data?.photoURL ? user?.data?.photoURL : "/avatar.png"
+                }
+                class="w-7 h-7 rounded-full"
+                alt="Avatar"
+              />
+            </div>
           </button>
           <div className="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 sm:w-48 hidden z-50 bg-white sm:shadow-2xl rounded-lg p-2 dark:bg-gray-800 sm:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute top-full sm:border before:-top-5 before:left-0 before:w-full before:h-5">
             {user?.data?.role === "admin" && (

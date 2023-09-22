@@ -1,20 +1,15 @@
-'use client'
+"use client";
 import { gbookings } from "@/utils/async/guest/gbookings/gbookings";
 import { useEffect, useState } from "react";
-import { BsViewList } from "react-icons/bs";
 
-const BookingHistory =  () => {
-
-  const [data, setData] = useState();
-  
+const BookingHistory = () => {
+  const [data, setData] = useState(null);
   useEffect(() => {
-   (async () => {
-     const res = await gbookings();
-     setData(res);
-   }) ()
-  }, [])
-
-  console.log(data)
+    (async () => {
+      const res = await gbookings();
+      setData(res);
+    })();
+  }, []);
 
   return (
     <div className="flex-1">
@@ -123,7 +118,6 @@ const BookingHistory =  () => {
                                 id="hs-as-filters-dropdown-published"
                               />
                               <span className="ml-3 text-sm text-gray-800 dark:text-gray-200">
-
                                 Pending
                               </span>
                             </label>
@@ -151,7 +145,6 @@ const BookingHistory =  () => {
                 <table className="min-w-full divide-y  divide-gray-200 dark:divide-gray-700">
                   <thead className="bg-gray-50 dark:bg-slate-800">
                     <tr>
-
                       <th
                         scope="col"
                         className="pl-6 lg:pl-6 pr-6 py-3 text-left"
@@ -197,14 +190,11 @@ const BookingHistory =  () => {
                     {/* data mapping */}
 
                     {data?.data?.slice(0, 5).map((book, index) => {
-
                       return (
                         <tr key={index}>
-
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="pl-6 lg:pl-6 pr-6 py-3">
                               <div className="flex items-center gap-x-3">
-
                                 <div className="grow">
                                   <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
                                     {book?.paymentInfo?.product_name}
@@ -280,41 +270,6 @@ const BookingHistory =  () => {
                               }
                             </div>
                           </td>
-                          {/* <td className="h-px w-px whitespace-nowrap">
-                            <div className="px-6 py-3">
-                              {book?.blocked === false && (
-                                <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                  <svg
-                                    className="w-2.5 h-2.5"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width={16}
-                                    height={16}
-                                    fill="currentColor"
-                                    viewBox="0 0 16 16"
-                                  >
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                                  </svg>
-                                  Active
-                                </span>
-                              )}
-                              {book?.blocked === true && (
-                                <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
-                                  <svg
-                                    className="w-2.5 h-2.5"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width={16}
-                                    height={16}
-                                    fill="currentColor"
-                                    viewBox="0 0 16 16"
-                                  >
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-                                  </svg>
-                                  Blocked
-                                </span>
-                              )}
-                            </div>
-                          </td> */}
-
                           <td className="h-px w-px whitespace-nowrap">
                             <div className="px-6 py-3">
                               <span className="text-sm text-gray-500">
@@ -342,52 +297,6 @@ const BookingHistory =  () => {
                   aria-label="Pagination"
                 >
                   <ul className="inline-flex space-x-3">
-                    <li>
-                      {/* <button
-                        className="flex items-center justify-center text-gray-400 rounded-md hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        onClick={() => {
-                          // Handle previous page click
-                        }}
-                      >
-                        <span className="sr-only">Previous</span>
-                        <svg
-                          className="w-5 h-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M7.293 9.293a1 1 0 011.414 0L11 11.586V6a1 1 0 112 0v5.586l2.293-2.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button> */}
-                    </li>
-                    <li>
-                      {/* <button
-                        className="flex items-center justify-center text-blue-600 bg-blue-100 rounded-md hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        onClick={() => {
-                          // Handle next page click
-                        }}
-                      >
-                        <span className="sr-only">Next</span>
-                        <svg
-                          className="w-5 h-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M12.293 10.293a1 1 0 011.414 0l4 4a1 1 0 11-1.414 1.414L13 13.414V19a1 1 0 11-2 0v-5.586l-2.293 2.293a1 1 0 11-1.414-1.414l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button> */}
-                    </li>
                   </ul>
                 </nav>
                 {/* End Pagination */}

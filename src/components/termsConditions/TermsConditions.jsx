@@ -58,7 +58,7 @@ const TermsConditions = () => {
             <h2 className="mt-2 font-semibold">6. Privacy Policy</h2>
             <p>
               Please review our{" "}
-              <a className="text-blue-700" href="privacypolicy">
+              <a className="text-blue-700" href="/privacy-policy">
                 Privacy Policy
               </a>{" "}
               to understand how we collect, use, and protect your personal

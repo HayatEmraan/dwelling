@@ -1,8 +1,6 @@
 import React from 'react';
-import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { FiUsers } from 'react-icons/fi';
-import { GoProjectSymlink } from 'react-icons/go';
 import { MdOutlinePendingActions } from 'react-icons/md';
 import { VscTarget } from 'react-icons/vsc';
 const dashboardCards = [

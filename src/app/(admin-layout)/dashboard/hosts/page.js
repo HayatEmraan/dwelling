@@ -2,6 +2,11 @@ import HostList from "@/components/dashboard/hostMangement/HostList";
 import HostTotal from "@/components/dashboard/hostMangement/HostTotal";
 import { gethosts } from "@/utils/async/admin/hosts/gethosts";
 
+export const metadata = {
+  title: "Host Management - Admin",
+  description: "A project by BrightCoders team",
+};
+
 const HostManagement = async () => {
   const data = await gethosts();
   return (
