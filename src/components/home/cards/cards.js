@@ -63,7 +63,7 @@ const Cards = async ({
                     </div>
                     <div className="mt-2">
                       <dl>
-                        <div className="flex flex-row items-center gap-1 justify-between text-gray-400 dark:text-gray-200">
+                        <div className="flex flex-row items-center gap-1 justify-between  dark:text-gray-200">
                           <PriceCard room={room} />
                           <p
                             className="text-sm bg-gradient-to-l from-violet-100 via-purple-400 to-slate-900 

@@ -200,7 +200,10 @@ const GuestInvoices = ({ data: initialData }) => {
                   <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                     {data?.data?.map((item, index) => {
                       return (
-                        <tr className="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
+                        <tr
+                          key={index}
+                          className="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800"
+                        >
                           <td className="h-px w-px whitespace-nowrap">
                             <a
                               className="block"

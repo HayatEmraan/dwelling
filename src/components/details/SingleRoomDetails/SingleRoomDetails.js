@@ -6,8 +6,11 @@ import ReserveButton from "../ReserveButton/ReserveButton";
 import DatePicker from "./DatePicker";
 import { userAppStore } from "@/store/store";
 import SearchGuests from "./SearchGuests";
+import useGuestClickOutside from "@/hooks/useGuestClickOutside";
 
 const SingleRoomDetails = ({ data, reviewAndReservation }) => {
+
+  
 
   const {
 
@@ -35,6 +38,7 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
   const togglePicker = () => {
     setShowPicker(!showPicker);
   };
+
 
   return (
     <div className="grid gap-5 lg:grid-cols-3">
@@ -99,12 +103,12 @@ const SingleRoomDetails = ({ data, reviewAndReservation }) => {
 
           <div>
             <div className="border rounded-xl">
-              <div className="grid grid-cols-2 text-center">
+              <div className="grid grid-cols-2 text-center" >
                 <div className="border-r border-b p-2 relative">
                   <h2>
                     <button onClick={togglePicker}>CheckIn</button>
                   </h2>
-                  <div className="absolute">
+                  <div className="absolute z-10">
                     {showPicker && (
                       <DatePicker handleSelect={handleDateSelect} />
                     )}

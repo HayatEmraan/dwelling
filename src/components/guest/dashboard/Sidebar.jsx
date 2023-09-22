@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { BsGithub } from "react-icons/bs";
 import { FcHome } from "react-icons/fc";
-import { DiGhostSmall } from "react-icons/di";
 const Sidebar = () => {
   return (
-    <div className="fixed top-0 dark:lg:w-1/6 dark:w-3/4 dark:bg-slate-800 dark:text-white dark:h-full">
+    <div className="fixed top-0 dark:bg-slate-800 dark:text-white dark:h-full">
       <div className="text-2xl font-semibold px-2 pt-3 pb-4 text-center ">
         <Link href={"/guest/dashboard"}>Admin Panel</Link>
       </div>
@@ -30,7 +29,7 @@ const Sidebar = () => {
                     <span className="ml-3">Dashboard</span>
                   </Link>
                 </li>
-                
+
                 <li>
                   <a
                     href="/guest/dashboard/booking"
@@ -51,7 +50,7 @@ const Sidebar = () => {
                   </a>
                 </li>
                 <li>
-                  <Link
+                  <a
                     href="/guest/dashboard/invoice"
                     className="flex items-center p-2  font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
@@ -70,11 +69,11 @@ const Sidebar = () => {
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       Invoices
                     </span>
-                  </Link>
+                  </a>
                 </li>
-                
+
                 <li>
-                  <Link
+                  <a
                     href="/guest/dashboard/settings"
                     className="flex items-center p-2  font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
@@ -94,7 +93,7 @@ const Sidebar = () => {
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       Settings
                     </span>
-                  </Link>
+                  </a>
                 </li>
                 <hr />
                 <li>
@@ -110,7 +109,7 @@ const Sidebar = () => {
                   </a>
                 </li>
                 <li>
-                  <Link
+                  <a
                     href="/"
                     target="_blank"
                     className="flex items-center p-2  font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -119,7 +118,7 @@ const Sidebar = () => {
                     <span className="flex-1 ml-3 whitespace-nowrap">
                       Dwelling
                     </span>
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>

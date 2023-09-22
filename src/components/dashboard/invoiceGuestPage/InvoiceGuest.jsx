@@ -13,7 +13,7 @@ const Scroll = dynamic(
 const InvoiceGuest = async () => {
   const data = await ginvoices();
   return (
-    <div>
+    <div className="dark:bg-slate-900">
       <Scroll></Scroll>
       <GuestInvoices data={data}></GuestInvoices>
     </div>

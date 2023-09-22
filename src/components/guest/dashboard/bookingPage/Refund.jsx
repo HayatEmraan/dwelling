@@ -1,19 +1,48 @@
 import React from "react";
 import { RiRefund2Line } from "react-icons/ri";
 import "./Refund.css";
+import { grefund } from "@/utils/async/guest/grefund/grefund";
+import Swal from "sweetalert2";
+import ReScheduleModal from "./ReScheduleModal";
 
-const Refund = () => {
+const Refund = ({ id }) => {
+
+  const handleRefund = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const msg = form.text.value;
+    console.log(msg, id);
+    const abc = await grefund(id, msg);
+    console.log(abc)
+    if (abc.data.modifiedCount === 1) {
+      Swal.fire({
+        title: "Success!",
+        text: "Refund Request Successfully",
+        icon: "success",
+        confirmButtonText: "Thank you",
+      });
+    } else {
+      Swal.fire({
+        title: "Error!",
+        text: "Refund Request Failed",
+        icon: "error",
+        confirmButtonText: "Try Again",
+      });
+    }
+  };
+
+
   return (
     <>
       <button
         type="button"
         className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-        data-hs-overlay="#hs-static"
+        data-hs-overlay="#hs-basic-modal"
       >
-        <RiRefund2Line /> Refund / Reschedule
+        <RiRefund2Line /> Refund
       </button>
       <div
-        id="hs-static"
+        id="hs-basic-modal"
         className="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto [--overlay-backdrop:static]"
         data-hs-overlay-keyboard="false"
       >
@@ -23,7 +52,7 @@ const Refund = () => {
               <button
                 type="button"
                 className="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
-                data-hs-overlay="#hs-static"
+                data-hs-overlay="#hs-basic-modal"
               >
                 <span className="sr-only">Close</span>
                 <svg
@@ -41,35 +70,32 @@ const Refund = () => {
                 </svg>
               </button>
             </div>
-            <div className="p-8 mx-auto overflow-y-auto">
-              <form className="form">
+            <div className="p-8 mx-auto overflow-y-auto ">
+              <form onSubmit={handleRefund} className="form bg-white dark:bg-gray-900">
                 <div className="title"> Explain Refund Reason</div>
                 <textarea
+                  name="text"
+                  className="bg-white dark:bg-gray-800 text-black dark:text-white"
                   placeholder="Write your refund reason here..."
                   defaultValue={""}
                 />
+                <button
+                  type="submit"
+                  className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                  href="#"
+                >
+                  Submit
+                </button>
               </form>
             </div>
             <div className="flex justify-center items-center gap-x-2 py-4 px-4 dark:border-gray-700">
               <button
                 type="button"
                 className="hs-dropdown-toggle py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                data-hs-overlay="#hs-static"
+                data-hs-overlay="#hs-basic-modal"
               >
                 Close
               </button>
-              <a
-                className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                href="#"
-              >
-                Submit
-              </a>
-              <a
-                className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 font-semibold bg-white text-gray-500 hover:text-white hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                href="#"
-              >
-                Re-Schedule
-              </a>
             </div>
           </div>
         </div>

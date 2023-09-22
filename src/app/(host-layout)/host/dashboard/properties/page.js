@@ -1,14 +1,17 @@
 import HostPropertyChart from "@/components/host/HostPropertyChart";
-import HostPropertyTotal from "@/components/host/HostPropertyTotal";
 import PropertyHost from "@/components/host/PropertyHost";
-import { getproperties } from "@/utils/async/admin/properties/getproperties";
+import { getrooms } from "@/utils/async/host/getrooms";
 import React from "react";
 
+export const metadata = {
+  title: "Properties - Host",
+  description: "A project by BrightCoders team",
+};
+
 const PropertiesHost = async () => {
-  const data = await getproperties();
+  const data = await getrooms();
   return (
     <div className="m-5">
-      {/* <HostPropertyTotal></HostPropertyTotal> */}
       <div className="mx-auto items-center mt-5">
         <HostPropertyChart></HostPropertyChart>
         <PropertyHost data={data}></PropertyHost>
