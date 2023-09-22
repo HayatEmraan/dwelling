@@ -65,7 +65,7 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                         <th scope="col" className="px-6 py-3 text-left">
                           <div className="flex items-center gap-x-2">
                             <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                              Date
+                              Time
                             </span>
                           </div>
                         </th>
@@ -130,10 +130,10 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                             <td className="h-px w-px whitespace-nowrap">
                               <div className="pr-6 py-2">
                                 <a
-                                  className="text-sm text-blue-600 decoration-2 hover:underline dark:text-blue-500"
+                                  className="text-sm text-blue-600 decoration-2  dark:text-blue-500"
                                   href="#"
                                 >
-                                  #35463
+                                  #{item?.paymentInfo?.txid.slice(4, 11)}
                                 </a>
                               </div>
                             </td>
