@@ -22,47 +22,43 @@ const BookingControlPanel = ({ data: initialData }) => {
   };
 
   const handleApprove = async (id) => {
-    await updatebooking(id, "approved");
+    const updateApprove = await updatebooking(id, "approved");
     const res = await getbookings();
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Approved it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire("Approved!", "Your booking has been Approved.", "success");
-        setData(res);
-      }
-    });
+    if (updateApprove.msg === "Success") {
+      Swal.fire({
+        title: "Success!",
+        text: "Booking Approved Successfully",
+        icon: "success",
+        confirmButtonText: "Thank you",
+      });
+    } else {
+      Swal.fire({
+        title: "Error!",
+        text: "Booking Approval Failed",
+        icon: "error",
+        confirmButtonText: "Try Again",
+      });
+    }
   };
 
   const handleDecline = async (id) => {
-    await updatebooking(id, "declined");
+    const updateApprove = await updatebooking(id, "declined");
     const res = await getbookings();
-
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, Declined it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Declined!',
-          'Your booking has been Declined.',
-          'success'
-        )
-        setData(res);
-      }
-    })
-
+    if (updateApprove.msg === "Success") {
+      Swal.fire({
+        title: "Success!",
+        text: "Property Declined Successfully",
+        icon: "success",
+        confirmButtonText: "Thank you",
+      });
+    } else {
+      Swal.fire({
+        title: "Error!",
+        text: "Property Decline Failed",
+        icon: "error",
+        confirmButtonText: "Try Again",
+      });
+    }
   };
   return (
     <div className="max-w-[150rem] mx-auto px-4 sm:px-6 lg:px-8 ">
@@ -1179,6 +1175,21 @@ const BookingControlPanel = ({ data: initialData }) => {
                                     {item?.update}
                                   </span>
                                 )}
+                                {item?.update === "rescheduled" && (
+                                  <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                    <svg
+                                      className="w-2.5 h-2.5"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width={16}
+                                      height={16}
+                                      fill="currentColor"
+                                      viewBox="0 0 16 16"
+                                    >
+                                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                    </svg>
+                                    {item?.update}
+                                  </span>
+                                )}
                                 {!item?.update && (
                                   <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-green-200">
                                     <svg
@@ -1195,6 +1206,21 @@ const BookingControlPanel = ({ data: initialData }) => {
                                   </span>
                                 )}
                                 {item?.update === "declined" && (
+                                  <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-green-200">
+                                    <svg
+                                      className="w-2.5 h-2.5"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width={16}
+                                      height={16}
+                                      fill="currentColor"
+                                      viewBox="0 0 16 16"
+                                    >
+                                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                    </svg>
+                                    {item?.update}
+                                  </span>
+                                )}
+                                {item?.update === "refunded" && (
                                   <span className="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-green-200">
                                     <svg
                                       className="w-2.5 h-2.5"

@@ -36,50 +36,42 @@ const PropertyManagement = ({ data }) => {
   };
 
   const handleApprove = async (id) => {
-    await propertyupdate(id, "approved");
+    const updateApprove = await propertyupdate(id, "approved");
     const response = await getproperties();
-
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, Approved it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Approved!',
-          'Your propertie has been Approved.',
-          'success'
-        )
-        setPageData(response);
-      }
-    })
-
+    if (updateApprove.msg === "Success") {
+      Swal.fire({
+        title: "Success!",
+        text: "Property Approved Successfully",
+        icon: "success",
+        confirmButtonText: "Thank you",
+      });
+    } else {
+      Swal.fire({
+        title: "Error!",
+        text: "Property Approval Failed",
+        icon: "error",
+        confirmButtonText: "Try Again",
+      });
+    }
   };
   const handleDecline = async (id) => {
-    await propertyupdate(id, "declined");
+    const updateApprove = await propertyupdate(id, "declined");
     const response = await getproperties();
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, Declined it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Declined!',
-          'Your propertie has been Declined.',
-          'success'
-        )
-        setPageData(response);
-      }
-    })
+    if (updateApprove.msg === "Success") {
+      Swal.fire({
+        title: "Success!",
+        text: "Property Declined Successfully",
+        icon: "success",
+        confirmButtonText: "Thank you",
+      });
+    } else {
+      Swal.fire({
+        title: "Error!",
+        text: "Property Decline Failed",
+        icon: "error",
+        confirmButtonText: "Try Again",
+      });
+    }
   };
 
   return (
