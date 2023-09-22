@@ -5,6 +5,7 @@ import { getproperties } from "@/utils/async/admin/properties/getproperties";
 import { propertyupdate } from "@/utils/async/admin/properties/updateproperties";
 import { filterproperties } from "@/utils/async/admin/properties/filterproperties";
 import PropertyModal from "./PropertyModal";
+import Swal from "sweetalert2";
 
 const PropertyManagement = ({ data }) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -28,6 +29,7 @@ const PropertyManagement = ({ data }) => {
     const filteredData = await filterproperties("pending");
     setPageData(filteredData);
   };
+
   const handleFilteringDeclined = async () => {
     const filteredData = await filterproperties("declined");
     setPageData(filteredData);
@@ -36,12 +38,48 @@ const PropertyManagement = ({ data }) => {
   const handleApprove = async (id) => {
     await propertyupdate(id, "approved");
     const response = await getproperties();
-    setPageData(response);
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Approved it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Approved!',
+          'Your propertie has been Approved.',
+          'success'
+        )
+        setPageData(response);
+      }
+    })
+
   };
   const handleDecline = async (id) => {
     await propertyupdate(id, "declined");
     const response = await getproperties();
-    setPageData(response);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Declined it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Declined!',
+          'Your propertie has been Declined.',
+          'success'
+        )
+        setPageData(response);
+      }
+    })
   };
 
   return (
