@@ -3,6 +3,11 @@ import InvoiceListPage from "@/components/dashboard/invoicePage/InvoiceListPage"
 import { getinvoices } from "@/utils/async/admin/invoices/getinvoices";
 import React from "react";
 
+export const metadata = {
+  title: "Invoices - Admin",
+  description: "A project by BrightCoders team",
+};
+
 const InvoicePage = async () => {
   const data = await getinvoices();
   return (

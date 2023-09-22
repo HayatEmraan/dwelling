@@ -2,6 +2,13 @@ import BookingControlPanel from "@/components/dashboard/bookingPage/BookingContr
 import BookingInformationCard from "@/components/dashboard/bookingPage/BookingInformationCard";
 import { getbookings } from "@/utils/async/admin/booking/getbookings";
 
+
+export const metadata = {
+  title: "Booking - Admin",
+  description: "A project by BrightCoders team",
+};
+
+
 const Booking = async () => {
   const data = await getbookings();
   return (

@@ -17,6 +17,11 @@ import HomePageHeading from "@/components/dashboard/homePage/Heading";
 import { getusers } from "@/utils/async/admin/users/getusers";
 import DashBarChart from "@/components/dashboard/DashBarChart";
 
+export const metadata = {
+  title: "Dashboard - Admin",
+  description: "A project by BrightCoders team",
+};
+
 const DashboardHomePage = async () => {
   const data = await getusers();
   return (
