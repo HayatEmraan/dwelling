@@ -5,7 +5,6 @@ import HandleLogout from "./handlelogout";
 const AvatarComp = async () => {
   const response = await getuserbycookie();
   const user = response;
-
   return (
     <div className="cursor-pointer">
       {user?.msg === "Success" ? (

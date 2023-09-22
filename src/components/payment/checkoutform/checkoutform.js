@@ -22,7 +22,7 @@ export default function CheckoutForm({ rm }) {
         return_url: `https://dwelling-bright-server.vercel.app/api/v2/payment/success/stripe?rm=${rm}`,
       },
     });
-   
+
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);
     } else {

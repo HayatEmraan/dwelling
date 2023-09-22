@@ -17,6 +17,7 @@ const TopBar = ({ toggleMenu, isOpen }) => {
     })();
   }, []);
 
+
   return (
     <div className="flex justify-between sticky z-50 top-0 items-center px-6 py-4 sm:py-1 border-r-slate-100 border bg-white dark:bg-slate-800 dark:text-white dark:border-slate-800">
       <div className="flex justify-between items-center">
