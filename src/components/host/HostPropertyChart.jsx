@@ -1,31 +1,44 @@
 "use client";
-import React, { useState } from "react";
+import { getroomstats } from "@/utils/async/host/getroomstats";
+import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 const HostPropertyChart = () => {
+
+  const [data, setData] = useState(null);
+
+
+  useEffect(() => {
+    (async () => {
+      const res = await getroomstats();
+      setData(res);
+    })();
+  }, []);
+
   const [state, setState] = useState({
+
     options: {
       chart: {
         id: "basic-bar",
       },
       xaxis: {
-        categories: ["Approved", "Declined", "Pending"],
+        categories: ["Approved", "Declined", "Pending", "Total"],
       },
     },
     series: [
       {
         name: "series-1",
-        data: [60, 65, 50],
+        data: [`${data?.data?.approved}`, `${data?.data?.declined}`, `${data?.data?.pending}`, `${data?.data?.total}`],
       },
     ],
   });
   return (
     <div>
-      <h2 className="font-semibold ms-5">Properties State</h2>
+    
       <Chart
         options={state.options}
         series={state.series}
         type="bar"
-        width="1000"
+        width="1580"
         height="200"
       />
     </div>
