@@ -1,12 +1,7 @@
 "use client";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { AiFillPieChart } from "react-icons/ai";
-const data = [
-  { name: "Group A", value: 20 },
-  { name: "Group B", value: 60 },
-  { name: "Group C", value: 15 },
-  { name: "Group D", value: 5 },
-];
+
 
 const COLORS = ["#3182ce", "#38a169", "#f6ad55", "#f56565"];
 
@@ -37,9 +32,30 @@ const renderCustomizedLabel = ({
   );
 };
 
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { guestdashstats } from "@/utils/async/guest/gdash/gdashstats";
 
 const Example = () => {
+
+  const [dashData, setDashData] = useState([]);
+
+  useEffect(() => {
+
+    (async () => {
+      const gdata = await guestdashstats();
+      setDashData(gdata);
+    })()
+
+  }, []);
+
+
+  const data = [
+    { name: "Group A", value:  parseInt(dashData?.data?.active) }, //active
+    { name: "Group B", value: parseInt (dashData?.data?.approved) },  // approve
+    { name: "Group C", value: parseInt(dashData?.data?.pending) }, // pending
+    { name: "Group D", value: parseInt(dashData?.data?.declined)}, //rejected
+  ];
+  console.log(data)
   return (
     <div className="me-5">
       <h2 className="font-semibold p-2">Total state</h2>

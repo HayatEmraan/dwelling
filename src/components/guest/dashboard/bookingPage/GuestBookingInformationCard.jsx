@@ -8,6 +8,7 @@ import { MdCancel } from "react-icons/md";
 import { SiPayoneer } from "react-icons/si";
 import { FiArrowUpRight } from "react-icons/fi";
 import { FiArrowDownRight } from "react-icons/fi";
+import { guestdashstats } from "@/utils/async/guest/gdash/gdashstats";
 
 const dashboardCards = [
   {
@@ -66,7 +67,9 @@ const dashboardCards = [
   },
 ];
 
-const GuestBookingInformationCard = () => {
+const GuestBookingInformationCard = async () => {
+
+
   return (
     <div className="max-w-[150rem] mx-auto px-4 py-10 sm:px-6 lg:px-8 lg:py-4 text-black dark:text-gray-200">
       {/* Card  */}
