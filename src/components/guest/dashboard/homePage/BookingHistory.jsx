@@ -179,7 +179,7 @@ const BookingHistory =  () => {
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex items-center gap-x-2">
                           <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                            Check In Date
+                            Check In
                           </span>
                         </div>
                       </th>
@@ -187,7 +187,7 @@ const BookingHistory =  () => {
                       <th scope="col" className="px-6 py-3 text-left">
                         <div className="flex  gap-x-2">
                           <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                            Total Paid
+                            Paid
                           </span>
                         </div>
                       </th>

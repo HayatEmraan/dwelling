@@ -5,26 +5,28 @@ import { postreview } from "@/utils/async/guest/reviews/postreviews";
 import "./ReviewForm.css";
 
 const ReviewForm = ({ id }) => {
-
-
     const handleReview = async (event) => {
         event.preventDefault();
         const form = event.target;
-        const comment =form.comment.value;
+        const comment = form.comment.value;
         const rating = form.rating.value;
-        console.log(comment, rating);
-       const abc = await postreview (id, comment, rating);
-       console.log(abc)
-        Swal.fire({
-            title: 'Success!',
-            text: 'Review Successfully',
-            icon: 'success',
-            confirmButtonText: 'Thank you'
-        })
-        form.reset('');
+        const abc = await postreview(id, comment, rating);
+        if (abc.data.modifiedCount === 1) {
+            Swal.fire({
+                title: "Success!",
+                text: "Review Successfully",
+                icon: "success",
+                confirmButtonText: "Thank you",
+            });
+        } else {
+            Swal.fire({
+                title: "Error!",
+                text: "Review Failed",
+                icon: "error",
+                confirmButtonText: "Try Again",
+            });
+        }
     };
-
-
 
     return (
         <>
@@ -92,28 +94,28 @@ const ReviewForm = ({ id }) => {
                                     defaultValue={""}
                                 />
                                 <h1 className="hidden" name="id">{id}</h1>
-                                
-                                <div className="flex justify-center items-center gap-x-2 py-4 dark:border-gray-700">
-                            <button
-                                type="button"
-                                className="hs-dropdown-toggle hover:bg-gray-500 py-3 px-4 inline-flex bg-slate-200 justify-center items-center gap-2 rounded-md border font-medium  text-gray-700 shadow-sm align-middle  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-500 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-200 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                                data-hs-overlay="#hs-static-review"
-                            >
-                                Close
-                            </button>
 
-                            <button type="submit"
-                                className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-green-600 dark:hover:bg-slate-900 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                                href="#"
-                            >
-                                Submit
-                            </button>
-                            
-                        </div>
+                                <div className="flex justify-center items-center gap-x-2 py-4 dark:border-gray-700">
+                                    <button
+                                        type="button"
+                                        className="hs-dropdown-toggle hover:bg-gray-500 py-3 px-4 inline-flex bg-slate-200 justify-center items-center gap-2 rounded-md border font-medium  text-gray-700 shadow-sm align-middle  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-500 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-200 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                                        data-hs-overlay="#hs-static-review"
+                                    >
+                                        Close
+                                    </button>
+
+                                    <button type="submit"
+                                        className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-green-600 dark:hover:bg-slate-900 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                                        href="#"
+                                    >
+                                        Submit
+                                    </button>
+
+                                </div>
 
                             </form>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
