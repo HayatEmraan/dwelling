@@ -10,65 +10,68 @@ import { FiArrowUpRight } from "react-icons/fi";
 import { FiArrowDownRight } from "react-icons/fi";
 import { guestdashstats } from "@/utils/async/guest/gdash/gdashstats";
 
-const dashboardCards = [
-  {
-    id: 1,
-    title: "Total",
-    icon: <IoMdDoneAll />,
-    project_detail: 18,
-    clientPercentage: "+9.18",
-    amount: "243",
-    arrow: <FiArrowUpRight />,
-    bgColor: "#e1c38f",
-  },
-  {
-    id: 2,
-    title: 'Active Booking',
-    icon: <BiSolidLeaf />,
-    clientPercentage: "3.45",
-    amount: "2",
-    arrow: <FiArrowUpRight />,
-},
-  {
-    id: 3,
-    title: "Pending Booking",
-    icon: <PiWarningFill />,
-    project_detail: 132,
-    clientPercentage: "10.24",
-    amount: "22",
-    arrow: <FiArrowUpRight />,
-  },
-  {
-    id: 4,
-    title: "Confirm Booking",
-    icon: <GiConfirmed />,
-    project_detail: 132,
-    clientPercentage: "-3.18",
-    amount: "152",
-    arrow: <FiArrowDownRight />,
-  },
-  {
-    id: 5,
-    title: "Rejected Booking",
-    icon: <MdCancel />,
-    project_detail: 12,
-    clientPercentage: "+183",
-    amount: "32",
-    arrow: <FiArrowUpRight />,
-  },
-  {
-    id: 6,
-    title: "Total Amount Spend",
-    icon: <SiPayoneer />,
-    project_detail: "75%",
-    clientPercentage: "+6.18",
-    amount: "$268.45k",
-    arrow: <FiArrowUpRight />,
-  },
-];
+
 
 const GuestBookingInformationCard = async () => {
 
+  const data = await guestdashstats();
+
+  const dashboardCards = [
+    {
+      id: 1,
+      title: "Total",
+      icon: <IoMdDoneAll />,
+      project_detail: 18,
+      clientPercentage: "+9.18",
+      amount: `${data?.data?.approved + data?.data?.active}`,
+      arrow: <FiArrowUpRight />,
+      bgColor: "#e1c38f",
+    },
+    {
+      id: 2,
+      title: 'Active Booking',
+      icon: <BiSolidLeaf />,
+      clientPercentage: "3.45",
+      amount: `${data?.data?.active}`,
+      arrow: <FiArrowUpRight />,
+  },
+    {
+      id: 3,
+      title: "Pending Booking",
+      icon: <PiWarningFill />,
+      project_detail: 132,
+      clientPercentage: "10.24",
+      amount: `${data?.data?.pending}`,
+      arrow: <FiArrowUpRight />,
+    },
+    {
+      id: 4,
+      title: "Confirm Booking",
+      icon: <GiConfirmed />,
+      project_detail: 132,
+      clientPercentage: "-3.18",
+      amount: `${data?.data?.approved}`,
+      arrow: <FiArrowDownRight />,
+    },
+    {
+      id: 5,
+      title: "Rejected Booking",
+      icon: <MdCancel />,
+      project_detail: 12,
+      clientPercentage: "+183",
+      amount: `${data?.data?.declined}`,
+      arrow: <FiArrowUpRight />,
+    },
+    {
+      id: 6,
+      title: "Total Amount Spend",
+      icon: <SiPayoneer />,
+      project_detail: "75%",
+      clientPercentage: "+6.18",
+      amount: `$ ${data?.data?.spend}`,
+      arrow: <FiArrowUpRight />,
+    },
+  ];
 
   return (
     <div className="max-w-[150rem] mx-auto px-4 py-10 sm:px-6 lg:px-8 lg:py-4 text-black dark:text-gray-200">
