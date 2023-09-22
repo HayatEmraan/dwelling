@@ -65,7 +65,7 @@ const RefundPage = () => {
                 <strong>Website</strong> refers to Dwelling, accessible from{" "}
                 <a
                   className="text-blue-500 underline"
-                  href="https://dwelling-bright.vercel.app/"
+                  href="https://dwelling-olive.vercel.app/"
                   rel="external nofollow noopener"
                   target="_blank"
                 >
@@ -104,7 +104,7 @@ const RefundPage = () => {
               By visiting this page on our website:{" "}
               <a
                 className="text-blue-500 underline"
-                href="https://dwelling-bright.vercel.app/"
+                href="https://dwelling-olive.vercel.app/"
                 rel="external nofollow noopener"
                 target="_blank"
               >
