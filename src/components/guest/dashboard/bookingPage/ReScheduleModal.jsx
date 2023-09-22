@@ -1,38 +1,50 @@
-import DatePicker from "@/components/details/SingleRoomDetails/DatePicker";
-import React, { useState } from "react";
+"use client";
+import React from "react";
 import "./Refund.css";
-import { reschedule } from "@/utils/async/guest/reschedule/reschedule";
 import { BiCalendar } from "react-icons/bi";
+import DatePicker from "@/components/details/SingleRoomDetails/DatePicker";
+import useDateStore from "@/store/datestore";
+import Swal from "sweetalert2";
+import { reschedule } from "@/utils/async/guest/reschedule/reschedule";
 
 const ReScheduleModal = ({ id }) => {
-  const [checkInDate, setCheckInDate] = useState(null);
-  const [checkOutDate, setCheckOutDate] = useState(null);
-  const [showPicker, setShowPicker] = useState(false);
-
-  const handleDateSelect = (dateRange) => {
-    if (!checkInDate) {
-      setCheckInDate(dateRange.startDate);
-      setShowPicker(true);
-    } else if (!checkOutDate) {
-      setCheckOutDate(dateRange.endDate);
-      setShowPicker(false);
+  const { date } = useDateStore();
+  const handleSchedule = async () => {
+    if (!date?.startDate) {
+      Swal.fire({
+        title: "Error!",
+        text: "Please select start date",
+        icon: "error",
+        confirmButtonText: "Try Again",
+      });
+    } else if (!date?.endDate) {
+      Swal.fire({
+        title: "Error!",
+        text: "Please select end date",
+        icon: "error",
+        confirmButtonText: "Try Again",
+      });
     } else {
-      setCheckInDate(null);
-      setCheckOutDate(null);
+      const start = new Date(date?.startDate).toISOString().split("T")[0];
+      const end = new Date(date?.endDate).toISOString().split("T")[0];
+      const updateDate = await reschedule(id, start, end);
+      if (updateDate?.data?.modifiedCount === 1) {
+        Swal.fire({
+          title: "Success!",
+          text: "Schedule Successfully",
+          icon: "success",
+          confirmButtonText: "Thank you",
+        });
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: "Schedule Failed",
+          icon: "error",
+          confirmButtonText: "Try Again",
+        });
+      }
     }
   };
-
-  const togglePicker = () => {
-    setShowPicker(!showPicker);
-  };
-
-  const handleSchedule = async () => {
-    const start = checkInDate;
-    const end = checkOutDate;
-    const check = await reschedule(id, start, end);
-    console.log(check);
-  };
-
   return (
     <>
       <button
@@ -48,8 +60,8 @@ const ReScheduleModal = ({ id }) => {
         className="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto [--overlay-backdrop:static]"
         data-hs-overlay-keyboard="false"
       >
-        <div className="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
-          <div className="flex flex-col h-[39rem] bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
+        <div className="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-md sm:w-full m-3 sm:mx-auto">
+          <div className="flex flex-col h-[34rem] bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
             <div className="flex justify-end items-center py-3 px-4 dark:border-gray-700">
               <button
                 type="button"
@@ -74,28 +86,16 @@ const ReScheduleModal = ({ id }) => {
             </div>
 
             <h1 className="font-bold text-2xl text-center text-blue-500">
-              Re-schedule your booking date
+              Re-schedule your booking
             </h1>
             <div className="grid grid-cols-2 gap-4 text-center my-8">
-              <div className="border-r border-b border-t active:bg-gray-700 p-2 relative">
-                <h2>
-                  <button onClick={togglePicker}>CheckIn</button>
-                </h2>
-                <div className="absolute z-10 h-full top-[2.5rem]">
-                  {showPicker && <DatePicker handleSelect={handleDateSelect} />}
-                </div>
-                {checkInDate && <small>{checkInDate?.toDateString()}</small>}
-              </div>
-              <div className="border-b border-l border-t active:bg-gray-700 p-2">
-                <h2>
-                  <button onClick={togglePicker}>CheckOut</button>
-                </h2>
-                {checkOutDate && <small>{checkOutDate?.toDateString()}</small>}
+              <div className="absolute z-10 h-full left-0 right-0 top-[65%] -translate-y-1/2">
+                <DatePicker />
               </div>
             </div>
             <button
               onClick={handleSchedule}
-              className="relative top-96 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-b-xl border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+              className="relative cursor-pointer z-20 top-96 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-b-xl border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
               href="#"
             >
               Confirm

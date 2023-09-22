@@ -6,6 +6,7 @@ import ReviewForm from "./review/ReviewForm";
 import ReScheduleModal from "./ReScheduleModal";
 import { BiCalendar } from "react-icons/bi";
 import { RiRefund2Line } from "react-icons/ri";
+import { MdOutlineFeedback } from "react-icons/md";
 
 const GuestBookingControlPanel = ({ data: initialData }) => {
   const [data, setData] = useState(initialData);
@@ -30,7 +31,7 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                     {/* Input */}
                     <div className="sm:col-span-1">
                       <div className="relative text-black dark:text-gray-200">
-                        <h1 className="text-2xl font-bold">Control Panel:</h1>
+                        <h1 className="text-xl font-bold">Manage Booking:</h1>
                         <span>Manage Your All Booking</span>
                       </div>
                     </div>
@@ -72,7 +73,7 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                         <th scope="col" className="px-6 py-3 text-left">
                           <div className="flex items-center gap-x-2">
                             <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                              Payment Status
+                              Status
                             </span>
                           </div>
                         </th>
@@ -1171,7 +1172,8 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                             </td>
                             <td className="h-px w-px whitespace-nowrap">
                               <div className="px-6 py-2">
-                                {item?.update === "rescheduled" ? (
+                                {item?.update === "rescheduled" ||
+                                item?.update === "refunded" ? (
                                   <>
                                     <button
                                       type="button"
@@ -1188,7 +1190,17 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                             </td>
                             <td className="h-px w-px whitespace-nowrap">
                               <div className="px-6 py-2">
-                                <ReviewForm id={item?.roomID} />
+                                {item?.update === "refunded" ? (
+                                  <button
+                                    type="button"
+                                    className="inline-flex cursor-not-allowed items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                                    data-hs-overlay="#hs-static-review"
+                                  >
+                                    <MdOutlineFeedback /> N/A
+                                  </button>
+                                ) : (
+                                  <ReviewForm id={item?.roomID} />
+                                )}
                               </div>
                             </td>
                           </tr>

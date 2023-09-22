@@ -15,9 +15,6 @@ const DatePicker = ({ handleSelect }) => {
   ]);
 
   const { setDate } = useDateStore();
-
-
-
   const [containerRef] = useClickOutside();
 
 
@@ -34,7 +31,6 @@ const DatePicker = ({ handleSelect }) => {
         
         direction="horizontal"
         className="rounded-2xl"
-        
       />
     </div>
   );
