@@ -24,9 +24,20 @@ export async function middleware(req, res, next) {
     } else {
       return NextResponse.redirect(new URL("/", req.url));
     }
+  } else if (req.nextUrl.pathname.startsWith("/new-listing")) {
+    if (verifyCookies.msg === "Success" && verifyCookies.data.role === "host") {
+      return NextResponse.next();
+    } else {
+      return NextResponse.redirect(new URL("/", req.url));
+    }
   }
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/host/:path*", "/guest/:path*"],
+  matcher: [
+    "/dashboard/:path*",
+    "/host/:path*",
+    "/guest/:path*",
+    "/new-listing/:path*",
+  ],
 };

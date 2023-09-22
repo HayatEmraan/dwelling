@@ -18,7 +18,7 @@ export default function ListingCreated() {
           </button>
           <button
             className="bg-gradient-to-r from-pink-500 via-purple-500 to-sky-300 py-3 mt-5  px-5 text-black text-base font-medium rounded-md cursor-pointer"
-            onClick={() => router.push("/my-listings")}
+            onClick={() => router.push("/host/dashboard/properties")}
           >
             View your listings
           </button>

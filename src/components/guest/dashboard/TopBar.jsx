@@ -78,7 +78,7 @@ const TopBar = ({ toggleMenu, isOpen }) => {
                 src={
                   user?.data?.photoURL ? user?.data?.photoURL : "/avatar.png"
                 }
-                class="w-7 h-7 rounded-full"
+                className="w-7 h-7 rounded-full"
                 alt="Avatar"
               />
             </div>

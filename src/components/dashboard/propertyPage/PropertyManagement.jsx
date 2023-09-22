@@ -21,7 +21,6 @@ const PropertyManagement = ({ data }) => {
   };
 
   const handleFilteringApproved = async () => {
-    console.log("filtering");
     const filteredData = await filterproperties("approved");
     setPageData(filteredData);
   };

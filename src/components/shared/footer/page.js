@@ -99,10 +99,10 @@ const Footer = () => {
                   <ul>
                     <li>
                       <a
-                        href="#"
+                        href="/our-team"
                         className="text-body-color hover:text-primary mb-2 inline-block text-gray-600 dark:text-gray-400 text-base leading-loose"
                       >
-                        About Dwelling
+                        About Us
                       </a>
                     </li>
                     <li>

@@ -11,9 +11,7 @@ const Refund = ({ id }) => {
     event.preventDefault();
     const form = event.target;
     const msg = form.text.value;
-    console.log(msg, id);
     const abc = await grefund(id, msg);
-    console.log(abc)
     if (abc.data.modifiedCount === 1) {
       Swal.fire({
         title: "Success!",

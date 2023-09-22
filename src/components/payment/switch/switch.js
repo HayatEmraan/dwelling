@@ -10,7 +10,6 @@ const SwitchComp = ({ roomID }) => {
   const checkIn = dateFormatStart?.toISOString()?.split("T")[0];
   const checkOut = dateFormatEnd?.toISOString()?.split("T")[0];
   const handleSSL = async () => {
-    console.log(roomID, checkIn, checkOut);
     const result = await SSLCommerz(roomID, checkIn, checkOut);
     if (result.url) router.replace(result.url);
   };

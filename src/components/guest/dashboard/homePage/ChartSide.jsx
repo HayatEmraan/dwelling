@@ -55,7 +55,7 @@ const Example = () => {
     { name: "Group C", value: parseInt(dashData?.data?.pending) }, // pending
     { name: "Group D", value: parseInt(dashData?.data?.declined)}, //rejected
   ];
-  console.log(data)
+
   return (
     <div className="me-5">
       <h2 className="font-semibold p-2">Total state</h2>

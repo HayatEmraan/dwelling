@@ -44,7 +44,6 @@ export const facebookLogin = () => {
 export const githubLogin = () => {
   return handleGithub()
     .then((res) => {
-      console.log(res.user);
       toast.success("Authenticated Successfully");
       fetch("https://dwelling-bright-server.vercel.app/api/v1/postuser", {
         method: "POST",

@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import "./DetailsMap.css";
 import { useEffect, useState } from "react";
 import { userAppStore } from "@/store/store";
+import toast from "react-hot-toast";
 
 const DetailsMap = ({ location }) => {
   const position = [location?.lat, location?.lng];
@@ -38,7 +39,7 @@ const DetailsMap = ({ location }) => {
         }
       })
       .catch((error) => {
-        console.error("Error fetching address:", error);
+        toast.error("Unable to retrieve address information.");
       });
   }, [refreshInfo]);
   return (

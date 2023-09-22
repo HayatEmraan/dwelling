@@ -43,7 +43,6 @@ const ChartGuest = () => {
 
     (async () => {
       const stateData = await guestinvoicestats();
-      console.log(stateData)
       setChartData(stateData);
     })()
 

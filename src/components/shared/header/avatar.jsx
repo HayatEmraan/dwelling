@@ -6,7 +6,6 @@ const AvatarComp = async () => {
   const response = await getuserbycookie();
   const user = response;
 
-  console.log(user);
   return (
     <div className="cursor-pointer">
       {user?.msg === "Success" ? (
@@ -20,7 +19,7 @@ const AvatarComp = async () => {
                 src={
                   user?.data?.photoURL ? user?.data?.photoURL : "/avatar.png"
                 }
-                class="w-7 h-7 rounded-full"
+                className="w-7 h-7 rounded-full"
                 alt="Avatar"
               />
             </div>
