@@ -129,10 +129,10 @@ const GuestBookingControlPanel = ({ data: initialData }) => {
                             <td className="h-px w-px whitespace-nowrap">
                               <div className="pr-6 py-2">
                                 <a
-                                  className="text-sm text-blue-600 decoration-2 hover:underline dark:text-blue-500"
+                                  className="text-sm text-blue-600 decoration-2  dark:text-blue-500"
                                   href="#"
                                 >
-                                  #35463
+                                  #{item?.paymentInfo?.txid.slice(4, 11)}
                                 </a>
                               </div>
                             </td>
