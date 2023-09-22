@@ -43,7 +43,26 @@ const BookingControlPanel = ({ data: initialData }) => {
   const handleDecline = async (id) => {
     await updatebooking(id, "declined");
     const res = await getbookings();
-    setData(res);
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Declined it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Declined!',
+          'Your booking has been Declined.',
+          'success'
+        )
+        setData(res);
+      }
+    })
+
   };
   return (
     <div className="max-w-[150rem] mx-auto px-4 sm:px-6 lg:px-8 ">
