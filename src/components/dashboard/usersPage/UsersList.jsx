@@ -6,6 +6,7 @@ import { usersfilter } from "@/utils/async/admin/users/userfilter";
 import { updateuser } from "@/utils/async/admin/users/updateuser";
 import { blockuser } from "@/utils/async/admin/users/blockuser";
 import { unblockuser } from "@/utils/async/admin/users/unblockuser";
+import Swal from "sweetalert2";
 
 const UsersList = () => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -47,23 +48,94 @@ const UsersList = () => {
   const handleMakeAdmin = async (id) => {
     const filteredData = await updateuser(id, "admin");
     const response = await getusers();
-    setPageData(response);
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Admin it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Admin!',
+          'Your Users has been Admin.',
+          'success'
+        )
+        setPageData(response);
+      }
+    })
   };
   const handleMakeHost = async (id) => {
     const filteredData = await updateuser(id, "host");
-
     const response = await getusers();
-    setPageData(response);
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Host it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Host!',
+          'Your Users has been Host.',
+          'success'
+        )
+        setPageData(response);
+      }
+    })
   };
   const handleBlockUser = async (id) => {
     const filteredData = await blockuser(id);
     const response = await getusers();
-    setPageData(response);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Blocked it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Blocked!',
+          'Your Users has been Blocked.',
+          'success'
+        )
+        setPageData(response);
+      }
+    })
   };
+
   const handleUnblockUser = async (id) => {
     const filteredData = await unblockuser(id);
     const response = await getusers();
-    setPageData(response);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Unblocked it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Unblocked!',
+          'Your Users has been Unblocked.',
+          'success'
+        )
+        setPageData(response);
+      }
+    })
+    
   };
 
   return (

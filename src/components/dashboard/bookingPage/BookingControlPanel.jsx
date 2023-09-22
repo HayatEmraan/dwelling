@@ -45,13 +45,32 @@ const BookingControlPanel = ({ data: initialData }) => {
       }
     })
 
-    
+
   };
 
   const handleDecline = async (id) => {
     await updatebooking(id, "declined");
     const res = await getbookings();
-    setData(res);
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Declined it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Declined!',
+          'Your booking has been Declined.',
+          'success'
+        )
+        setData(res);
+      }
+    })
+
   };
   return (
     <div className="max-w-[150rem] mx-auto px-4 sm:px-6 lg:px-8 ">
@@ -1247,8 +1266,8 @@ const BookingControlPanel = ({ data: initialData }) => {
                                             </svg>
                                             Approved
                                           </span>
-                                          
-                                          
+
+
                                         </button>
                                         <button
                                           className="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-8 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
