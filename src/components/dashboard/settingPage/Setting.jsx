@@ -1,10 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { cloudinaryUpload } from "@/utils/async/sharedt/sharedt";
 import { profileimg } from "@/utils/async/profile/profleimg";
 import { profileupdate } from "@/utils/async/profile/profileupdate";
-import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { getuserbycookie } from "@/utils/async/conditions/getuserbycookie";
 import { useRouter } from "next/navigation";
@@ -22,7 +19,7 @@ const Setting = () => {
   const imageOnchange = async (event) => {
     const form = new FormData();
     form.append("file", event.target.files[0]);
-    form.append("upload_preset", "vflnndvq");
+    form.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_PRESET);
     const response = await fetch(
       "https://api.cloudinary.com/v1_1/dkozp31ij/image/upload",
       {
@@ -104,7 +101,6 @@ const Setting = () => {
     const confirmPassword = form.confirmPassword.value;
     const savePassword = { currentPassword, newPassword, confirmPassword };
   };
-
 
   return (
     <div className="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
