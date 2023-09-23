@@ -57,19 +57,31 @@ const teamData = [
     portfolio: "https://mehedii.netlify.app/",
     PhotoURL: "https://i.ibb.co/pdKqfYq/mehedi.jpg",
   },
+  {
+    Name: "Md. Habibur Rahman",
+    Position: "MERN stack Developer",
+    Bio: "I am a detail oriented MERN stack developer with a strong knowledge of client and backed development. I passionate about building functional,responsive and future rich web applications ",
+    Github: "https://github.com/habibur-pro",
+    Discord: "https://discordapp.com/users/habiburrahman01",
+    Linkedin: "https://www.linkedin.com/in/md-habibur-rahman4542",
+    portfolio: "https://habibur-rahman-portfolio.netlify.app/",
+    PhotoURL: "https://i.ibb.co/GWGRb8L/Profile-habibur1100.jpg",
+  },
+  {
+    Name: "Nimai Chandra Roy",
+    Position: "MERN Stack Developer",
+    Bio: "I'm Nimai, a mern stack web developer with a strong foundation in front-end development, I'm a hard working person and I love to work in a challenging situation",
+    Github: "https://github.com/nimairoy",
+    Discord: "https://discord.com/users/1135095906409127996",
+    Linkedin: "https://www.linkedin.com/in/nimai-chandra-roy-b850971bb/",
+    portfolio: "https://nimai-portfolio.netlify.app/",
+    PhotoURL: "https://i.ibb.co/XV7p3YV/nimair.png",
+  },
 ];
 
 const Team = () => {
   return (
     <div>
-      {/* <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14 mt-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ... rounded-lg">
-        <h2 className="text-xl font-bold md:text-4xl md:leading-tight text-white dark:text-white">
-          "In software, the most beautiful code, the most beautiful functions,
-          and the most beautiful programs are sometimes not there at all." - Jon
-          Bentley,
-        </h2>
-      </div> */}
-
       {/* Team */}
       <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         {/* Title */}
@@ -87,18 +99,20 @@ const Team = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {teamData.map(
             ({
-              id,
               Name,
               Position,
               Bio,
               Github,
               Discord,
-              Portfolio,
+              portfolio,
               Linkedin,
               PhotoURL,
             }) => {
               return (
-                <div className="flex flex-col rounded-xl p-4 md:p-6 bg-white border border-gray-200 dark:bg-slate-900 dark:border-gray-700">
+                <div
+                  key={Name}
+                  className="flex flex-col rounded-xl p-4 md:p-6 bg-white border border-gray-200 dark:bg-slate-900 dark:border-gray-700"
+                >
                   <div className="flex items-center gap-x-4">
                     <img
                       className="rounded-full w-20 h-20"
@@ -118,12 +132,14 @@ const Team = () => {
                   {/* Social Brands */}
                   <div className="mt-3 space-x-1">
                     <a
+                      target="_blank"
                       className="inline-flex justify-center items-center text-gray-500 border border-gray-200 w-8 h-8 rounded-md hover:text-gray-800 hover:shadow-sm dark:hover:text-gray-200 dark:border-gray-700 dark:hover:shadow-slate-700/[.7]"
                       href={Github}
                     >
                       <FaGithub></FaGithub>
                     </a>
                     <a
+                      target="_blank"
                       className="inline-flex justify-center items-center text-gray-500 border border-gray-200 w-8 h-8 rounded-md hover:text-gray-800 hover:shadow-sm dark:hover:text-gray-200 dark:border-gray-700 dark:hover:shadow-slate-700/[.7]"
                       href={Linkedin}
                     >
@@ -136,8 +152,9 @@ const Team = () => {
                       <FaDiscord></FaDiscord>
                     </a>
                     <a
+                      target="_blank"
                       className="inline-flex justify-center items-center text-gray-500 border border-gray-200 w-8 h-8 rounded-md hover:text-gray-800 hover:shadow-sm dark:hover:text-gray-200 dark:border-gray-700 dark:hover:shadow-slate-700/[.7]"
-                      href={Portfolio}
+                      href={portfolio}
                     >
                       <CiGlobe></CiGlobe>
                     </a>
