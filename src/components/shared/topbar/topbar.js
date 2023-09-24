@@ -8,7 +8,7 @@ const TopbarComp = () => {
       <div className="container mx-auto  px-2  ">
         <div className="flex items-center justify-end gap-x-5 w-full py-2 sm:pt-2 sm:pb-0">
           <a
-            className="inline-flex justify-center items-center gap-2 font-medium text-slate-600  hover:text-slate-500 text-sm dark:text-slate-400 dark:hover:text-slate-300"
+            className="sm:inline-flex hidden justify-center items-center gap-2 font-medium text-slate-600  hover:text-slate-500 text-sm dark:text-slate-400 dark:hover:text-slate-300"
             href="#"
           >
             <svg

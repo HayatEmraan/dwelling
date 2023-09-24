@@ -45,7 +45,7 @@ const LogInComp = () => {
     loginAndSignup(logEmail, logPassword);
   };
   return (
-    <dialog id="my_modal_3" className="modal">
+    <dialog id="my_modal_3" className="modal flex-col">
       <div method="dialog" className="modal-box text-black dark:text-white bg-white dark:bg-gray-900">
         <div className="flex justify-center items-center">
           <button
@@ -187,14 +187,14 @@ const LogInComp = () => {
             <div className="flex gap-2 justify-between mb-2">
               <p className="text-xs my-1">
                 We’ll email you for resetting password.{" "}
-                <span className="underline">Privacy Policy</span>
+                <a href="/privacy-policy" className="underline">Privacy Policy</a>
               </p>
-              <button
-                className="hover:underline"
+              <p
+                className="hover:underline cursor-pointer"
                 onClick={() => setIsReset(true)}
               >
                 Forgot Password
-              </button>
+              </p>
             </div>
             <button
               style={{

@@ -2,9 +2,7 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { AiFillPieChart } from "react-icons/ai";
 
-
 const COLORS = ["#3182ce", "#38a169", "#f6ad55", "#f56565"];
-
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
   cx,
@@ -61,8 +59,8 @@ const Example = () => {
       <h2 className="font-semibold p-2">Total state</h2>
       <hr />
       <div>
-        <ResponsiveContainer width="100%" height={420}>
-          <PieChart width={200} height={260}>
+        <ResponsiveContainer width="100%" height={400}>
+          <PieChart width={100} height={260}>
             <Pie
               data={data}
               cx="50%"
@@ -90,21 +88,18 @@ const Example = () => {
             <AiFillPieChart className="text-xl text-blue-600"></AiFillPieChart>
             Active
           </p>
-         
         </div>
         <div className="flex items-center justify-between">
           <p className="p-2 flex items-center gap-2">
             <AiFillPieChart className="text-xl text-green-600"></AiFillPieChart>
             Approved
           </p>
-         
         </div>
         <div className="flex items-center justify-between">
           <p className="p-2 flex items-center gap-2">
             <AiFillPieChart className="text-xl text-orange-400"></AiFillPieChart>
             Pending
           </p>
-          
         </div>
         <div className="flex items-center justify-between">
           <p className="p-2 flex items-center gap-2">

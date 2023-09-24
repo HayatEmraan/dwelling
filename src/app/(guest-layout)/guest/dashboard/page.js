@@ -25,7 +25,7 @@ const DashboardHomePage = async () => {
         {/*Dashboard user list with chart */}
         <div className="xl:flex items-center justify-between md:space-x-4 dark:bg-slate-700 dark:text-white">
           <BookingHistory />
-          <div className="border-2 shadow-md rounded-md  w-full">
+          <div className="border-2 shadow-md rounded-md xl:w-[32rem] mx-4 lg:mx-0">
             <Example></Example>
           </div>
         </div>
