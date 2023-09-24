@@ -22,7 +22,15 @@ export const googleLogin = () => {
         body: JSON.stringify({ email: res.user.email }),
       })
         .then((res) => res.json())
-        .then((data) => my_modal_3.close())
+        .then((data) => {
+          (async () => {
+            const result = await handleSignIn(res.user.email);
+            if (result.msg === "Cookie has been set.") {
+              toast.success("Authenticated Successfully");
+              my_modal_3.close();
+            }
+          })();
+        })
         .catch((err) => "");
     })
     .catch((err) => {
